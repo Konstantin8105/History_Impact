@@ -1080,7 +1080,7 @@ law, you just have to create a new material sub class and
 fill in the code in the methods that are declared in the mother class as
 abstract methods.</p>
 <br clear="all" />
-<h3> Creating a Sub Class</h2> 
+<h3> Creating a Sub Class</h3> 
 <img src="images/material_sub.jpg" width="375" height="344" align="right" style="border:20px transparent solid;border-top:0px;border-right:0px;" >
 <p>If you compare the methods in the mother material class and the methods
 in any of the sub classes, you will see that they are exactly the same apart
