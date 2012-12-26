@@ -1,0 +1,75 @@
+# Three Bar Mechanism
+#
+# References: 	
+#		1. MSC/DYNA verification manual
+#
+# Problem Description
+#
+# Three rods with length L make up a structure. The structure is given an inital velocity V
+# which sets the structure in rotation.
+#
+#
+# -> V          -> V
+# o-------------o
+# |             |
+# |             |
+# |             |
+# |             |
+# O             O
+# ^             ^
+#
+# The rod elements are pinned to the ground, but have free rotation connections.
+#
+# Reference Results
+#
+# The analytical result for the structure are are as follows:
+#
+# X_displacement for node 2 and 3 = L * sin(t)
+#
+# Period time T = 2 * Pi * L / V = 6.283
+#
+#
+# Results
+#
+# Impact perid is agrees well with theory
+#
+#
+# Engineering data
+#
+# Length                 L  =       1.0
+# Initial Velocity       V  =       1.0
+# Young modulus		     E  =     210.0
+# Density		       rho  =       1.0E-6
+# Poissons ratio        nu  =       0.3
+# Rod Diameter           D  =       1.12840 = sqrt(4/Pi) (Cross area = 1.0)
+#
+
+CONTROLS
+run from    0.00000 to    7
+print every  0.5 step
+print tracker every 0.001 step
+
+
+MATERIALS OF TYPE ELASTIC
+mat_1 E = 210 RHO =  1.0E-6 NU =  0.3
+
+
+NODES
+       1 x =      0.00000000 y =      0.00000000 z =      0.00000000 constraint = fixed
+       2 x =      0.00000000 y =      1.00000000 z =      0.00000000 constraint = vel
+       3 x =      1.00000000 y =      1.00000000 z =      0.00000000 constraint = vel
+       4 x =      1.00000000 y =      0.00000000 z =      0.00000000 constraint = fixed
+
+
+ELEMENTS OF TYPE rod_2
+       1 nodes = [1,2] D =  1.1284 material = mat_1 contact = off
+       2 nodes = [2,3] D =  1.1284 material = mat_1 contact = off
+       3 nodes = [3,4] D =  1.1284 material = mat_1 contact = off
+
+
+CONSTRAINTS OF TYPE boundary_condition
+       vel   ax = [0,0.0,1E-6,off,10,off] vx = [0,1.0,1E-6,off,10,off] az = 0 vz = 0
+       fixed ax = 0 ay = 0 az = 0 vx = 0 vy = 0 vz = 0
+
+TRACKERS OF TYPE NODEDISPLACEMENT
+1 node = [2] direction = x filename = Ver_11.trk target = [6.283,1E-3,0.0,1.0E-3]

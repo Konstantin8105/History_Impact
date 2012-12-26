@@ -1,0 +1,694 @@
+# A simple example of the contact facilities in Impact.
+# Two steel balls (shells) are in contact.
+#
+# The simulation takes a long time to complete. You can check the results
+# during solution by reading the balls_in_contact.in.flavia.res file with
+# GiD at any time.
+#
+
+controls
+run from 0 to 0.51
+print every 0.05 step
+
+loads
+pulse ax = [0,-2000,0.02,-2000,0.021,off,5,off] az = [0,-200,0.02,-200,0.021,off,5,off]
+
+materials of type elastoplastic
+e_steel rho = 0.0000078 E = 210 nu = 0.3 yield_stress = 0.180 EP = 0.1
+
+
+Nodes
+    1 x =            29 y =             0 z =             0  load = pulse
+    2 x =       28.7274 y =       2.07055 z =             0  load = pulse
+    3 x =       28.7274 y =      -2.07055 z =             0  load = pulse
+    4 x =        28.278 y =       2.52452 z =      -2.15829  load = pulse
+    5 x =        28.278 y =       2.52452 z =       2.15829  load = pulse
+    6 x =        28.278 y =      -2.52452 z =       2.15829  load = pulse
+    7 x =        28.278 y =      -2.52452 z =      -2.15829  load = pulse
+    8 x =       27.9935 y =     0.0524546 z =      -3.88442  load = pulse
+    9 x =       27.9935 y =     0.0524546 z =       3.88442  load = pulse
+   10 x =       27.9282 y =             4 z =             0  load = pulse
+   11 x =       27.9282 y =            -4 z =             0  load = pulse
+   12 x =       26.6569 y =      -5.65685 z =             0  load = pulse
+   13 x =       26.6569 y =       5.65685 z =             0  load = pulse
+   14 x =       26.2415 y =      -2.79683 z =       5.35765  load = pulse
+   15 x =       26.2415 y =      -2.79683 z =      -5.35765  load = pulse
+   16 x =       26.2415 y =       2.79683 z =      -5.35765  load = pulse
+   17 x =       26.2415 y =       2.79683 z =       5.35765  load = pulse
+   18 x =       25.5982 y =         5.971 z =       2.68395  load = pulse
+   19 x =       25.5982 y =         5.971 z =      -2.68395  load = pulse
+   20 x =       25.5982 y =        -5.971 z =       2.68395  load = pulse
+   21 x =       25.5982 y =        -5.971 z =      -2.68395  load = pulse
+   22 x =       25.3342 y =      0.373464 z =      -6.71381  load = pulse
+   23 x =       25.3342 y =      0.373464 z =       6.71381  load = pulse
+   24 x =            25 y =        6.9282 z =             0  load = pulse
+   25 x =            25 y =       -6.9282 z =             0  load = pulse
+   26 x =       23.3347 y =      -5.60821 z =      -5.20551  load = pulse
+   27 x =       23.3347 y =      -5.60821 z =       5.20551  load = pulse
+   28 x =       23.3347 y =       5.60821 z =      -5.20551  load = pulse
+   29 x =       23.3347 y =       5.60821 z =       5.20551  load = pulse
+   30 x =       23.1583 y =      -2.52452 z =       7.27795  load = pulse
+   31 x =       23.1583 y =      -2.52452 z =      -7.27795  load = pulse
+   32 x =       23.1583 y =       2.52452 z =      -7.27795  load = pulse
+   33 x =       23.1583 y =       2.52452 z =       7.27795  load = pulse
+   34 x =       23.0706 y =       7.72741 z =             0  load = pulse
+   35 x =       23.0706 y =      -7.72741 z =             0  load = pulse
+   36 x =            21 y =            -8 z =             0  load = pulse
+   37 x =            21 y =       -6.9282 z =            -4  load = pulse
+   38 x =            21 y =      -2.07055 z =       7.72741  load = pulse
+   39 x =            21 y =      -5.65685 z =       5.65685  load = pulse
+   40 x =            21 y =      -7.72741 z =       2.07055  load = pulse
+   41 x =            21 y =      -7.72741 z =      -2.07055  load = pulse
+   42 x =            21 y =      -5.65685 z =      -5.65685  load = pulse
+   43 x =            21 y =       2.07055 z =       7.72741  load = pulse
+   44 x =            21 y =      -2.07055 z =      -7.72741  load = pulse
+   45 x =            21 y =             0 z =            -8  load = pulse
+   46 x =            21 y =       2.07055 z =      -7.72741  load = pulse
+   47 x =            21 y =       -6.9282 z =             4  load = pulse
+   48 x =            21 y =             0 z =             8  load = pulse
+   49 x =            21 y =             4 z =        6.9282  load = pulse
+   50 x =            21 y =       5.65685 z =       5.65685  load = pulse
+   51 x =            21 y =            -4 z =        6.9282  load = pulse
+   52 x =            21 y =       5.65685 z =      -5.65685  load = pulse
+   53 x =            21 y =             8 z =             0  load = pulse
+   54 x =            21 y =            -4 z =       -6.9282  load = pulse
+   55 x =            21 y =       7.72741 z =      -2.07055  load = pulse
+   56 x =            21 y =       7.72741 z =       2.07055  load = pulse
+   57 x =            21 y =        6.9282 z =            -4  load = pulse
+   58 x =            21 y =             4 z =       -6.9282  load = pulse
+   59 x =            21 y =        6.9282 z =             4  load = pulse
+   60 x =       18.9294 y =      -7.72741 z =             0  load = pulse
+   61 x =       18.9294 y =       7.72741 z =             0  load = pulse
+   62 x =       18.8417 y =       2.52452 z =       7.27795  load = pulse
+   63 x =       18.8417 y =       2.52452 z =      -7.27795  load = pulse
+   64 x =       18.8417 y =      -2.52452 z =       7.27795  load = pulse
+   65 x =       18.8417 y =      -2.52452 z =      -7.27795  load = pulse
+   66 x =       18.6644 y =       5.60879 z =       5.20447  load = pulse
+   67 x =       18.6644 y =       5.60879 z =      -5.20447  load = pulse
+   68 x =        18.316 y =        -5.971 z =       4.59821  load = pulse
+   69 x =        18.316 y =        -5.971 z =      -4.59821  load = pulse
+   70 x =       17.1156 y =     0.0524515 z =       6.99347  load = pulse
+   71 x =       17.1156 y =     0.0524515 z =      -6.99347  load = pulse
+   72 x =            17 y =       -6.9282 z =  0             load = pulse
+   73 x =            17 y =        6.9282 z =  0             load = pulse
+   74 x =       16.4002 y =       5.97422 z =      -2.67399  load = pulse
+   75 x =       16.4002 y =       5.97422 z =       2.67399  load = pulse
+   76 x =       15.7945 y =      -5.60821 z =      -2.33466  load = pulse
+   77 x =       15.7945 y =      -5.60821 z =       2.33466  load = pulse
+   78 x =       15.7585 y =       2.79683 z =       5.35765  load = pulse
+   79 x =       15.7585 y =       2.79683 z =      -5.35765  load = pulse
+   80 x =       15.6424 y =      -2.79683 z =       -5.2415  load = pulse
+   81 x =       15.6424 y =      -2.79683 z =        5.2415  load = pulse
+   82 x =       15.3431 y =      -5.65685 z =             0  load = pulse
+   83 x =       15.3431 y =       5.65685 z =             0  load = pulse
+   84 x =       14.2862 y =      0.373462 z =       -4.3342  load = pulse
+   85 x =       14.2862 y =      0.373462 z =        4.3342  load = pulse
+   86 x =       14.0718 y =            -4 z =             0  load = pulse
+   87 x =       14.0718 y =             4 z =             0  load = pulse
+   88 x =        13.722 y =      -2.52452 z =      -2.15829  load = pulse
+   89 x =        13.722 y =      -2.52452 z =       2.15829  load = pulse
+   90 x =        13.722 y =       2.52452 z =       2.15829  load = pulse
+   91 x =        13.722 y =       2.52452 z =      -2.15829  load = pulse
+   92 x =       13.2726 y =      -2.07055 z =             0  load = pulse
+   93 x =       13.2726 y =       2.07055 z =             0  load = pulse
+   94 x =            13 y =             0 z =             0  load = pulse
+
+   95 x =            10 y =             0 z =             0
+   96 x =       9.74928 y =       2.22521 z =             0
+   97 x =       9.74928 y =      -2.22521 z =             0
+   98 x =       9.68223 y =      0.898374 z =      -2.33397
+   99 x =       9.43027 y =       1.42131 z =       3.00829
+  100 x =        9.3677 y =      -1.29843 z =       3.24965
+  101 x =       9.00969 y =       4.33884 z =             0
+  102 x =       9.00969 y =      -4.33884 z =             0
+  103 x =       8.58527 y =      -1.24057 z =      -4.97535
+  104 x =       8.57363 y =       4.58166 z =      -2.34549
+  105 x =       8.57363 y =       4.58166 z =       2.34549
+  106 x =       8.57363 y =      -4.58166 z =      -2.34549
+  107 x =       8.57363 y =      -4.58166 z =       2.34549
+  108 x =       8.04408 y =       2.17785 z =      -5.52718
+  109 x =       7.90425 y =       3.30601 z =       5.15685
+  110 x =       7.84852 y =     -0.144748 z =       6.19514
+  111 x =       7.81831 y =        6.2349 z =             0
+  112 x =       7.81831 y =       -6.2349 z =             0
+  113 x =        6.8513 y =      -3.60847 z =       6.32761
+  114 x =       6.63667 y =       6.73974 z =       3.24506
+  115 x =       6.49471 y =       5.60378 z =      -5.13968
+  116 x =       6.32761 y =      -3.60847 z =       -6.8513
+  117 x =        6.2349 y =       7.81831 z =             0
+  118 x =        6.2349 y =      -7.81831 z =             0
+  119 x =       6.19514 y =     -0.144748 z =      -7.84852
+  120 x =       5.92488 y =       7.58533 z =      -2.71265
+  121 x =       5.92488 y =      -7.58533 z =       2.71265
+  122 x =       5.92488 y =      -7.58533 z =      -2.71265
+  123 x =       5.52718 y =       2.17785 z =       8.04408
+  124 x =       5.15685 y =       3.30601 z =      -7.90425
+  125 x =       5.13968 y =       5.60378 z =       6.49471
+  126 x =       4.97535 y =      -1.24057 z =       8.58527
+  127 x =       4.33884 y =       9.00969 z =             0
+  128 x =       4.33884 y =      -9.00969 z =             0
+  129 x =       3.72199 y =       8.50257 z =      -3.72199
+  130 x =       3.72199 y =       8.50257 z =       3.72199
+  131 x =       3.24965 y =      -1.29843 z =       -9.3677
+  132 x =       3.24506 y =       6.73974 z =      -6.63667
+  133 x =        3.1252 y =       -8.9703 z =       -3.1252
+  134 x =        3.1252 y =       -8.9703 z =        3.1252
+  135 x =       3.00829 y =       1.42131 z =      -9.43027
+  136 x =       2.71265 y =      -7.58533 z =      -5.92488
+  137 x =       2.71265 y =      -7.58533 z =       5.92488
+  138 x =       2.71265 y =       7.58533 z =       5.92488
+  139 x =       2.34549 y =      -4.58166 z =       8.57363
+  140 x =       2.34549 y =      -4.58166 z =      -8.57363
+  141 x =       2.34549 y =       4.58166 z =      -8.57363
+  142 x =       2.34549 y =       4.58166 z =       8.57363
+  143 x =       2.33397 y =      0.898374 z =       9.68223
+  144 x =       2.22521 y =       9.74928 z =             0
+  145 x =       2.22521 y =      -9.74928 z =             0
+  146 x =             0 y =      -9.74928 z =       2.22521
+  147 x =             0 y =      -9.74928 z =      -2.22521
+  148 x =             0 y =           -10 z =             0
+  149 x =             0 y =      -9.00969 z =      -4.33884
+  150 x =             0 y =      -7.81831 z =       -6.2349
+  151 x =             0 y =       -6.2349 z =      -7.81831
+  152 x =             0 y =      -2.22521 z =      -9.74928
+  153 x =             0 y =      -9.00969 z =       4.33884
+  154 x =             0 y =      -7.81831 z =        6.2349
+  155 x =             0 y =       -6.2349 z =       7.81831
+  156 x =             0 y =       9.74928 z =       2.22521
+  157 x =             0 y =       9.00969 z =       4.33884
+  158 x =             0 y =        6.2349 z =       7.81831
+  159 x =             0 y =       4.33884 z =       9.00969
+  160 x =             0 y =      -4.33884 z =       9.00969
+  161 x =             0 y =       9.74928 z =      -2.22521
+  162 x =             0 y =       9.00969 z =      -4.33884
+  163 x =             0 y =        6.2349 z =      -7.81831
+  164 x =             0 y =       4.33884 z =      -9.00969
+  165 x =             0 y =       2.22521 z =      -9.74928
+  166 x =             0 y =             0 z =           -10
+  167 x =             0 y =      -4.33884 z =      -9.00969
+  168 x =             0 y =            10 z =             0
+  169 x =             0 y =       7.81831 z =       -6.2349
+  170 x =             0 y =       7.81831 z =        6.2349
+  171 x =             0 y =      -2.22521 z =       9.74928
+  172 x =             0 y =             0 z =            10
+  173 x =             0 y =       2.22521 z =       9.74928
+  174 x =      -2.22521 y =      -9.74928 z =             0
+  175 x =      -2.22521 y =       9.74928 z =             0
+  176 x =      -2.33397 y =      0.898374 z =      -9.68223
+  177 x =      -2.34549 y =       4.58166 z =      -8.57363
+  178 x =      -2.34549 y =       4.58166 z =       8.57363
+  179 x =      -2.34549 y =      -4.58166 z =      -8.57363
+  180 x =      -2.34549 y =      -4.58166 z =       8.57363
+  181 x =      -2.71265 y =       7.58533 z =      -5.92488
+  182 x =      -2.71265 y =      -7.58533 z =      -5.92488
+  183 x =      -2.71265 y =      -7.58533 z =       5.92488
+  184 x =      -3.00829 y =       1.42131 z =       9.43027
+  185 x =       -3.1252 y =       -8.9703 z =        3.1252
+  186 x =       -3.1252 y =       -8.9703 z =       -3.1252
+  187 x =      -3.24506 y =       6.73974 z =       6.63667
+  188 x =      -3.24965 y =      -1.29843 z =        9.3677
+  189 x =      -3.72199 y =       8.50257 z =      -3.72199
+  190 x =      -3.72199 y =       8.50257 z =       3.72199
+  191 x =      -4.33884 y =      -9.00969 z =             0
+  192 x =      -4.33884 y =       9.00969 z =             0
+  193 x =      -4.97535 y =      -1.24057 z =      -8.58527
+  194 x =      -5.13968 y =       5.60378 z =      -6.49471
+  195 x =      -5.15685 y =       3.30601 z =       7.90425
+  196 x =      -5.52718 y =       2.17785 z =      -8.04408
+  197 x =      -5.92488 y =      -7.58533 z =      -2.71265
+  198 x =      -5.92488 y =      -7.58533 z =       2.71265
+  199 x =      -5.92488 y =       7.58533 z =       2.71265
+  200 x =      -6.19514 y =     -0.144748 z =       7.84852
+  201 x =       -6.2349 y =      -7.81831 z =             0
+  202 x =       -6.2349 y =       7.81831 z =	          0
+  203 x =      -6.32761 y =      -3.60847 z =        6.8513
+  204 x =      -6.49471 y =       5.60378 z =       5.13968
+  205 x =      -6.63667 y =       6.73974 z =      -3.24506
+  206 x =       -6.8513 y =      -3.60847 z =      -6.32761
+  207 x =      -7.81831 y =       -6.2349 z =             0
+  208 x =      -7.81831 y =        6.2349 z =             0
+  209 x =      -7.84852 y =     -0.144748 z =      -6.19514
+  210 x =      -7.90425 y =       3.30601 z =      -5.15685
+  211 x =      -8.04408 y =       2.17785 z =       5.52718
+  212 x =      -8.57363 y =      -4.58166 z =      -2.34549
+  213 x =      -8.57363 y =      -4.58166 z =       2.34549
+  214 x =      -8.57363 y =       4.58166 z =      -2.34549
+  215 x =      -8.57363 y =       4.58166 z =       2.34549
+  216 x =      -8.58527 y =      -1.24057 z =       4.97535
+  217 x =      -9.00969 y =      -4.33884 z =             0
+  218 x =      -9.00969 y =       4.33884 z =             0
+  219 x =       -9.3677 y =      -1.29843 z =      -3.24965
+  220 x =      -9.43027 y =       1.42131 z =      -3.00829
+  221 x =      -9.68223 y =      0.898374 z =       2.33397
+  222 x =      -9.74928 y =      -2.22521 z =             0
+  223 x =      -9.74928 y =       2.22521 z =             0
+  224 x =           -10 y =             0 z =             0
+
+
+Elements of type Shell_C0_3
+    1 nodes = [101,111, 104] material = e_steel NIP = 5 T = 1
+    2 nodes = [163,164, 141] material = e_steel NIP = 5 T = 1
+    3 nodes = [112,102, 106] material = e_steel NIP = 5 T = 1
+    4 nodes = [167,151, 140] material = e_steel NIP = 5 T = 1
+    5 nodes = [ 96,101, 104] material = e_steel NIP = 5 T = 1
+    6 nodes = [164,165, 141] material = e_steel NIP = 5 T = 1
+    7 nodes = [102, 97, 106] material = e_steel NIP = 5 T = 1
+    8 nodes = [152,167, 140] material = e_steel NIP = 5 T = 1
+    9 nodes = [111,117, 104] material = e_steel NIP = 5 T = 1
+   10 nodes = [169,163, 141] material = e_steel NIP = 5 T = 1
+   11 nodes = [118,112, 106] material = e_steel NIP = 5 T = 1
+   12 nodes = [151,150, 140] material = e_steel NIP = 5 T = 1
+   13 nodes = [ 95, 96,  98] material = e_steel NIP = 5 T = 1
+   14 nodes = [165,166, 135] material = e_steel NIP = 5 T = 1
+   15 nodes = [ 97, 95,  98] material = e_steel NIP = 5 T = 1
+   16 nodes = [166,131, 135] material = e_steel NIP = 5 T = 1
+   17 nodes = [117,127, 120] material = e_steel NIP = 5 T = 1
+   18 nodes = [162,169, 132] material = e_steel NIP = 5 T = 1
+   19 nodes = [150,149, 136] material = e_steel NIP = 5 T = 1
+   20 nodes = [128,118, 122] material = e_steel NIP = 5 T = 1
+   21 nodes = [ 98, 96, 104] material = e_steel NIP = 5 T = 1
+   22 nodes = [165,135, 141] material = e_steel NIP = 5 T = 1
+   23 nodes = [127,129, 120] material = e_steel NIP = 5 T = 1
+   24 nodes = [161,162, 129] material = e_steel NIP = 5 T = 1
+   25 nodes = [145,128, 133] material = e_steel NIP = 5 T = 1
+   26 nodes = [149,133, 136] material = e_steel NIP = 5 T = 1
+   27 nodes = [132,169, 141] material = e_steel NIP = 5 T = 1
+   28 nodes = [122,118, 106] material = e_steel NIP = 5 T = 1
+   29 nodes = [117,120, 104] material = e_steel NIP = 5 T = 1
+   30 nodes = [150,136, 140] material = e_steel NIP = 5 T = 1
+   31 nodes = [148,145, 147] material = e_steel NIP = 5 T = 1
+   32 nodes = [144,168, 161] material = e_steel NIP = 5 T = 1
+   33 nodes = [ 98,104, 108] material = e_steel NIP = 5 T = 1
+   34 nodes = [108,104, 115] material = e_steel NIP = 5 T = 1
+   35 nodes = [108,115, 124] material = e_steel NIP = 5 T = 1
+   36 nodes = [124,115, 132] material = e_steel NIP = 5 T = 1
+   37 nodes = [108,124, 119] material = e_steel NIP = 5 T = 1
+   38 nodes = [119,124, 135] material = e_steel NIP = 5 T = 1
+   39 nodes = [108,119, 103] material = e_steel NIP = 5 T = 1
+   40 nodes = [108,103,  98] material = e_steel NIP = 5 T = 1
+   41 nodes = [ 98,103,  97] material = e_steel NIP = 5 T = 1
+   42 nodes = [103,119, 116] material = e_steel NIP = 5 T = 1
+   43 nodes = [116,131, 140] material = e_steel NIP = 5 T = 1
+   44 nodes = [103,116, 106] material = e_steel NIP = 5 T = 1
+   45 nodes = [115,104, 120] material = e_steel NIP = 5 T = 1
+   46 nodes = [115,129, 132] material = e_steel NIP = 5 T = 1
+   47 nodes = [141,135, 124] material = e_steel NIP = 5 T = 1
+   48 nodes = [141,124, 132] material = e_steel NIP = 5 T = 1
+   49 nodes = [106, 97, 103] material = e_steel NIP = 5 T = 1
+   50 nodes = [152,140, 131] material = e_steel NIP = 5 T = 1
+   51 nodes = [131,116, 119] material = e_steel NIP = 5 T = 1
+   52 nodes = [131,119, 135] material = e_steel NIP = 5 T = 1
+   53 nodes = [131,166, 152] material = e_steel NIP = 5 T = 1
+   54 nodes = [140,136, 116] material = e_steel NIP = 5 T = 1
+   55 nodes = [122,106, 116] material = e_steel NIP = 5 T = 1
+   56 nodes = [147,145, 133] material = e_steel NIP = 5 T = 1
+   57 nodes = [133,128, 122] material = e_steel NIP = 5 T = 1
+   58 nodes = [133,122, 136] material = e_steel NIP = 5 T = 1
+   59 nodes = [147,133, 149] material = e_steel NIP = 5 T = 1
+   60 nodes = [136,122, 116] material = e_steel NIP = 5 T = 1
+   61 nodes = [144,161, 129] material = e_steel NIP = 5 T = 1
+   62 nodes = [129,162, 132] material = e_steel NIP = 5 T = 1
+   63 nodes = [129,115, 120] material = e_steel NIP = 5 T = 1
+   64 nodes = [129,127, 144] material = e_steel NIP = 5 T = 1
+   65 nodes = [164,163, 177] material = e_steel NIP = 5 T = 1
+   66 nodes = [208,218, 214] material = e_steel NIP = 5 T = 1
+   67 nodes = [151,167, 179] material = e_steel NIP = 5 T = 1
+   68 nodes = [217,207, 212] material = e_steel NIP = 5 T = 1
+   69 nodes = [165,164, 177] material = e_steel NIP = 5 T = 1
+   70 nodes = [218,223, 214] material = e_steel NIP = 5 T = 1
+   71 nodes = [167,152, 179] material = e_steel NIP = 5 T = 1
+   72 nodes = [222,217, 212] material = e_steel NIP = 5 T = 1
+   73 nodes = [163,169, 177] material = e_steel NIP = 5 T = 1
+   74 nodes = [202,208, 214] material = e_steel NIP = 5 T = 1
+   75 nodes = [150,151, 179] material = e_steel NIP = 5 T = 1
+   76 nodes = [207,201, 212] material = e_steel NIP = 5 T = 1
+   77 nodes = [166,165, 176] material = e_steel NIP = 5 T = 1
+   78 nodes = [223,224, 220] material = e_steel NIP = 5 T = 1
+   79 nodes = [152,166, 176] material = e_steel NIP = 5 T = 1
+   80 nodes = [224,219, 220] material = e_steel NIP = 5 T = 1
+   81 nodes = [169,162, 181] material = e_steel NIP = 5 T = 1
+   82 nodes = [192,202, 205] material = e_steel NIP = 5 T = 1
+   83 nodes = [201,191, 197] material = e_steel NIP = 5 T = 1
+   84 nodes = [149,150, 182] material = e_steel NIP = 5 T = 1
+   85 nodes = [176,165, 177] material = e_steel NIP = 5 T = 1
+   86 nodes = [223,220, 214] material = e_steel NIP = 5 T = 1
+   87 nodes = [162,189, 181] material = e_steel NIP = 5 T = 1
+   88 nodes = [175,192, 189] material = e_steel NIP = 5 T = 1
+   89 nodes = [147,149, 186] material = e_steel NIP = 5 T = 1
+   90 nodes = [191,186, 197] material = e_steel NIP = 5 T = 1
+   91 nodes = [205,202, 214] material = e_steel NIP = 5 T = 1
+   92 nodes = [182,150, 179] material = e_steel NIP = 5 T = 1
+   93 nodes = [169,181, 177] material = e_steel NIP = 5 T = 1
+   94 nodes = [201,197, 212] material = e_steel NIP = 5 T = 1
+   95 nodes = [148,147, 174] material = e_steel NIP = 5 T = 1
+   96 nodes = [161,168, 175] material = e_steel NIP = 5 T = 1
+   97 nodes = [176,177, 196] material = e_steel NIP = 5 T = 1
+   98 nodes = [196,177, 194] material = e_steel NIP = 5 T = 1
+   99 nodes = [196,194, 210] material = e_steel NIP = 5 T = 1
+  100 nodes = [210,194, 205] material = e_steel NIP = 5 T = 1
+  101 nodes = [196,210, 209] material = e_steel NIP = 5 T = 1
+  102 nodes = [209,210, 220] material = e_steel NIP = 5 T = 1
+  103 nodes = [196,209, 193] material = e_steel NIP = 5 T = 1
+  104 nodes = [196,193, 176] material = e_steel NIP = 5 T = 1
+  105 nodes = [176,193, 152] material = e_steel NIP = 5 T = 1
+  106 nodes = [193,209, 206] material = e_steel NIP = 5 T = 1
+  107 nodes = [206,219, 212] material = e_steel NIP = 5 T = 1
+  108 nodes = [193,206, 179] material = e_steel NIP = 5 T = 1
+  109 nodes = [194,177, 181] material = e_steel NIP = 5 T = 1
+  110 nodes = [194,189, 205] material = e_steel NIP = 5 T = 1
+  111 nodes = [214,220, 210] material = e_steel NIP = 5 T = 1
+  112 nodes = [214,210, 205] material = e_steel NIP = 5 T = 1
+  113 nodes = [179,152, 193] material = e_steel NIP = 5 T = 1
+  114 nodes = [222,212, 219] material = e_steel NIP = 5 T = 1
+  115 nodes = [219,206, 209] material = e_steel NIP = 5 T = 1
+  116 nodes = [219,209, 220] material = e_steel NIP = 5 T = 1
+  117 nodes = [219,224, 222] material = e_steel NIP = 5 T = 1
+  118 nodes = [212,197, 206] material = e_steel NIP = 5 T = 1
+  119 nodes = [182,179, 206] material = e_steel NIP = 5 T = 1
+  120 nodes = [174,147, 186] material = e_steel NIP = 5 T = 1
+  121 nodes = [186,149, 182] material = e_steel NIP = 5 T = 1
+  122 nodes = [186,182, 197] material = e_steel NIP = 5 T = 1
+  123 nodes = [174,186, 191] material = e_steel NIP = 5 T = 1
+  124 nodes = [197,182, 206] material = e_steel NIP = 5 T = 1
+  125 nodes = [161,175, 189] material = e_steel NIP = 5 T = 1
+  126 nodes = [189,192, 205] material = e_steel NIP = 5 T = 1
+  127 nodes = [189,194, 181] material = e_steel NIP = 5 T = 1
+  128 nodes = [189,162, 161] material = e_steel NIP = 5 T = 1
+  129 nodes = [218,208, 215] material = e_steel NIP = 5 T = 1
+  130 nodes = [158,159, 178] material = e_steel NIP = 5 T = 1
+  131 nodes = [207,217, 213] material = e_steel NIP = 5 T = 1
+  132 nodes = [160,155, 180] material = e_steel NIP = 5 T = 1
+  133 nodes = [223,218, 215] material = e_steel NIP = 5 T = 1
+  134 nodes = [159,173, 178] material = e_steel NIP = 5 T = 1
+  135 nodes = [217,222, 213] material = e_steel NIP = 5 T = 1
+  136 nodes = [171,160, 180] material = e_steel NIP = 5 T = 1
+  137 nodes = [208,202, 215] material = e_steel NIP = 5 T = 1
+  138 nodes = [170,158, 178] material = e_steel NIP = 5 T = 1
+  139 nodes = [201,207, 213] material = e_steel NIP = 5 T = 1
+  140 nodes = [155,154, 180] material = e_steel NIP = 5 T = 1
+  141 nodes = [224,223, 221] material = e_steel NIP = 5 T = 1
+  142 nodes = [173,172, 184] material = e_steel NIP = 5 T = 1
+  143 nodes = [222,224, 221] material = e_steel NIP = 5 T = 1
+  144 nodes = [172,188, 184] material = e_steel NIP = 5 T = 1
+  145 nodes = [202,192, 199] material = e_steel NIP = 5 T = 1
+  146 nodes = [157,170, 187] material = e_steel NIP = 5 T = 1
+  147 nodes = [154,153, 183] material = e_steel NIP = 5 T = 1
+  148 nodes = [191,201, 198] material = e_steel NIP = 5 T = 1
+  149 nodes = [221,223, 215] material = e_steel NIP = 5 T = 1
+  150 nodes = [173,184, 178] material = e_steel NIP = 5 T = 1
+  151 nodes = [192,190, 199] material = e_steel NIP = 5 T = 1
+  152 nodes = [156,157, 190] material = e_steel NIP = 5 T = 1
+  153 nodes = [174,191, 185] material = e_steel NIP = 5 T = 1
+  154 nodes = [153,185, 183] material = e_steel NIP = 5 T = 1
+  155 nodes = [187,170, 178] material = e_steel NIP = 5 T = 1
+  156 nodes = [198,201, 213] material = e_steel NIP = 5 T = 1
+  157 nodes = [202,199, 215] material = e_steel NIP = 5 T = 1
+  158 nodes = [154,183, 180] material = e_steel NIP = 5 T = 1
+  159 nodes = [148,174, 146] material = e_steel NIP = 5 T = 1
+  160 nodes = [175,168, 156] material = e_steel NIP = 5 T = 1
+  161 nodes = [221,215, 211] material = e_steel NIP = 5 T = 1
+  162 nodes = [211,215, 204] material = e_steel NIP = 5 T = 1
+  163 nodes = [204,215, 199] material = e_steel NIP = 5 T = 1
+  164 nodes = [204,190, 187] material = e_steel NIP = 5 T = 1
+  165 nodes = [211,204, 195] material = e_steel NIP = 5 T = 1
+  166 nodes = [195,204, 187] material = e_steel NIP = 5 T = 1
+  167 nodes = [211,195, 200] material = e_steel NIP = 5 T = 1
+  168 nodes = [211,200, 216] material = e_steel NIP = 5 T = 1
+  169 nodes = [211,216, 221] material = e_steel NIP = 5 T = 1
+  170 nodes = [221,216, 222] material = e_steel NIP = 5 T = 1
+  171 nodes = [216,200, 203] material = e_steel NIP = 5 T = 1
+  172 nodes = [216,203, 213] material = e_steel NIP = 5 T = 1
+  173 nodes = [203,188, 180] material = e_steel NIP = 5 T = 1
+  174 nodes = [200,195, 184] material = e_steel NIP = 5 T = 1
+  175 nodes = [178,184, 195] material = e_steel NIP = 5 T = 1
+  176 nodes = [178,195, 187] material = e_steel NIP = 5 T = 1
+  177 nodes = [213,222, 216] material = e_steel NIP = 5 T = 1
+  178 nodes = [171,180, 188] material = e_steel NIP = 5 T = 1
+  179 nodes = [188,203, 200] material = e_steel NIP = 5 T = 1
+  180 nodes = [188,200, 184] material = e_steel NIP = 5 T = 1
+  181 nodes = [188,172, 171] material = e_steel NIP = 5 T = 1
+  182 nodes = [180,183, 203] material = e_steel NIP = 5 T = 1
+  183 nodes = [198,213, 203] material = e_steel NIP = 5 T = 1
+  184 nodes = [146,174, 185] material = e_steel NIP = 5 T = 1
+  185 nodes = [185,191, 198] material = e_steel NIP = 5 T = 1
+  186 nodes = [185,198, 183] material = e_steel NIP = 5 T = 1
+  187 nodes = [146,185, 153] material = e_steel NIP = 5 T = 1
+  188 nodes = [183,198, 203] material = e_steel NIP = 5 T = 1
+  189 nodes = [175,156, 190] material = e_steel NIP = 5 T = 1
+  190 nodes = [190,157, 187] material = e_steel NIP = 5 T = 1
+  191 nodes = [190,204, 199] material = e_steel NIP = 5 T = 1
+  192 nodes = [190,192, 175] material = e_steel NIP = 5 T = 1
+  193 nodes = [159,158, 142] material = e_steel NIP = 5 T = 1
+  194 nodes = [111,101, 105] material = e_steel NIP = 5 T = 1
+  195 nodes = [155,160, 139] material = e_steel NIP = 5 T = 1
+  196 nodes = [102,112, 107] material = e_steel NIP = 5 T = 1
+  197 nodes = [173,159, 142] material = e_steel NIP = 5 T = 1
+  198 nodes = [101, 96, 105] material = e_steel NIP = 5 T = 1
+  199 nodes = [160,171, 139] material = e_steel NIP = 5 T = 1
+  200 nodes = [ 97,102, 107] material = e_steel NIP = 5 T = 1
+  201 nodes = [158,170, 142] material = e_steel NIP = 5 T = 1
+  202 nodes = [117,111, 105] material = e_steel NIP = 5 T = 1
+  203 nodes = [154,155, 139] material = e_steel NIP = 5 T = 1
+  204 nodes = [112,118, 107] material = e_steel NIP = 5 T = 1
+  205 nodes = [172,173, 143] material = e_steel NIP = 5 T = 1
+  206 nodes = [ 96, 95,  99] material = e_steel NIP = 5 T = 1
+  207 nodes = [171,172, 143] material = e_steel NIP = 5 T = 1
+  208 nodes = [ 95,100,  99] material = e_steel NIP = 5 T = 1
+  209 nodes = [170,157, 138] material = e_steel NIP = 5 T = 1
+  210 nodes = [127,117, 114] material = e_steel NIP = 5 T = 1
+  211 nodes = [118,128, 121] material = e_steel NIP = 5 T = 1
+  212 nodes = [153,154, 137] material = e_steel NIP = 5 T = 1
+  213 nodes = [143,173, 142] material = e_steel NIP = 5 T = 1
+  214 nodes = [ 96, 99, 105] material = e_steel NIP = 5 T = 1
+  215 nodes = [157,130, 138] material = e_steel NIP = 5 T = 1
+  216 nodes = [144,127, 130] material = e_steel NIP = 5 T = 1
+  217 nodes = [146,153, 134] material = e_steel NIP = 5 T = 1
+  218 nodes = [128,134, 121] material = e_steel NIP = 5 T = 1
+  219 nodes = [114,117, 105] material = e_steel NIP = 5 T = 1
+  220 nodes = [137,154, 139] material = e_steel NIP = 5 T = 1
+  221 nodes = [170,138, 142] material = e_steel NIP = 5 T = 1
+  222 nodes = [118,121, 107] material = e_steel NIP = 5 T = 1
+  223 nodes = [148,146, 145] material = e_steel NIP = 5 T = 1
+  224 nodes = [156,168, 144] material = e_steel NIP = 5 T = 1
+  225 nodes = [143,142, 123] material = e_steel NIP = 5 T = 1
+  226 nodes = [123,142, 125] material = e_steel NIP = 5 T = 1
+  227 nodes = [125,142, 138] material = e_steel NIP = 5 T = 1
+  228 nodes = [125,130, 114] material = e_steel NIP = 5 T = 1
+  229 nodes = [123,125, 109] material = e_steel NIP = 5 T = 1
+  230 nodes = [109,125, 114] material = e_steel NIP = 5 T = 1
+  231 nodes = [123,109, 110] material = e_steel NIP = 5 T = 1
+  232 nodes = [123,110, 126] material = e_steel NIP = 5 T = 1
+  233 nodes = [123,126, 143] material = e_steel NIP = 5 T = 1
+  234 nodes = [143,126, 171] material = e_steel NIP = 5 T = 1
+  235 nodes = [126,110, 113] material = e_steel NIP = 5 T = 1
+  236 nodes = [126,113, 139] material = e_steel NIP = 5 T = 1
+  237 nodes = [113,100, 107] material = e_steel NIP = 5 T = 1
+  238 nodes = [110,109,  99] material = e_steel NIP = 5 T = 1
+  239 nodes = [105, 99, 109] material = e_steel NIP = 5 T = 1
+  240 nodes = [105,109, 114] material = e_steel NIP = 5 T = 1
+  241 nodes = [139,171, 126] material = e_steel NIP = 5 T = 1
+  242 nodes = [ 97,107, 100] material = e_steel NIP = 5 T = 1
+  243 nodes = [100,113, 110] material = e_steel NIP = 5 T = 1
+  244 nodes = [100,110,  99] material = e_steel NIP = 5 T = 1
+  245 nodes = [100, 95,  97] material = e_steel NIP = 5 T = 1
+  246 nodes = [107,121, 113] material = e_steel NIP = 5 T = 1
+  247 nodes = [137,139, 113] material = e_steel NIP = 5 T = 1
+  248 nodes = [145,146, 134] material = e_steel NIP = 5 T = 1
+  249 nodes = [134,153, 137] material = e_steel NIP = 5 T = 1
+  250 nodes = [134,137, 121] material = e_steel NIP = 5 T = 1
+  251 nodes = [145,134, 128] material = e_steel NIP = 5 T = 1
+  252 nodes = [121,137, 113] material = e_steel NIP = 5 T = 1
+  253 nodes = [156,144, 130] material = e_steel NIP = 5 T = 1
+  254 nodes = [130,127, 114] material = e_steel NIP = 5 T = 1
+  255 nodes = [130,125, 138] material = e_steel NIP = 5 T = 1
+  256 nodes = [130,157, 156] material = e_steel NIP = 5 T = 1
+
+  257 nodes = [ 58, 46,  32] material = e_steel NIP = 5 T = 1
+  258 nodes = [  2, 10,   4] material = e_steel NIP = 5 T = 1
+  259 nodes = [ 44, 54,  31] material = e_steel NIP = 5 T = 1
+  260 nodes = [ 11,  3,   7] material = e_steel NIP = 5 T = 1
+  261 nodes = [ 12, 11,   7] material = e_steel NIP = 5 T = 1
+  262 nodes = [ 10, 13,   4] material = e_steel NIP = 5 T = 1
+  263 nodes = [ 54, 42,  31] material = e_steel NIP = 5 T = 1
+  264 nodes = [ 52, 58,  32] material = e_steel NIP = 5 T = 1
+  265 nodes = [  1,  2,   4] material = e_steel NIP = 5 T = 1
+  266 nodes = [ 46, 45,  32] material = e_steel NIP = 5 T = 1
+  267 nodes = [  3,  1,   7] material = e_steel NIP = 5 T = 1
+  268 nodes = [ 45, 44,  31] material = e_steel NIP = 5 T = 1
+  269 nodes = [ 57, 52,  28] material = e_steel NIP = 5 T = 1
+  270 nodes = [ 42, 37,  26] material = e_steel NIP = 5 T = 1
+  271 nodes = [ 13, 24,  19] material = e_steel NIP = 5 T = 1
+  272 nodes = [ 25, 12,  21] material = e_steel NIP = 5 T = 1
+  273 nodes = [ 24, 34,  19] material = e_steel NIP = 5 T = 1
+  274 nodes = [ 55, 57,  28] material = e_steel NIP = 5 T = 1
+  275 nodes = [ 37, 41,  26] material = e_steel NIP = 5 T = 1
+  276 nodes = [ 35, 25,  21] material = e_steel NIP = 5 T = 1
+  277 nodes = [ 28, 52,  32] material = e_steel NIP = 5 T = 1
+  278 nodes = [ 21, 12,   7] material = e_steel NIP = 5 T = 1
+  279 nodes = [ 42, 26,  31] material = e_steel NIP = 5 T = 1
+  280 nodes = [ 13, 19,   4] material = e_steel NIP = 5 T = 1
+  281 nodes = [ 36, 35,  41] material = e_steel NIP = 5 T = 1
+  282 nodes = [ 53, 55,  34] material = e_steel NIP = 5 T = 1
+  283 nodes = [ 21,  7,  15] material = e_steel NIP = 5 T = 1
+  284 nodes = [  4, 19,  16] material = e_steel NIP = 5 T = 1
+  285 nodes = [ 31, 26,  15] material = e_steel NIP = 5 T = 1
+  286 nodes = [ 31, 15,  22] material = e_steel NIP = 5 T = 1
+  287 nodes = [ 15, 26,  21] material = e_steel NIP = 5 T = 1
+  288 nodes = [ 22, 15,   8] material = e_steel NIP = 5 T = 1
+  289 nodes = [ 31, 22,  45] material = e_steel NIP = 5 T = 1
+  290 nodes = [ 28, 32,  16] material = e_steel NIP = 5 T = 1
+  291 nodes = [ 16, 32,  22] material = e_steel NIP = 5 T = 1
+  292 nodes = [ 16, 22,   8] material = e_steel NIP = 5 T = 1
+  293 nodes = [ 22, 32,  45] material = e_steel NIP = 5 T = 1
+  294 nodes = [ 16,  8,   4] material = e_steel NIP = 5 T = 1
+  295 nodes = [  4,  8,   1] material = e_steel NIP = 5 T = 1
+  296 nodes = [ 28, 16,  19] material = e_steel NIP = 5 T = 1
+  297 nodes = [  7,  1,   8] material = e_steel NIP = 5 T = 1
+  298 nodes = [  7,  8,  15] material = e_steel NIP = 5 T = 1
+  299 nodes = [ 41, 35,  21] material = e_steel NIP = 5 T = 1
+  300 nodes = [ 34, 55,  19] material = e_steel NIP = 5 T = 1
+  301 nodes = [ 21, 26,  41] material = e_steel NIP = 5 T = 1
+  302 nodes = [ 28, 19,  55] material = e_steel NIP = 5 T = 1
+  303 nodes = [ 46, 58,  63] material = e_steel NIP = 5 T = 1
+  304 nodes = [ 87, 93,  91] material = e_steel NIP = 5 T = 1
+  305 nodes = [ 54, 44,  65] material = e_steel NIP = 5 T = 1
+  306 nodes = [ 92, 86,  88] material = e_steel NIP = 5 T = 1
+  307 nodes = [ 42, 54,  65] material = e_steel NIP = 5 T = 1
+  308 nodes = [ 86, 82,  88] material = e_steel NIP = 5 T = 1
+  309 nodes = [ 83, 87,  91] material = e_steel NIP = 5 T = 1
+  310 nodes = [ 58, 52,  63] material = e_steel NIP = 5 T = 1
+  311 nodes = [ 45, 46,  63] material = e_steel NIP = 5 T = 1
+  312 nodes = [ 93, 94,  91] material = e_steel NIP = 5 T = 1
+  313 nodes = [ 94, 92,  88] material = e_steel NIP = 5 T = 1
+  314 nodes = [ 44, 45,  65] material = e_steel NIP = 5 T = 1
+  315 nodes = [ 52, 57,  67] material = e_steel NIP = 5 T = 1
+  316 nodes = [ 73, 83,  74] material = e_steel NIP = 5 T = 1
+  317 nodes = [ 82, 72,  76] material = e_steel NIP = 5 T = 1
+  318 nodes = [ 37, 42,  69] material = e_steel NIP = 5 T = 1
+  319 nodes = [ 57, 55,  67] material = e_steel NIP = 5 T = 1
+  320 nodes = [ 61, 73,  74] material = e_steel NIP = 5 T = 1
+  321 nodes = [ 41, 37,  69] material = e_steel NIP = 5 T = 1
+  322 nodes = [ 72, 60,  76] material = e_steel NIP = 5 T = 1
+  323 nodes = [ 74, 83,  91] material = e_steel NIP = 5 T = 1
+  324 nodes = [ 69, 42,  65] material = e_steel NIP = 5 T = 1
+  325 nodes = [ 52, 67,  63] material = e_steel NIP = 5 T = 1
+  326 nodes = [ 82, 76,  88] material = e_steel NIP = 5 T = 1
+  327 nodes = [ 60, 36,  41] material = e_steel NIP = 5 T = 1
+  328 nodes = [ 53, 61,  55] material = e_steel NIP = 5 T = 1
+  329 nodes = [ 69, 65,  80] material = e_steel NIP = 5 T = 1
+  330 nodes = [ 88, 76,  80] material = e_steel NIP = 5 T = 1
+  331 nodes = [ 88, 80,  84] material = e_steel NIP = 5 T = 1
+  332 nodes = [ 80, 76,  69] material = e_steel NIP = 5 T = 1
+  333 nodes = [ 84, 80,  71] material = e_steel NIP = 5 T = 1
+  334 nodes = [ 88, 84,  94] material = e_steel NIP = 5 T = 1
+  335 nodes = [ 74, 91,  79] material = e_steel NIP = 5 T = 1
+  336 nodes = [ 63, 67,  79] material = e_steel NIP = 5 T = 1
+  337 nodes = [ 63, 79,  71] material = e_steel NIP = 5 T = 1
+  338 nodes = [ 63, 71,  45] material = e_steel NIP = 5 T = 1
+  339 nodes = [ 71, 79,  84] material = e_steel NIP = 5 T = 1
+  340 nodes = [ 84, 79,  91] material = e_steel NIP = 5 T = 1
+  341 nodes = [ 84, 91,  94] material = e_steel NIP = 5 T = 1
+  342 nodes = [ 79, 67,  74] material = e_steel NIP = 5 T = 1
+  343 nodes = [ 65, 45,  71] material = e_steel NIP = 5 T = 1
+  344 nodes = [ 65, 71,  80] material = e_steel NIP = 5 T = 1
+  345 nodes = [ 60, 41,  69] material = e_steel NIP = 5 T = 1
+  346 nodes = [ 55, 61,  74] material = e_steel NIP = 5 T = 1
+  347 nodes = [ 69, 76,  60] material = e_steel NIP = 5 T = 1
+  348 nodes = [ 74, 67,  55] material = e_steel NIP = 5 T = 1
+  349 nodes = [ 49, 43,  62] material = e_steel NIP = 5 T = 1
+  350 nodes = [ 93, 87,  90] material = e_steel NIP = 5 T = 1
+  351 nodes = [ 86, 92,  89] material = e_steel NIP = 5 T = 1
+  352 nodes = [ 38, 51,  64] material = e_steel NIP = 5 T = 1
+  353 nodes = [ 51, 39,  64] material = e_steel NIP = 5 T = 1
+  354 nodes = [ 82, 86,  89] material = e_steel NIP = 5 T = 1
+  355 nodes = [ 87, 83,  90] material = e_steel NIP = 5 T = 1
+  356 nodes = [ 50, 49,  62] material = e_steel NIP = 5 T = 1
+  357 nodes = [ 43, 48,  62] material = e_steel NIP = 5 T = 1
+  358 nodes = [ 94, 93,  90] material = e_steel NIP = 5 T = 1
+  359 nodes = [ 92, 94,  89] material = e_steel NIP = 5 T = 1
+  360 nodes = [ 48, 38,  64] material = e_steel NIP = 5 T = 1
+  361 nodes = [ 83, 73,  75] material = e_steel NIP = 5 T = 1
+  362 nodes = [ 59, 50,  66] material = e_steel NIP = 5 T = 1
+  363 nodes = [ 72, 82,  77] material = e_steel NIP = 5 T = 1
+  364 nodes = [ 39, 47,  68] material = e_steel NIP = 5 T = 1
+  365 nodes = [ 56, 59,  66] material = e_steel NIP = 5 T = 1
+  366 nodes = [ 73, 61,  75] material = e_steel NIP = 5 T = 1
+  367 nodes = [ 47, 40,  68] material = e_steel NIP = 5 T = 1
+  368 nodes = [ 60, 72,  77] material = e_steel NIP = 5 T = 1
+  369 nodes = [ 66, 50,  62] material = e_steel NIP = 5 T = 1
+  370 nodes = [ 77, 82,  89] material = e_steel NIP = 5 T = 1
+  371 nodes = [ 83, 75,  90] material = e_steel NIP = 5 T = 1
+  372 nodes = [ 39, 68,  64] material = e_steel NIP = 5 T = 1
+  373 nodes = [ 36, 60,  40] material = e_steel NIP = 5 T = 1
+  374 nodes = [ 61, 53,  56] material = e_steel NIP = 5 T = 1
+  375 nodes = [ 64, 68,  81] material = e_steel NIP = 5 T = 1
+  376 nodes = [ 77, 89,  81] material = e_steel NIP = 5 T = 1
+  377 nodes = [ 81, 89,  85] material = e_steel NIP = 5 T = 1
+  378 nodes = [ 77, 81,  68] material = e_steel NIP = 5 T = 1
+  379 nodes = [ 85, 89,  94] material = e_steel NIP = 5 T = 1
+  380 nodes = [ 81, 85,  70] material = e_steel NIP = 5 T = 1
+  381 nodes = [ 90, 75,  78] material = e_steel NIP = 5 T = 1
+  382 nodes = [ 66, 62,  78] material = e_steel NIP = 5 T = 1
+  383 nodes = [ 78, 62,  70] material = e_steel NIP = 5 T = 1
+  384 nodes = [ 70, 62,  48] material = e_steel NIP = 5 T = 1
+  385 nodes = [ 78, 70,  85] material = e_steel NIP = 5 T = 1
+  386 nodes = [ 78, 85,  90] material = e_steel NIP = 5 T = 1
+  387 nodes = [ 90, 85,  94] material = e_steel NIP = 5 T = 1
+  388 nodes = [ 66, 78,  75] material = e_steel NIP = 5 T = 1
+  389 nodes = [ 48, 64,  70] material = e_steel NIP = 5 T = 1
+  390 nodes = [ 70, 64,  81] material = e_steel NIP = 5 T = 1
+  391 nodes = [ 40, 60,  68] material = e_steel NIP = 5 T = 1
+  392 nodes = [ 61, 56,  75] material = e_steel NIP = 5 T = 1
+  393 nodes = [ 77, 68,  60] material = e_steel NIP = 5 T = 1
+  394 nodes = [ 66, 75,  56] material = e_steel NIP = 5 T = 1
+  395 nodes = [ 43, 49,  33] material = e_steel NIP = 5 T = 1
+  396 nodes = [ 10,  2,   5] material = e_steel NIP = 5 T = 1
+  397 nodes = [ 51, 38,  30] material = e_steel NIP = 5 T = 1
+  398 nodes = [  3, 11,   6] material = e_steel NIP = 5 T = 1
+  399 nodes = [ 11, 12,   6] material = e_steel NIP = 5 T = 1
+  400 nodes = [ 13, 10,   5] material = e_steel NIP = 5 T = 1
+  401 nodes = [ 39, 51,  30] material = e_steel NIP = 5 T = 1
+  402 nodes = [ 49, 50,  33] material = e_steel NIP = 5 T = 1
+  403 nodes = [  2,  1,   5] material = e_steel NIP = 5 T = 1
+  404 nodes = [ 48, 43,  33] material = e_steel NIP = 5 T = 1
+  405 nodes = [  1,  3,   6] material = e_steel NIP = 5 T = 1
+  406 nodes = [ 38, 48,  30] material = e_steel NIP = 5 T = 1
+  407 nodes = [ 50, 59,  29] material = e_steel NIP = 5 T = 1
+  408 nodes = [ 47, 39,  27] material = e_steel NIP = 5 T = 1
+  409 nodes = [ 24, 13,  18] material = e_steel NIP = 5 T = 1
+  410 nodes = [ 12, 25,  20] material = e_steel NIP = 5 T = 1
+  411 nodes = [ 34, 24,  18] material = e_steel NIP = 5 T = 1
+  412 nodes = [ 59, 56,  29] material = e_steel NIP = 5 T = 1
+  413 nodes = [ 40, 47,  27] material = e_steel NIP = 5 T = 1
+  414 nodes = [ 25, 35,  20] material = e_steel NIP = 5 T = 1
+  415 nodes = [ 27, 39,  30] material = e_steel NIP = 5 T = 1
+  416 nodes = [ 18, 13,   5] material = e_steel NIP = 5 T = 1
+  417 nodes = [ 50, 29,  33] material = e_steel NIP = 5 T = 1
+  418 nodes = [ 12, 20,   6] material = e_steel NIP = 5 T = 1
+  419 nodes = [ 36, 40,  35] material = e_steel NIP = 5 T = 1
+  420 nodes = [ 56, 53,  34] material = e_steel NIP = 5 T = 1
+  421 nodes = [  6, 20,  14] material = e_steel NIP = 5 T = 1
+  422 nodes = [ 18,  5,  17] material = e_steel NIP = 5 T = 1
+  423 nodes = [ 27, 30,  14] material = e_steel NIP = 5 T = 1
+  424 nodes = [ 14, 30,  23] material = e_steel NIP = 5 T = 1
+  425 nodes = [ 27, 14,  20] material = e_steel NIP = 5 T = 1
+  426 nodes = [ 23, 30,  48] material = e_steel NIP = 5 T = 1
+  427 nodes = [ 14, 23,   9] material = e_steel NIP = 5 T = 1
+  428 nodes = [ 33, 29,  17] material = e_steel NIP = 5 T = 1
+  429 nodes = [ 33, 17,  23] material = e_steel NIP = 5 T = 1
+  430 nodes = [ 23, 17,   9] material = e_steel NIP = 5 T = 1
+  431 nodes = [ 33, 23,  48] material = e_steel NIP = 5 T = 1
+  432 nodes = [  9, 17,   5] material = e_steel NIP = 5 T = 1
+  433 nodes = [  9,  5,   1] material = e_steel NIP = 5 T = 1
+  434 nodes = [ 17, 29,  18] material = e_steel NIP = 5 T = 1
+  435 nodes = [  1,  6,   9] material = e_steel NIP = 5 T = 1
+  436 nodes = [  9,  6,  14] material = e_steel NIP = 5 T = 1
+  437 nodes = [ 35, 40,  20] material = e_steel NIP = 5 T = 1
+  438 nodes = [ 56, 34,  18] material = e_steel NIP = 5 T = 1
+  439 nodes = [ 27, 20,  40] material = e_steel NIP = 5 T = 1
+  440 nodes = [ 18, 29,  56] material = e_steel NIP = 5 T = 1
+
+
+
+
+

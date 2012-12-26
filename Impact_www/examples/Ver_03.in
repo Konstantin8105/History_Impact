@@ -1,0 +1,106 @@
+# Mass Impacting Rod using Rod_2 elements
+#
+# References
+# 1. S. Timoshenko and J. N. Goodier, "Theory or Elasticity", 2nd ed., 
+#    McGraw-Hill, New York, 1951, pp. 497-504
+# 2. "MSC/MASTRAN Verification Problem Manual (Version 65)", MSR-63, 
+#    MacNeal-Schwendler. May 1988    
+# 3. MSC/DYNA verification manual
+#
+# Problem Description
+# An elastic rod is fixed in one end and then struck in the other end by
+# a moving mass.
+# The mass is rigid and has an initial velocity of V0. The free end of the
+# rod has the same initial velocity which is at the instant of impact.
+# The relative motion of the mass and the rod end is the parameters of
+# interest here.
+#
+# Model Description
+# The rod is modeled using 20 ROD_2 elements and a free node representing
+# the impacted mass.
+# The contact is handled by Impact as default, extending from the free end
+# by a radius, the same as the rod cross section radius.
+# The timestep is reduced and fixed to prevent numerical instabilities.
+#
+# Two trackers are used to print the nodal displacements into files for viewing.
+# Use any plot program to read them or the File->Import->Graph in GID.
+#
+# Engineering Data
+# 
+# Rod Length:                   L = 100.0 m
+# Cross sectional area:         A = 1 m2 => R = 0.564 m
+# Young's modulus:              E = 1000 N/m2
+# Poissons Ratio:               nu = 0.3
+# Mass density:                 rho = 0.1 kg/m3
+# Rod mass:                     m = rho*A*L = 10.0 kg
+#
+# Results
+# For results, see the references.
+# In words, the rod end and impact mass should follow each other to
+# a maximum deflection of -0.0865 at time 2.1. 
+# Separation then starts at time 3.3 with a second hit at 4.3
+#
+
+nodes
+1	x = 0	y = 0	z = 0 constraint = fixed
+2	x = 5	y = 0	z = 0 constraint = line
+3	x = 10	y = 0	z = 0 constraint = line
+4	x = 15	y = 0	z = 0 constraint = line
+5	x = 20	y = 0	z = 0 constraint = line
+6	x = 25	y = 0	z = 0 constraint = line
+7	x = 30	y = 0	z = 0 constraint = line
+8	x = 35	y = 0	z = 0 constraint = line
+9	x = 40	y = 0	z = 0 constraint = line
+10	x = 45	y = 0	z = 0 constraint = line
+11	x = 50	y = 0	z = 0 constraint = line
+12	x = 55	y = 0	z = 0 constraint = line
+13	x = 60	y = 0	z = 0 constraint = line
+14	x = 65	y = 0	z = 0 constraint = line
+15	x = 70	y = 0	z = 0 constraint = line
+16	x = 75	y = 0	z = 0 constraint = line
+17	x = 80	y = 0	z = 0 constraint = line
+18	x = 85	y = 0	z = 0 constraint = line
+19	x = 90	y = 0	z = 0 constraint = line
+20	x = 95	y = 0	z = 0 constraint = line
+21	x = 100	y = 0	z = 0 constraint = line
+
+22	x = 100.565	y = 0	z = 0 constraint = hit m = 10.0
+
+elements of type rod_2
+1	nodes = [1,2]	D = 1.128	material = mat_1	factor = 10000
+2	nodes = [2,3]	D = 1.128	material = mat_1	factor = 10000
+3	nodes = [3,4]	D = 1.128	material = mat_1	factor = 10000
+4	nodes = [4,5]	D = 1.128	material = mat_1	factor = 10000
+5	nodes = [5,6]	D = 1.128	material = mat_1	factor = 10000
+6	nodes = [6,7]	D = 1.128	material = mat_1	factor = 10000
+7	nodes = [7,8]	D = 1.128	material = mat_1	factor = 10000
+8	nodes = [8,9]	D = 1.128	material = mat_1	factor = 10000
+9	nodes = [9,10]	D = 1.128	material = mat_1	factor = 10000
+10	nodes = [10,11]	D = 1.128	material = mat_1	factor = 10000
+11	nodes = [11,12]	D = 1.128	material = mat_1	factor = 10000
+12	nodes = [12,13]	D = 1.128	material = mat_1	factor = 10000
+13	nodes = [13,14]	D = 1.128	material = mat_1	factor = 10000
+14	nodes = [14,15]	D = 1.128	material = mat_1	factor = 10000
+15	nodes = [15,16]	D = 1.128	material = mat_1	factor = 10000
+16	nodes = [16,17]	D = 1.128	material = mat_1	factor = 10000
+17	nodes = [17,18]	D = 1.128	material = mat_1	factor = 10000
+18	nodes = [18,19]	D = 1.128	material = mat_1	factor = 10000
+19	nodes = [19,20]	D = 1.128	material = mat_1	factor = 10000
+20	nodes = [20,21]	D = 1.128	material = mat_1	factor = 10000
+
+materials of type elastic
+mat_1 E = 1000 nu = 0.3 rho = 0.1
+
+constraints of type boundary_condition
+fixed	vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0 vrz = 0 ax = 0 ay = 0 az = 0 arx = 0 ary = 0 arz = 0
+line	vy = 0 vz = 0 ay = 0 az = 0
+hit	vx = [0,-0.1,0.00001,off,10,off] vy = 0 vz = 0 ax = [0,0,0.00001,off,10,off] ay = 0 az = 0
+
+trackers of type nodedisplacement
+1 node = [21] direction = x filename = Ver_03_end.trk target = [2.10,0.001,-0.0865,0.0001]
+2 node = [22] direction = x filename = Ver_03_mass.trk
+
+controls
+run from 0 to 5.0 step 0.0005
+print every 0.1 step
+print tracker every 0.01 step

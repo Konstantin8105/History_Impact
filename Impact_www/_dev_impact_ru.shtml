@@ -1,0 +1,37 @@
+<!-- =====================================start _dev_impact_ru.shtml======================================= -->
+<div style="margin-left: 60px; margin-right: 60px">
+<div id="content">
+Russian.
+<h3><b>Contributors to Impact</b></h3>
+<p>
+Jonas Forssell 	- 	Development<br>
+Yuriy Mikhaylovskiy 	- 	Development<br>
+Nikolay Skiba 	- 	Development<br>
+Galina Golovko 	- 	Development<br>
+Bernhard Haumacher 	- 	Parallellisation<br>
+Claus Wonnemann 	- 	Parallellisation<br>
+Ruediger Heim 	- 	GiD Interface development<br>
+Waluyo Adi Siswanto 	- 	GiD Interface development<br>
+Kjell Mattisson 	- 	Scientific advisor
+</p>
+
+<h3><b>Translators</b></h3>
+<p>
+Russian: Galina Golovko<br>
+Bahasa Melayu: Mohd Norihan Ibrahim, Al Emran Ismail<br>
+</p>
+
+<h3><b>Credits</b></h3>
+<p>
+The MathsWorks and the National Institute of Standards and Technology, JAMA library, public domain under <a href="http://wordhoard.northwestern.edu/userman/thirdparty/jama.html" target="_blank" title="Public Domain JAMA License">JAMA license</a>.<br>
+J. David Eisenberg, PNG Encoder, licensed under the GPL.<br>
+Alan Kaminsky, Downhill Simplex minimization algorithm, licensed under the GPL.<br>
+Steven R. Brandt, Regular Expressions in Java (package com.stevesoft.pat), licensed under Lesser GPL.<br>
+</p>
+<p>
+Parallel Computing Center, Khmelnitskiy National University, Ukraine.<br>
+Advanced Materials and Manufacturing Center, Universiti Tun Hussein Onn Malaysia.
+</p>
+</div>
+</div
+<!-- =====================================end _dev_impact_ru.shtml======================================= -->

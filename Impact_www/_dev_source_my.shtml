@@ -1,0 +1,77 @@
+<!-- =====================================start _dev_source_my.shtml======================================= -->
+
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+<h2>Impact Repository</h2>
+
+<p>Impact source codes are kept in <a href="http://sourceforge.net/" target="_blank" title="Click here to view Sourceforge">Sourceforge</a> CVS (Concurrent Versions System) repository.</p>
+
+<p>CVS (Concurrent Versions System) is a tool used by many software developers to manage
+changes within their source code tree. CVS provides the means to store not only 
+the current version of a piece of source code, but a record of all changes 
+(and who made those changes) that have occurred to that source code. 
+Use of CVS is particularly common on projects with multiple developers, 
+since CVS ensures changes made by one developer are not accidentally removed when 
+another developer posts their changes to the source tree.</p>
+
+<p>Though CVS repositories are most commonly accessed using a special piece of software 
+called a CVS client, Sourceforge also provide a web-based interface to view CVS repositories.
+<a href="http://impact.cvs.sourceforge.net/viewvc/impact/Impact/" target="_blank" 
+title="Click here to browse the source codes in Sourceforge">
+Browsing the CVS tree</a> 
+gives you a great view into the current status of this project's code. 
+You may also view the complete history of any file in the repository.</p>
+
+<h2>Using CVS Client</h2>
+<p>The most convenient way to access Impact CVS repository and to follow 
+any updates by the developers and to commit changes (if you are the developer and
+have write access to the repository)
+is by using CVS client.</p>
+
+<p>There are many free CVS clients available. 
+<a href="http://www.eclipse.org/downloads/" target="_blank" 
+title="Click to download Eclipse">Eclipse</a> 
+is one of them that supports Windows, Linux and Mac operating systems. 
+In Windows OS, you need to download first then install it to your computer.
+For Ubuntu users, just select Eclipse from Ubuntu Software Center and click Install.</p>
+
+<h3>Anonymous CVS Access</h3>
+<p>Impact in SourceForge CVS repository can be checked out through anonymous (pserver) 
+CVS. Password is not required but no write access is given. 
+Follow the steps below in Eclipse:</p>
+<ol>
+	<li>Select a new project directory</li>
+	<li>Create a new project (<em>File</em> > <em>New </em>> <em>Project</em>)</li>
+	<li>Select <em>CVS</em> > <em>Projects from CVS</em></li>
+	<li>Enter repository location information<br />
+					Host: <code>impact.cvs.sourceforge.net</code><br />
+					Repository path: <code>/cvsroot/impact</code><br />
+					Username: <code>anonymous</code></li>
+	<li>Select <em>impact</em> module and click Finish button. The source codes will be
+	    downloaded to your local folder defined in step 1.</li>
+</ol>
+<p>If you have modified the codes to improve Impact or you have new codes to implement
+new features, please send them to 
+<a href="mailto:YuriyMikhaylovskiy@yahoo.com?subject=[Impact%20Codes%20to%20review]">Impact project administrator</a> to review. 
+You might be granted a developer access to the repository after reviewing the codes.</p>
+
+
+</div>
+</div>
+
+
+<div align="center" id="sidebar">
+
+<p style="margin-top:550px"></p>
+ 
+  	<div align="center">Anonymous checkout in Eclipse. <br />Click to magnify</div>
+  	<center><a href="images/anonymous.gif"  rel="lightbox"  title="Anonymous Checkout in Eclipse">
+  	<img src="images/anonymous-small.gif" width="80%"  /></a></center>
+
+  
+</div>
+
+
+<!-- =====================================end _dev_source_my.shtml======================================= -->

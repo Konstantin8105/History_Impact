@@ -1,0 +1,43 @@
+<!-- =====================================start _dev_donation_en.shtml======================================= -->
+
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+
+<h2>Donation</h2>
+<p>Impact is a free software <a onmouseover="javascript:ShowHide('HiddenDiv')" href="javascript:;" >under GPL License</a>
+The author has spent a large amount of time and effort in the development
+and improvement of it. The continuous development of Impact needs your support. 
+The best way to support and encourage the author to move this project moving forward is 
+to donate for Impact project.</p>
+
+<a href="http://sourceforge.net/donate/index.php?group_id=47487" target="_blank"  title="Click here for donation">
+<img src="images/x-click-but04.gif" width="62" height="31" >
+</a>
+<p>Thank you! — The Impact contributors</p>
+
+
+<div  id="HiddenDiv" style="DISPLAY: none" >
+<p>Please read the Impact <a href="intro_license_en.shtml" title="Click here to read the license">GPL license</a></p> 
+</div>
+
+<script language="JavaScript">
+function ShowHide(divId)
+{
+if(document.getElementById(divId).style.display == 'none')
+{
+document.getElementById(divId).style.display='block';
+}
+else
+{
+document.getElementById(divId).style.display = 'none';
+}
+}
+</script>
+
+</div>
+</div>
+
+
+<!-- =====================================end _dev_donation_en.shtml======================================= -->

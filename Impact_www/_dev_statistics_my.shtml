@@ -1,0 +1,127 @@
+<!-- =====================================start _dev_statistics_my.shtml======================================= -->
+
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+<h3>Developer CVS Access via Secure Shell (SSH)</h3>
+<p>Only project developers can access the CVS tree via this method. 
+A SSH client must be installed on your client machine. Every developer should register
+in Sourceforge. Commit access will be given by the <a href="mailto:YuriyMikhaylovskiy@yahoo.com?subject=%5BImpact%20Developer%5D">Impact administrator</a>.
+Follow the steps below in Eclipse:</p>
+<ol>
+	<li>Select a new project directory</li>
+	<li>Create a new project (<em>File</em> > <em>New </em>> <em>Project</em>)</li>
+	<li>Select <em>CVS</em> > <em>Projects from CVS</em></li>
+	<li>Enter repository location information<br />
+					Host: <code>impact.cvs.sourceforge.net</code><br />
+					Repository path: <code>/cvsroot/impact</code><br />
+					Username: <code>username here</code></li>
+					Password: <code>password here</code>
+	<li>Change connection type: <code>extssh</code></li>
+	<li>Accept OK when asking by Eclipse to install SSH client.</li>
+	<li>Select <em>impact</em> module and click Finish button. The source codes will be
+	    downloaded to your local folder defined in step 1.</li>
+</ol>
+
+<p>Committing code changes to the CVS repository:</p>
+<ol>
+	<li>Select the modified in Project explorer</li>
+	<li>Right click, select Team</li>
+	<li>Select Commit and click. The changes will be sent to the repository</li>
+</ol>
+
+
+<h3>Impact Web Translation</h3>
+<p>If you want to contribute as a translator of this Impact website for localization, 
+you may contact the
+<a href="mailto:was.uthm@gmail.com?subject=Impact%20Web%20Localization">
+web administrator</a> to make your local language available.</p>
+
+<h3>Download Statistics</h3>
+
+<p>Monthly Download Statistics (2012)</p>
+<div id="placeholder" style="width:450px;height:280px;" ></div>
+    <p id="choices">Plot data comparison:</p>
+
+<script type="text/javascript">
+
+$(function () {
+
+<!--#include virtual="statistics/data.html" -->
+
+  var options = {
+    series: {
+              points: {show: true},
+              lines:  {show: true},                               
+            },
+    grid:   {hoverable: false,
+             backgroundColor: { colors: ["#fff", "#eee"] },
+            } ,
+    xaxis: {
+            min:1 , max:41, ticks: [1,5,10,15,20,25,31], 
+            position: 'bottom', axisLabel: 'Day of the month',
+           },    
+    yaxis: {
+            position:'left', axisLabel:'Downloads',  
+           }            
+  };
+  
+    var i = 0;
+    $.each(datasets, function(key, val) {
+        val.color = i;
+        ++i;
+    });
+    
+    // insert checkboxes 
+    var choiceContainer = $("#choices");
+    $.each(datasets, function(key, val) {
+        choiceContainer.append('<br/><input type="checkbox" name="' + key +
+                               '" checked="checked" id="id' + key + '">' +
+                               '<label for="id' + key + '">'
+                                + val.label + '</label>');
+    });
+    choiceContainer.find("input").click(plotAccordingToChoices);
+    
+    function plotAccordingToChoices() {
+        var data = [];
+
+        choiceContainer.find("input:checked").each(function () {
+            var key = $(this).attr("name");
+            if (key && datasets[key])
+                data.push(datasets[key]);
+        });
+
+        if (data.length > 0)
+            $.plot($("#placeholder"), data, options
+           );
+    }
+
+    plotAccordingToChoices();
+       
+});
+
+</script>
+
+</div>
+</div>
+
+<div align="center" id="sidebar">
+
+<p style="margin-top:220px"></p>
+ 
+  	<div align="center">Commit changes from Eclipse. <br />Click to magnify</div>
+  	<center><a href="images/eclipse-commit-new.png"  rel="lightbox"  title="Commit changes from Eclipse">
+  	<img src="images/eclipse-commit-new.png" width="80%"  /></a></center>
+
+  <p style="margin-top:200px; text-align:center"></p>
+
+ 
+<a href="http://sourceforge.net/projects/impact/files/stats/timeline" target="_blank" >Latest Weekly download timeline</a><br />
+<a href="http://sourceforge.net/projects/impact/files/stats/map" target="_blank">Latest Weekly download by country</a>
+
+
+</div>
+
+
+<!-- ====================================end _dev_statistics_my.shtml======================================= -->

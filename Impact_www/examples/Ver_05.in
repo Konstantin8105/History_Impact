@@ -1,0 +1,106 @@
+# IMPULSIVELY LOADED CLAMPED BEAM
+#
+# References
+# 1. T. Belytschko, J. Lin and C. S. Tsay, "Explicit Algorithms
+#    for the Nonlinear Dynamics of Shells", Computational Methods
+#    in Applied Mechanics Engineering, 42, pp. 225-251, 1984
+#
+# 2. H. A. Balmer and E. A. Witmer, "Theoretical-Experimental
+#    Correlation of Large Dynamic and Permanent Deformation of
+#    Impulsively Loaded Simple Structures", Air Force Flight
+#    Dynamics Laboratory, Report FDP-TDR-64-108, Wright-
+#    Patterson AFB, Ohio, July, 1964
+#
+# Problem description
+# An aluminum beam which is clamped at both ends is loaded
+# impulsively over its central poortion. 
+#
+# Model description
+# Due to the symmetry of the geometry and loading, only a  
+# quarter of the beam is modeled. 10 shell elements are used. 
+# The end nodes are fully constrained apart from the nodes
+# at the symmetry lines. Shell_BT_4 elements with 5 integration
+# points through the thickness are used.
+#
+# Engineering data
+#  Length                  L  =      10 in
+#  Width                   b  =     1.2 in
+#  Thickness               t  =   0.125 in
+#  Youngs modulus          E  =  10.4E6 psi
+#  Density               rho  = 2.61E-4 lb-sec2/in4
+#  Poissons ratio         nu  =     0.3
+#  Yield stress        sigma  =   41400 psi
+#  Plastic modulus        Ep  =  10.4E3 psi
+#  Isotropic hardening  beta  =       1
+#  Initial velocity       Vo  =   -5200 in/sec
+#
+# Reference results
+# The experimental results have been given by Balmer and Witmer
+# Dyna and Impact gives the folliowing displacement values
+# Note: The Dyna values are estimated from a graph.
+#
+# Time   Dyna    Impact
+# 0.1    -0.5    -0.50
+# 0.2    -0.62   -0.64
+# 0.3    -0.69   -0.70
+# 0.4    -0.78   -0.79
+# 0.5    -0.79   -0.82
+# 0.6    -0.80   -0.83
+# 0.7    -0.80   -0.83
+# 0.8    -0.79   -0.82
+# 0.9    -0.77   -0.81
+
+nodes
+1   x = 0.0  y = 0.0  z = 0.0 constraint = sym
+2   x = 0.5  y = 0.0  z = 0.0 constraint = vel_sym_x
+3   x = 1.0  y = 0.0  z = 0.0 constraint = vel_sym_x                         
+4   x = 1.5  y = 0.0  z = 0.0 constraint = sym_x
+5   x = 2.0  y = 0.0  z = 0.0 constraint = sym_x
+6   x = 2.5  y = 0.0  z = 0.0 constraint = sym_x
+7   x = 3.0  y = 0.0  z = 0.0 constraint = sym_x
+8   x = 3.5  y = 0.0  z = 0.0 constraint = sym_x
+9   x = 4.0  y = 0.0  z = 0.0 constraint = sym_x
+10  x = 4.5  y = 0.0  z = 0.0 constraint = sym_x
+11  x = 5.0  y = 0.0  z = 0.0 constraint = clamp
+12  x = 0.0  y = 0.6  z = 0.0 constraint = vel_sym_y
+13  x = 0.5  y = 0.6  z = 0.0 constraint = push
+14  x = 1.0  y = 0.6  z = 0.0 constraint = push
+15  x = 1.5  y = 0.6  z = 0.0
+16  x = 2.0  y = 0.6  z = 0.0
+17  x = 2.5  y = 0.6  z = 0.0
+18  x = 3.0  y = 0.6  z = 0.0
+19  x = 3.5  y = 0.6  z = 0.0
+20  x = 4.0  y = 0.6  z = 0.0
+21  x = 4.5  y = 0.6  z = 0.0
+22  x = 5.0  y = 0.6  z = 0.0 constraint = clamp
+
+elements of type shell_bt_4
+1  nodes = [1,2,13,12]   material = mat1 t = 0.125
+2  nodes = [2,3,14,13]   material = mat1 t = 0.125
+3  nodes = [3,4,15,14]   material = mat1 t = 0.125
+4  nodes = [4,5,16,15]   material = mat1 t = 0.125
+5  nodes = [5,6,17,16]   material = mat1 t = 0.125
+6  nodes = [6,7,18,17]   material = mat1 t = 0.125
+7  nodes = [7,8,19,18]   material = mat1 t = 0.125
+8  nodes = [8,9,20,19]   material = mat1 t = 0.125
+9  nodes = [9,10,21,20]  material = mat1 t = 0.125
+10 nodes = [10,11,22,21] material = mat1 t = 0.125
+                                              
+constraints of type boundary_condition
+sym_x     ay = 0 vy = 0 arx = 0 vrx = 0 arz = 0 vrz = 0
+vel_sym_y ax = 0 vx = 0 ary = 0 vry = 0 arz = 0 vrz = 0 az = [0,0,0.000000001,off,1,off] vz = [0,-5200,0.000000001,off,1,off]
+sym       ax = 0 vx = 0 ay = 0 vy = 0 arx = 0 vrx = 0 ary = 0 vry = 0 arz = 0 vrz = 0 az = [0,0,0.0000000001,off,1,off] vz = [0,-5200,0.000000001,off,1,off]
+clamp     ax = 0 vx = 0 ay = 0 vy = 0 az = 0 vz = 0 arx = 0 vrx = 0 ary = 0 vry = 0 arz = 0 vrz = 0
+vel_sym_x ay = 0 vy = 0 arx = 0 vrx = 0 az = [0,0,0.0000001,off,1,off] vz = [0,-5200,0.000000001,off,1,off] arz = 0 vrz = 0
+push      az = [0,0,0.000000001,off,1,off] vz = [0,-5200,0.000000001,off,1,off]
+
+materials of type elastoplastic
+mat1 E = 10400000 rho = 0.000261 nu = 0.3 yield_stress = 41400 Ep = 10400
+
+trackers of type nodedisplacement
+1 node = [1] direction = z filename = Ver_05.trk target = [0.00060,0.000001,-0.8316,0.0001]
+
+controls
+run from 0 to 0.001
+print every 0.0001 step
+print tracker every 0.00001 step

@@ -1,0 +1,23 @@
+﻿<!-- =====================================start _intro_application_my.shtml======================================= -->
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+<b><i>should be translated into Bahasa Melayu</i></b>
+
+<p align=justify><b>Applications</b></p>
+
+<p align=justify>At the moment, Impact can only handle dynamic INCOMPRESSIBLE problems. 
+	Examples of problems with this kind of limitation is basically most real world dynamic
+	problems. The following is a list of problems that Impact will be able to solve
+	in the future.
+</p>
+
+<ul>
+  <li><p>Collisions of any type</p></li>
+  <li><p>Forming operations</p></li>
+  <li><p>Dynamic events such as chassis movement etc.</p></li>
+</ul>
+
+</div>
+</div>
+
+<!-- =====================================end _intro_application_my.shtml======================================= -->

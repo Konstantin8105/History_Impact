@@ -1,0 +1,1374 @@
+# This is an example of a square profile subjected to a vertical load
+# in one end. If all goes well, this will initiate a buckling of the
+# profile.
+# Benchmark
+#
+# Version 0.3.2 (IBM 1.3.1)		(Blackdown 1.4.1)
+# Start: 01.51 (flavia.mesh)		17.38
+# End:   06.42						21:34
+# Total:  4.51 (291 minutes)	 	 3:57	(237 minutes)
+#
+# Version 0.3.3
+# Start: 20.43
+# End:   00.23
+# Total:  3.40 (76%)
+#
+# Version 0.3.4	
+# Start: 10.48						20:20
+# End:   12.55						22:45
+# Total:  2.07 (44%)				 2:25	(61%)
+#
+# Version 0.3.8
+# Start:							09:39
+# End:								11:56
+# Total:							 2:17	(58%)
+
+
+# The profile is clamped in both ends and compressed with 36 km/h (10 m/s)
+
+nodes
+    1 x = 40 y =  0 z =   0 constraint = fixed
+    2 x = 35 y =  0 z =   0 constraint = fixed
+    3 x = 40 y =  5 z =   0 constraint = fixed
+    4 x = 40 y =  0 z =   5
+    5 x = 40 y =  5 z =   5
+    6 x = 35 y =  0 z =   5
+    7 x = 30 y =  0 z =   0 constraint = fixed
+    8 x = 40 y = 10 z =   0 constraint = fixed
+    9 x = 40 y =  0 z =  10
+   10 x = 30 y =  0 z =   5
+   11 x = 40 y = 10 z =   5
+   12 x = 40 y =  5 z =  10
+   13 x = 35 y =  0 z =  10
+   14 x = 40 y = 10 z =  10
+   15 x = 30 y =  0 z =  10
+   16 x = 25 y =  0 z =   0 constraint = fixed
+   17 x = 40 y = 15 z =   0 constraint = fixed
+   18 x = 40 y =  0 z =  15
+   19 x = 40 y = 15 z =   5
+   20 x = 25 y =  0 z =   5
+   21 x = 40 y =  5 z =  15
+   22 x = 35 y =  0 z =  15
+   23 x = 40 y = 15 z =  10
+   24 x = 25 y =  0 z =  10
+   25 x = 40 y = 10 z =  15
+   26 x = 30 y =  0 z =  15
+   27 x = 20 y =  0 z =   0 constraint = fixed
+   28 x = 40 y = 20 z =   0 constraint = fixed
+   29 x = 40 y =  0 z =  20
+   30 x = 20 y =  0 z =   5
+   31 x = 40 y =  5 z =  20
+   32 x = 40 y = 20 z =   5
+   33 x = 35 y =  0 z =  20
+   34 x = 25 y =  0 z =  15
+   35 x = 40 y = 15 z =  15
+   36 x = 40 y = 20 z =  10
+   37 x = 20 y =  0 z =  10
+   38 x = 40 y = 10 z =  20
+   39 x = 30 y =  0 z =  20
+   40 x = 20 y =  0 z =  15
+   41 x = 40 y = 15 z =  20
+   42 x = 25 y =  0 z =  20
+   43 x = 15 y =  0 z =   0 constraint = fixed
+   44 x = 40 y = 25 z =   0 constraint = fixed
+   45 x = 40 y =  0 z =  25
+   46 x = 40 y = 20 z =  15
+   47 x = 40 y = 25 z =   5
+   48 x = 15 y =  0 z =   5
+   49 x = 40 y =  5 z =  25
+   50 x = 35 y =  0 z =  25
+   51 x = 40 y = 25 z =  10
+   52 x = 15 y =  0 z =  10
+   53 x = 40 y = 10 z =  25
+   54 x = 30 y =  0 z =  25
+   55 x = 20 y =  0 z =  20
+   56 x = 40 y = 20 z =  20
+   57 x = 40 y = 25 z =  15
+   58 x = 15 y =  0 z =  15
+   59 x = 25 y =  0 z =  25
+   60 x = 40 y = 15 z =  25
+   61 x = 10 y =  0 z =   0 constraint = fixed
+   62 x = 40 y = 30 z =   0 constraint = fixed
+   63 x = 40 y =  0 z =  30
+   64 x = 40 y =  5 z =  30
+   65 x = 40 y = 30 z =   5
+   66 x = 10 y =  0 z =   5
+   67 x = 35 y =  0 z =  30
+   68 x = 40 y = 30 z =  10
+   69 x = 40 y = 10 z =  30
+   70 x = 10 y =  0 z =  10
+   71 x = 30 y =  0 z =  30
+   72 x = 40 y = 25 z =  20
+   73 x = 15 y =  0 z =  20
+   74 x = 40 y = 20 z =  25
+   75 x = 20 y =  0 z =  25
+   76 x = 25 y =  0 z =  30
+   77 x = 40 y = 15 z =  30
+   78 x = 40 y = 30 z =  15
+   79 x = 10 y =  0 z =  15
+   80 x =  5 y =  0 z =   0 constraint = fixed
+   81 x = 40 y = 35 z =   0 constraint = fixed
+   82 x = 40 y =  0 z =  35
+   83 x = 40 y = 25 z =  25
+   84 x = 40 y = 35 z =   5
+   85 x =  5 y =  0 z =   5
+   86 x = 40 y =  5 z =  35
+   87 x = 15 y =  0 z =  25
+   88 x = 35 y =  0 z =  35
+   89 x = 40 y = 20 z =  30
+   90 x = 40 y = 30 z =  20
+   91 x = 10 y =  0 z =  20
+   92 x = 20 y =  0 z =  30
+   93 x = 40 y = 35 z =  10
+   94 x =  5 y =  0 z =  10
+   95 x = 40 y = 10 z =  35
+   96 x = 30 y =  0 z =  35
+   97 x = 40 y = 35 z =  15
+   98 x =  5 y =  0 z =  15
+   99 x = 25 y =  0 z =  35
+  100 x = 40 y = 15 z =  35
+  101 x = 40 y = 25 z =  30
+  102 x = 40 y = 30 z =  25
+  103 x = 10 y =  0 z =  25
+  104 x = 15 y =  0 z =  30
+  105 x =  0 y =  0 z =   0 constraint = fixed
+  106 x = 40 y = 40 z =   0 constraint = fixed
+  107 x = 40 y =  0 z =  40
+  108 x = 40 y = 35 z =  20
+  109 x =  5 y =  0 z =  20
+  110 x = 35 y = 40 z =   0 constraint = fixed
+  111 x =  0 y =  5 z =   0 constraint = fixed
+  112 x =  0 y =  0 z =   5
+  113 x = 40 y = 40 z =   5
+  114 x = 40 y = 20 z =  35
+  115 x = 40 y =  5 z =  40
+  116 x = 20 y =  0 z =  35
+  117 x = 35 y =  0 z =  40
+  118 x = 35 y = 40 z =   5
+  119 x =  0 y =  5 z =   5
+  120 x = 30 y = 40 z =   0 constraint = fixed
+  121 x =  0 y = 10 z =   0 constraint = fixed
+  122 x =  0 y =  0 z =  10
+  123 x = 40 y = 40 z =  10
+  124 x = 40 y = 10 z =  40
+  125 x = 30 y =  0 z =  40
+  126 x = 35 y = 40 z =  10
+  127 x = 30 y = 40 z =   5
+  128 x =  0 y = 10 z =   5
+  129 x =  0 y =  5 z =  10
+  130 x = 10 y =  0 z =  30
+  131 x = 40 y = 30 z =  30
+  132 x = 30 y = 40 z =  10
+  133 x =  0 y = 10 z =  10
+  134 x = 25 y = 40 z =   0 constraint = fixed
+  135 x =  0 y = 15 z =   0 constraint = fixed
+  136 x =  0 y =  0 z =  15
+  137 x = 40 y = 40 z =  15
+  138 x = 25 y =  0 z =  40
+  139 x = 40 y = 15 z =  40
+  140 x = 35 y = 40 z =  15
+  141 x = 40 y = 35 z =  25
+  142 x = 40 y = 25 z =  35
+  143 x =  5 y =  0 z =  25
+  144 x = 15 y =  0 z =  35
+  145 x = 25 y = 40 z =   5
+  146 x =  0 y = 15 z =   5
+  147 x =  0 y =  5 z =  15
+  148 x = 30 y = 40 z =  15
+  149 x = 25 y = 40 z =  10
+  150 x =  0 y = 15 z =  10
+  151 x =  0 y = 10 z =  15
+  152 x = 20 y = 40 z =   0 constraint = fixed
+  153 x =  0 y = 20 z =   0 constraint = fixed
+  154 x =  0 y =  0 z =  20
+  155 x = 40 y = 40 z =  20
+  156 x = 40 y = 20 z =  40
+  157 x = 20 y =  0 z =  40
+  158 x = 35 y = 40 z =  20
+  159 x = 40 y =  0 z =  45
+  160 x = 20 y = 40 z =   5
+  161 x =  0 y = 20 z =   5
+  162 x =  0 y =  5 z =  20
+  163 x = 40 y =  5 z =  45
+  164 x = 35 y =  0 z =  45
+  165 x = 25 y = 40 z =  15
+  166 x =  0 y = 15 z =  15
+  167 x = 30 y = 40 z =  20
+  168 x = 20 y = 40 z =  10
+  169 x =  0 y = 20 z =  10
+  170 x =  0 y = 10 z =  20
+  171 x = 40 y = 10 z =  45
+  172 x = 40 y = 35 z =  30
+  173 x = 10 y =  0 z =  35
+  174 x =  5 y =  0 z =  30
+  175 x = 40 y = 30 z =  35
+  176 x = 30 y =  0 z =  45
+  177 x = 40 y = 25 z =  40
+  178 x = 15 y = 40 z =   0 constraint = fixed
+  179 x =  0 y = 25 z =   0 constraint = fixed
+  180 x =  0 y =  0 z =  25
+  181 x = 40 y = 40 z =  25
+  182 x = 15 y =  0 z =  40
+  183 x = 25 y = 40 z =  20
+  184 x = 20 y = 40 z =  15
+  185 x =  0 y = 20 z =  15
+  186 x =  0 y = 15 z =  20
+  187 x = 35 y = 40 z =  25
+  188 x = 40 y = 15 z =  45
+  189 x = 25 y =  0 z =  45
+  190 x = 15 y = 40 z =   5
+  191 x =  0 y = 25 z =   5
+  192 x =  0 y =  5 z =  25
+  193 x = 30 y = 40 z =  25
+  194 x = 15 y = 40 z =  10
+  195 x =  0 y = 25 z =  10
+  196 x =  0 y = 10 z =  25
+  197 x = 20 y = 40 z =  20
+  198 x =  0 y = 20 z =  20
+  199 x = 40 y = 20 z =  45
+  200 x = 20 y =  0 z =  45
+  201 x = 25 y = 40 z =  25
+  202 x = 40 y = 35 z =  35
+  203 x =  5 y =  0 z =  35
+  204 x = 15 y = 40 z =  15
+  205 x =  0 y = 25 z =  15
+  206 x =  0 y = 15 z =  25
+  207 x = 10 y =  0 z =  40
+  208 x = 10 y = 40 z =   0 constraint = fixed
+  209 x =  0 y = 30 z =   0 constraint = fixed
+  210 x =  0 y =  0 z =  30
+  211 x = 40 y = 40 z =  30
+  212 x = 40 y =  0 z =  50
+  213 x = 40 y = 30 z =  40
+  214 x = 35 y = 40 z =  30
+  215 x = 35 y =  0 z =  50
+  216 x = 40 y =  5 z =  50
+  217 x = 10 y = 40 z =   5
+  218 x =  0 y =  5 z =  30
+  219 x =  0 y = 30 z =   5
+  220 x = 30 y = 40 z =  30
+  221 x = 30 y =  0 z =  50
+  222 x = 40 y = 10 z =  50
+  223 x = 10 y = 40 z =  10
+  224 x =  0 y = 10 z =  30
+  225 x =  0 y = 30 z =  10
+  226 x = 20 y = 40 z =  25
+  227 x = 15 y = 40 z =  20
+  228 x =  0 y = 20 z =  25
+  229 x =  0 y = 25 z =  20
+  230 x = 40 y = 25 z =  45
+  231 x = 15 y =  0 z =  45
+  232 x = 25 y = 40 z =  30
+  233 x = 25 y =  0 z =  50
+  234 x = 40 y = 15 z =  50
+  235 x = 10 y = 40 z =  15
+  236 x =  0 y = 15 z =  30
+  237 x =  0 y = 30 z =  15
+  238 x = 40 y = 35 z =  40
+  239 x =  5 y =  0 z =  40
+  240 x =  5 y = 40 z =   0 constraint = fixed
+  241 x =  0 y = 35 z =   0 constraint = fixed
+  242 x =  0 y =  0 z =  35
+  243 x = 40 y = 40 z =  35
+  244 x = 35 y = 40 z =  35
+  245 x = 15 y = 40 z =  25
+  246 x =  5 y = 40 z =   5
+  247 x =  0 y =  5 z =  35
+  248 x =  0 y = 25 z =  25
+  249 x =  0 y = 35 z =   5
+  250 x = 20 y = 40 z =  30
+  251 x = 20 y =  0 z =  50
+  252 x = 40 y = 20 z =  50
+  253 x = 10 y = 40 z =  20
+  254 x =  0 y = 20 z =  30
+  255 x =  0 y = 30 z =  20
+  256 x = 30 y = 40 z =  35
+  257 x = 10 y =  0 z =  45
+  258 x = 40 y = 30 z =  45
+  259 x =  5 y = 40 z =  10
+  260 x =  0 y = 10 z =  35
+  261 x =  0 y = 35 z =  10
+  262 x = 40 y =  0 z =  55
+  263 x = 25 y = 40 z =  35
+  264 x = 40 y =  5 z =  55
+  265 x = 35 y =  0 z =  55
+  266 x =  5 y = 40 z =  15
+  267 x =  0 y = 15 z =  35
+  268 x =  0 y = 35 z =  15
+  269 x = 15 y = 40 z =  30
+  270 x = 10 y = 40 z =  25
+  271 x = 40 y = 10 z =  55
+  272 x = 40 y = 25 z =  50
+  273 x = 15 y =  0 z =  50
+  274 x = 30 y =  0 z =  55
+  275 x =  0 y = 25 z =  30
+  276 x =  0 y = 30 z =  25
+  277 x =  0 y = 40 z =   0 constraint = fixed
+  278 x =  0 y =  0 z =  40
+  279 x = 40 y = 40 z =  40
+  280 x = 35 y = 40 z =  40
+  281 x = 20 y = 40 z =  35
+  282 x =  0 y = 40 z =   5
+  283 x =  5 y = 40 z =  20
+  284 x =  0 y =  5 z =  40
+  285 x =  0 y = 20 z =  35
+  286 x =  0 y = 35 z =  20
+  287 x = 40 y = 15 z =  55
+  288 x = 40 y = 35 z =  45
+  289 x =  5 y =  0 z =  45
+  290 x = 25 y =  0 z =  55
+  291 x = 30 y = 40 z =  40
+  292 x =  0 y = 40 z =  10
+  293 x =  0 y = 10 z =  40
+  294 x = 10 y = 40 z =  30
+  295 x = 10 y =  0 z =  50
+  296 x = 40 y = 30 z =  50
+  297 x =  0 y = 30 z =  30
+  298 x = 25 y = 40 z =  40
+  299 x = 40 y = 20 z =  55
+  300 x =  0 y = 40 z =  15
+  301 x = 20 y =  0 z =  55
+  302 x =  0 y = 15 z =  40
+  303 x = 15 y = 40 z =  35
+  304 x =  5 y = 40 z =  25
+  305 x =  0 y = 25 z =  35
+  306 x =  0 y = 35 z =  25
+  307 x = 20 y = 40 z =  40
+  308 x =  0 y = 40 z =  20
+  309 x = 40 y =  0 z =  60
+  310 x =  0 y = 20 z =  40
+  311 x = 40 y = 40 z =  45
+  312 x =  0 y =  0 z =  45
+  313 x = 35 y =  0 z =  60
+  314 x = 40 y =  5 z =  60
+  315 x = 35 y = 40 z =  45
+  316 x = 40 y = 25 z =  55
+  317 x = 15 y =  0 z =  55
+  318 x =  0 y =  5 z =  45
+  319 x = 30 y =  0 z =  60
+  320 x = 40 y = 10 z =  60
+  321 x = 30 y = 40 z =  45
+  322 x = 10 y = 40 z =  35
+  323 x =  5 y = 40 z =  30
+  324 x = 40 y = 35 z =  50
+  325 x =  5 y =  0 z =  50
+  326 x =  0 y = 10 z =  45
+  327 x =  0 y = 30 z =  35
+  328 x =  0 y = 35 z =  30
+  329 x = 15 y = 40 z =  40
+  330 x = 25 y =  0 z =  60
+  331 x =  0 y = 40 z =  25
+  332 x = 40 y = 15 z =  60
+  333 x =  0 y = 25 z =  40
+  334 x = 25 y = 40 z =  45
+  335 x =  0 y = 15 z =  45
+  336 x = 10 y =  0 z =  55
+  337 x = 40 y = 30 z =  55
+  338 x = 40 y = 20 z =  60
+  339 x = 20 y =  0 z =  60
+  340 x = 20 y = 40 z =  45
+  341 x =  0 y = 20 z =  45
+  342 x =  5 y = 40 z =  35
+  343 x =  0 y = 35 z =  35
+  344 x = 10 y = 40 z =  40
+  345 x =  0 y =  0 z =  50
+  346 x =  0 y = 40 z =  30
+  347 x = 40 y = 40 z =  50
+  348 x =  0 y = 30 z =  40
+  349 x = 35 y = 40 z =  50
+  350 x =  0 y =  5 z =  50
+  351 x = 30 y = 40 z =  50
+  352 x =  0 y = 10 z =  50
+  353 x = 40 y = 25 z =  60
+  354 x = 40 y =  0 z =  65
+  355 x = 15 y =  0 z =  60
+  356 x = 15 y = 40 z =  45
+  357 x = 40 y = 35 z =  55
+  358 x =  5 y =  0 z =  55
+  359 x = 40 y =  5 z =  65
+  360 x = 35 y =  0 z =  65
+  361 x =  0 y = 25 z =  45
+  362 x = 25 y = 40 z =  50
+  363 x = 40 y = 10 z =  65
+  364 x = 30 y =  0 z =  65
+  365 x =  0 y = 15 z =  50
+  366 x =  5 y = 40 z =  40
+  367 x =  0 y = 40 z =  35
+  368 x =  0 y = 35 z =  40
+  369 x = 25 y =  0 z =  65
+  370 x = 40 y = 15 z =  65
+  371 x = 20 y = 40 z =  50
+  372 x = 40 y = 30 z =  60
+  373 x = 10 y =  0 z =  60
+  374 x =  0 y = 20 z =  50
+  375 x = 10 y = 40 z =  45
+  376 x =  0 y = 30 z =  45
+  377 x = 40 y = 20 z =  65
+  378 x = 40 y = 40 z =  55
+  379 x =  0 y =  0 z =  55
+  380 x = 20 y =  0 z =  65
+  381 x = 35 y = 40 z =  55
+  382 x =  0 y =  5 z =  55
+  383 x = 30 y = 40 z =  55
+  384 x = 15 y = 40 z =  50
+  385 x =  0 y = 10 z =  55
+  386 x =  0 y = 25 z =  50
+  387 x =  0 y = 40 z =  40
+  388 x = 40 y = 35 z =  60
+  389 x =  5 y =  0 z =  60
+  390 x = 25 y = 40 z =  55
+  391 x =  5 y = 40 z =  45
+  392 x = 40 y = 25 z =  65
+  393 x = 15 y =  0 z =  65
+  394 x =  0 y = 15 z =  55
+  395 x =  0 y = 35 z =  45
+  396 x = 40 y =  0 z =  70
+  397 x = 40 y =  5 z =  70
+  398 x = 35 y =  0 z =  70
+  399 x = 10 y = 40 z =  50
+  400 x = 40 y = 10 z =  70
+  401 x = 30 y =  0 z =  70
+  402 x =  0 y = 30 z =  50
+  403 x = 20 y = 40 z =  55
+  404 x =  0 y = 20 z =  55
+  405 x = 40 y = 15 z =  70
+  406 x = 10 y =  0 z =  65
+  407 x = 40 y = 30 z =  65
+  408 x = 25 y =  0 z =  70
+  409 x =  0 y =  0 z =  60
+  410 x = 40 y = 40 z =  60
+  411 x = 35 y = 40 z =  60
+  412 x =  0 y = 40 z =  45
+  413 x =  0 y =  5 z =  60
+  414 x = 15 y = 40 z =  55
+  415 x =  0 y = 25 z =  55
+  416 x = 30 y = 40 z =  60
+  417 x = 40 y = 20 z =  70
+  418 x = 20 y =  0 z =  70
+  419 x =  0 y = 10 z =  60
+  420 x =  5 y = 40 z =  50
+  421 x =  0 y = 35 z =  50
+  422 x = 25 y = 40 z =  60
+  423 x =  0 y = 15 z =  60
+  424 x = 40 y = 35 z =  65
+  425 x =  5 y =  0 z =  65
+  426 x = 10 y = 40 z =  55
+  427 x = 40 y = 25 z =  70
+  428 x = 15 y =  0 z =  70
+  429 x =  0 y = 30 z =  55
+  430 x = 20 y = 40 z =  60
+  431 x =  0 y = 20 z =  60
+  432 x = 40 y =  0 z =  75
+  433 x = 35 y =  0 z =  75
+  434 x = 40 y =  5 z =  75
+  435 x =  0 y = 40 z =  50
+  436 x = 30 y =  0 z =  75
+  437 x = 40 y = 10 z =  75
+  438 x = 40 y = 30 z =  70
+  439 x = 10 y =  0 z =  70
+  440 x = 15 y = 40 z =  60
+  441 x =  0 y =  0 z =  65
+  442 x = 40 y = 40 z =  65
+  443 x =  0 y = 25 z =  60
+  444 x = 35 y = 40 z =  65
+  445 x =  5 y = 40 z =  55
+  446 x = 25 y =  0 z =  75
+  447 x = 40 y = 15 z =  75
+  448 x =  0 y =  5 z =  65
+  449 x =  0 y = 35 z =  55
+  450 x = 30 y = 40 z =  65
+  451 x =  0 y = 10 z =  65
+  452 x = 20 y =  0 z =  75
+  453 x = 40 y = 20 z =  75
+  454 x = 25 y = 40 z =  65
+  455 x =  0 y = 15 z =  65
+  456 x = 10 y = 40 z =  60
+  457 x =  0 y = 30 z =  60
+  458 x = 40 y = 35 z =  70
+  459 x =  5 y =  0 z =  70
+  460 x = 20 y = 40 z =  65
+  461 x =  0 y = 40 z =  55
+  462 x =  0 y = 20 z =  65
+  463 x = 15 y =  0 z =  75
+  464 x = 40 y = 25 z =  75
+  465 x = 40 y =  0 z =  80
+  466 x =  5 y = 40 z =  60
+  467 x = 40 y =  5 z =  80
+  468 x = 35 y =  0 z =  80
+  469 x =  0 y = 35 z =  60
+  470 x = 15 y = 40 z =  65
+  471 x =  0 y = 25 z =  65
+  472 x = 40 y = 10 z =  80
+  473 x =  0 y =  0 z =  70
+  474 x = 40 y = 40 z =  70
+  475 x = 30 y =  0 z =  80
+  476 x = 35 y = 40 z =  70
+  477 x = 10 y =  0 z =  75
+  478 x = 40 y = 30 z =  75
+  479 x =  0 y =  5 z =  70
+  480 x = 30 y = 40 z =  70
+  481 x =  0 y = 10 z =  70
+  482 x = 40 y = 15 z =  80
+  483 x = 25 y =  0 z =  80
+  484 x = 25 y = 40 z =  70
+  485 x = 10 y = 40 z =  65
+  486 x =  0 y = 15 z =  70
+  487 x =  0 y = 30 z =  65
+  488 x = 40 y = 20 z =  80
+  489 x =  0 y = 40 z =  60
+  490 x = 20 y =  0 z =  80
+  491 x = 40 y = 35 z =  75
+  492 x =  5 y =  0 z =  75
+  493 x = 20 y = 40 z =  70
+  494 x =  0 y = 20 z =  70
+  495 x = 40 y = 25 z =  80
+  496 x = 15 y =  0 z =  80
+  497 x =  5 y = 40 z =  65
+  498 x =  0 y = 35 z =  65
+  499 x = 15 y = 40 z =  70
+  500 x =  0 y = 25 z =  70
+  501 x =  0 y =  0 z =  75
+  502 x = 40 y = 40 z =  75
+  503 x = 40 y =  0 z =  85
+  504 x = 35 y = 40 z =  75
+  505 x = 35 y =  0 z =  85
+  506 x = 40 y =  5 z =  85
+  507 x =  0 y =  5 z =  75
+  508 x = 40 y = 30 z =  80
+  509 x = 10 y =  0 z =  80
+  510 x = 30 y = 40 z =  75
+  511 x = 30 y =  3 z =  85
+  512 x = 40 y = 10 z =  85
+  513 x =  0 y = 10 z =  75
+  514 x = 10 y = 40 z =  70
+  515 x =  0 y = 30 z =  70
+  516 x =  0 y = 40 z =  65
+  517 x = 25 y = 40 z =  75
+  518 x = 25 y =  3 z =  85
+  519 x = 40 y = 15 z =  85
+  520 x =  0 y = 15 z =  75
+  521 x = 20 y = 40 z =  75
+  522 x = 40 y = 35 z =  80
+  523 x = 40 y = 20 z =  85
+  524 x =  5 y =  0 z =  80
+  525 x = 20 y =  3 z =  85
+  526 x =  0 y = 20 z =  75
+  527 x =  5 y = 40 z =  70
+  528 x =  0 y = 35 z =  70
+  529 x = 15 y = 40 z =  75
+  530 x = 40 y = 25 z =  85
+  531 x = 15 y =  3 z =  85
+  532 x =  0 y = 25 z =  75
+  533 x =  0 y =  0 z =  80
+  534 x = 40 y = 40 z =  80
+  535 x = 35 y = 40 z =  80
+  536 x =  0 y =  5 z =  80
+  537 x = 30 y = 40 z =  80
+  538 x =  0 y = 40 z =  70
+  539 x = 40 y =  0 z =  90
+  540 x =  0 y = 10 z =  80
+  541 x = 10 y = 40 z =  75
+  542 x = 40 y = 30 z =  85
+  543 x = 10 y =  3 z =  85
+  544 x = 40 y =  5 z =  90
+  545 x = 35 y =  0 z =  90
+  546 x =  0 y = 30 z =  75
+  547 x = 40 y = 10 z =  90
+  548 x = 30 y =  0 z =  90
+  549 x = 25 y = 40 z =  80
+  550 x =  0 y = 15 z =  80
+  551 x = 40 y = 15 z =  90
+  552 x = 25 y =  0 z =  90
+  553 x = 20 y = 40 z =  80
+  554 x =  0 y = 20 z =  80
+  555 x =  5 y = 40 z =  75
+  556 x = 40 y = 35 z =  85
+  557 x =  5 y =  0 z =  85
+  558 x =  0 y = 35 z =  75
+  559 x = 40 y = 20 z =  90
+  560 x = 20 y =  0 z =  90
+  561 x = 15 y = 40 z =  80
+  562 x =  0 y = 25 z =  80
+  563 x = 40 y = 25 z =  90
+  564 x = 15 y =  0 z =  90
+  565 x =  0 y =  0 z =  85
+  566 x =  0 y = 40 z =  75
+  567 x = 40 y = 40 z =  85
+  568 x = 35 y = 40 z =  85
+  569 x =  0 y =  5 z =  85
+  570 x = 10 y = 40 z =  80
+  571 x =  0 y = 30 z =  80
+  572 x = 30 y = 37 z =  85
+  573 x =  0 y = 10 z =  85
+  574 x = 40 y = 30 z =  90
+  575 x = 10 y =  0 z =  90
+  576 x = 40 y =  0 z =  95
+  577 x = 25 y = 37 z =  85
+  578 x = 40 y =  5 z =  95
+  579 x = 35 y =  0 z =  95
+  580 x =  0 y = 15 z =  85
+  581 x = 40 y = 10 z =  95
+  582 x = 30 y =  0 z =  95
+  583 x = 20 y = 37 z =  85
+  584 x =  5 y = 40 z =  80
+  585 x =  0 y = 20 z =  85
+  586 x =  0 y = 35 z =  80
+  587 x = 40 y = 15 z =  95
+  588 x = 25 y =  0 z =  95
+  589 x = 40 y = 35 z =  90
+  590 x =  5 y =  0 z =  90
+  591 x = 40 y = 20 z =  95
+  592 x = 20 y =  0 z =  95
+  593 x = 15 y = 37 z =  85
+  594 x =  0 y = 25 z =  85
+  595 x =  0 y = 40 z =  80
+  596 x = 40 y = 25 z =  95
+  597 x = 15 y =  0 z =  95
+  598 x =  0 y =  0 z =  90
+  599 x = 40 y = 40 z =  90
+  600 x = 35 y = 40 z =  90
+  601 x = 10 y = 37 z =  85
+  602 x =  0 y =  5 z =  90
+  603 x =  0 y = 30 z =  85
+  604 x = 30 y = 40 z =  90
+  605 x =  0 y = 10 z =  90
+  606 x = 25 y = 40 z =  90
+  607 x = 40 y = 30 z =  95
+  608 x = 10 y =  0 z =  95
+  609 x =  0 y = 15 z =  90
+  610 x = 40 y =  0 z = 100 constraint = loaded_end
+  611 x = 35 y =  0 z = 100 constraint = loaded_end
+  612 x = 40 y =  5 z = 100 constraint = loaded_end
+  613 x =  5 y = 40 z =  85
+  614 x =  0 y = 35 z =  85
+  615 x = 20 y = 40 z =  90
+  616 x = 30 y =  0 z = 100 constraint = loaded_end
+  617 x = 40 y = 10 z = 100 constraint = loaded_end
+  618 x =  0 y = 20 z =  90
+  619 x = 25 y =  0 z = 100 constraint = loaded_end
+  620 x = 40 y = 15 z = 100 constraint = loaded_end
+  621 x = 40 y = 35 z =  95
+  622 x =  5 y =  0 z =  95
+  623 x = 15 y = 40 z =  90
+  624 x =  0 y = 25 z =  90
+  625 x = 20 y =  0 z = 100 constraint = loaded_end
+  626 x = 40 y = 20 z = 100 constraint = loaded_end
+  627 x =  0 y = 40 z =  85
+  628 x = 10 y = 40 z =  90
+  629 x =  0 y = 30 z =  90
+  630 x =  0 y =  0 z =  95
+  631 x = 15 y =  0 z = 100 constraint = loaded_end
+  632 x = 40 y = 25 z = 100 constraint = loaded_end
+  633 x = 40 y = 40 z =  95
+  634 x = 35 y = 40 z =  95
+  635 x =  0 y =  5 z =  95
+  636 x = 30 y = 40 z =  95
+  637 x =  0 y = 10 z =  95
+  638 x = 25 y = 40 z =  95
+  639 x =  0 y = 15 z =  95
+  640 x = 10 y =  0 z = 100 constraint = loaded_end
+  641 x = 40 y = 30 z = 100 constraint = loaded_end
+  642 x =  5 y = 40 z =  90
+  643 x =  0 y = 35 z =  90
+  644 x = 20 y = 40 z =  95
+  645 x =  0 y = 20 z =  95
+  646 x =  5 y =  0 z = 100 constraint = loaded_end
+  647 x = 40 y = 35 z = 100 constraint = loaded_end
+  648 x = 15 y = 40 z =  95
+  649 x =  0 y = 25 z =  95
+  650 x =  0 y = 40 z =  90
+  651 x = 10 y = 40 z =  95
+  652 x =  0 y = 30 z =  95
+  653 x =  0 y =  0 z = 100 constraint = loaded_end
+  654 x = 40 y = 40 z = 100 constraint = loaded_end
+  655 x = 35 y = 40 z = 100 constraint = loaded_end
+  656 x =  0 y =  5 z = 100 constraint = loaded_end
+  657 x = 30 y = 40 z = 100 constraint = loaded_end
+  658 x =  0 y = 10 z = 100 constraint = loaded_end
+  659 x = 25 y = 40 z = 100 constraint = loaded_end
+  660 x =  0 y = 15 z = 100 constraint = loaded_end
+  661 x =  5 y = 40 z =  95
+  662 x =  0 y = 35 z =  95
+  663 x = 20 y = 40 z = 100 constraint = loaded_end
+  664 x =  0 y = 20 z = 100 constraint = loaded_end
+  665 x = 15 y = 40 z = 100 constraint = loaded_end
+  666 x =  0 y = 25 z = 100 constraint = loaded_end
+  667 x =  0 y = 40 z =  95
+  668 x = 10 y = 40 z = 100 constraint = loaded_end
+  669 x =  0 y = 30 z = 100 constraint = loaded_end
+  670 x =  5 y = 40 z = 100 constraint = loaded_end
+  671 x =  0 y = 35 z = 100 constraint = loaded_end
+  672 x =  0 y = 40 z = 100 constraint = loaded_end
+end coordinates
+
+Elements of type shell_bt_4
+    1 nodes = [113,118,110,106] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    2 nodes = [123,126,118,113] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    3 nodes = [137,140,126,123] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    4 nodes = [155,158,140,137] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    5 nodes = [181,187,158,155] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    6 nodes = [211,214,187,181] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    7 nodes = [243,244,214,211] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    8 nodes = [279,280,244,243] nip = 5 t = 1.0 material = steel contact = advanced_edge
+    9 nodes = [311,315,280,279] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   10 nodes = [347,349,315,311] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   11 nodes = [378,381,349,347] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   12 nodes = [410,411,381,378] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   13 nodes = [442,444,411,410] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   14 nodes = [474,476,444,442] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   15 nodes = [502,504,476,474] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   16 nodes = [534,535,504,502] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   17 nodes = [567,568,535,534] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   18 nodes = [599,600,568,567] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   19 nodes = [633,634,600,599] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   20 nodes = [654,655,634,633] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   21 nodes = [118,127,120,110] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   22 nodes = [126,132,127,118] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   23 nodes = [140,148,132,126] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   24 nodes = [158,167,148,140] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   25 nodes = [187,193,167,158] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   26 nodes = [214,220,193,187] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   27 nodes = [244,256,220,214] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   28 nodes = [280,291,256,244] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   29 nodes = [315,321,291,280] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   30 nodes = [349,351,321,315] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   31 nodes = [381,383,351,349] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   32 nodes = [411,416,383,381] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   33 nodes = [444,450,416,411] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   34 nodes = [476,480,450,444] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   35 nodes = [504,510,480,476] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   36 nodes = [535,537,510,504] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   37 nodes = [568,572,537,535] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   38 nodes = [600,604,572,568] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   39 nodes = [634,636,604,600] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   40 nodes = [655,657,636,634] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   41 nodes = [127,145,134,120] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   42 nodes = [132,149,145,127] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   43 nodes = [148,165,149,132] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   44 nodes = [167,183,165,148] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   45 nodes = [193,201,183,167] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   46 nodes = [220,232,201,193] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   47 nodes = [256,263,232,220] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   48 nodes = [291,298,263,256] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   49 nodes = [321,334,298,291] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   50 nodes = [351,362,334,321] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   51 nodes = [383,390,362,351] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   52 nodes = [416,422,390,383] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   53 nodes = [450,454,422,416] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   54 nodes = [480,484,454,450] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   55 nodes = [510,517,484,480] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   56 nodes = [537,549,517,510] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   57 nodes = [572,577,549,537] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   58 nodes = [604,606,577,572] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   59 nodes = [636,638,606,604] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   60 nodes = [657,659,638,636] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   61 nodes = [145,160,152,134] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   62 nodes = [149,168,160,145] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   63 nodes = [165,184,168,149] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   64 nodes = [183,197,184,165] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   65 nodes = [201,226,197,183] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   66 nodes = [232,250,226,201] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   67 nodes = [263,281,250,232] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   68 nodes = [298,307,281,263] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   69 nodes = [334,340,307,298] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   70 nodes = [362,371,340,334] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   71 nodes = [390,403,371,362] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   72 nodes = [422,430,403,390] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   73 nodes = [454,460,430,422] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   74 nodes = [484,493,460,454] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   75 nodes = [517,521,493,484] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   76 nodes = [549,553,521,517] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   77 nodes = [577,583,553,549] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   78 nodes = [606,615,583,577] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   79 nodes = [638,644,615,606] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   80 nodes = [659,663,644,638] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   81 nodes = [160,190,178,152] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   82 nodes = [168,194,190,160] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   83 nodes = [184,204,194,168] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   84 nodes = [197,227,204,184] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   85 nodes = [226,245,227,197] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   86 nodes = [250,269,245,226] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   87 nodes = [281,303,269,250] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   88 nodes = [307,329,303,281] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   89 nodes = [340,356,329,307] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   90 nodes = [371,384,356,340] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   91 nodes = [403,414,384,371] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   92 nodes = [430,440,414,403] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   93 nodes = [460,470,440,430] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   94 nodes = [493,499,470,460] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   95 nodes = [521,529,499,493] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   96 nodes = [553,561,529,521] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   97 nodes = [583,593,561,553] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   98 nodes = [615,623,593,583] nip = 5 t = 1.0 material = steel contact = advanced_edge
+   99 nodes = [644,648,623,615] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  100 nodes = [663,665,648,644] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  101 nodes = [190,217,208,178] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  102 nodes = [194,223,217,190] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  103 nodes = [204,235,223,194] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  104 nodes = [227,253,235,204] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  105 nodes = [245,270,253,227] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  106 nodes = [269,294,270,245] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  107 nodes = [303,322,294,269] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  108 nodes = [329,344,322,303] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  109 nodes = [356,375,344,329] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  110 nodes = [384,399,375,356] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  111 nodes = [414,426,399,384] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  112 nodes = [440,456,426,414] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  113 nodes = [470,485,456,440] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  114 nodes = [499,514,485,470] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  115 nodes = [529,541,514,499] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  116 nodes = [561,570,541,529] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  117 nodes = [593,601,570,561] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  118 nodes = [623,628,601,593] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  119 nodes = [648,651,628,623] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  120 nodes = [665,668,651,648] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  121 nodes = [217,246,240,208] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  122 nodes = [223,259,246,217] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  123 nodes = [235,266,259,223] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  124 nodes = [253,283,266,235] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  125 nodes = [270,304,283,253] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  126 nodes = [294,323,304,270] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  127 nodes = [322,342,323,294] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  128 nodes = [344,366,342,322] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  129 nodes = [375,391,366,344] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  130 nodes = [399,420,391,375] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  131 nodes = [426,445,420,399] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  132 nodes = [456,466,445,426] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  133 nodes = [485,497,466,456] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  134 nodes = [514,527,497,485] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  135 nodes = [541,555,527,514] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  136 nodes = [570,584,555,541] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  137 nodes = [601,613,584,570] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  138 nodes = [628,642,613,601] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  139 nodes = [651,661,642,628] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  140 nodes = [668,670,661,651] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  141 nodes = [246,282,277,240] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  142 nodes = [259,292,282,246] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  143 nodes = [266,300,292,259] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  144 nodes = [283,308,300,266] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  145 nodes = [304,331,308,283] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  146 nodes = [323,346,331,304] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  147 nodes = [342,367,346,323] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  148 nodes = [366,387,367,342] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  149 nodes = [391,412,387,366] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  150 nodes = [420,435,412,391] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  151 nodes = [445,461,435,420] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  152 nodes = [466,489,461,445] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  153 nodes = [497,516,489,466] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  154 nodes = [527,538,516,497] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  155 nodes = [555,566,538,527] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  156 nodes = [584,595,566,555] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  157 nodes = [613,627,595,584] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  158 nodes = [642,650,627,613] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  159 nodes = [661,667,650,642] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  160 nodes = [670,672,667,661] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  161 nodes = [282,249,241,277] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  162 nodes = [292,261,249,282] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  163 nodes = [300,268,261,292] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  164 nodes = [308,286,268,300] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  165 nodes = [331,306,286,308] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  166 nodes = [346,328,306,331] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  167 nodes = [367,343,328,346] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  168 nodes = [387,368,343,367] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  169 nodes = [412,395,368,387] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  170 nodes = [435,421,395,412] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  171 nodes = [461,449,421,435] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  172 nodes = [489,469,449,461] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  173 nodes = [516,498,469,489] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  174 nodes = [538,528,498,516] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  175 nodes = [566,558,528,538] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  176 nodes = [595,586,558,566] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  177 nodes = [627,614,586,595] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  178 nodes = [650,643,614,627] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  179 nodes = [667,662,643,650] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  180 nodes = [672,671,662,667] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  181 nodes = [249,219,209,241] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  182 nodes = [261,225,219,249] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  183 nodes = [268,237,225,261] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  184 nodes = [286,255,237,268] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  185 nodes = [306,276,255,286] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  186 nodes = [328,297,276,306] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  187 nodes = [343,327,297,328] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  188 nodes = [368,348,327,343] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  189 nodes = [395,376,348,368] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  190 nodes = [421,402,376,395] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  191 nodes = [449,429,402,421] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  192 nodes = [469,457,429,449] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  193 nodes = [498,487,457,469] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  194 nodes = [528,515,487,498] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  195 nodes = [558,546,515,528] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  196 nodes = [586,571,546,558] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  197 nodes = [614,603,571,586] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  198 nodes = [643,629,603,614] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  199 nodes = [662,652,629,643] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  200 nodes = [671,669,652,662] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  201 nodes = [219,191,179,209] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  202 nodes = [225,195,191,219] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  203 nodes = [237,205,195,225] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  204 nodes = [255,229,205,237] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  205 nodes = [276,248,229,255] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  206 nodes = [297,275,248,276] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  207 nodes = [327,305,275,297] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  208 nodes = [348,333,305,327] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  209 nodes = [376,361,333,348] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  210 nodes = [402,386,361,376] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  211 nodes = [429,415,386,402] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  212 nodes = [457,443,415,429] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  213 nodes = [487,471,443,457] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  214 nodes = [515,500,471,487] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  215 nodes = [546,532,500,515] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  216 nodes = [571,562,532,546] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  217 nodes = [603,594,562,571] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  218 nodes = [629,624,594,603] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  219 nodes = [652,649,624,629] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  220 nodes = [669,666,649,652] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  221 nodes = [191,161,153,179] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  222 nodes = [195,169,161,191] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  223 nodes = [205,185,169,195] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  224 nodes = [229,198,185,205] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  225 nodes = [248,228,198,229] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  226 nodes = [275,254,228,248] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  227 nodes = [305,285,254,275] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  228 nodes = [333,310,285,305] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  229 nodes = [361,341,310,333] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  230 nodes = [386,374,341,361] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  231 nodes = [415,404,374,386] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  232 nodes = [443,431,404,415] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  233 nodes = [471,462,431,443] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  234 nodes = [500,494,462,471] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  235 nodes = [532,526,494,500] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  236 nodes = [562,554,526,532] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  237 nodes = [594,585,554,562] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  238 nodes = [624,618,585,594] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  239 nodes = [649,645,618,624] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  240 nodes = [666,664,645,649] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  241 nodes = [161,146,135,153] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  242 nodes = [169,150,146,161] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  243 nodes = [185,166,150,169] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  244 nodes = [198,186,166,185] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  245 nodes = [228,206,186,198] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  246 nodes = [254,236,206,228] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  247 nodes = [285,267,236,254] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  248 nodes = [310,302,267,285] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  249 nodes = [341,335,302,310] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  250 nodes = [374,365,335,341] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  251 nodes = [404,394,365,374] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  252 nodes = [431,423,394,404] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  253 nodes = [462,455,423,431] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  254 nodes = [494,486,455,462] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  255 nodes = [526,520,486,494] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  256 nodes = [554,550,520,526] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  257 nodes = [585,580,550,554] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  258 nodes = [618,609,580,585] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  259 nodes = [645,639,609,618] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  260 nodes = [664,660,639,645] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  261 nodes = [146,128,121,135] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  262 nodes = [150,133,128,146] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  263 nodes = [166,151,133,150] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  264 nodes = [186,170,151,166] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  265 nodes = [206,196,170,186] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  266 nodes = [236,224,196,206] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  267 nodes = [267,260,224,236] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  268 nodes = [302,293,260,267] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  269 nodes = [335,326,293,302] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  270 nodes = [365,352,326,335] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  271 nodes = [394,385,352,365] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  272 nodes = [423,419,385,394] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  273 nodes = [455,451,419,423] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  274 nodes = [486,481,451,455] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  275 nodes = [520,513,481,486] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  276 nodes = [550,540,513,520] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  277 nodes = [580,573,540,550] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  278 nodes = [609,605,573,580] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  279 nodes = [639,637,605,609] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  280 nodes = [660,658,637,639] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  281 nodes = [128,119,111,121] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  282 nodes = [133,129,119,128] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  283 nodes = [151,147,129,133] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  284 nodes = [170,162,147,151] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  285 nodes = [196,192,162,170] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  286 nodes = [224,218,192,196] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  287 nodes = [260,247,218,224] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  288 nodes = [293,284,247,260] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  289 nodes = [326,318,284,293] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  290 nodes = [352,350,318,326] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  291 nodes = [385,382,350,352] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  292 nodes = [419,413,382,385] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  293 nodes = [451,448,413,419] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  294 nodes = [481,479,448,451] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  295 nodes = [513,507,479,481] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  296 nodes = [540,536,507,513] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  297 nodes = [573,569,536,540] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  298 nodes = [605,602,569,573] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  299 nodes = [637,635,602,605] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  300 nodes = [658,656,635,637] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  301 nodes = [119,112,105,111] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  302 nodes = [129,122,112,119] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  303 nodes = [147,136,122,129] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  304 nodes = [162,154,136,147] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  305 nodes = [192,180,154,162] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  306 nodes = [218,210,180,192] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  307 nodes = [247,242,210,218] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  308 nodes = [284,278,242,247] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  309 nodes = [318,312,278,284] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  310 nodes = [350,345,312,318] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  311 nodes = [382,379,345,350] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  312 nodes = [413,409,379,382] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  313 nodes = [448,441,409,413] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  314 nodes = [479,473,441,448] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  315 nodes = [507,501,473,479] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  316 nodes = [536,533,501,507] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  317 nodes = [569,565,533,536] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  318 nodes = [602,598,565,569] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  319 nodes = [635,630,598,602] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  320 nodes = [656,653,630,635] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  321 nodes = [112,85,80,105] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  322 nodes = [122,94,85,112] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  323 nodes = [136,98,94,122] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  324 nodes = [154,109,98,136] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  325 nodes = [180,143,109,154] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  326 nodes = [210,174,143,180] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  327 nodes = [242,203,174,210] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  328 nodes = [278,239,203,242] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  329 nodes = [312,289,239,278] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  330 nodes = [345,325,289,312] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  331 nodes = [379,358,325,345] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  332 nodes = [409,389,358,379] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  333 nodes = [441,425,389,409] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  334 nodes = [473,459,425,441] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  335 nodes = [501,492,459,473] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  336 nodes = [533,524,492,501] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  337 nodes = [565,557,524,533] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  338 nodes = [598,590,557,565] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  339 nodes = [630,622,590,598] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  340 nodes = [653,646,622,630] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  341 nodes = [85,66,61,80] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  342 nodes = [94,70,66,85] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  343 nodes = [98,79,70,94] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  344 nodes = [109,91,79,98] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  345 nodes = [143,103,91,109] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  346 nodes = [174,130,103,143] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  347 nodes = [203,173,130,174] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  348 nodes = [239,207,173,203] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  349 nodes = [289,257,207,239] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  350 nodes = [325,295,257,289] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  351 nodes = [358,336,295,325] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  352 nodes = [389,373,336,358] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  353 nodes = [425,406,373,389] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  354 nodes = [459,439,406,425] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  355 nodes = [492,477,439,459] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  356 nodes = [524,509,477,492] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  357 nodes = [557,543,509,524] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  358 nodes = [590,575,543,557] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  359 nodes = [622,608,575,590] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  360 nodes = [646,640,608,622] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  361 nodes = [66,48,43,61] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  362 nodes = [70,52,48,66] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  363 nodes = [79,58,52,70] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  364 nodes = [91,73,58,79] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  365 nodes = [103,87,73,91] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  366 nodes = [130,104,87,103] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  367 nodes = [173,144,104,130] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  368 nodes = [207,182,144,173] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  369 nodes = [257,231,182,207] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  370 nodes = [295,273,231,257] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  371 nodes = [336,317,273,295] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  372 nodes = [373,355,317,336] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  373 nodes = [406,393,355,373] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  374 nodes = [439,428,393,406] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  375 nodes = [477,463,428,439] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  376 nodes = [509,496,463,477] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  377 nodes = [543,531,496,509] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  378 nodes = [575,564,531,543] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  379 nodes = [608,597,564,575] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  380 nodes = [640,631,597,608] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  381 nodes = [48,30,27,43] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  382 nodes = [52,37,30,48] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  383 nodes = [58,40,37,52] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  384 nodes = [73,55,40,58] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  385 nodes = [87,75,55,73] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  386 nodes = [104,92,75,87] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  387 nodes = [144,116,92,104] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  388 nodes = [182,157,116,144] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  389 nodes = [231,200,157,182] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  390 nodes = [273,251,200,231] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  391 nodes = [317,301,251,273] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  392 nodes = [355,339,301,317] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  393 nodes = [393,380,339,355] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  394 nodes = [428,418,380,393] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  395 nodes = [463,452,418,428] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  396 nodes = [496,490,452,463] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  397 nodes = [531,525,490,496] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  398 nodes = [564,560,525,531] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  399 nodes = [597,592,560,564] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  400 nodes = [631,625,592,597] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  401 nodes = [30,20,16,27] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  402 nodes = [37,24,20,30] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  403 nodes = [40,34,24,37] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  404 nodes = [55,42,34,40] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  405 nodes = [75,59,42,55] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  406 nodes = [92,76,59,75] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  407 nodes = [116,99,76,92] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  408 nodes = [157,138,99,116] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  409 nodes = [200,189,138,157] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  410 nodes = [251,233,189,200] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  411 nodes = [301,290,233,251] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  412 nodes = [339,330,290,301] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  413 nodes = [380,369,330,339] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  414 nodes = [418,408,369,380] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  415 nodes = [452,446,408,418] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  416 nodes = [490,483,446,452] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  417 nodes = [525,518,483,490] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  418 nodes = [560,552,518,525] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  419 nodes = [592,588,552,560] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  420 nodes = [625,619,588,592] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  421 nodes = [20,10,7,16] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  422 nodes = [24,15,10,20] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  423 nodes = [34,26,15,24] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  424 nodes = [42,39,26,34] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  425 nodes = [59,54,39,42] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  426 nodes = [76,71,54,59] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  427 nodes = [99,96,71,76] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  428 nodes = [138,125,96,99] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  429 nodes = [189,176,125,138] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  430 nodes = [233,221,176,189] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  431 nodes = [290,274,221,233] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  432 nodes = [330,319,274,290] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  433 nodes = [369,364,319,330] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  434 nodes = [408,401,364,369] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  435 nodes = [446,436,401,408] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  436 nodes = [483,475,436,446] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  437 nodes = [518,511,475,483] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  438 nodes = [552,548,511,518] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  439 nodes = [588,582,548,552] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  440 nodes = [619,616,582,588] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  441 nodes = [10,6,2,7] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  442 nodes = [15,13,6,10] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  443 nodes = [26,22,13,15] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  444 nodes = [39,33,22,26] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  445 nodes = [54,50,33,39] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  446 nodes = [71,67,50,54] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  447 nodes = [96,88,67,71] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  448 nodes = [125,117,88,96] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  449 nodes = [176,164,117,125] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  450 nodes = [221,215,164,176] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  451 nodes = [274,265,215,221] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  452 nodes = [319,313,265,274] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  453 nodes = [364,360,313,319] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  454 nodes = [401,398,360,364] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  455 nodes = [436,433,398,401] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  456 nodes = [475,468,433,436] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  457 nodes = [511,505,468,475] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  458 nodes = [548,545,505,511] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  459 nodes = [582,579,545,548] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  460 nodes = [616,611,579,582] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  461 nodes = [6,4,1,2] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  462 nodes = [13,9,4,6] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  463 nodes = [22,18,9,13] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  464 nodes = [33,29,18,22] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  465 nodes = [50,45,29,33] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  466 nodes = [67,63,45,50] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  467 nodes = [88,82,63,67] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  468 nodes = [117,107,82,88] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  469 nodes = [164,159,107,117] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  470 nodes = [215,212,159,164] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  471 nodes = [265,262,212,215] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  472 nodes = [313,309,262,265] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  473 nodes = [360,354,309,313] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  474 nodes = [398,396,354,360] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  475 nodes = [433,432,396,398] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  476 nodes = [468,465,432,433] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  477 nodes = [505,503,465,468] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  478 nodes = [545,539,503,505] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  479 nodes = [579,576,539,545] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  480 nodes = [611,610,576,579] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  481 nodes = [4,5,3,1] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  482 nodes = [9,12,5,4] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  483 nodes = [18,21,12,9] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  484 nodes = [29,31,21,18] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  485 nodes = [45,49,31,29] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  486 nodes = [63,64,49,45] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  487 nodes = [82,86,64,63] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  488 nodes = [107,115,86,82] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  489 nodes = [159,163,115,107] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  490 nodes = [212,216,163,159] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  491 nodes = [262,264,216,212] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  492 nodes = [309,314,264,262] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  493 nodes = [354,359,314,309] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  494 nodes = [396,397,359,354] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  495 nodes = [432,434,397,396] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  496 nodes = [465,467,434,432] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  497 nodes = [503,506,467,465] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  498 nodes = [539,544,506,503] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  499 nodes = [576,578,544,539] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  500 nodes = [610,612,578,576] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  501 nodes = [5,11,8,3] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  502 nodes = [12,14,11,5] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  503 nodes = [21,25,14,12] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  504 nodes = [31,38,25,21] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  505 nodes = [49,53,38,31] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  506 nodes = [64,69,53,49] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  507 nodes = [86,95,69,64] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  508 nodes = [115,124,95,86] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  509 nodes = [163,171,124,115] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  510 nodes = [216,222,171,163] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  511 nodes = [264,271,222,216] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  512 nodes = [314,320,271,264] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  513 nodes = [359,363,320,314] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  514 nodes = [397,400,363,359] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  515 nodes = [434,437,400,397] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  516 nodes = [467,472,437,434] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  517 nodes = [506,512,472,467] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  518 nodes = [544,547,512,506] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  519 nodes = [578,581,547,544] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  520 nodes = [612,617,581,578] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  521 nodes = [11,19,17,8] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  522 nodes = [14,23,19,11] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  523 nodes = [25,35,23,14] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  524 nodes = [38,41,35,25] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  525 nodes = [53,60,41,38] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  526 nodes = [69,77,60,53] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  527 nodes = [95,100,77,69] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  528 nodes = [124,139,100,95] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  529 nodes = [171,188,139,124] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  530 nodes = [222,234,188,171] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  531 nodes = [271,287,234,222] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  532 nodes = [320,332,287,271] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  533 nodes = [363,370,332,320] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  534 nodes = [400,405,370,363] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  535 nodes = [437,447,405,400] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  536 nodes = [472,482,447,437] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  537 nodes = [512,519,482,472] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  538 nodes = [547,551,519,512] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  539 nodes = [581,587,551,547] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  540 nodes = [617,620,587,581] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  541 nodes = [19,32,28,17] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  542 nodes = [23,36,32,19] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  543 nodes = [35,46,36,23] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  544 nodes = [41,56,46,35] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  545 nodes = [60,74,56,41] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  546 nodes = [77,89,74,60] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  547 nodes = [100,114,89,77] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  548 nodes = [139,156,114,100] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  549 nodes = [188,199,156,139] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  550 nodes = [234,252,199,188] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  551 nodes = [287,299,252,234] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  552 nodes = [332,338,299,287] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  553 nodes = [370,377,338,332] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  554 nodes = [405,417,377,370] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  555 nodes = [447,453,417,405] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  556 nodes = [482,488,453,447] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  557 nodes = [519,523,488,482] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  558 nodes = [551,559,523,519] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  559 nodes = [587,591,559,551] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  560 nodes = [620,626,591,587] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  561 nodes = [32,47,44,28] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  562 nodes = [36,51,47,32] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  563 nodes = [46,57,51,36] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  564 nodes = [56,72,57,46] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  565 nodes = [74,83,72,56] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  566 nodes = [89,101,83,74] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  567 nodes = [114,142,101,89] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  568 nodes = [156,177,142,114] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  569 nodes = [199,230,177,156] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  570 nodes = [252,272,230,199] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  571 nodes = [299,316,272,252] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  572 nodes = [338,353,316,299] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  573 nodes = [377,392,353,338] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  574 nodes = [417,427,392,377] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  575 nodes = [453,464,427,417] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  576 nodes = [488,495,464,453] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  577 nodes = [523,530,495,488] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  578 nodes = [559,563,530,523] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  579 nodes = [591,596,563,559] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  580 nodes = [626,632,596,591] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  581 nodes = [47,65,62,44] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  582 nodes = [51,68,65,47] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  583 nodes = [57,78,68,51] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  584 nodes = [72,90,78,57] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  585 nodes = [83,102,90,72] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  586 nodes = [101,131,102,83] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  587 nodes = [142,175,131,101] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  588 nodes = [177,213,175,142] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  589 nodes = [230,258,213,177] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  590 nodes = [272,296,258,230] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  591 nodes = [316,337,296,272] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  592 nodes = [353,372,337,316] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  593 nodes = [392,407,372,353] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  594 nodes = [427,438,407,392] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  595 nodes = [464,478,438,427] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  596 nodes = [495,508,478,464] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  597 nodes = [530,542,508,495] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  598 nodes = [563,574,542,530] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  599 nodes = [596,607,574,563] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  600 nodes = [632,641,607,596] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  601 nodes = [65,84,81,62] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  602 nodes = [68,93,84,65] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  603 nodes = [78,97,93,68] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  604 nodes = [90,108,97,78] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  605 nodes = [102,141,108,90] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  606 nodes = [131,172,141,102] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  607 nodes = [175,202,172,131] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  608 nodes = [213,238,202,175] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  609 nodes = [258,288,238,213] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  610 nodes = [296,324,288,258] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  611 nodes = [337,357,324,296] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  612 nodes = [372,388,357,337] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  613 nodes = [407,424,388,372] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  614 nodes = [438,458,424,407] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  615 nodes = [478,491,458,438] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  616 nodes = [508,522,491,478] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  617 nodes = [542,556,522,508] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  618 nodes = [574,589,556,542] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  619 nodes = [607,621,589,574] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  620 nodes = [641,647,621,607] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  621 nodes = [84,113,106,81] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  622 nodes = [93,123,113,84] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  623 nodes = [97,137,123,93] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  624 nodes = [108,155,137,97] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  625 nodes = [141,181,155,108] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  626 nodes = [172,211,181,141] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  627 nodes = [202,243,211,172] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  628 nodes = [238,279,243,202] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  629 nodes = [288,311,279,238] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  630 nodes = [324,347,311,288] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  631 nodes = [357,378,347,324] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  632 nodes = [388,410,378,357] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  633 nodes = [424,442,410,388] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  634 nodes = [458,474,442,424] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  635 nodes = [491,502,474,458] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  636 nodes = [522,534,502,491] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  637 nodes = [556,567,534,522] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  638 nodes = [589,599,567,556] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  639 nodes = [621,633,599,589] nip = 5 t = 1.0 material = steel contact = advanced_edge
+  640 nodes = [647,654,633,621] nip = 5 t = 1.0 material = steel contact = advanced_edge
+
+trackers of type nodeforce
+1 nodes = [105,1,106,2,3,7,8,16,17,27,28,43,44,61,62,80,81,110,111,120,121,134,135,152,153,178,179,208,209,240,241,277] direction = z- filename = nodebase_neg.trk
+2 nodes = [105,1,106,2,3,7,8,16,17,27,28,43,44,61,62,80,81,110,111,120,121,134,135,152,153,178,179,208,209,240,241,277] direction = z+ filename = nodebase_pos.trk
+3 nodes = [653,610,654,611,612,616,617,619,620,625,626,631,632,640,641,646,647,655,656,657,658,659,660,663,664,665,666,668,669,670,671,672] direction = z- filename = nodetop_neg.trk
+4 nodes = [653,610,654,611,612,616,617,619,620,625,626,631,632,640,641,646,647,655,656,657,658,659,660,663,664,665,666,668,669,670,671,672] direction = z+ filename = nodetop_pos.trk
+
+trackers of type energy
+5 type = external filename = energy_external.trk
+6 type = internal filename = energy_internal.trk
+7 type = contact filename = energy_contact.trk
+8 type = hourglass filename = energy_hourglass.trk
+
+constraints of type boundary_condition
+fixed Vx = 0 Vy = 0 Vz = 0 Ax = 0 Ay = 0 Az = 0 Vrx = 0 Vry = 0 Vrz = 0 Arx = 0 Ary = 0 Arz = 0
+loaded_end Vx = 0 Vy = 0 Vz = -10 Ax = 0 Ay = 0 Az = 0 Vrx = 0 Vry = 0 Vrz = 0 Arx = 0 Ary = 0 Arz = 0
+
+materials of type elastoplastic
+steel rho = 0.0000078 E = 210 nu = 0.3 yield_stress = 0.180 EP = 0.1
+
+controls
+run from 0 to 4.3
+print every 0.1 step
+print tracker every 0.02 step
+
+
+
+
+
+

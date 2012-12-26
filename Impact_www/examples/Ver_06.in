@@ -1,0 +1,441 @@
+# Verification problem: V06 - Impacting Blocks
+#
+# PROBLEM DESCRIPTION
+# The problem consists of two steel blocks in contact. They slide
+# relatve to each other. The top block is elastic while to bottom is
+# rigid. A special layer handles the contact sensitivity and friction
+# The lower surface of the block is fully constrained. The top block
+# has a constant force of 10E9 N applied at an angle alpha, equal to
+# the angle of friction of the contact surface.
+#
+# alpha = 1 / tan(my)
+#
+# Top block has an initial velocity of 10 m/s in the x-direction
+#
+# MODEL DESCRIPTION
+# Both blocks are modeled using SOLID_6 elements and
+# use elastic materials. A rigid body connects all the nodes
+# on the upper block to enable a uniform velocity.
+# The contact surface is enabled bu applying CONTACT_TRIANGLE
+# elements on the underside of the moving block. They also
+# ahndles the friction.
+#
+# ENGINEERING DATA
+# Density        =  7800  kg/m3
+# Youngs modulus = 210E9  N/m2
+# Poissons ratio =   0.3
+# Friction coeff =   0.2
+#
+# REFERENCE RESULTS
+# Since the angle alpha of the force is equal to the angle of friction,
+# the components of the applied force in the x-direction should be
+# balanced by the frictional force and the velocity of the top block in
+# the x-direction should remain constant at 10 m/s.
+#
+# COMPARISON OF RESULTS
+# The x-velocity remains constant at 10 m/s with a dynamic oscillarion
+# of about 1 m/s superimposed. The y-velocity oscillates about zero
+# with an amplitude of 3-4 m/s. The theoretical movement of the block
+# is 1m at 0.1 seconds. Dyna moved the block 1.02 m. Impact to 1.016 m
+#
+#-------------------------------------------------------------------
+#    Dimension of Analysis Model:               3
+#
+#    Total Number of Elements:                120
+#
+#    Total Number of Grid Points:             219
+#
+#    Total Number of different Materials:       1
+#-------------------------------------------------------------------
+
+#    ANALYSIS RUN TIME CONTROL
+
+CONTROLS
+run from    0.00000 to    0.11000 step 2e-6
+print every  0.010 step
+print tracker every 0.0010 step
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL MATERIAL CONFIGURATION
+MATERIALS OF TYPE ELASTIC
+mat_1 E =  210.00000 RHO =     0.0000078000 NU =  0.300
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL NODAL POINT CONFIGURATION
+
+NODES
+       1 x =     10.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+       2 x =     10.00000000 y =      1.00000000 z =      0.00000000 
+       3 x =      9.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+       4 x =     10.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+       5 x =     10.00000000 y =      1.00000000 z =      1.00000000 
+       6 x =      9.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21 
+       7 x =      9.00000000 y =      1.00000000 z =      0.00000000 
+       8 x =      9.00000000 y =      1.00000000 z =      1.00000000 
+       9 x =     10.00000000 y =      2.00000000 z =      0.00000000
+      10 x =      8.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+      11 x =     10.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      12 x =      9.00000000 y =      2.00000000 z =      0.00000000
+      13 x =     10.00000000 y =      2.00000000 z =      1.00000000
+      14 x =      8.00000000 y =      1.00000000 z =      0.00000000
+      15 x =     10.00000000 y =      1.00000000 z =      2.00000000
+      16 x =      8.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+      17 x =      9.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      18 x =      9.00000000 y =      2.00000000 z =      1.00000000
+      19 x =      8.00000000 y =      1.00000000 z =      1.00000000
+      20 x =      9.00000000 y =      1.00000000 z =      2.00000000
+      21 x =      8.00000000 y =      2.00000000 z =      0.00000000
+      22 x =     10.00000000 y =      2.00000000 z =      2.00000000
+      23 x =      8.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      24 x =      9.00000000 y =      2.00000000 z =      2.00000000
+      25 x =      7.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+      26 x =     10.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      27 x =      8.00000000 y =      1.00000000 z =      2.00000000
+      28 x =      8.00000000 y =      2.00000000 z =      1.00000000
+      29 x =     10.00000000 y =      1.00000000 z =      3.00000000
+      30 x =      7.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+      31 x =      9.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      32 x =      7.00000000 y =      1.00000000 z =      0.00000000
+      33 x =      9.00000000 y =      1.00000000 z =      3.00000000
+      34 x =      7.00000000 y =      1.00000000 z =      1.00000000
+      35 x =      8.00000000 y =      2.00000000 z =      2.00000000
+      36 x =      7.00000000 y =      2.00000000 z =      0.00000000
+      37 x =     10.00000000 y =      2.00000000 z =      3.00000000
+      38 x =      7.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      39 x =      8.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      40 x =      9.00000000 y =      2.00000000 z =      3.00000000
+      41 x =      8.00000000 y =      1.00000000 z =      3.00000000
+      42 x =      7.00000000 y =      2.00000000 z =      1.00000000
+      43 x =      7.00000000 y =      1.00000000 z =      2.00000000
+      44 x =     10.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+      45 x =      6.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+      46 x =      6.50000000 y =      2.00100000 z =      0.50000000
+      47 x =      8.00000000 y =      2.00000000 z =      3.00000000
+      48 x =     10.00000000 y =      1.00000000 z =      4.00000000
+      49 x =      9.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+      50 x =      6.00000000 y =      1.00000000 z =      0.00000000
+      51 x =      6.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+      52 x =      7.00000000 y =      2.00000000 z =      2.00000000
+      53 x =      9.00000000 y =      1.00000000 z =      4.00000000
+      54 x =      7.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      55 x =      6.00000000 y =      1.00000000 z =      1.00000000
+      56 x =      7.00000000 y =      1.00000000 z =      3.00000000
+      57 x =     10.00000000 y =      2.00000000 z =      4.00000000
+      58 x =      6.00000000 y =      2.00000000 z =      0.00000000
+      59 x =      8.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+      60 x =      6.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      61 x =      6.50000000 y =      2.00100000 z =      2.00000000
+      62 x =      6.00000000 y =      2.00000000 z =      1.00000000
+      63 x =      8.00000000 y =      1.00000000 z =      4.00000000
+      64 x =      9.00000000 y =      2.00000000 z =      4.00000000
+      65 x =      6.00000000 y =      1.00000000 z =      2.00000000
+      66 x =      6.50000000 y =      3.00050000 z =      0.50000000 constraint = Move  
+      67 x =      7.00000000 y =      2.00000000 z =      3.00000000
+      68 x =      6.00000000 y =      2.00000000 z =      2.00000000
+      69 x =      8.00000000 y =      2.00000000 z =      4.00000000
+      70 x =      5.50000000 y =      2.00100000 z =      0.50000000 constraint = Move  
+      71 x =      5.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+      72 x =      7.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+      73 x =      6.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      74 x =      6.50000000 y =      3.00050000 z =      2.00000000 constraint = Move  
+      75 x =      5.00000000 y =      1.00000000 z =      0.00000000
+      76 x =      5.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+      77 x =      6.00000000 y =      1.00000000 z =      3.00000000
+      78 x =      7.00000000 y =      1.00000000 z =      4.00000000
+      79 x =      5.00000000 y =      1.00000000 z =      1.00000000
+      80 x =      5.50000000 y =      2.00100000 z =      2.00000000 constraint = Move
+      81 x =      6.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+      82 x =      6.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+      83 x =      6.00000000 y =      2.00000000 z =      3.00000000
+      84 x =      5.00000000 y =      2.00000000 z =      0.00000000
+      85 x =      7.00000000 y =      2.00000000 z =      4.00000000
+      86 x =      5.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+      87 x =      5.50000000 y =      3.00050000 z =      0.50000000 constraint = Move
+      88 x =      5.00000000 y =      2.00000000 z =      1.00000000
+      89 x =      5.00000000 y =      1.00000000 z =      2.00000000
+      90 x =      6.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+      91 x =      6.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+      92 x =      5.00000000 y =      2.00000000 z =      2.00000000
+      93 x =      6.00000000 y =      1.00000000 z =      4.00000000
+      94 x =      5.50000000 y =      3.00050000 z =      2.00000000 constraint = Move
+      95 x =      6.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+      96 x =      5.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+      97 x =      4.50000000 y =      2.00100000 z =      0.50000000 constraint = Move
+      98 x =      5.00000000 y =      1.00000000 z =      3.00000000
+      99 x =      4.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+     100 x =      6.00000000 y =      2.00000000 z =      4.00000000
+     101 x =      5.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+     102 x =      5.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+     103 x =      4.00000000 y =      1.00000000 z =      0.00000000
+     104 x =      4.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+     105 x =      5.00000000 y =      2.00000000 z =      3.00000000
+     106 x =      4.00000000 y =      1.00000000 z =      1.00000000
+     107 x =      4.50000000 y =      2.00100000 z =      2.00000000 constraint = Move
+     108 x =      4.50000000 y =      3.00050000 z =      0.50000000 constraint = Move
+     109 x =      4.00000000 y =      2.00000000 z =      0.00000000
+     110 x =      4.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+     111 x =      5.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+     112 x =      6.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     113 x =      5.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     114 x =      4.00000000 y =      2.00000000 z =      1.00000000
+     115 x =      4.00000000 y =      1.00000000 z =      2.00000000
+     116 x =      5.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+     117 x =      5.00000000 y =      1.00000000 z =      4.00000000
+     118 x =      4.50000000 y =      3.00050000 z =      2.00000000 constraint = Move
+     119 x =      4.00000000 y =      2.00000000 z =      2.00000000
+     120 x =      5.00000000 y =      2.00000000 z =      4.00000000
+     121 x =      4.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+     122 x =      4.00000000 y =      1.00000000 z =      3.00000000
+     123 x =      4.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+     124 x =      4.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+     125 x =      3.50000000 y =      2.00100000 z =      0.50000000 constraint = Move
+     126 x =      5.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     127 x =      3.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+     128 x =      4.00000000 y =      2.00000000 z =      3.00000000
+     129 x =      3.00000000 y =      1.00000000 z =      0.00000000
+     130 x =      3.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+     131 x =      4.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+     132 x =      3.50000000 y =      2.00100000 z =      2.00000000 constraint = Move
+     133 x =      3.00000000 y =      1.00000000 z =      1.00000000
+     134 x =      4.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+     135 x =      3.50000000 y =      3.00050000 z =      0.50000000 constraint = Move
+     136 x =      4.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     137 x =      4.00000000 y =      1.00000000 z =      4.00000000
+     138 x =      3.00000000 y =      2.00000000 z =      0.00000000
+     139 x =      3.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+     140 x =      3.00000000 y =      2.00000000 z =      1.00000000
+     141 x =      3.00000000 y =      1.00000000 z =      2.00000000
+     142 x =      3.50000000 y =      3.00050000 z =      2.00000000 constraint = Move
+     143 x =      4.00000000 y =      2.00000000 z =      4.00000000
+     144 x =      3.00000000 y =      2.00000000 z =      2.00000000
+     145 x =      3.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+     146 x =      3.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+     147 x =      4.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     148 x =      3.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+     149 x =      3.00000000 y =      1.00000000 z =      3.00000000
+     150 x =      2.50000000 y =      2.00100000 z =      0.50000000 constraint = Move
+     151 x =      3.00000000 y =      2.00000000 z =      3.00000000
+     152 x =      3.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+     153 x =      3.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+     154 x =      2.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+     155 x =      2.50000000 y =      2.00100000 z =      2.00000000 constraint = Move
+     156 x =      3.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     157 x =      2.00000000 y =      1.00000000 z =      0.00000000
+     158 x =      2.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+     159 x =      2.50000000 y =      3.00050000 z =      0.50000000 constraint = Move
+     160 x =      3.00000000 y =      1.00000000 z =      4.00000000
+     161 x =      2.00000000 y =      1.00000000 z =      1.00000000
+     162 x =      2.00000000 y =      2.00000000 z =      0.00000000
+     163 x =      2.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+     164 x =      3.00000000 y =      2.00000000 z =      4.00000000
+     165 x =      2.00000000 y =      2.00000000 z =      1.00000000
+     166 x =      2.00000000 y =      1.00000000 z =      2.00000000
+     167 x =      2.50000000 y =      3.00050000 z =      2.00000000 constraint = Move
+     168 x =      3.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     169 x =      2.00000000 y =      2.00000000 z =      2.00000000
+     170 x =      2.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+     171 x =      2.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+     172 x =      2.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+     173 x =      2.00000000 y =      1.00000000 z =      3.00000000
+     174 x =      2.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+     175 x =      1.50000000 y =      2.00100000 z =      0.50000000 constraint = Move
+     176 x =      2.00000000 y =      2.00000000 z =      3.00000000
+     177 x =      2.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+     178 x =      2.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     179 x =      1.50000000 y =      2.00100000 z =      2.00000000 constraint = Move
+     180 x =      2.00000000 y =      1.00000000 z =      4.00000000
+     181 x =      1.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+     182 x =      1.50000000 y =      3.00050000 z =      0.50000000 constraint = Move
+     183 x =      1.00000000 y =      1.00000000 z =      0.00000000
+     184 x =      1.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+     185 x =      1.00000000 y =      1.00000000 z =      1.00000000
+     186 x =      2.00000000 y =      2.00000000 z =      4.00000000
+     187 x =      2.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     188 x =      1.00000000 y =      2.00000000 z =      0.00000000
+     189 x =      1.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+     190 x =      1.50000000 y =      3.00050000 z =      2.00000000 constraint = Move
+     191 x =      1.00000000 y =      2.00000000 z =      1.00000000
+     192 x =      1.00000000 y =      1.00000000 z =      2.00000000
+     193 x =      1.50000000 y =      4.00000000 z =      0.50000000 constraint = Constr_22
+     194 x =      1.50000000 y =      2.00100000 z =      3.50000000 constraint = Move
+     195 x =      1.00000000 y =      2.00000000 z =      2.00000000
+     196 x =      1.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+     197 x =      1.00000000 y =      1.00000000 z =      3.00000000
+     198 x =      1.50000000 y =      4.00000000 z =      2.00000000 constraint = Constr_22
+     199 x =      1.50000000 y =      3.00050000 z =      3.50000000 constraint = Move
+     200 x =      1.00000000 y =      2.00000000 z =      3.00000000
+     201 x =      1.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     202 x =      1.00000000 y =      1.00000000 z =      4.00000000
+     203 x =      0.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_21
+     204 x =      1.50000000 y =      4.00000000 z =      3.50000000 constraint = Constr_22
+     205 x =      0.00000000 y =      1.00000000 z =      0.00000000
+     206 x =      1.00000000 y =      2.00000000 z =      4.00000000
+     207 x =      0.00000000 y =      0.00000000 z =      1.00000000 constraint = Constr_21
+     208 x =      0.00000000 y =      1.00000000 z =      1.00000000
+     209 x =      0.00000000 y =      2.00000000 z =      0.00000000
+     210 x =      0.00000000 y =      0.00000000 z =      2.00000000 constraint = Constr_21
+     211 x =      0.00000000 y =      2.00000000 z =      1.00000000
+     212 x =      0.00000000 y =      1.00000000 z =      2.00000000
+     213 x =      0.00000000 y =      2.00000000 z =      2.00000000
+     214 x =      0.00000000 y =      0.00000000 z =      3.00000000 constraint = Constr_21
+     215 x =      0.00000000 y =      1.00000000 z =      3.00000000
+     216 x =      0.00000000 y =      2.00000000 z =      3.00000000
+     217 x =      0.00000000 y =      0.00000000 z =      4.00000000 constraint = Constr_21
+     218 x =      0.00000000 y =      1.00000000 z =      4.00000000
+     219 x =      0.00000000 y =      2.00000000 z =      4.00000000
+
+     220 x =      4.0        y =      3.0        z =      2.0        constraint = Move  load = push
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL TRIANGULAR ELEMENT CONFIGURATION
+
+ELEMENTS OF TYPE contact_triangle
+     101 nodes = [70,80,46] t =  0.002 friction = 0.2 factor = 10
+     102 nodes = [80,61,46] t =  0.002 friction = 0.2 factor = 10
+     103 nodes = [97,107,70] t =  0.002 friction = 0.2 factor = 10
+     104 nodes = [107,80,70] t =  0.002 friction = 0.2 factor = 10
+     105 nodes = [125,132,97] t =  0.002 friction = 0.2 factor = 10
+     106 nodes = [132,107,97] t =  0.002 friction = 0.2 factor = 10
+     107 nodes = [150,155,125] t =  0.002 friction = 0.2 factor = 10
+     108 nodes = [155,132,125] t =  0.002 friction = 0.2 factor = 10
+     109 nodes = [175,179,150] t =  0.002 friction = 0.2 factor = 10
+     110 nodes = [179,155,150] t =  0.002 friction = 0.2 factor = 10
+     111 nodes = [80,102,61] t =  0.002 friction = 0.2 factor = 10
+     112 nodes = [102,82,61] t =  0.002 friction = 0.2 factor = 10
+     113 nodes = [107,124,80] t =  0.002 friction = 0.2 factor = 10
+     114 nodes = [124,102,80] t =  0.002 friction = 0.2 factor = 10
+     115 nodes = [132,148,107] t =  0.002 friction = 0.2 factor = 10
+     116 nodes = [148,124,107] t =  0.002 friction = 0.2 factor = 10
+     117 nodes = [155,171,132] t =  0.002 friction = 0.2 factor = 10
+     118 nodes = [171,148,132] t =  0.002 friction = 0.2 factor = 10
+     119 nodes = [179,194,155] t =  0.002 friction = 0.2 factor = 10
+     120 nodes = [194,171,155] t =  0.002 friction = 0.2 factor = 10
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL QUADRILATERAL ELEMENT CONFIGURATION
+
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL HEXAHEDRONAL ELEMENT CONFIGURATION
+
+ELEMENTS OF TYPE solid_iso_6
+       1 nodes = [185,191,188,183,208,211,209,205] nip = 8 material = mat_1
+       2 nodes = [184,185,183,181,207,208,205,203] nip = 8 material = mat_1
+       3 nodes = [192,195,191,185,212,213,211,208] nip = 8 material = mat_1
+       4 nodes = [189,192,185,184,210,212,208,207] nip = 8 material = mat_1
+       5 nodes = [197,200,195,192,215,216,213,212] nip = 8 material = mat_1
+       6 nodes = [196,197,192,189,214,215,212,210] nip = 8 material = mat_1
+       7 nodes = [202,206,200,197,218,219,216,215] nip = 8 material = mat_1
+       8 nodes = [201,202,197,196,217,218,215,214] nip = 8 material = mat_1
+       9 nodes = [161,165,162,157,185,191,188,183] nip = 8 material = mat_1
+      10 nodes = [158,161,157,154,184,185,183,181] nip = 8 material = mat_1
+      11 nodes = [166,169,165,161,192,195,191,185] nip = 8 material = mat_1
+      12 nodes = [163,166,161,158,189,192,185,184] nip = 8 material = mat_1
+      13 nodes = [173,176,169,166,197,200,195,192] nip = 8 material = mat_1
+      14 nodes = [172,173,166,163,196,197,192,189] nip = 8 material = mat_1
+      15 nodes = [180,186,176,173,202,206,200,197] nip = 8 material = mat_1
+      16 nodes = [178,180,173,172,201,202,197,196] nip = 8 material = mat_1
+      17 nodes = [133,140,138,129,161,165,162,157] nip = 8 material = mat_1
+      18 nodes = [130,133,129,127,158,161,157,154] nip = 8 material = mat_1
+      19 nodes = [141,144,140,133,166,169,165,161] nip = 8 material = mat_1
+      20 nodes = [139,141,133,130,163,166,161,158] nip = 8 material = mat_1
+      21 nodes = [149,151,144,141,173,176,169,166] nip = 8 material = mat_1
+      22 nodes = [145,149,141,139,172,173,166,163] nip = 8 material = mat_1
+      23 nodes = [160,164,151,149,180,186,176,173] nip = 8 material = mat_1
+      24 nodes = [156,160,149,145,178,180,173,172] nip = 8 material = mat_1
+      25 nodes = [106,114,109,103,133,140,138,129] nip = 8 material = mat_1
+      26 nodes = [104,106,103,99,130,133,129,127] nip = 8 material = mat_1
+      27 nodes = [115,119,114,106,141,144,140,133] nip = 8 material = mat_1
+      28 nodes = [110,115,106,104,139,141,133,130] nip = 8 material = mat_1
+      29 nodes = [122,128,119,115,149,151,144,141] nip = 8 material = mat_1
+      30 nodes = [121,122,115,110,145,149,141,139] nip = 8 material = mat_1
+      31 nodes = [137,143,128,122,160,164,151,149] nip = 8 material = mat_1
+      32 nodes = [136,137,122,121,156,160,149,145] nip = 8 material = mat_1
+      33 nodes = [79,88,84,75,106,114,109,103] nip = 8 material = mat_1
+      34 nodes = [76,79,75,71,104,106,103,99] nip = 8 material = mat_1
+      35 nodes = [89,92,88,79,115,119,114,106] nip = 8 material = mat_1
+      36 nodes = [86,89,79,76,110,115,106,104] nip = 8 material = mat_1
+      37 nodes = [98,105,92,89,122,128,119,115] nip = 8 material = mat_1
+      38 nodes = [96,98,89,86,121,122,115,110] nip = 8 material = mat_1
+      39 nodes = [117,120,105,98,137,143,128,122] nip = 8 material = mat_1
+      40 nodes = [113,117,98,96,136,137,122,121] nip = 8 material = mat_1
+      41 nodes = [55,62,58,50,79,88,84,75] nip = 8 material = mat_1
+      42 nodes = [51,55,50,45,76,79,75,71] nip = 8 material = mat_1
+      43 nodes = [65,68,62,55,89,92,88,79] nip = 8 material = mat_1
+      44 nodes = [60,65,55,51,86,89,79,76] nip = 8 material = mat_1
+      45 nodes = [77,83,68,65,98,105,92,89] nip = 8 material = mat_1
+      46 nodes = [73,77,65,60,96,98,89,86] nip = 8 material = mat_1
+      47 nodes = [93,100,83,77,117,120,105,98] nip = 8 material = mat_1
+      48 nodes = [90,93,77,73,113,117,98,96] nip = 8 material = mat_1
+      49 nodes = [34,42,36,32,55,62,58,50] nip = 8 material = mat_1
+      50 nodes = [30,34,32,25,51,55,50,45] nip = 8 material = mat_1
+      51 nodes = [43,52,42,34,65,68,62,55] nip = 8 material = mat_1
+      52 nodes = [38,43,34,30,60,65,55,51] nip = 8 material = mat_1
+      53 nodes = [56,67,52,43,77,83,68,65] nip = 8 material = mat_1
+      54 nodes = [54,56,43,38,73,77,65,60] nip = 8 material = mat_1
+      55 nodes = [78,85,67,56,93,100,83,77] nip = 8 material = mat_1
+      56 nodes = [72,78,56,54,90,93,77,73] nip = 8 material = mat_1
+      57 nodes = [19,28,21,14,34,42,36,32] nip = 8 material = mat_1
+      58 nodes = [16,19,14,10,30,34,32,25] nip = 8 material = mat_1
+      59 nodes = [27,35,28,19,43,52,42,34] nip = 8 material = mat_1
+      60 nodes = [23,27,19,16,38,43,34,30] nip = 8 material = mat_1
+      61 nodes = [41,47,35,27,56,67,52,43] nip = 8 material = mat_1
+      62 nodes = [39,41,27,23,54,56,43,38] nip = 8 material = mat_1
+      63 nodes = [63,69,47,41,78,85,67,56] nip = 8 material = mat_1
+      64 nodes = [59,63,41,39,72,78,56,54] nip = 8 material = mat_1
+      65 nodes = [8,18,12,7,19,28,21,14] nip = 8 material = mat_1
+      66 nodes = [6,8,7,3,16,19,14,10] nip = 8 material = mat_1
+      67 nodes = [20,24,18,8,27,35,28,19] nip = 8 material = mat_1
+      68 nodes = [17,20,8,6,23,27,19,16] nip = 8 material = mat_1
+      69 nodes = [33,40,24,20,41,47,35,27] nip = 8 material = mat_1
+      70 nodes = [31,33,20,17,39,41,27,23] nip = 8 material = mat_1
+      71 nodes = [53,64,40,33,63,69,47,41] nip = 8 material = mat_1
+      72 nodes = [49,53,33,31,59,63,41,39] nip = 8 material = mat_1
+      73 nodes = [5,13,9,2,8,18,12,7] nip = 8 material = mat_1
+      74 nodes = [4,5,2,1,6,8,7,3] nip = 8 material = mat_1
+      75 nodes = [15,22,13,5,20,24,18,8] nip = 8 material = mat_1
+      76 nodes = [11,15,5,4,17,20,8,6] nip = 8 material = mat_1
+      77 nodes = [29,37,22,15,33,40,24,20] nip = 8 material = mat_1
+      78 nodes = [26,29,15,11,31,33,20,17] nip = 8 material = mat_1
+      79 nodes = [48,57,37,29,53,64,40,33] nip = 8 material = mat_1
+      80 nodes = [44,48,29,26,49,53,33,31] nip = 8 material = mat_1
+      81 nodes = [94,74,66,87,111,91,81,101] nip = 8 material = mat_1
+      82 nodes = [118,94,87,108,131,111,101,123] nip = 8 material = mat_1
+      83 nodes = [142,118,108,135,152,131,123,146] nip = 8 material = mat_1
+      84 nodes = [167,142,135,159,174,152,146,170] nip = 8 material = mat_1
+      85 nodes = [190,167,159,182,198,174,170,193] nip = 8 material = mat_1
+      86 nodes = [116,95,74,94,126,112,91,111] nip = 8 material = mat_1
+      87 nodes = [134,116,94,118,147,126,111,131] nip = 8 material = mat_1
+      88 nodes = [153,134,118,142,168,147,131,152] nip = 8 material = mat_1
+      89 nodes = [177,153,142,167,187,168,152,174] nip = 8 material = mat_1
+      90 nodes = [199,177,167,190,204,187,174,198] nip = 8 material = mat_1
+      91 nodes = [80,61,46,70,94,74,66,87] nip = 8 material = mat_1
+      92 nodes = [107,80,70,97,118,94,87,108] nip = 8 material = mat_1
+      93 nodes = [132,107,97,125,142,118,108,135] nip = 8 material = mat_1
+      94 nodes = [155,132,125,150,167,142,135,159] nip = 8 material = mat_1
+      95 nodes = [179,155,150,175,190,167,159,182] nip = 8 material = mat_1
+      96 nodes = [102,82,61,80,116,95,74,94] nip = 8 material = mat_1
+      97 nodes = [124,102,80,107,134,116,94,118] nip = 8 material = mat_1
+      98 nodes = [148,124,107,132,153,134,118,142] nip = 8 material = mat_1
+      99 nodes = [171,148,132,155,177,153,142,167] nip = 8 material = mat_1
+     100 nodes = [194,171,155,179,199,177,167,190] nip = 8 material = mat_1
+
+
+CONSTRAINTS OF TYPE boundary_condition
+Constr_21 ax = 0 ay = 0 az = 0 vx = 0 vy = 0 vz = 0 arx = 0 ary = 0 arz = 0 vrx = 0 vry = 0 vrz = 0
+Move      ax = [0,0,0.0000001,off,0.2,off] vx = [0,10,0.0000001,off,0.2,off]
+
+CONSTRAINTS OF TYPE Rigid_Body
+Constr_22 master_node = 220
+
+LOADS
+push fx = 0.19612 fy = -0.98058
+
+TRACKERS OF TYPE NODEDISPLACEMENT
+1 node = [80] direction = x filename = Ver_06.trk target = [0.1, 0.001, 1.016, 0.0001]
+
+
+#-------------------------------------------------------------------
+#    END OF FILE
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------

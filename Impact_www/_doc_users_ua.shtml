@@ -1,0 +1,541 @@
+<!-- =====================================start _doc_users_ua.shtml======================================= -->
+
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+
+<h2>Usage of Impact</h2>
+
+<p>Impact can be run from two different modes: GUI and Command modes.
+There is a complete GUI based environment available where a solution
+can be run from model to analysis. It is also possible to run the
+Impact solver from command line.</p>
+<ul>
+  <li><a href="#gui">GUI Environment</a> </li>
+  <li><a href="#command">Impact Commands</a> </li>
+</ul>
+<!-- <center><img src="gui.gif"></center>
+<a name="gui"></a> -->
+
+<a name="gui"></a> <h3>GUI Modules</h3>
+
+<p>
+The GUI is divided into separate modules which are described as follows
+</p>
+<ul>
+  <li><a href="#pre">Pre Processor</a> </li>
+  <li><a href="#proc">Processor</a> </li>
+  <li><a href="#post">Post Processor</a> </li>
+  <li><a href="#gr">Graph</a> </li>
+  <li><a href="#hlp">Help</a> </li>
+</ul>
+
+<p> It is simple to open Impact GUI Environment. 
+If you are using windows 32 bits, for example, just double click 
+		    	<code>ImpactGUI_OGL_windows_i586.bat</code> </p>
+<p>If you are using Linux 64 bits, for example, you can run the shell
+		     script using the terminal command from Impact folder:<br /><br />
+		     <code>bash ImpactGUI_OGL_linux_amd64.sh</code><br />
+		     or<br>
+		     <code>sh ImpactGUI_OGL_linux_amd64.sh</code><br />
+</p>
+
+
+
+<p style="margin-top:30px"></p>
+<p><a name="pre"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Pre Processor</b></p>
+
+<p >Pre Processor is the starting point for the user. It is used for:</p>
+<ul id="Navigation">
+  <li>Creating geometry through the use of points, curves, surfaces and volumes</li>
+  <li>Creation of finite element models by meshing of curves, surfaces and volumes</li>
+  <li>Setting of loads and boundary conditions</li>
+  <li>Setting of solver parameter values such as time step etc.</li>
+  <li>Exporting of .in files which is the indata file format for the solver </li>
+</ul>
+<p>Pre Processor operates on a full 3D view which can be zoomed and
+rotated using the third mouse button either alone or in combination
+with CTRL and/or SHIFT key.</p>
+<p>On the left hand side is a tree structure of the elements in the model.
+Elements can be selected here or in the 3D view directly.</p>
+<p>By double clicking on a element, the properties of that element will be
+displayed and can be updated in the lower left corner.</p>
+
+<p>There are also a range of commands:</p>
+<ul id="NavigationNoBullet">
+	 <li><img src="images/new.gif"> <b>New</b> - Starts a new model</li>
+  <li><img src="images/open.gif"> <b>Open</b> - Opens a saved model (.impact) or imports .nas (nastran), .stl or .in files</li>
+  <li><img src="images/save.gif"> <b>Save</b> - Saves the model (.impact
+for complete model or .in for solver model)</li>
+  <li><img src="images/zoomout.gif"> <b>Zoom out</b> - zooms out. This
+      can also be done by pressing mouse button and CTRL and move the mouse up</li>
+  <li><img src="images/zoomin.gif"> <b>Zoom in</b> - zooms in. This can
+      also be done by pressing moue button and CTRL and move the mouse down</li>
+  <li><img src="images/view_top.gif"> <b>Top View</b> </li>
+  <li><img src="images/view_bottom.gif"> <b>Bottom View</b> </li>
+  <li><img src="images/view_left.gif"> <b>Left View</b> </li>
+  <li><img src="images/view_right.gif"> <b>Right View</b> </li>
+  <li><img src="images/view_front.gif"> <b>Front View</b> </li>
+  <li><img src="images/view_back.gif"> <b>Back View</b> </li>
+  <li><img src="images/view_sw.gif"> <b>SW Isometric View</b> </li>
+  <li><img src="images/view_se.gif"> <b>SE Isometric View</b> </li>
+  <li><img src="images/view_ne.gif"> <b>NE Isometric View</b></li>
+  <li><img src="images/view_nw.gif"> <b>NW Isometric View</b></li>
+  <li><img src="images/config.gif"> <b>Properties</b> - This button
+      allows the user to select run parameters for the .in solution file as
+      well as what should be visible on the screen. Examples include loads,
+					nodes, elements etc. To speed up the screen, deselect the ones you
+					don't need to see.</li>
+  <li><img src="images/material.gif"> <b>Material</b> - Defines the
+					different material properties that are selectable</li>
+  <li><img src="images/constraints.gif"> <b>Constraints</b> - Defines
+					the different constraints that are selectable</li>
+  <li><img src="images/loads.gif"> <b>Loads</b> - Defines the different
+					loads that are selectable</li>
+</ul>
+<p>On the top left side is a selection menu of the <b>Graphics mode</b>.
+Several options are available such as
+<b>Surface</b> which displays a shaded model. <b>Wireframe</b> is
+faster since no shading occurs.
+<b>Solid</b> is used for completely shaded view.</p>
+
+<h4>Modelling principles</h4>
+<p>The preprocessor works with two types of graphical objects: Geometry
+and Mesh. The geometry is CAD geometry but with build in mesh
+attributes. A curve for example can have a mesh attached to it. It can
+also have a material and a thickness which is automatically transferred
+to the mesh.</p> 
+<p>To generate a model, the user should start with points and then create
+curves based on these points. Finally, surfaces should be created based
+on the curves. If a point is later moved, the curve based on this
+points will change and finally the surface when the users presses the
+rebuild model button.</p>
+<p>By double clicking on a geometry, the attributes of that geometry will
+appear on the edit field in the lower left corner. The user can change
+any attribute and press update to modify the model. The mesh of a
+surface is automatically based on the mesh of the curves which created
+the surface. If the mesh is modified on a curve, the mesh on the
+surface is also changed.</p>
+<p>To create geometry there is a <b>Draw</b> tab available containing the
+following commands:</p>
+
+<span style="text-decoration: underline;">Curve defining commands</span>
+<ul id="NavigationNoBullet">
+  <li><img alt="point" src="images/node.png"
+ style="width: 16px; height: 16px;"> <b>Point</b> - Creates a point at
+a given location and optionally a complementing direction vector. </li>
+  <li><img src="images/nurbcurve.gif"> <b>Nurb Curve</b> - This creates
+any curve from a line to a complex 3 degree curve with any number
+control points.</li>
+  <li><img src="images/arc.png"> <b>Arc</b> - Creates an arc based on a
+starting point, center point and a point to define the plane. Any angle
+can be specificed including a negative. This makes the arc move in
+opposite direction.</li>
+</ul>
+
+<span style="text-decoration: underline;">Surface defining commands</span>
+<ul id="NavigationNoBullet">
+  <li><img src="images/surf_dir.gif"> <b>Tabulated surface</b> - This
+surface is created by dragging a profile curve along a spine curve. The
+resulting surface will contain a rectangular mesh with the number of
+elements per side defined through the profile and spine curve meshes.</li>
+  <li><img src="images/surf_rev.gif"> <b>Surface of revolving</b> - Any
+curve can be rotated about an axis defined by two points. The angle of
+the rotation is defined in degrees (0-360). The mesh of the surface
+will be defined by the mesh on the rotated curve and the specified mesh
+size.</li>
+  <li><img src="images/surf_rule.gif"> <b>Ruled surface between curves</b>
+-
+This creates a ruled surface between two edge curves of any shape. The
+mesh size will set the size on the undefined edges. A switch is
+available to revese the direction of curve 2 in the cases when the
+surface becomes twisted.</li>
+  <li><img src="images/surf_nurb.gif"> <b>Nurb Surface</b> - Will create
+a surface between four curves. The curves must be connected to form a
+closed loop. One curve can have zero length in order to define a
+3-sided surface.</li>
+</ul>
+<span style="text-decoration: underline;">Point and Curve generating
+commands</span>
+<ul id="NavigationNoBullet">
+   <li><img alt="border" src="images/border.png"
+ style="width: 16px; height: 16px;"> <b>Boundary generation</b>
+Extracts
+border points of a curve or boundary curves of a surface.</li>
+   <li><img src="images/intersect.png"> <b>Intersection</b> - Creates an
+object at the intersection of two objects. For example, a point is
+created at the intersection of two curves or at the intersection of a
+curve through a surface. A curve is created as an intersection of
+two surfaces.</li>
+   <li><img src="images/project.png"> <b>Project</b> -
+Projects an object onto another object. A point can be projected onto a
+curve or a surface. A curve can be projected onto a surface. In all
+cases, a vector can be used to project in a certain direction. If no
+vector is available, the projection will be orthogonal to the curve or
+surface.</li>
+</ul>
+<span style="text-decoration: underline;">Finite element direct
+generating
+commands</span>
+<ul id="NavigationNoBullet">
+  <li><img src="images/node.gif"> <b>Node</b> - Defines a node at a
+given coordinate.</li>
+  <li><img src="images/beam.gif"> <b>Elements with 2 nodes</b> - Defines
+a rod, spring or beam element between two nodes. </li>
+  <li><img src="images/triangle.gif"> <b>Elements with 3 nodes</b> -
+Defines a Contact_Triangle or Shell_CO_3 element between three nodes.</li>
+  <li><img src="images/quad.gif"> <b>Elements with 4 nodes</b> - Defines
+a quad element between four nodes</li>
+  <li><img src="images/solid_iso_6.gif"> <b>Elements with 8 nodes</b> -
+Defines a solid element between eight nodes</li>
+</ul>
+<p>A second tab, <b>Modify</b>, contains all the commands for modifying
+one or several objects.</p>
+<ul id="NavigationNoBullet">
+  <li><img src="images/erase.gif"> <b>Erase</b> - Deletes an object. Can
+also be done by pressing the delete key on the keyboard.</li>
+  <li><img src="images/move.gif"> <b>Move</b> - Will move selected
+objects a given distance. If only a point is to be moved it is easier
+to double click on the point instead.</li>
+  <li><img src="images/rotate.gif"> <b>Rotate</b> - Will rotate selected
+objects around a point and axis.</li>
+  <li><img src="images/scale.gif"> <b>Scale</b> - Scales selected
+objects from a point with a given factor.</li>
+  <li><img src="images/transform.gif"> <b>Transform 4X4</b> - Transform
+geometrically with a free 4x4 matrix for rotation and translation.</li>
+  <li><img src="images/material.gif"> <b>Materil for...</b> - Will set
+the material for selected objects. Can also be done by double clicking
+on a surface or curve.</li>
+  <li><img src="images/constraints.gif"> <b>Constraints for...</b> -
+Will set the constraints for selected nodes.</li>
+  <li><img src="images/loads.gif"> <b>Loads for...</b> - Will set the
+load condition for selected nodes or elements. </li>
+  <li><img src="images/grid.gif"> <b>Grid</b> - Will redefine the
+support grid position and orientation</li>
+</ul>
+
+<p style="margin-top:30px"><a name="proc"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Processor</b></p>
+
+<!-- <center>
+<h3><font sise="+2">Processor</font></h3>
+</center> -->
+<p>The processor is where the calculation is made. It
+consists of a prompt window where the solver printout is shown, an
+editor where the indata file can be modified and a model viewer where
+the model described by the .in file can be seen and rotated.</p>
+
+<p>The starting point is a .in file which has been saved from the
+preprocessor (or one written by hand). This must be loaded into
+the processor by the open model button. The solution process is then
+started by the start/stop button.</p>
+
+<p>The results will automatically be written to a .flavia.res file which
+can be loaded into the postprocessor.</p>
+<ul id="NavigationNoBullet">
+  <li><img src="images/open.gif"> <b>Open model *.in</b> - Opens a .in
+file into the editor and prepares for solving.</li>
+  <li><img src="images/save.gif"> <b>Save</b> - Saves the text in the
+editor. </li>
+  <li><img src="images/run.gif">,<img src="images/stop.gif"> <b>Start
+/ Stop</b> - Starts or stops a solution. The text in the editor is
+automatically saved before the solution starts!</li>
+  <li><img src="images/find.gif"> <b>Find / Replace</b> - Finds and / or
+replaces the text in the editor. The user can also use CTRL+C, CTRL + X
+or CTRL + V</li>
+  <li><img src="images/solid.gif"> <b>Reload view</b> - Will generate a
+three dimensional view of the model</li>
+  <li><b>Number of CPU:s</b> - Selects on how many CPU:s the solution
+should be distributed. If the user has a multi core CPU, the solution
+will be faster by setting this higher.</li>
+</ul>
+
+<p>The view of the three dimensional model can be adjusted with these
+commands:</p>
+<ul id="NavigationNoBullet">
+  <li><img src="images/zoomout.gif"> <b>Zoom out</b> </li>
+  <li><img src="images/zoomin.gif"> <b>Zoom in</b> </li>
+  <li><img src="images/view_top.gif"> <b>Top View</b> </li>
+  <li><img src="images/view_bottom.gif"> <b>Bottom View</b> </li>
+  <li><img src="images/view_left.gif"> <b>Left View</b> </li>
+  <li><img src="images/view_right.gif"> <b>Right View</b> </li>
+  <li><img src="images/view_front.gif"> <b>Front View</b></li>
+  <li><img src="images/view_back.gif"> <b>Back View</b></li>
+  <li><img src="images/view_sw.gif"> <b>SW Isometric View</b></li>
+  <li><img src="images/view_se.gif"> <b>SE Isometric View</b></li>
+  <li><img src="images/view_ne.gif"> <b>NE Isometric View</b></li>
+  <li><img src="images/view_nw.gif"> <b>NW Isometric View</b></li>
+  <li><img src="images/config.gif"> <b>Configure</b> - This configures
+what should be shown in the viewer.</li>
+</ul>
+
+<p style="margin-top:30px"><a name="post"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Post Processor</b></p>
+<!-- <a name="post"></a>
+<center>
+<h3><font sise="+2">Post Processor</font></h3>
+</center> -->
+<p>Post Processor is used to view the results from the solver.
+These are saved in a file ending with .flavia.res and consists of
+multiple time steps which can be selected on the left hand side of the
+viewer. This is also where you can decide what should be viewed.</p>
+<ul id="NavigationNoBullet">
+  <li><img src="images/open.gif"> <b>Open *.res</b> - loads the result
+file into the postprocessor for viewing</li>
+  <li><img src="images/save.gif"> <b>Save image</b> - Saves a screen
+dump of the current view as a .PNG file</li>
+  <li><img src="images/saveall.gif"> <b>Save images</b> - Saves all time
+steps as .PNG files</li>
+  <li><img src="images/show.png"> <b>Show/Hide</b> - Select the elements
+to be hidden and press this button. Pressing with no selection will
+shift view to hide mode.</li>
+  <li><img src="images/zoomout.gif"> <b>Zoom out</b> </li>
+  <li><img src="images/zoomin.gif"> <b>Zoom in</b> </li>
+  <li><img src="images/view_top.gif"> <b>Top View</b> </li>
+  <li><img src="images/view_bottom.gif"> <b>Bottom View</b> </li>
+  <li><img src="images/view_left.gif"> <b>Left View</b> </li>
+  <li><img src="images/view_right.gif"> <b>Right View</b> </li>
+  <li><img src="images/view_front.gif"> <b>Front View</b> </li>
+  <li><img src="images/view_back.gif"> <b>Back View</b> </li>
+  <li><img src="images/view_sw.gif"> <b>SW Isometric View</b> </li>
+  <li><img src="images/view_se.gif"> <b>SE Isometric View</b> </li>
+  <li><img src="images/view_ne.gif"> <b>NE Isometric View</b> </li>
+  <li><img src="images/view_nw.gif"> <b>NW Isometric View</b> </li>
+</ul>
+<p>To the left of the view, there is a menu to control what is to be shown</p>
+<br>
+<p><b>Show</b> - This menu contains the following commands:</p>
+<ul id="NavigationNoBullet">
+  <li><b>Mesh</b> - Selects if the mesh is to be shown. </li>
+  <li><b>Deformed</b> - Shows the elements in the deformed state</li>
+  <li><b>Contur fill </b> – Will show the element results as colour fields
+on the mesh</li>
+  <li><b>Gradient</b> - Another way to show element results</li>
+  <li><b>Nodes label</b> - Will show all node numbers</li>
+  <li><b>Elements label</b> - Will show all element numbers</li>
+  <li><b>Gradient Result</b> - Will smooth the element results across
+element boundaries</li>
+</ul>
+<p><b>Result</b> - This is where the type of element results are selected.
+The user can select element stresses or strains of various types.</p>
+<p><b>Time step</b> - Just on click on the time step to be shown. Try
+holding down the mouse button and move up/down for animation.</p>
+
+<p style="margin-top:30px"><a name="gr"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Graph</b></p>
+
+<!-- <a name="gr"></a>
+<center>
+<h3><font sise="+2">Graph</font></h3>
+</center> -->
+
+<p>The grapher is used to view the results from trackers or
+directly from elements as curves.</p>
+<ul id="NavigationNoBullet">
+   <li><img src="images/new.gif"> <b>New</b> - Will create a new curve by
+extracting results directly from the solution. By selecting
+displacements, the node displacements as a function of time is plotted.
+Strains and stresses are extracted from element as a function of time.
+Note that the results must have been loaded into the postprocessor
+module first for this command to work.</li>
+   <li><img src="images/add.gif"> <b>Open</b> - Will create a curve based
+on results written in a tracker file (.trk). For how to create tracker
+files, read the solver command reference.</li>
+   <li><img src="images/del.gif"> <b>Remove</b> - deletes a curve. Select
+the curve in the top left table before pressing this button.</li>
+   <li><img src="images/save.gif"> <b>Save image</b> - Saves a screen
+dump of the current view.</li>
+   <li><img src="images/saveall.gif"> <b>Save All</b> - Will save
+pictures of all curves including data values and construct a .html page
+for explanation.</li>
+</ul>
+
+<p style="margin-top:30px"><a name="hlp"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Help</b></p>
+
+<!-- <a name="hlp"></a>
+<center>
+<h3><font sise="+2">Help</font></h3>
+</center> -->
+
+<p>This is the tab to use for documentation.</p>
+
+<p style="margin-top:30px"><a name="command"></a>
+	<a href="#gui" title="Back to GUI Modules">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Command Mode</b></p>
+	
+<!-- <a name="command"></a><br>
+<br>
+&nbsp;
+<center>
+<h3><font sise="+2">Solving problems with impact:</font></h3>
+</center> -->
+
+<p>The solution process is made in three stages: </p>
+<ol id="Navigation">
+  <li>Creation of a model using a <b>Pre Processor</b> or direct
+writing of the Fembic indata file (<code>filename.in</code>)</li>
+  <li>Running <code>filename.in</code> using the Impact solver</li>
+  <li>Presentation of the results using a <b>Post Processor</b> and
+the result files from the solution</li>
+</ol>
+
+<a name="prepare"></a><b>Preparation of model</b>
+<p>Impact has a build-in Pre Processor to prepare Fembic input file to run in Impact solver.
+Impact supports a range of Pre/Post Processors. To design models, you have
+two additional choices. <b>Gmsh</b>, which is completely free and
+unlimited; <b>GiD</b> which is commercial
+but can be run for free under a limited academic license.</p>
+<p>Should you want to try <b>GiD</b>, make sure you use a
+version later than 6.2 since Impact uses features that are currently being implemented.
+You can download <b>GiD</b> from <a href="http://gid.cimne.upc.es"  target="_BLANK">
+http://gid.cimne.upc.es</a></p>
+<p>This is how you should set up GiD to Impact interface for processing:</p>
+<ol id="Navigation">
+  <li>Install Impact by <a href="intro_install_en.shtml" target="_blank" title="Follow the instalation steps">unziping</a> the latest downloaded zip file.</li>
+  <li>Run the installation file for GiD and install the program.</li>
+  <li>Look in the GiD directory for a subdirectory called <b>problemtypes</b>
+and go there (<code>GiDxx/xx.x.x/problemtypes</code>).</li>
+  <li>Now copy the directory <b>Impact.gid</b> from where you installed
+Impact, make sure all files come with it (you will find this
+directory under the <b>interfaces</b> directory) then paste it there.</li>
+  <li>The directory structure should now be<br />
+<code>GiDxx/xx.x.x/problemtypes/Impact.gid/</code>.<br /> Now Impact interface in GiD is now ready.</li>
+</ol>
+
+<p>Using Impact interface in GiD:</p>
+<ol id="Navigation">
+  <li>If you now start GiD, you should find Impact as an option under
+the <b>Data</b> menu. Activate the Impact interface by selecting Impact 
+as your solver from  from <b>Data</b> &#9658; <b>Problemtype</b> &#9658; <b>Impact</b></li>
+  <li>Fill in the problem datas under <b>Data</b> &#9658; <b>Problem Data</b> &#9658;</li>
+  <li>Create a model and mesh it </li>
+  <li>Set materials on all elements using <b>Data</b> &#9658; <b>Materials</b></li>
+  <li>Set boundary conditions on the nodes using <b>Data</b> &#9658; <b>Conditions</b></li>
+  <li>GiD can now export indata files to Impact via the menu
+<b>File</b> &#9658; <b>Export</b> &#9658; <b>Calculation File</b>. The file extension in <code>.in</code> must be written.</li>
+</ol>
+
+<p>This is how you should set up and use Gmsh for Preprocessing:</p>
+<ol id="Navigation">
+  <li>Download Gmsh from <a href="http://www.geuz.org/gmsh"  target="_BLANK">
+http://www.geuz.org/gmsh</a> and install.</li>
+  <li>If you haven't installed Impact, proceed to do this.</li>
+  <li>Create models in Gmsh and save them in format 1.0 of gmsh mesh
+format.</li>
+  <li>Import the <code>.msh</code> file into the Impact processor editor. It will
+then be translated.</li>
+</ol>
+
+
+<a name="solve"></a><b>Solving of model</b>
+<p>The solution of the problem is initiated from the GUI by loading the
+file into the processor editor and pressing the run button.</p>
+<p>In Linux system you can run the command  <b>sh Impact.sh <i>file</i></b> from the terminal, 
+where <b><i>file</i></b> is the path and name of the indata file (for example, <b>examples/3.in</b>).</p> 
+<p>In Windows system you can run the command  <b>Impact.bat <i>file</i></b> from the command prompt, 
+where <b><i>file</i></b> is the path and name of the indata file.</p> 
+<p>In the case of loading a Fembic file, make sure it ends
+with .in because otherwise Impact will not recognise the format. It is
+also important that you are in the impact directory at the time
+of execution.</p>
+<p>If all goes well, you should now see the indata file being parsed by
+impact and the solution process initiated. Each time results are
+written,
+a notice will be written to the screen and you will see that execution
+is
+in progress. A solution can take considerable time, so be patient.</p>
+
+
+
+<a name="visual"></a><b>Visualization of results of calculation</b>
+<p>The results are printed to the <b>flavia.res</b> and <b>flavia.msh</b> files. They
+will end up in the same directory as your indata sourcefile. These are readable
+from the GiD Post Processor</p>
+<p>If you want to view the results with the internal Impact GUI Post Processor,
+just switch to the Post Processor tab and load the .flavia.res file. The
+model should now show up on the screen. Rotation, moving and zooming is done by holding
+down any of the mouse buttons while moving the mouse.</p>
+<p>If you want to use GiD as a viewer:</p>
+<ol id="Navigate">
+				<li>Start by firing up GID and switch to Post Processing mode. </li>
+				<li>Next read in the result file flavia.res. The mesh (flavia.msh) file will be read automatically. You
+should now see the model on the screen. </li>
+     <li>Press Ctrl-D to set the timestep for deformation. Go from the top of
+the menu, starting by selecting deformation and then time analysis. Select
+timestep 0, magnification factor 1.0 and then press apply.</li>
+     <li>Next press Ctrl-V and select the results, time analysis and contour
+fill, then select gausspointstress and apply.</li>
+     <li>Finally, press Ctrl-M. You should now see the results as an
+animation. There are plenty of ways to view your results, please refer
+to the GiD users manual for that.</li>
+</ol>
+
+<a name="cluster"></a><h3>Impact Cluster Implementation</h3>
+
+<p>As of version 0.5.3, Impact supports calculations performed across a
+networked set of clients often referred to as a cluster. This allows
+Impact to split up a model into smaller parts and distribute them over
+the network, letting a client calculate only a unique section of the
+model and thereby speeding up the calculation. There is no need to have
+a special type of network although a capacity of 100Mbit or greater is
+preferable. This is standard today on most PC:s.</p>
+<p>The network communication and synchronisation is a complex topic.
+Therefore, Impact uses a special software to handle all this, called
+JavaParty. Developed by the University of Karlsruhe this software is
+100% java in itself which means no further dependencies.
+Furthermore, JavaParty assumes there is a way to connect from one
+client to another without a password. Default setup uses ssh (secure
+shell) login and how to set this up correctly is explained at the
+JavaParty webpage. A link to JavaParty as well as downloads is
+avalilable on the Impact webpage </p>
+<p>Impact assumes that your directory is shared across the clients in
+the network. This is the most common setup on a LAN and is accomplished
+by NFS or similar. If this is not the case, you have to arrange this
+with the system administrator. Reason for this assumption is that the
+printout of the results become significantly simpler to implement since
+all the clients can access the same file.</p>
+<p>For more details on the cluster implementation, see the programmers
+manual</p>
+
+</div>
+</div>
+
+<div align="center" id="sidebar" style="background-color:#EFFBFB;	 margin-left:536px; position:fixed; border-style:dotted; border-width:thin; ">
+
+
+<p style="margin-left:10px; margin-top:0">	<a href="doc_users_en.shtml">CONTENTS</a></p>
+ <li style="margin-left:10px; list-style-type: none;"><a href="#top">Usage of Impact</a></li>
+ <li style="margin-left:10px; list-style-type: none;"><a href="#gui"> GUI Modules</a></li>
+ <li style="margin-left:30px; list-style-type: circle;"><a href="#pre"> Pre-processor</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#proc"> Processor</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#post">Post-processor</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#gr">Graph</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#hlp">Help</a></li>
+ <li style="margin-left:10px; list-style-type: none;"><a href="#command">Impact Commands</a></li><br />
+
+<div style="border-bottom: solid #CCCCCC;border-bottom-width: 1px; width: 100%;"></div>
+
+<p style="margin-top:10px">
+<center>Open GUI Impact. Click to magnify</center>
+  	<center><a href="images/gui.gif"  rel="lightbox"  title="Open GUI Impact">
+  	<img src="images/gui-small.gif" width="80%"  /></a></center>
+</p>
+
+	
+</div>
+
+<!-- =====================================end _doc_users_ua.shtml======================================= -->

@@ -1,0 +1,29 @@
+#Navigation
+{
+    text-align: justify;
+}
+#Navigation li
+{
+    text-align: justify;
+}
+
+#NavigationNoBullet
+{
+    text-align: justify;
+}
+#NavigationNoBullet li
+{
+	   list-style-type: none;
+    text-align: justify;
+}
+
+p {text-align: justify;}
+
+small {
+	font-family: arial, helvetica, sans-serif;
+	color: black;
+}
+
+
+
+

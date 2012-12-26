@@ -1,0 +1,1742 @@
+<!-- =====================================start _dev_programmer_ua.shtml======================================= -->
+<link type="text/css" rel="stylesheet" href="css/other.css">
+<div style="margin-left: 60px; margin-right: 60px; margin-top: 30px;">
+<div id="content">
+
+<a name="progcont"></a><h2>Programmers Manual</h2>
+<p>The programmers manual consists of the following topics</p>
+<ol>
+	<li style="list-style-type: upper-alpha"><a href="#main">The Structure of Impact</a></li>
+	<ul>
+			<li style="list-style-type: decimal"><a href="#class">The Structure of Impact Class</a></li>
+			<li style="list-style-type: decimal"><a href="#modelsmp">The Structure of ModelSmp Class</a></li>
+			<li style="list-style-type: decimal"><a href="#reader">The Structure of Reader Class</a></li>
+			<li style="list-style-type: decimal"><a href="#writer">The Structure of Writer Class</a></li>
+			<li style="list-style-type: decimal"><a href="#element">The Structure of Element Class</a></li>
+			<li style="list-style-type: decimal"><a href="#node">The Structure of Node Class</a></li>
+			<li style="list-style-type: decimal"><a href="#load">The Structure of Load Class</a></li>
+			<li style="list-style-type: decimal"><a href="#constraint">The Structure of Constraint Class</a></li>
+			<li style="list-style-type: decimal"><a href="#control">The Structure of Control Set Class</a></li>
+			<li style="list-style-type: decimal"><a href="#material">The Structure of Material Class</a></li>
+			<li style="list-style-type: decimal"><a href="#tracker">The Structure of Tracker Class</a></li>
+			<li style="list-style-type: decimal"><a href="#trackwriter">The Structure of TrackWriter Class<ul></ul></a></li><br />
+ </ul>
+ <li style="list-style-type: upper-alpha"><a href="#contact">Contact Handling and Implementation</a></li>
+ <ul>
+ 			<li style="list-style-type: decimal"><a href="#concept">The Concept</a></li>
+ 			<li style="list-style-type: decimal"><a href="#search">Nodal Search</a></li>
+ 			<li style="list-style-type: decimal"><a href="#implement">Implementation</a></li><br />
+ </ul>
+ <li style="list-style-type: upper-alpha"><a href="#create-element">Creating a New Element Type</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#create-material">Creating a New Material Type</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#create-infile">Adding a New Input File Format</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#create-outfile">Creating a New Output File Format</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#create-tracker">Creating a New Tracker Type</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#create-outtracker">Adding a New Tracker Output File Format</a></li>
+ <li style="list-style-type: upper-alpha"><a href="#cluster">Impact Cluster Implementation</a></li>
+</ol>
+
+
+<p style="margin-top:30px"></p>
+<p><a name="main"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of Impact</b></p>
+
+<img src="images/structure.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p> The picture shows how Impact is structured. Impact is strictly object
+oriented in its design and I will use quite a few of the terms in the coming
+explanation. To appreciate the terms of object oriented programming, please read
+any book on the subject. 
+Have a look in the <a href="intro_theory_en.shtml" target="_blank" >Theoretical base</a> for
+recommendation.</p> 
+<p>The elements and the nodes have each got their own
+class. Since there can be several types of elements, the element class is a
+superclass and it is also abstract which it acts as "format" for how a subclass
+should be written, which methods it should have etc. The element super class
+also contains some methods which are general and usable by all the element
+classes.</p> 
+<p>Impact is the main class. All it does is
+to immediately initiate an instance of the class ModelSmp and then it tells
+that instance to initiate, solve and postprocess the problem. ModelSmp also
+includes a large array of nodes and elements which in fact is the actual
+model. When asked to solve the problem, it runs down these arrays and tells
+each element to update itself, over and over again.</p>
+<p>Another important class is the material
+class. Since there can be several different types of models for a material,
+this is a superclass and then there are several subclasses. Right now,
+there are two material models available. One for pure elastic materials
+and one elasto-plastic materials (materials which are elastic to a point
+and then acts as gum beyond that point).</p>
+<p>A model also contains constraints, forces
+and boundary conditions. Each of these have their own class and each element
+which has forces defined on it, knows about that by having a handle to
+the respective constraint etc.</p>
+<p>Each element also knows about which nodes
+it has so that it can feed it's mass and forces to the nodes when asked
+to.</p>
+<p>Finally, the reader class handles the reading
+of indata files (where the problem is defined) and the writer class handles
+the writing of the result files. Both are super classes in order to allow
+for several different indata and outdata file formats. This allows Impact
+to be compatible with other programs such as LS-Dyna and Radioss in the
+future.</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="class"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of Impact Class</b></p>
+	
+<img src="images/impact.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The Impact class is the main class of the program. It is here the program
+starts and the following happens:</p>
+<ol>
+  <li>An object from the ModelSmp class is created</li>
+  <li>The object is told to initialise and read the indata file</li>
+  <li>It is told to solve the problem</li>
+  <li>It is told to finish and close.</li>
+</ol>
+<p>In the future, something like a command centre can designed in this
+class, creating a nice user interface. The possibility of initiating several
+solutions running in parallel is also easily accomplished. Just create
+several objects from the ModelSmp class!</p>
+
+<br clear="all" />
+<p style="margin-top:30px"></p>
+<p><a name="modelsmp"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the ModelSmp Class</b></p>
+
+<!-- <img src="images/ModelSmp.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px;"> -->
+<p>The ModelSmp class is the centre of Impact. Here, the model is stored in
+two large arrays. One array for the Elements in the model and one array for
+the Nodes.</p>
+<p>In addition, a number of smaller arrays are also used to store the Loads,
+Constraints and Materials that are defined in the problem indata file.</p>
+<p>In short, an object created from the ModelSmp class will do the following:</p>
+<ul>
+  <li>Create a Reader object and tell it to open the indata file</li>
+  <li>Create a Writer and tell it to open the outdata file</li>
+  <li>One by one, ask the reader object to generate node, element, constraint,
+load and material objects of the right type and give them to ModelSmp to put into
+its arrays.</li>
+  <li>Tell all elements and nodes to initialize themselves</li>
+  <li>Run through the array of elements, telling each of them to update
+itself by calculating its strains, stresses and nodal forces</li>
+  <li>Run through the array of nodes, telling each of them to calculate
+it's new position using the forces that it has received from each element.</li>
+  <li>Repeat the last two actions until the solution is finished, while
+printing every now and then.</li> </ul>
+
+<p style="margin-top:30px"></p>
+<p><a name="reader"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Reader Class</b></p>
+	
+<img src="images/reader.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The reader class is the abstract parent class for different file
+translators. The challenge with structuring Impact was to figure out a good
+way of separating the input file format from the rest of the program. This
+was the result.</p>
+<p>The reader class (or rather any chosen subclass) have two main tasks:</p>
+<ul>
+  <li>Scan the chosen input file and answer questions about how many
+elements it contains etc.</li>
+  <li>Walk through the input file and generate objects (like elements or
+nodes) of suitable type and then return them to Impact</li>
+</ul>
+<p>These tasks mean that the reader class must be able to interpret the
+indata file in terms of grammar and words.</p>
+<p>Imagine now, that the reader class reads a typical indata file. A problem
+was that if the reader class must be able to know all the parameters that a
+certain element needs (for example), read these, generate the corresponding
+element object and then feed that object with all the data from the file,
+this means that the programmer must go in the the reader class and change
+when he/she adds a new element class or changes a class.</p>
+<p>It is more attractive if the reader class can be independent from the
+element class. The solution used in Impact is that part of the interpreter
+is actually included into the element class, namely the part that reads the
+element parameters. The reader class just feeds the element with the actual
+indata file line where the parameters are written and the element does the
+rest.</p>
+<p>You can read more about this solution in the <a href="#Element">element</a> chapter</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="writer"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Writer Class</b></p>
+	
+<img src="images/writer.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The writer class is the mother class of all the different writer classes.
+Each subclass provides a different output format.</p>
+<p>A writer object is created at the start of the solution run and it is
+then called every time that Impact wants to print to an outdata file. This
+can happen several times during a solution. The writer class then walks
+through the database of elements and nodes and asks each of them to write
+their status.</p>
+<p>An equal challenge as for the reader class is present here
+regarding being able to add new element classes without having
+to go into the writer class and change. The solution is the same, namely that
+the writer class asks the element object to print it's own line of outdata
+(in the right format), which is then directly written to the outdata file. All
+the preparation is made inside the element itself.</p> <p>Due to how the outdata
+file is structured, the method that writes the data in the element is somewhat
+complex. The writer calls the same method several times, depending on if it
+wants the element to write data for a header or for another location in the
+outdata file. This is accomplished using control codes and is more explained in
+the <a href="#element">Structure of Element Class</a> section.</p> <p>This layout means that
+the element class needs to have one method for each new reader class (output
+file format), but since the amount of file formats are significantly less than
+the amount of element types, this is feasible.</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="element"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of Element Class</b></p>
+	
+<img src="images/element.jpg" width="375" height="344" align="right"
+style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The element class has been carefully designed to be self containing and easy
+to expand. The problem when writing a program is usually that when a programmer
+wants to add another feature (such as a new element type), it also means digging
+around in a lot of code which is indirectly related to the new element type.</p>
+<p>The benefit of Impact is that this is not the case here. The programmer only
+needs to consider the following:</p>
+<ul>
+  <li>Do I need a special material law or can I use any of the ones
+available?</li>
+  <li>What input syntax should the new element use?
+</ul>
+<p>Once that is decided, the programmer is then free to add the new element
+along the lines described later in this manual. The basic method is to add a
+new subclass to the existing abstract class "Element" and then fill that new
+subclass with code.</p>
+ <p>When Impact is run and a number of elements are read in from the
+input file, a corresponding number of element objects are created. One object
+for each element.</p>
+<p>The object will get a "memory" where it remembers which nodes it has
+attached to it, which material it is made of and so on.</p>
+<p>If we stop a bit at the material "memory", I'd like to explain a little
+bit more in detail how it is handled. Some material laws need a memory in
+itself. This is the case since once some deformation has been made, a
+permanent deformation remains after unloading. This phenomenon means that
+the element (and material law) needs to remember how much it has been
+loaded in the past to accurately model the permanent deformation.</p>
+<p>How to solve this? Well, the solution is quite simple. Once the element
+object has been created, a local internal material object is created which
+is based on the material law that the element is supposed to use. One can
+then think of the element object actually encapsulating it's own material
+object.</p>
+<p>From here on, the element object talks only to it's own material object
+and since the material object keeps track on where it has been, the element
+object also has a memory of how much it has deformed.</p>
+<h4>Other solutions</h4>
+<p>A Solution run in Impact basically means that the solution loop (which is
+located inside ModelSmp), runs down a list of element objects and tell each of
+them to:
+<ul>
+  <li>Calculate its strains (based on the nodes displacement)</li>
+  <li>Calculate its stresses (based on the just calculated strains)</li>
+  <li>Calculate the resulting nodal forces and put them onto the connecting
+nodes</li>
+</ul>
+<p>Since the element knows about its nodes and has a local material law to
+talk to, everything can be handled inside the element.</p>
+<h4>The abstract Element class</h4>
+<p>The purpose of the abstract element class (encircled) is threefold:</p>
+<ol>
+  <li>It is a framework for how a new element (sub)class should be written</li>
+  <li>It enables (through inheritance) all element subclasses to be treated
+as a single element class and thereby, no changes in the rest of Impact is
+needed</li>
+  <li>It contains some useful general methods that could be used by the
+element subclasses</li>
+</ol>
+<p>Each element class interprets its own indata. This means that the
+programmer does not need to change the reader or the writer class when
+adding a new element class. This is handled by the actual element class
+itself. </p>
+<p>More details about this comes later in the chapter about <a href="#create-element">how to add an
+element</a></p>
+
+<p style="margin-top:30px"></p>
+<p><a name="node"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of Node Class</b></p>
+	
+<img src="images/node.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+
+<p>A model consists of elements and nodes. The Node class defines the nodes
+behaviour.</p><p> In explicit codes, nodes are a bit extra important since the
+elements really only provide forces that act on the nodes. </p><p>All the mass
+of the elements are moved out into the nodes at the start of the solution
+process (initialization) and from there on, the simple formula of A=F/M is used
+to calculate the acceleration resulting from the forces put on the nodes by the
+elements.</p> <p>The only thing the node has to do really is to be able to
+calculate it's acceleration, velocity and position in space and to accept forces
+and mass from the elements.</p>
+<p>In the future, contact intelligence will also be built into the nodes.</p>
+<p>As mentioned before, the node class is used by the reader class to create
+one node object for each node defined in the indata file. The node object is
+then fed some indata like its position in space and any constraints that
+might be applied on it.</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="load"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Load Class</b></p>
+	
+<img src="images/load.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The Load class is more or less a container for data regarding the
+different load cases that can be applied to elements and nodes.</p> <p>In
+the start of a run, the indata file is scanned for load sets. For each load
+set, a load object is created and fed with the corresponding data (example
+Fx = 5 kN).</p>
+<p>Each element or node which uses this load set, then has a handle to load
+object and can ask it about which loads that is applied. This is used
+especially by the nodes to figure out which loads that has to be added
+before it updates it's position.</p>
+
+<br clear="all" />
+<p style="margin-top:30px"></p>
+<p><a name="constraint"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Constraint Class</b></p>
+	
+<img src="images/constraint.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The setup for the Constraint class is quite similar to the load class.</p>
+<p>In the start of a run, the indata file is scanned for constraint sets. For
+each constraint set, a constraint object is created and fed with the
+corresponding data (example Ax = 5 m/s<sup>2</sup>).</p>
+<p>Each element or node which uses this constraint set, then has a handle to
+it and can ask it about which constraints that are applied. This is used
+especially by the nodes to figure out which constraints that has to be applied
+before and after it has updated it's position.</p>
+<p>There can be several different types of constraints. Therefore the constraint
+class is a superclass and there are different subclasses. Examples include the
+standard BoundaryCondition and RigidBody.</p>
+
+<br clear="all" />
+<p style="margin-top:30px"></p>
+<p><a name="control"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Controlset Class</b></p>
+	
+<img src="images/controlset.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The controlset class is a special creature. It contains all the different
+control parameters that can be used to control the solution of a problem.
+Examples of such are:</p>
+<ul>
+  <li>Time step size or autostep</li>
+  <li>Start and end time for the solution run</li>
+  <li>When to print</li>
+  <li> .....</li>
+  <li> .....</li>
+</ul>
+<p>At the start of a run, the indata file is read (by the reader) and a
+controlset object is created and fed with all the control data. Note that
+there can only be one control set object for each solution.</p>
+<p>The controlset object is used by the ModelSmp object to control the
+solution. The main solver routine inside ModelSmp asks the control object about
+all the things in the list above so that the solution is performed
+correctly.</p>
+
+<br clear="all" />
+<p style="margin-top:30px"></p>
+<p><a name="material"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Material Class</b></p>
+	
+<img src="images/material.jpg" width=375 height=344 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>This class is the abstract "mother" class for all the different material
+laws that can be defined. The basic function of a material law is to
+calculate stresses from a given strain matrix and a given strain increment
+(also in a matrix format).</p>
+<p>For a purely elastic material law, this is quite simple. Stress =
+Young's_modulus * strain, if we think one dimensional. When we move into
+elasto-plastic material laws, life becomes a little bit more complicated,
+but the basic principle remains. Return a stress, given a set of strains.</p>
+<p>For reasons described in the element class, a local material object is
+created and embedded into each element object that is created. This material
+object is then "alive" throughout the whole solution and is having a
+frequent communication with its "mother" element, all the time answering the
+same question (about the stress).</p>
+
+<p>The purpose with the abstract material class (encircled) is threefold:</p>
+<ol>
+  <li>It is a framework for how a new material (sub)class should be written</li>
+  <li>It enables (through inheritance) all material subclasses to be treated
+as a single material class and thereby, no changes in the rest of Impact is
+needed</li>
+  <li>It contains some useful general methods that could be used by the
+material subclasses</li>
+</ol>
+<p>At the current state of writing, there are only two material subclasses
+defined. One elastic material law and one elasto-plastic.</p>
+<p>Each material law class interprets its own indata. This means that the
+programmer does not need to change the reader or the writer class when
+adding a new material law class. This is handled by the actual material class
+itself. More about this can be read in the chapter about how to add a
+<a href="#NewMaterial">material law sub class</a></p>
+
+<p style="margin-top:30px"></p>
+<p><a name="tracker"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the Tracker Class</b></p>
+	
+<p>The tracker class has been carefully designed to be self containing and easy
+to expand. The problem when writing a program is usually that when a programmer
+wants to add another feature (such as a new tracker type), it also means digging
+around in a lot of code which is indirectly related to the new tracker type.</p>
+<p>The benefit of Impact is that this is not the case here. The programmer only
+needs to consider which input syntax the new tracker should use.
+Once that is decided, the programmer is then free to add the new tracker
+along the lines described later in this manual. The basic method is to add a
+new subclass to the existing abstract class "tracker" and then fill that new
+subclass with code.</p>
+ <p>When Impact is run and a number of trackers are read in from the
+input file, a corresponding number of tracker objects are created. One object
+for each tracker.</p>
+<p>The object will get a "memory" where it remembers which nodes or elements it 
+should read results from and so on.</p>
+
+<h4>Other solutions</h4>
+<p>A Solution run in Impact basically means that the solution loop (which is
+located inside ModelSmp), runs down a list of tracker objects and tell each of
+them to:
+<ul>
+  <li>Collect data from the nodes and/or elements.</li>
+  <li>Calculate the output.</li>
+  <li>Print the output to a specific file</li>
+</ul>
+<p>Since the tracker knows about its nodes, everything can be handled inside the tracker.</p>
+
+<h4>The abstract tracker class</h4>
+<p>The purpose with the abstract tracker class is threefold:</p>
+<ol>
+  <li>It is a framework for how a new tracker (sub)class should be written</li>
+  <li>It enables (through inheritance) all tracker subclasses to be treated
+as a single tracker class and thereby, no changes in the rest of Impact is
+needed</li>
+  <li>It contains some useful general methods that could be used by the
+tracker subclasses</li>
+</ol>
+<p>Each tracker class interprets its own indata. This means that the
+programmer does not need to change the reader or the writer class when
+adding a new tracker class. This is handled by the actual tracker class
+itself. </p>
+<p>More details about this comes later in the chapter about <a href="#create-tracker">how to add an
+tracker</a></p>
+
+<p style="margin-top:30px"></p>
+<p><a name="trackwriter"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">The Structure of the TrackWriter Class</b></p>
+	
+<p>The TrackWriter class is the mother class of all the different TrackWriter classes.
+Each subclass provides a different output format. An example of such a subclass is the
+GidTrackWriter class which prints results so that they can be read by the GID pre- and
+postprocessor.</p>
+<p>A trackwriter object is created at the start of the solution run and it is
+then called every time that Impact wants to print to an outdata file. This
+can happen several times during a solution. The TrackWriter class then walks
+through the database of elements and nodes and asks each of them to write
+their status.</p>
+<p>An equal challenge as for the reader class is present here
+regarding being able to add new element classes without having
+to go into the trackwriter class and change. The solution is the same, namely that
+the trackwriter class asks the element object to print it's own line of outdata
+(in the right format), which is then directly written to the outdata file. All
+the preparation is made inside the element itself.</p> <p>Due to how the outdata
+file is structured, the method that writes the data in the element is somewhat
+complex. The trackwriter calls the same method several times, depending on if it
+wants the element to write data for a header or for another location in the
+outdata file. This is accomplished using control codes and is more explained in
+the <a href="#Tracker">Tracker</a> chapter.</p> <p>This layout means that
+the tracker class needs to have one method for each new TrackWriter class (output
+file format), but since the amount of file formats are significantly less than
+the amount of tracker types, this is feasible.</p>
+
+
+<p style="margin-top:30px"></p>
+<p><a name="contact"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Contact Handling and Implementation</b></p>
+	
+<P>One of the most challenging parts of a dynamic finite element
+program is to design a simple and robust contact searching algorithm.
+The following chapter describes the one used by Impact</P>
+
+<p style="margin-top:30px"></p>
+<p><a name="concept"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>The Concept</b></p>
+<P> There are two major classes of contact algorithms. One searches
+nodes and checks them against a surface to determine if contact is
+imminent. The second class searches element surfaces and checks them
+against other surfaces (and edges) to determine shortest distance and
+thereby if contact is imminent. </P>
+<P>The element to element concept is a bit trickier to implement since
+we want a concept that is as general as possible and not dependent on
+any element shape or type. The node to element type is simpler in
+design and well documented which makes it the Impact choice for
+now.</P>
+<P>The distance from a node to a surface can be tricky to calculate if
+the surface is complex. If, however, the surface is a simple triangle,
+it is just a matter of linear algebra. We also want a general method
+which works for different type of elements. These two reasons has
+resulted in a concept where contact "finite surfaces" are used. </P>
+<P>Any element uses one or several contact surfaces to handle the
+contact with other elements (or rather nodes). When the element is
+asked to check its contacts, the element in turn asks each of its
+surfaces to check for contacts. The resulting contact forces are then
+distributed onto the element nodes. Each element handles its own
+surfaces.</P>
+<P>An example could be the BLT Quad shell element already implemented
+in Impact. Since this element is flexible and can bend, two flat
+triangular contact surfaces cannot accurately model the shell element.
+In this case, a number of four would be suitable. Each of them
+connected to a centre point on the shell element and to two corner
+nodes respectively. It would represent the curvature in a rough but
+simple way and even allow for self contact, i.e. when the element wraps
+around and contacts itself. This can happen for example in a fold of a
+member in crush.</P>
+<P>The beauty with this approach is that every new element can use the
+suitable configuration of these surfaces thus allowing a very general
+implementation. The logic of contact search etc is all isolated and
+put inside the contact surface "element", making it easy to upgrade in
+the future.</P>
+
+<p style="margin-top:30px"></p>
+<p><a name="search"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Nodal Search</b></p>
+<p>Each element (and contact surfaces included in that element) has so
+search the solution space for nodes which can be in contact. For each
+node, it has to calculate the distance from the surface and determine
+if contact is imminent. Imagine now, that you have 100000 nodes in the
+model you want to solve and almost as many elements and it is easy to
+conclude that searching each node against each surface for each
+timestep, can take a considerable amount of time. Clearly, some kind of
+limitations on how many nodes to search must be made. One method,
+implemented in Dyna (another code) is to use so called bucket search.
+This means that the solution space is divided into buckets and the
+element residing inside a certain bucket will only check the nodes
+inside that bucket and neighbouring buckets. This approach is brought
+even further in Impact and has in fact been considered from the start.</p>
+
+<P>Due to the object oriented approach in Impact, it is natural that
+each node should have a handle to the closest neighbouring node on both
+sides. This handle is constantly updated for the node when a new
+position is calculated. The "neighbour" knowledge of the nodes comes in
+handy now when nodal search must be done. Put simply, the element in
+question only needs to search the nodes in its immediate vicinity and
+that means searching all the nodes between it,s own nodes since these
+are on the edge of the element.</P>
+<P>The neighbour search works only in one direction. Currently, this is
+programmed to be the global x-direction in the solution space. That
+means that any element must start with the one of it,s nodes with the
+smallest x-coordinate. Next, ask that one which neighbour node it has
+with higher x-coordinate. Check this node for contact. Next, ask that
+node for it,s neighbour and so on until it reaches that of it,s own
+nodes with the highest x-coordinate.</P>
+<P>The amount of nodes to search now becomes much smaller than before
+and can usually be even smaller if the model is oriented optimally
+in the x-direction. For the shell element in this example, four contact
+surfaces needs to be checked against each node. All of this coding is
+isolated inside the element. The only command given to the element is
+to check for contact. </P>
+
+<p style="margin-top:30px"></p>
+<p><a name="implement"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b>Implementation</b></p>
+<P>Contact handling in Impact is implemented through the use of 
+contact elements. Contact sensing against surfaces are handled by the 
+Contact_Triangle element and sensing against edges or beams are handled 
+by the Contact_Line element. The implementation of these elements will 
+now be described. </P>
+
+<H3>Surface contact</H3>
+<P>The basic element to sense surface contact is the triangle. A 
+triangle defines a plane on which the node to be checked for contact 
+can be projected. The process looks like this: </P>
+<OL>
+ <LI>Use the three corner nodes to determine the plane of 
+projection</LI>
+ <LI> Loop through all nodes between the corner nodes, starting 
+with the node with the smallest x-coordinate</LI>
+ <LI> Check if the node is close enough in Y and Z to be in contact 
+range. </LI>
+ <LI> Project the node onto the plane </LI>
+ <LI> Check if the node is within the triangle surface</LI>
+ <LI> If it is, calculate the distance from the plane</LI>
+ <LI> If within defined thickness, calculate the repelling force</LI>
+ <LI> Apply the force onto the node. Apply reaction force onto the 
+element nodes</LI>
+ <LI> Proceed to check the next node until the other end node of the 
+element is reached (the one with the largest x-coordinate).</LI> 
+</OL>
+
+<P>The Contact_Triangle element can be either used on its own by the user, 
+just like an ordinary element, or embedded into another element to provide 
+contact handling by default.</P>
+
+<H4>Embedding</H4>
+
+<P>Embedding is a simple way of providing contact handling to your 
+element. One example is the Shell_C0_3 element which uses one 
+Contact_Triangle element. As the indata file is read in the Parse_GID 
+method, a Contact_Triangle instance is created (unless the user has 
+chosen not to). This instance is immediately fed the appropriate input 
+into it's own Parse method, given the thickness of the element (which 
+is also the contact thickness) and the shell elements own nodes.</P>
+
+<P>The only thing remaining now is to run the appropriate methods on 
+the contact element as the various methods of the shell element are 
+run. For example, as the calculateContactForces method is run, the 
+shell element only executes the same method on the embedded contact 
+element. Some elements may require several embedded contact elements 
+and it is up to the programmer to make sure they are all executed in 
+the right manner. Have a look in the Shell_C0_3 element to see how 
+the implementation has been made.</P>
+
+<H3>Contact_Line elements</H3>
+<P>The Contact_Line element is used to detect contacts between line 
+segments. This type of contact is useful in rods, beams and edges of 
+shell or solid elements. It differs a bit from the surface to node 
+contact in that contact checks are only made between line elements and 
+nodes are not involved. This makes the scan somewhat more complicated 
+and also more difficult to get computationally effective.</P>
+<P>The algorithm is as follows:</P>
+<OL>
+ <LI>Loop from the node with the smallest x-coordinate to the node with 
+the largest x-coordinate</LI>
+ <LI>Check if the node has any contact_line elements attached to 
+it.</LI>
+ <LI>If so, loop through these elements one by one and..</LI>
+ <LI>Check if parallel (then do a different evaluation)</LI>
+ <LI>If not, calculate contact point and distance</LI>
+ <LI>Apply contact force to element and reaction force to itself</LI>
+ <LI>End loop of elements</LI>
+ <LI>End loop of nodes</LI>
+</OL>
+
+<P>Similar to the Contact_Triangle element, the Contact_Line element 
+has no stiffness and can therefore be embedded in various elements. The 
+element has a contact diameter. Any other contact_Line element coming 
+within this diameter will sense contact.</P>
+
+<p style="margin-top:30px"></p>
+<p><a name="create-element"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Creating a New Element Type</b></p>
+	
+<img src="images/element.jpg" width="375" height="344" align="right"
+ style="border:20px transparent solid;border-top:0px;border-right:0px;  ">
+<p>The Element is the main part of a finite element program. It is here
+that the program spend about 80% of it's time during calculation, but
+when it comes to Explicit Finite Element codes, the task that the
+element should perform is quite simple.</p>
+<p>One can say the the task of a finite element is to do the following:</p>
+<ol>
+  <li>Use the position of the nodes that the element is connected to,
+to calculate the strain in the element.</li>
+  <li>Use this strain and the material law that the element is supposed
+to use, to figure out the resulting stress in the element.</li>
+  <li>Use this stress and the geometry of the element to figure out
+what the resulting reaction loads on the nodes will be, and apply them
+to the nodes.</li>
+</ol>
+<p>These three tasks are repeated over and over again in a simulation,
+once for every timestep. If an element has more than one integration
+point, the process has to be repeated once for every integration point
+as well. This means that the calculation for an 8-integration point
+solid element is 8 times longer per timestep, than for an 1-point solid.
+This is also the reason why some fancy techniques such as hourglass
+control have been developed to increase speed and allow use of fewer
+integration points in elements.</p>
+<p>If you want to add a new element, the challenge will be to find the
+formulas you need to calculate the above tasks and then implement them.
+The framework on how to do this is already within Impact and starts with
+creating a new element type. It means creating a new sub-class to the
+Element class. Examples of sub-classes are the Beam_2, Rod_2,
+Shell_BT_4 and Solid_Iso_6 classes</p>
+<p>Each subclass has the same set of methods (which are decided by the
+Element class), but the coding is very different. We will investigate
+each method later on in this chapter.</p>
+<p>If you want to add a new element type, the easiest way is to pick a
+type which can use the currently available material laws. At the time of
+writing the material laws can handle:</p>
+<ul>
+  <li>One dimensional stress</li>
+  <li>Plane stress</li>
+  <li>Three dimensional stress</li>
+</ul>
+<p>The three dimensional stress is used in solid elements while the
+plane stress is used in shell elements. One dimensional is used in the
+Rod element.</p>
+<p>You can read more about this in the <a href="#material">material</a>
+chapter</p>
+
+<h3> The Element Class</h3>
+<p>The Element class is the mother class for all the
+different element types. This class does not actually contain any code,
+apart from a number of general methods which can be used by the
+sub-classes. The rest of the methods are abstract methods. This means
+that they act as a framework for the subclasses and if you don't include
+each of the methods in your sub-class, you will get an error when
+compiling.</p>
+<p>The rest of Impact relies on that your new
+sub-class has code for each of these methods. If you don't, you will not
+be able to solve problems with your element.</p>
+
+<h3>Creating a Sub Class</h3>
+<p>Creating a sub-class is simple, but you should give it
+a proper name. If you look at the names currently defined, they reflect:</p>
+<ul>
+  <li>Type of element (beam etc.)</li>
+  <li>Number of nodes that the element has</li>
+</ul>
+<p>When you create a new sub-class you must update the
+list of elements in the <b>getElementOfType_Fembic</b> method and if
+more file formats exists also in these related methods.</p>
+<p>Each element sub-class also has a unique Type id,
+stored in the Type field. The syntax for this parameter is a three digit
+as follows:</p>
+<p>The first digit</p>
+<ul id="NavigationNoBullet">
+  <li>1 - Point elements (just one node) </li>
+  <li>2 - Linear elements (Rod and Beam) </li>
+  <li>3 - Triangular elements </li>
+  <li>4 - Quad elements </li>
+  <li>5 - Tetrahedra elements </li>
+  <li>6 - Hexahedra elements </li>
+</ul>
+<p>The second digit</p>
+<ul id="NavigationNoBullet">
+  <li>A group number (ex. rod has 0 and Beam has 1)</li>
+</ul>
+<p>The third digit</p>
+<ul id="NavigationNoBullet">
+  <li> An index. If there are several different rod types this is used to separate them</li>
+</ul>
+
+<a name="create-element-methods"> </a><h3>The Methods </h3>
+<p>The Methods in the Element class are either
+Abstract or General. General means that they are supposed to be used by
+all the element sub-classes, but the coding resides in the element class
+since it does not change from sub-class to sub-class.</p>
+
+<h3>The general methods in the Element class</h3>
+<p>he general methods are automatically inherited
+and can be used by all sub-classes. Here follows a description:</p>
+
+<h4>getElementOfType_Fembic</h4>
+<p>This method is used by the reader class to
+generate elements based on how they are described in the indata file.
+The reason for putting this method here and not in the reader class is
+once again to keep all the related work of adding an element type,
+strictly within the element class. Therefore, the reader will use this
+method to determine which element object to generate.</p>
+
+<p>The _Fembic part of the name is related to the
+fact that the Fembic type indata format is assumed. If a new indata file
+format is added, i.e. a new reader sub-class is written, an extra
+method will be required here, which is tailored to that file format.</p>
+
+<h4>calculateLocalBaseVectors</h4>
+<p>Some elements use local coordinate systems to make
+calculations simpler. Examples include shell elements. This method can
+be used to calculate the transformation matrix that transform from local
+to global coordinates system. The input are three nodal coordinates
+which form the coordinate system axes. See the code for more detailed
+explanation</p>
+<h4>findMaterial</h4>
+<p>This method searches the database and returns a
+handle to the material object with a specific name. It is used by the
+parse method in the element sub-classes to interpret element indata.</p>
+<h4>findNode</h4>
+<p>This method searches the database and returns a
+handle to the node object with a specific number. It is used by the
+parse method in the element sub-classes to interpret element indata.</p>
+<h4>getNodeNumber</h4>
+<p>This is quite a useful method. When you have a
+string with a range of numbers that are separated by commas, this method
+picks the n:th number in this string, converts it into an integer and
+returns it. It can be useful when reading indata and is used by the
+element sub-classes in their parse method.</p>
+<h4>isProcessed</h4>
+<p>Sometimes it can be useful to know if an element
+has been asked or not. The parameter 'processed' can be set and read to
+determine just that. This method returns the value of that parameter and
+since it is inherited to all sub-elements, it is placed here in the
+mother element class.</p>
+<h4>setProcessed</h4>
+<p>Allows you to set or clear that parameter
+mentioned above.</p>
+<h3>The Abstract methods in the Element class</h3>
+<p>he Abstract methods are empty in coding in the
+element class. This is because every sub-class has a different
+implementation of these methods. As a programmer that wishes to add a
+new element sub-class, these methods are the ones that he/she has to
+write. Here follows a description of each method</p>
+<h4>assembleMassMatrix</h4>
+<p>This method calculates the elements contribution
+regarding mass and rotational inertia to the nodes and is called at the
+initialisation of the problem. Since this program uses lumped mass, all
+the mass are concentrated to the nodes, and so are the inertia of
+rotation as well.  The mass is usually quite simple to calculate. In the
+example of a rod, it is half of the total mass of the rod in each node.</p>
+<p>For a shell element it could be slightly more
+trickier. The difficult part comes when the rotational inertia is to be
+calculated since this is needs to be calculated in three dimensions and
+then transformed to the global xyz coordinate system before adding it to
+the node.</p>
+<p>Roughly, the procedure is as follows: </p>
+<ol>
+ <li>Calculate element mass distribution and add to
+node</li>
+  <li>Calculate element inertia</li>
+  <li>Transform to global directions</li>
+  <li>Add to node inertia matrix</li>
+</ol>
+<h4>calculateContactForces</h4>
+<p>The contact forces are calculated by this method.
+Contact forces are forces that are generated onto nodes because they are
+about to contact an element. To prevent the node to just pass through
+the element, an artificial force is calculated and put on to the node
+(with the opposite force put onto the element). </p>
+<p>This is done in the following way: </p>
+<ol>
+  <li>Let the element check it's segment(s) or faces
+against any neighbouring nodes.</li>
+  <li>calculate distance from segment to node.</li>
+  <li>If distance is smaller than tolerance then calculate a reaction
+force as a function of the distance.</li>
+  <li>If a reaction force has been calculated, then add this force to
+the node and the opposite force to the elements nodes.</li>
+  <li>Continue this loop until all the nodes within the contact
+tolerance from the element has been checked.</li>
+</ol>
+<p>It is worth noting that there are loads of
+different contact algorithms out there. Each of them with different
+benefits. The good thing with this program is that each node knows about
+it's closest neighbour node! This can be used to limit the amount of
+nodes you need to check for your contact algorithm. </p>
+<p>After each timestep, the nodes will update
+themselves to see if their closes neighbour has changed.</p>
+<h4>calculateExternalForces</h4>
+<p>This method computes the contribution from gravity
+and external forces on the elements. The gravity and external forces on
+the elements are transformed into nodal loads which are then added to
+the nodes connected to the element.</p>
+<h4>alculateNodalForces</h4>
+<p>This method calculates and adds the element
+internal forces to the nodes. Please note that by definition, the
+internal forces are subtracted from the external loads. Thus, the
+"addition" is negative.</p>
+<p>The coding can be quite extensive in this method
+for some elements. In principle, the approach is however more or less
+the same. If we look at the rod, the coding is quite simple:</p>
+
+<p>Start by calculating the local force using stress
+in rod and cross sectional area</p>
+<font face="courier" color="blue">
+<p>force.set(0, 0,stress.get(0,0)*cross_section_area); <br>
+force.set(1, 0, 0);<br>
+force.set(2, 0, 0); <br>
+</p>
+</font>
+<p>Now, continue by transforming this force to global
+coordinates using a transformation matrix calculated in another element
+method.</p>
+<font face="courier" color="blue">
+<p> global_force = local_coordinate_system.times(force).copy(); <br>
+</p>
+</font>
+<p>Finally, add this force contribution to the nodes.
+Remember to use negative addition since this is an internal force (a
+reaction force). </p>
+<font face="courier" color="blue">
+<p> node1.addForce(global_force.times(1));<br>
+node2.addForce(global_force.times(-1)); <br>
+</p>
+</font>
+<h4>calculateStrain</h4>
+<p>The strain of the element is calculated here. It
+is a matter of transforming the positions of the nodes that the element
+is connected to, into a strain matrix for the element.</p>
+<p>In addition, the strain increment is also
+calculated (that is the difference in strain between now and the strain
+in the previous timestep)</p>
+<p> Calculating the strain for the rod element is
+quite simple. Start by calculating the length of the rod.</p>
+<font face="courier" color="blue">
+<p>xpos1 = node1.getX_pos();<br>
+ypos1 = node1.getY_pos(); <br>
+zpos1 = node1.getZ_pos();<br>
+//<br>
+xpos2 = node2.getX_pos();<br>
+ypos2 = node2.getY_pos();<br>
+zpos2 = node2.getZ_pos();<br>
+<br>
+new_length = java.lang.Math.sqrt((xpos2 - xpos1) * (xpos2 - xpos1) +
+(ypos2 - ypos1) * (ypos2 - ypos1) + (zpos2 - zpos1) * (zpos2 - zpos1)); </p>
+</font>
+<p>The strain increment can now be calculated. Note
+that his is true strain.</p>
+<font face="courier" color="blue">
+<p>
+dstrain.set(0,0,Math.log(1+(new_length-initial_length)/initial_length) -
+strain.get(0,0)); </p>
+</font> 
+<p>Finally, calculate the cross section area of the
+rod, assuming incompressible material.</p>
+<font face="courier" color="blue">
+<p> cross_section_area =
+initial_cross_section_area*initial_length/new_length; </p>
+</font>
+<p>The strain matrix will be updated when the
+material law is used to calculate the stress.</p>
+<h4>calculateStress</h4>
+<p>This method calculates the stress matrix of the
+element out of a strain matrix and a strain increment matrix. The main
+work here is actually done inside the material law of which the element
+uses. Which law to use is assigned to the element in the initialisation
+stage.</p>
+<p>This is the code in the rod element. The stress
+matrix is supplied as an indata, but is actually updated inside the
+material law. Note that for the rod element, the one dimensional law is
+used. This has to be implemented for each new material law that is added.</p>
+<font face="courier" color="blue">
+<p> material.calculateStressOneDimensional(strain,dstrain,stress); </p>
+</font> 
+<h4>checkTimestep</h4>
+<p>For each element there is a lower limit on the
+critical timestep. This timestep is decided by the shortest travelling
+distance a wave can take through the element on one step in time.</p>
+<p>For a rod element, this is the length of the
+element, divided by the wave-speed of the rod material. For a hexahedron
+(solid) element, the critical length is the shortest side of the element
+and thus, the timestep is this critical length divided by the wave-speed
+of the material that the solid is made out of.</p>
+<p>The material law supplies the wave-speed. This
+method has input and if the element has a smaller timestep than the
+input value, the element should return it's own timestep value.</p>
+
+<p>This method is called by the main routine in
+ModelSmp. The program is asking all elements for their timestep before it
+takes it's next step. The size of this step is set by the element that
+requires the smallest timestep. It sets the stability of the solution.</p>
+<h4>getNumber</h4>
+<p>This method simply returns the number of the
+element. This number is the one that was defined for the element in the
+indata file.</p>
+<h4>getNumberOfIntegrationPoints</h4>
+<p>A certain element type can have several different
+number of integration points. An element with many interaction points has
+greater accuracy and stability but takes longer time to calculate.</p>
+<p>As an example, the solid element can either have
+one interaction point or eight. The one integration point version is not
+stable since so called hourglassing can occur. There are stabilisation
+routines available that can fix this but at the time of writing, there
+is none implemented.</p>
+<h4>getType</h4>
+<p>Each element is assigned a type number (see
+getElementOfType_Fembic above). This method returns this number.</p>
+<h4>parse_Fembic</h4>
+<p>As described before, some of the interpretation of
+indata files has been put into the element itself. This method is called
+when a Fembic indata file is read and the indata for the element needs
+to be read and interpreted.</p>
+<p>The beauty with this approach is that the element
+can read the indata string and set all its variables by itself. The
+variables can then be kept private and encapsulated inside the element.</p>
+<p>Another benefit is that the programmer only needs
+to work in this class when he/she adds a new element. There is no need
+to fiddle around els where in impact.</p>
+<p>When a new file format is added, a new additional
+method is required for this file format and the programmer needs to add
+this new method to all element types in impact.</p>
+<h4>print_Gid</h4>
+<p>This method is the opposite of the parse_Fembic
+method described above. It reads all the parameters in the element and
+creates an output string which is then printed into the outdata file.
+This very method prints the outdata from the element in GID format. GID
+is a pre- and postprocessor which is free and a good complement to
+Impact.</p>
+<p>This method is called every time the writer object
+wants to print something, but there could be different things from time
+to time like header data or bulk data. A control parameter is supplied
+with the call to signal what is to be printed.</p>
+<h4>setInitialConditions</h4>
+<p>This is the big initialisation method for the
+element and it is called once at the beginning of the solution. Examples
+of what this method should do is: </p>
+<ul>
+  <li>Make a local copy of the material object.</li>
+  <li>Tell the material object to initialise itself.</li>
+  <li>Initialise matrices that are needed for later calculation.</li>
+  <li>Other things that may need to be done before calculation starts.</li>
+</ul>
+<p>If we look at how the material object is
+initialised, here is example code:</p>
+<font face="courier" color="blue">
+<p> try {<br>
+material = (Material) material.clone();<br>
+} catch (CloneNotSupportedException e) {<br>
+System.err.println("Object cannot clone");<br>
+}<br>
+</p>
+</font> 
+<p>The material object is told to clone itself and
+the handle is reinitialised</p>
+<h4>setNumber</h4>
+<p>This method simply assigns a number to the element.</p>
+<h4>updateLocalCoordinateSystem</h4>
+<p>Some elements has a local coordinate system. The
+system is really a transformation matrix between the local and global
+coordinates system and needs to be updated between each timestep since
+the element deforms and the coordinate system deforms with it.</p>
+<p>Here is a code example. The method
+'calculateLocalBaseVectors' in the Element mother-class is used and is
+supplied the element node coordinates.</p>
+<font face="courier" color="blue">
+<p style="text-align:left">local_coordinate_system = new
+Jama.Matrix(super.calculateLocalBaseVectors(node1.getX_pos(),node1.getY_pos(),no
+de1.getZ_pos(),node2.getX_pos(),node2.getY_pos(),node2.getZ_pos(),node2.getX_pos
+()+1,node2.getY_pos()+1,node2.getZ_pos()+1).getArray()); </p>
+</font>
+<h3> Other things to think of </h3>
+<p>Have a good look at the coding of the Rod_2 and the
+Solid_Iso_6 element. The code is full of comments. Good luck! </p>
+
+
+<p style="margin-top:30px"></p>
+<p><a name="create-material"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Creating a New Material Type</b></p>
+	
+<p>A material law reflects the behaviour of a certain material. Steel
+behaves different from clay and so on. To be able to model the material
+behaviour correctly, a material law is needed. The law "rules" how the
+stress response should be based on a strain input. Some laws depends on the
+history of the material i.e. if the material has been stretched before, it
+may behave differently if one tries to stretch it again. For the material
+law to reflect this, it needs to have a memory which makes it ideal to make
+the law into an object which is put inside each element that uses it. You
+can read more about that under the chapter <a href="#NewElement">adding
+an element.</a></p>
+<img src="images/materiallaw.jpg" width=403 height=170 align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+<p>The material law has only one purpose; To determine the correct stress
+matrix based on a strain matrix and a strain increment matrix. There are
+several versions of these matrices where the most general one is of course
+the three dimensional one. It is used in the hexahedron element for example.</p>
+<p>Other versions are plane stress matrix which is used in shell elements
+and a single one dimensional matrix which is used in a rod element. For the
+material law to be able to calculate all of these cases, the material law
+class (which is where the material law code resides), has several methods as
+can be seen in this figure:</p>
+
+<p>The methods has to be present in all the different material law classes
+and be called the same for the concept to work.</p>
+
+<br clear=all />
+<h3>The Material Class </h3>
+<img src="images/material.jpg" width=375 height=344
+align="right" style="border:20px transparent solid;border-top:0px;border-right:0px; ">
+
+<p>The material class is the mother class of all the different material
+laws. This class contain a large amount of abstract methods which are the
+ones you have to define in your subclass, should you choose to add a new
+material law. It also contains a few general methods which are usable for
+all the material subclasses. The methods will be listed in the later
+subsection.</p>
+<p>All the code in Impact is written in such a way that it treats all
+material laws as just instances of the Material class. This is a well known
+concept that can be used in object oriented programming. It allows the
+programmer to extend Impact with new material laws without having to change
+code in other parts of the program. If you want to add a new material
+law, you just have to create a new material sub class and
+fill in the code in the methods that are declared in the mother class as
+abstract methods.</p>
+<br clear="all" />
+<h3> Creating a Sub Class</h2> 
+<img src="images/material_sub.jpg" width="375" height="344" align="right" style="border:20px transparent solid;border-top:0px;border-right:0px;" >
+<p>If you compare the methods in the mother material class and the methods
+in any of the sub classes, you will see that they are exactly the same apart
+from the code inside the methods. As an element is created (in a problem
+that is to be solved), a material object is also created and put inside the
+element. That material object is an instance of the material law subclass
+that was chosen for that very element in the problem indata file.</p>
+<p>During the simulation, the element will call on the material object over
+and over again (once every timestep). Basically, the question will be the
+same, namely "here is my strain matrix. What is my state of stress?" The
+material law will then do some calculations to find this out and return the
+stress matrix to the element.</p>
+<p>In the picture there are two subclasses defined. The elastic subclass is
+very simple since it only multiplies the strain with Young's modulus and
+returns the stress. For two and three dimensions you have some more
+calculations to do but the concept is the same. The elastoplastic law
+however is more advanced. The material behaves like in the elastic material
+law up to the yield stress of the material. After that level is passed, the
+material starts to behave like plastic material (similar to a gum) and the
+strain will be irrecoverable. That means that the strain will not go back to
+zero again should the stress drop, or seen in another way, the stress will not
+be zero if the strain goes back to zero. This material law has a memory.
+It remembers if it has passed yield stress before and even remembers the
+maximum stress level it has reached.</p>
+<p>Other more advanced laws that can be added are not only depending on the
+strain and the loading history, but also the speed at which the material is
+extended, so called strain velocity hardening. Most steels constitute a
+significant strain velocity hardening component (up to 25% higher stress
+level at rapid loading).</p>
+
+<h3>The Methods </h3>
+<p>Now follows a description of each
+method in the material law. We will start with the general methods that are
+defined in the mother class and which are usable for all material classes.</p>
+<h4>The General Methods in the Material Class:</h4>
+<h4>clone</h4>
+<p>This method will clone the material object i.e. make an identical copy.
+It is used my the elements to create a local copy to embed inside themselves
+for the duration of the solution.</p>
+<h4>getDensity</h4>
+<p>This method returns the density of the material</p>
+<h4>getName</h4>
+<p>This method returns the name of the material</p>
+<h4>getNumber</h4>
+<p>This is a useful method for getting a number from a string containing
+several number separated with commas. It is useful in the parsing stage.</p>
+<h4>getYoungsModulus</h4>
+<p>Returns the Youngs Modulus of the material.</p>
+<h4>numberOfPoints</h4>
+<p>Returns the number of data points in an indata string by looking at the
+number of commas used for separation. Used in parsing of indata.</p>
+<h4>setName</h4>
+<p>Sets the name of the material object</p>
+
+<h4>The Abstract methods in the Element class:</h4>
+<p>These methods need to be coded in the subclasses. The coding will be
+unique for each new material law.</p>
+<h4>calculateStressOneDimensional</h4>
+<p>This method calculates a stress given a strain and strain increase since
+the last timestep. In this case all matrices are assumed to be of the
+standard 6x1 type. </p>
+<table border="4">
+  <tr>
+    <td>Strain  </td>
+    <td bgcolor="lightGray">dStrain  </td>
+    <td>Stress  </td>
+  </tr>
+  <tr>
+    <td>Epsilon XX  </td>
+    <td bgcolor="lightGray">dEpsilon XX  </td>
+    <td>Stress XX  </td>
+  </tr>
+  <tr>
+    <td>Epsilon YY  </td>
+    <td bgcolor="lightGray">dEpsilon YY  </td>
+    <td>Stress YY  </td>
+  </tr>
+  <tr>
+    <td>Epsilon ZZ  </td>
+    <td bgcolor="lightGray">dEpsilon ZZ  </td>
+    <td>Stress ZZ  </td>
+  </tr>
+  <tr>
+    <td>Gamma XY  </td>
+    <td bgcolor="lightGray">dGamma XY  </td>
+    <td>Stress XY  </td>
+  </tr>
+  <tr>
+    <td>Gamma YZ  </td>
+    <td bgcolor="lightGray">dGamma YZ  </td>
+    <td>Stress YZ  </td>
+  </tr>
+  <tr>
+    <td>Gamma ZX  </td>
+    <td bgcolor="lightGray">dGamma ZX  </td>
+    <td>Stress ZX  </td>
+  </tr>
+</table>
+<p>The stress is given as an input to the method, but is changed inside the
+method to the return value.</p>
+
+
+<h4>calculateStressTwoDimensionalPlaneStress</h4>
+<p>Similar to the above method but for plane stress situation (used by
+shells)</p>
+
+
+<h4>calculateStressThreeDimensional</h4>
+<p>Similar to the above method but for three dimensional stress (used by all
+solid elements)</p>
+
+<h4>parse_Fembic</h4>
+<p>This is the method where the material law object will interpret and set it's
+indata. The data is taken from the indata file by the Reader object and sent
+here for interpretation as a string.</p>
+<p>To parse this string you can use the methods numberOfPoints and getNumber
+explained above to sort out the data. </p>
+<p>If more indata formats are added in the future, there will be more methods
+like this to define when you add a new material law</p>
+
+<h4>setInitialConditions</h4>
+<p>In this method you check that all variables has been read in and set. You also
+set the ones you need to set before solution starts. </p>
+
+<h4>wavespeedOneDimensional</h4>
+<p>Returns the speed of waves through the material. This is for one
+dimensional situations and is used by rod elements to determine smallest
+timestep.</p>
+
+<h4>wavespeedThreeDimensional</h4>
+<p>Returns the speed of waves through the material. This is for three
+dimensional situations and is used by solid elements to determine smallest
+timestep.</p>
+
+<h4>wavespeedTwoDimensional</h4>
+<p>Returns the speed of waves through the material. This is for two
+dimensional situations and is used by shell elements to determine smallest
+timestep.</p>
+
+
+<h3> Other things to think of </h3>
+<p>Keep your variables private inside your class to prevent others from fiddling
+about with them in ways you didn't expect.Read the code. There are plenty of documentation. 
+Go for it! Good luck!</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="create-infile"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Adding a New Input File Format</b></p>
+
+<p>Impact is designed to be able to handle several different indata formats. For explicit finite element solvers, there are currently several different formats available and they are all connected to one of the commercial programmes. Examples are:</p>
+<ul>
+<li>LS-Dyna 3D</li>
+<li>Radioss</li>
+<li>Pam-crash</li>
+</ul>
+<p>These formats all date back some time and has evolved. Recent advances include free format syntax. They all include a large amount of parameters and will require some work to understand. For this reason, Impact comes with it's own indata format, called Fembic (Basic Finite element = FemBic).</p>
+<p>The objective of Fembic is that it must be readable and logical in format but most of all, simple! Never the less, impact is designed to be extendable to read the other formats as well and to do this, the reading and parsing of the indata files has been given to the Reader class. The design of this class and how to extend it will now be explained.</p>
+
+<h3> The Reader Class </h3>
+<img src="images/reader.jpg" height="344" width="375" align="right" style="border:20px transparent solid;border-top:0px;border-right:0px;" >
+<p>The reader class is the mother class for all the different indata file readers. 
+The Fembic format has it's own subclass to the Reader class. 
+Impact is written so that all the code uses the reader class when a data file is to be 
+read and parsed. In reality however, it will be one of the sub-classes 
+that will do the job but it does not matter since the right 
+routines will be run in any case. The benefit is that as a programmer, 
+you do not have to worry about the rest of the program when you change 
+something in your class, or when you add a new class. 
+This is a very nice feature of object oriented programming.</p>
+<p>The reader class is an abstract class. It contains very little code. It does also contain several methods which also are abstract and contains no code. They are important to understand however since you have to write each of them in your subclass and fill the method with your code.</p>
+<p>Impact assumes that every problem can be described in the following building blocks:</li>
+<ul>
+<li>Elements - The elements that make up a model</li>
+<li>Nodes - The nodes that connects the elements</li>
+<li>Material - Description of the material that the elements are made of.</li>
+<li>Loads - Loads on nodes or elements</li>
+<li>Constraints - Constraints on elements or nodes behaviour</li>
+<li>Controlset - Control commands on the solution process.</li>
+</ul>
+<p>The reader class therefore has methods that reads and interprets these blocks from the indata files. If an indata file is structured differently in any given format, the challenge for the reader class (or rather the specific sub-class) will be to restructure the data to fit into these blocks. They are described a little later.</p>
+
+
+<h4> Creating a Sub Class </h4>
+<p>When you want to add a new reader for a new file format (such as Dyna), you
+have to create a new sub class to the reader class. As you can see, there is
+already one called Fembic (for the Fembic file format). In this case we would
+call it Dyna. Now, you have to fill this class with methods according to the
+methods defined in the Reader class. Next you have to fill each method with the
+appropriate code.</p> <p>As you will see later, you will also need to add
+methods in the element class, material class, and all their subclasses.</p>
+<p>The subclass is initiated by the ModelSmp object. You will also have to modify
+that class to make it aware of the fact that there is one more file format to
+select reader for. After initiation, ModelSmp will start by asking the reader about
+how many of each indata blocks there are.</p>
+<p>Knowing the amount of blocks, ModelSmp will then continue to ask the reader for
+elements, nodes etc as many times as there are definitions in the indata
+file. ModelSmp will handle the opening and closing of the indata files
+automatically.</p>
+
+<h3>The Methods </h3>
+<p>Methods are defined in the Reader class. There are general methods which automatically are inherited to the sub-classes and are useful additions. There are also abstract methods which the programmer has to generate in his/her's subclass and fill with appropriate code, specific for the file format to be read by that sub-class method. A description of each method will now be done:</p>
+<h4>Abstract methods:</h4>
+<h4>numberOfConstraints</h4>
+<p>Scan the file and return the number of constraints that are defined</p>
+<h4>numberOfControls</h4>
+<p>Scan the file and return the number of controls that are defined</p>
+<h4>numberOfElements</h4>
+<p>Scan the file and return the number of Elements (of all different types) that are defined</p>
+<h4>numberOfLoads</h4>
+<p>Scan the file and return the number of loads that are defined</p>
+<h4>numberOfNodes</h4>
+<p>Scan the file and return the number of nodes that are defined</p>
+<h4>numberOfMaterials</h4>
+<p>Scan the file and return the number of materials that are defined</p>
+<h4>getControlset</h4>
+<p>This method is called from the ModelSmp object. It is called during initialisation of the problem and ModelSmp will start by creating a controlset object. This object is then used as indata to the method. </p>
+<p>The method takes the controlset object and feeds it all the control data defined in the indata file. This means reading one or several lines of the indata file. Each line must be parsed and then fed to the object. After completion, there is no need to return anything since the object already was created in the ModelSmp object.</p>
+<p>Parameters in the control set are things like start and stop time for the solution. Time step size (or autostep). When to print.... This method is only called once since there can only be one controlset object in a solution.</p>
+<h4>getNextConstraint</h4>
+<p>This method is called several times. One for each known constraint. Each time, a constraint object is created and is then fed with parsed data from the indata file. The parsing is done in this method.</p>
+<p>The method assumes that the file already is opened. The reason for this, is that since this method is called several times, it is important that the same constraint is not read twice. The pointer that decides which part to read, is reset when the file is closed, so that cannot happen between each call to the method.</p>
+<h4>getNextElement</h4>
+<p>Similar to the other method, it is assumed that the file already is opened. This method is called once for each element that is to be parsed.</p>
+<p>Since there are several different types of elements the type of element must be known before creation of the element object. The creation is made in this method and the object is then fed the rest of the indata string defined in the indata file.</p>
+<p>Let's illustrate this in an example. The indata file starts with a block header describing a block of elements of type rod. The reader object must now remember this since the coming element will all be of this type. The next line then describes all the data for the first element. The reader creates an element object of the right type and gives the string of the indata to that element object <b>to parse itself.</b></p>
+<p>The element method used to parse the data for a Fembic indata file is called <font face="courier" color="blue">parse_Fembic</font> For another file format, there will be another method in the element.</p>
+<p>The problem now is that for each new file format, <b>you have to add a parse method in every element subclass.</b> This means additional work for you apart from writing the reader subclass.</p>
+<p>You might ask why this is the case. The reason is that priority has been put to simplify addition of a new element type rather than a new file format. There are much more element types than file formats. Had the parsing of element data been put inside the reader subclass, the element programmer would have been forced to go digging into all the reader subclasses when all he wants is to add a new element. Doing it this way enables him to stay inside his own element subclass with all his work.</p>
+<p>There is also another method that has to be added in the element mother class. Selection of an element type based on a name is made in the <font face="courier" color="blue">getElementOfType_Fembic</font>, with a similar reasoning about the name of the method as above.
+<h4>etNextLoad</h4>
+<p>This method is called once for each load in the indata file. Similar to the other methods it assumes that the file is already opened. It does all the parsing of the load object data itself and feeds them to the object. After completion, the object is returned to ModelSmp.</p>
+<h4>getNextMaterial</h4>
+<p>This method is very similar to the getNextElement method in that there can be several different material types which forces a similar layout when it comes to adding extra methods in the material classes.</p>
+<h4>getNextNode</h4>
+<p>This method reads the indata file and creates a node object. The indata is parsed in this method. On thing to remember is that the data for a node includes references to constraints and loads. This means that the node object must be given references to the right constraint and load objects. In order to find those objects, this method has two lists included in the parameters given to the method. These lists are the constraint lists and load lists. They contain the previously defined constrain objects and load objects so that the method can search for the right constraints and loads to give to the node object. </p>
+<p>When the definition is finished, the node object is returned to the ModelSmp object where it is inserted into the great node array.</p>
+<h4>open</h4>
+<p>Opens the indata file and sets up some parameters for the parser, such as which characters are to be treated as numbers, words and comments etc. </p>
+<h4>General methods:</h4>
+<h4>isAKeyword</h4>
+<p>This is a useful little method which checks a given word to see if it is a defined keyword. It is used during parsing to figure out if a new block has been reached in the indata file. The keywords are file format specific and are stored in an array called keywords[]. It is defined directly under each subclass.</p>
+<h4>close</h4>
+<p>Closes the indata file.</p>
+
+<h3> Other things to think of </h3>
+<ul>
+<li>Keep your variables private to prevent someone else to access them in ways you did not foresee.</li>
+<li>Keep your code simple and clean.</li>
+<li>Cram it full of comments. It should be easy to understand.</li>
+<li>Remember that you will have to make additions in the element class, material class and all their subclasses when you add a new reader (subclass).</li>
+<li>Do not forget to document your reader with a chapter in this manual.</li>
+<li>Have Fun!</li>
+</ul>
+
+<p style="margin-top:30px"></p>
+<p><a name="create-outfile"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Adding a New Output File Format</b></p>
+
+<p>Impact is designed to be able to write result data in various formats. There
+are several different post-processors available to view this result data and the
+default one for Impact is GID. </p>
+<p>To enable writing of data, a writer object is used. The object is initiated
+as soon as the indata file is read because it is the indata file that decides
+which format to print in. If nothing is specified, the GID writer object is
+used.</p>
+<h3> The Writer Class </h3>
+<p>The writer class is the mother class for all the different writers. Similar
+to the Reader class, it mainly contains abstract methods and a few general
+methods for the subclasses to use. They will be described later.</p>
+
+<h3> Creating a Sub Class </h3>
+<p>Adding a new output format means adding a new subclass to the writer
+class. This subclass has the task of structuring and directing the output. It
+works by calling the elements and nodes (which contain the results) and asks
+them to print their data one by one. The whole "orchestration" of this procedure
+is done by an object initiated from this subclass.</p>
+<p>At the time of writing, there is only one subclass, called GidWriter. The
+main method for this class is the write method which is used by the ModelSmp object
+to order printing of results. During the simulation, this method will be called
+several times since explicit programs dump their results frequently during
+simulation. We will go through this method in detail in the next part.</p>
+<img src="images/writer_sub.jpg" width="383" height="212" align="right" style="border:20px transparent solid;border-top:0px;border-right:0px;">
+<p>The data we want to print is all contained inside element and node objects.
+To make matter worse, the data is also encapsulated inside these objects in private
+variables, making them unreachable from our GidWriter object. The way to print
+this data is then to ask the elements to print it. But how does the
+element know which format to print the results in? The output can look very
+different from format to format.</p>
+<p>The solution is to create a unique printing method for each output format.
+For each new output format added to Impact, it will mean that each element
+sub-class will have to add one more print method. (The node class already has
+methods which provides the results data). This approach makes it "messy" to add
+new output formats since the programmer has to add code in other classes than
+the writer and writer sub-classes, but since the amount of output formats are
+far less than amount of element types, this seems to be the most rational
+approach. </p> <p>We will soon have a look at what the extra methods in the
+element classes will mean.</p>
+
+<h3> The Methods </h3>
+<h4>write</h4>
+<p>When this method is called, it is time to write the output data from the
+solution. The implementation of this method in the GidWriter looks as
+follows:</p>
+<font face="courier" color="blue"><p>
+public void write(String fname, double currtime) {<br>
+    filename = new String(fname);<br>
+    time = currtime;<br>
+    try {<br>
+        if (counter == 0) {<br>
+            writeMesh();<br>
+        }<br>
+        writeResult();<br>
+        counter++;<br>
+    } catch (IOException ioe) {<br>
+        System.out.println(ioe);<br>
+        return;<br>
+    }<br>
+}<br>
+</p></font>
+<p>Two private methods are used here, writeMesh and writeResult. They are the
+ones doing the main job. The first time the write method is called, some
+mesh data is written through the writeMesh method in addition to some results.
+The following times, no more mesh data is written. This is what the GID
+post-processor wants as input so that is what we must write. </p>
+<h4>writeMesh</h4>
+<p>This is a private method. It may only exist for the GidWriter class but I
+will explain what it does in any case to give a good feeling for this
+concept.</p>
+<p>The method basically gets information from the node objects by asking them
+for their position in space and then formatting this information to print a mesh
+data file in the correct format. It can ask the nodes directly since there are
+general methods for all the data in the node.</p>
+<p>It also asks the elements to print all their data about which nodes each
+element is connected to. This is data that each element object knows, but it is
+private data. Have a look at this line of code:</p>
+<font face="courier" color="blue"><p>
+bw.write(temp_element.print_Gid(Element.MESH, 0)
+</p></font>
+<p>Here, the element is asked to print the data using a special control code
+(Element.MESH). In other cases, the element may be asked to print something
+else and then another control code will be used. The resulting string of
+data is then directly written to the file (bw).</p>
+<h4>writeResult</h4>
+<p>The principle used in this method is the same. Each element is asked to print
+it's data but by using a control code, the data printed by the element
+may differ according to need. You can find the details in the code itself.</p>
+
+<h3>Changes to the Element Classes</h3>
+<p>Each element must contain a method to print it's data. The name of this
+method is standardised to <b>print_<i>name</i></b> where <i>name</i> is the name
+of the output format.</p>
+<p>The method should access the data in the element and create an output string
+which will be printed by the writer object. The request from the writer may
+differ depending on situation and therefore a control code must also be sent
+which the method must follow to do the right thing</p>
+<p>The second parameter is the gauss point number of the element. Since each
+element will contain at least one Gauss point and the results are stored there,
+printing will be made for each gauss point. This parameter specifies which gauss
+point to read and print.</p>
+<p>Naturally, the implementation of this method will differ from element type to
+type which is why each element type needs this method. Remember now when you
+write a new output format to go through each element sub-class and add this
+method.</p>
+
+<h3> Other things to think of </h3>
+<ul>
+<li>Keep your variables private to prevent someone else to access them in ways you did not foresee.</li>
+<li>Keep your code simple and clean.</li>
+<li>Cram it full of comments. It should be easy to understand.</li>
+<li>Remember that you will have to make additions in all the element subclasses,
+when you add a new writer
+(subclass).</li> <li>Do not forget to document your new writer with a chapter in
+this manual.</li> <li>Have Fun!</li> </ul>
+
+<p style="margin-top:30px"></p>
+<p><a name="create-tracker"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Creating a New Tracker Type</b></p>
+	
+<p>The results generated by the simulation cannot always be presented in the right way. Sometimes
+there is a need to "measure" the movement or force on a single node for example and this is where
+trackers come in handy. The measured results can be calculated upon and the written to a data file
+specified by the user.</p>
+<p>There are a range of trackers available:</p>
+<ol>
+  <li>Nodeforcetracker - used to measure forces and moments on a single node</li>
+  <li>Sectionforcetracker - measures the force through a section by reading results from a range
+  of nodes around the section and then summing them up</li>
+  <li>Sectionmomenttracker - Similar to the sectionforcetracker but reading the moment in a section.</li>
+</ol>
+<p>If you want to add a new tracker, the framework on how to do this is
+already within Impact and starts with creating a new tracker type. It means
+creating a new sub-class to the Tracker class. Examples of sub-classes are the
+NodeForceTracker or SectionForceTracker classes</p> <p>Each subclass has the
+same set of methods (which are decided by the Tracker class), but the
+coding is very different. We will investigate each method later on in this
+chapter.</p> <p>If you want to add a new tracker type, the easiest way is to
+pick a similar type which already reads the kind of data you are interested in and
+modify it.</p>
+
+<h3> The Tracker Class </h3>
+<p>The Tracker class is the mother class for all the different tracker
+types. This class does not actually contain any code, apart from a number of
+general methods which can be used by the sub-classes. The rest of the
+methods are abstract methods. This means that they act as a framework for
+the subclasses and if you don't include each of the methods in your
+sub-class, you will get an error when compiling.</p>
+<p>The rest of Impact relies on that your new sub-class has code for each of
+these methods. If you don't, you will not be able to solve problems with
+your tracker.</p>
+
+<h3> Creating a Sub Class </h3>
+<p>Creating a sub-class is simple, but you should give it a proper name. If
+you look at the names currently defined, they reflect what the tracker does, for 
+example nodeforce etc.</p>
+<p>When you create a new sub-class you must update the list of trackers in the
+<b>getTrackerOfType_Fembic</b> method and if more file formats exists also
+in these related methods.</p>
+
+<h3> The Methods </h3>
+<p>The Methods in the tracker class are either Abstract or General. General
+means that they are supposed to be used by all the tracker sub-classes, but
+the coding resides in the tracker class since it does not change from
+sub-class to sub-class.</p> 
+
+<h4>The general methods in the tracker class:</h4>
+<p>The general methods are automatically inherited and can be used by all
+sub-classes. Here follows a description:</p> 
+
+<h4>getTrackerOfType_Fembic</h4>
+<p>This method is used by the reader class to generate trackers based on how
+they are described in the indata file. The reason for putting this method here
+and not in the reader class is once again to keep all the related work of adding
+an tracker type, strictly within the tracker class. Therefore, the reader will
+use this method to determine which tracker object to generate.</p> 
+<p> The_Fembic part of the name is related to the fact that the Fembic type indata
+format is assumed. If a new indata file format is added, i.e. a new reader
+sub-class is written, an extra method will be required here, which is tailored
+to that file format.</p> 
+
+<h4>findNode</h4> 
+<p>This method searches the database and returns a
+handle to the node object with a specific number. It is used by the parse method
+in the tracker sub-classes to interpret tracker indata.</p>
+<h4>getNodeNumber</h4> 
+<p>This is quite a useful method. When you have a
+string with a range of numbers that are separated by commas, this method
+picks the n:th number in this string, converts it into an integer and
+returns it. It can be useful when reading indata and is used by the tracker
+sub-classes in their parse method.</p>
+
+<h4>The Abstract methods in the tracker class: </h3>
+<p> The Abstract methods are empty in coding in the tracker class. This is
+because every sub-class has a different implementation of these methods. As a
+programmer that wishes to add a new tracker sub-class, these methods are the
+ones that he/she has to write. Here follows a description of each method</p>
+<h4> collectData</h4>
+<p>This method is run by ModelSmp (the master class that runs the simulation) to 
+order the tracker to ask around and collect all the needed data from the nodes
+or elements that it wants to measure.</p>
+
+<h4>calculate</h4>
+<p>The measured data is here calculated to get the resultdata for the tracker. 
+This is usually the "heart" of the tracker.</p>
+
+<h4> checkIndata</h4>
+<p>This method is used to check that all the necessary data has been given to
+the tracker from the indata file and that the numbers given are accurate.</p>
+
+<h4> getNumber</h4>
+<p>This method simply returns the number of the tracker. This number is the
+one that was defined for the tracker in the indata file.</p>
+
+<h4> parse_Fembic</h4>
+<p>As described before, some of the interpretation of indata files has been
+put into the tracker itself. This method is called when a Fembic indata file
+is read and the indata for the tracker needs to be read and interpreted.</p>
+<p>The beauty with this approach is that the tracker can read the indata
+string and set all its variables by itself. The variables can then be kept
+private and encapsuled inside the tracker.</p>
+<p>Another benefit is that the programmer only needs to work in this class
+when he/she adds a new tracker. There is no need to fiddle around elsewhere
+in impact.</p>
+<p>When a new file format is added, a new additional method is required for this
+file format and the programmer needs to add this new method to all tracker types
+in impact.</p>
+
+<h4> print_Gid</h4>
+<p>This method is the opposite of the parse_Fembic method described above.
+It creates an output string which is then printed into the outdata file. 
+This very method prints the outdata from the tracker in GID format. 
+GID is a pre- and postprocessor which is free and a good complement to Impact.</p>
+<p>This method is called every time the TrackWriter object wants to print
+something, but there could be different things from time to time like header
+data or bulk data. A control parameter is supplied with the call to signal
+what is to be printed.</p>
+
+<h4>setInitialConditions</h4>
+<p>This is the initialisation method for the tracker and it is called
+once at the beginning of the solution. </p>
+
+<h4>setNumber</h4>
+<p>This method is simply used to assign the number to the tracker.</p>
+
+<h3>Other things to think of </h3> 
+<p>Have a good look at the coding of the NodeForce and the SectionForce tracker. 
+The code is full of comments. Good luck! </p>
+
+
+<p style="margin-top:30px"></p>
+<p><a name="create-outtracker"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Adding a New Tracker Output File Format</b></p>
+
+<p>Impact is designed to be able to write result data in various formats. There
+are several different post-processors available to view this result data and the
+default one for Impact is GID. </p>
+<p>To enable writing of tracker data, a trackwriter object is used. The object is initiated
+as soon as the indata file is read because it is the indata file that decides
+which format to print in. If nothing is specified, the GID trackwriter object is
+used.</p>
+
+<h3>The TrackWriter Class </h3>
+<p>The trackwriter class is the mother class for all the different trackwriters. Similar
+to the Reader class, it mainly contains abstract methods and a few general
+methods for the subclasses to use. They will be described later.</p>
+
+<h3 > Creating a Sub Class </h2>
+<p>Adding a new output format means adding a new subclass to the trackwriter
+class. This subclass has the task of structuring and directing the output. It
+works by calling the different trackers, asking them to collect and calculate 
+the results and finally to print their data one by one. The whole "orchestration" 
+of this procedure is done by an object initiated from this subclass.</p>
+<p>At the time of writing, there is only one subclass, called Gidtrackwriter. The
+main method for this class is the write method which is used by the ModelSmp object
+to order printing of results. During the simulation, this method will be called
+several times since explicit programs dump their results frequently during
+simulation. We will go through this method in detail in the next part.</p>
+
+<p>The data we want to print is all contained inside tracker objects.
+To make matter worse, the data is also encapsulated inside these objects in private
+variables, making them unreachable from our Gidtrackwriter object. The way to print
+this data is then to ask the trackers to print it. But how does the
+tracker know which format to print the results in? The output can look very
+different from format to format.</p>
+<p>The solution is to create a unique printing method for each output format.
+For each new output format added to Impact, it will mean that each tracker
+sub-class will have to add one more print method. This approach makes it "messy" to add
+new output formats since the programmer has to add code in other classes than
+the trackwriter and trackwriter sub-classes, but since the amount of output formats are
+far less than amount of tracker types, this seems to be the most rational
+approach. </p> <p>Remember that as you add a new trackwriter type, you must add that type to
+the trackwriter getTrackWriterOfType_xxxx method(s).</p>
+
+
+<h3> The Methods </h3>
+<h4>write</h4>
+<p>When this method is called, it is time to write the output data from the
+solution. The Gidtrackwriter just asks each tracker in turn to write it's result through
+the use of the writeResult method.</p>
+
+<p style="margin-top:30px"></p>
+<p><a name="cluster"></a>
+	<a href="#progcont" title="Back to Programmers Manual Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size:14px">Impact Cluster Implementation</b></p>
+
+<p>As of version 0.5.3, Impact supports calculations performed across a 
+networked set of clients often referred to as a cluster. This allows 
+Impact to split up a model into smaller parts and distribute them over 
+the network, letting a client calculate only a unique section of the 
+model and thereby speeding up the calculation. There is no need to have 
+a special type of network although a capacity of 100Mbit or greater is 
+preferrable. This is standard today on most PC:s.</p>
+
+<p>The network communication and synchronisation is a complex topic. 
+Therefore, Impact uses a special software to handle all this, called 
+JavaParty. Developed by the University of Karlsruhe this software is 
+100%PC% java in itself which means no further dependencies. Furthermore, 
+JavaParty assumes there is a way to connect from one client to another 
+without a password. Default setup uses ssh (secure shell) login and how 
+to set this up correctly is explained at the JavaParty webpage. A link 
+to JavaParty as well as downloads is avalilable on the Impact webpage </p>
+
+<p>Impact assumes that your directory is shared across the clients in the 
+network. This is the most common setup on a LAN and is accomplished by 
+NFS or similar. If this is not the case, you have to arrange this with 
+the system administrator. Reason for this assumption is that the 
+printout of the results become significantly simpler to implement since 
+all the clients can access the same file.</p>
+
+<h3>Details of the implementation</h3>
+
+<p>In a typical finite element simulation, approximately 80%PC% of the CPU 
+resource is spent on figuring out the nodal forces as a result of the 
+element geometry, material attributes and contact situation. The 
+remaining 20%PC% are mainly spent calculating the node displacements and 
+sorting them. Since the nodal forces are easy to communicate and of 
+limited size, the first 80%PC% have been parallized and the nodal forces 
+are communicated across the network at every time step. </p>
+
+<p>Since the nodes are the connection points for elements, most nodes will 
+recieve force contributions from several elements. If these elements 
+are placed on different machines, how does the communication know where 
+to transmit the forces? The solution chosen for Impact is quite simple. 
+Each client broadcasts the forces it has calculated onto the net. The 
+other clients listens and picks up the force if applicable.
+This means that for each time step, there is a separate broadcast from 
+each client.</p>
+
+<p>Each client holds a complete model with all the nodes and every 
+node is kept updated with regards to position, velocity etc separately 
+on each client. The elements however are distributed which means that 
+on each client, only some of the elements are calculated and kept 
+updated. When printing of element results are made, each client in turn 
+prints data from the elements that are kept updated there. A complete 
+copy of the nodes are calculated locally on each client. This 
+simplifies contact search since the algorithm scans the nodes around 
+the area of contact to determine the result. If the nodes are 
+distributed together with the elements, this becomes much more complex.</p>
+
+<h3>Code changes</h3>
+
+<p>The change required to implement the cluster version has been limited. 
+The main class is called ModelCluster and one object instance is 
+created for each client in the cluster. These will then run in 
+parallel but synchronized. The solution loop looks very similar to the 
+SMP version but with extra steps included where the nodal force data is 
+exchanged as well as synchronized.</p>
+
+<p>Additionally, there are separate startup scripts for the SMP version as 
+well as the cluster version. Main modifications has also been made in 
+the printing where a print_parallel method has been added.</p>
+
+<p>If you want to examine the code, a good place to start would be the 
+Impact.java file This is where the solution is started, the separate 
+instances created and executed. You can then follow the code from 
+there.</p>
+
+<h3> Other things to think of </h3>
+<ul>
+<li>Keep your variables private to prevent someone else to access them in ways you did not foresee.</li>
+<li>Keep your code simple and clean.</li>
+<li>Cram it full of comments. It should be easy to understand.</li>
+<li>Remember that you will have to make additions in all the tracker subclasses,
+when you add a new trackwriter.</li> 
+<li>Do not forget to document your new trackwriter with a chapter in this manual.</li> 
+<li>Have Fun!</li> </ul>
+
+
+</div>
+</div>
+<!-- =====================================end _dev_programmer_ua.shtml======================================= -->

@@ -1,0 +1,4026 @@
+<!-- =====================================start _doc_fembic_ua.shtml======================================= -->
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<script language="JavaScript">
+function ShowHide(divId)
+{
+if(document.getElementById(divId).style.display == 'none')
+{
+document.getElementById(divId).style.display='block';
+}
+else
+{
+document.getElementById(divId).style.display = 'none';
+}
+}
+</script>
+
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+
+<a name="top"></a><p align=justify><b>Fembic Input data Format</b></p><a name="in"></a>
+ 
+<p align=justify>The fembic input data format is the default input data format for Impact. 
+	It  is designed to be simple to read and understand, and is written in  free format
+	which means that you can type as you wish and do not have  to put data at
+	specific locations in the file. A file which is written  in Fembic should
+	have a name which ends with <b>.in</b> and be in ASCII  format.</p>
+ 
+<p align=justify>Comments may be included on any line but must be preceded by a # character.
+ 	Every text written behind this sign will be ignored and the parser will
+ 	continue on the next line instead.</p>
+ 
+<p align=justify>The General syntax for this manual is that letters in <b>bold</b> are
+	required input for the command. Input in normal writing are optional.
+   </p>
+ 
+<p align=justify>A fembic file (input file for Impact) is structured in blocks. 
+	Each block starts with a  keyword,
+ 	followed by data related to that block. The blocks can come in  any order
+ 	and may be repeated. A block must start on a new line using  any of the
+	keywords.  Each keyword and the related data will now be described.</p>
+<ul>
+	<li><a href="#controls">Controls</a></li>
+	<li><a href="#materials">Materials</a></li>
+	<li><a href="#nodes">Nodes</a></li>
+	<li><a href="#elements">Elements</a></li>
+	<li><a href="#constraints">Constraints</a></li>
+	<li><a href="#loads">Loads</a></li>
+	<li><a href="#trackers">Trackers</a></li>
+<!--  	<li><a href="#other">Other Indata and Outdata Formats</a></li> -->
+<!--  	<li><a href="#contact">Contact Handling in Impact</a></li>	 -->
+</ul>
+<br>
+
+<p><a name="units"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25" >
+	</a><b style="font-size: 16px; " >Units</b><br />
+<a onmousedown="javascript:ShowHide('HiddenDiv')" href="javascript:;" ><button name="ShowandHide" type="button">Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDiv" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units">&#187; <b>Units</b> &#171;</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls"> Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>
+
+
+
+
+<!-- <a name="units"></a><p align=justify><b>Units</b></p> -->
+
+<P align="justify"> Impact can handle any unit of indata as long as the user is consistent
+between the different types. The following table summarizes possible
+combinations for SI units, but similar principles also works for any other units:<P>
+
+<table style="text-align:center" cellpadding="1" cellspacing="1" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr >
+      <td valign="Top"><small><b>Length</b></small></td>
+      <td valign="Top"><small><b>Time</b></small></td>
+      <td valign="Top"><small><b>Mass</b></small></td>
+      <td valign="Top"><small><b>Force</b></small></td>
+      <td valign="Top"><small><b>Pressure</b></small></td>
+      <td valign="Top"><small><b>Velocity</b></small></td>
+      <td valign="Top"><small><b>Density</b></small></td>
+      <td valign="Top"><small><b>Energy</b></small></td>
+      <td valign="Top"><small><b>Gravity</b></small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>Kg</small></td>
+      <td valign="Top"><small>Kg m/s<sup>2</sup></small></td>
+      <td valign="Top"><small>N/m<sup>2</sup></small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>Kg/m<sup>3</sup></small></td>
+      <td valign="Top"><small>Kgm<sup>2</sup>/s<sup>2</sup></small></td>
+      <td valign="Top"><small>9.81</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>Kg</small></td>
+      <td valign="Top"><small>N</small></td>
+      <td valign="Top"><small>Pa</small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>m Kg/l</small></td>
+      <td valign="Top"><small>J</small></td>
+      <td valign="Top"><small>9.81</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>mN</small></td>
+      <td valign="Top"><small>mPa</small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>micro Kg/l</small></td>
+      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small>9.81</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>Mg (ton)</small></td>
+      <td valign="Top"><small>KN</small></td>
+      <td valign="Top"><small>KPa</small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>Kg/l</small></td>
+      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small>9.81</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>Kg</small></td>
+      <td valign="Top"><small>MN</small></td>
+      <td valign="Top"><small>MPa</small></td>
+      <td valign="Top"><small>Km/s</small></td>
+      <td valign="Top"><small>m Kg/l</small></td>
+      <td valign="Top"><small>MJ</small></td>
+      <td valign="Top"><small>9.81e-6</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>KN</small></td>
+      <td valign="Top"><small>KPa</small></td>
+      <td valign="Top"><small>Km/s</small></td>
+      <td valign="Top"><small>micro Kg/l</small></td>
+      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small>9.81e-6</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>m</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>Mg (ton)</small></td>
+      <td valign="Top"><small>GN</small></td>
+      <td valign="Top"><small>GPa</small></td>
+      <td valign="Top"><small>Km/s</small></td>
+      <td valign="Top"><small>Kg/l</small></td>
+      <td valign="Top"><small>GJ</small></td>
+      <td valign="Top"><small>9.81e-6</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>mm</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>Kg</small></td>
+      <td valign="Top"><small>mN</small></td>
+      <td valign="Top"><small>KPa</small></td>
+      <td valign="Top"><small>mm/s</small></td>
+      <td valign="Top"><small>M Kg/l</small></td>
+      <td valign="Top"><small>micro J</small></td>
+      <td valign="Top"><small>9.81e+3</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>mm</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>micro N</small></td>
+      <td valign="Top"><small>Pa</small></td>
+      <td valign="Top"><small>mm/s</small></td>
+      <td valign="Top"><small>g/mm<sup>3</sup></small></td>
+      <td valign="Top"><small>nJ</small></td>
+      <td valign="Top"><small>9.81e+3</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>mm</small></td>
+      <td valign="Top"><small>s</small></td>
+      <td valign="Top"><small>Mg (ton)</small></td>
+      <td valign="Top"><small>N</small></td>
+      <td valign="Top"><small>MPa</small></td>
+      <td valign="Top"><small>mm/s</small></td>
+      <td valign="Top"><small>Mg/mm<sup>3</sup></small></td>
+      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small>9.81e+3</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small><i style="color:blue">mm</i></small></td>
+      <td valign="Top"><small><i style="color:blue">ms</i></small></td>
+      <td valign="Top"><small><i style="color:blue">Kg</i></small></td>
+      <td valign="Top"><small><i style="color:blue">KN</i></small></td>
+      <td valign="Top"><small><i style="color:blue">GPa</i></small></td>
+      <td valign="Top"><small><i style="color:blue">m/s</i></small></td>
+      <td valign="Top"><small><i style="color:blue">M Kg/l</i></small></td>
+      <td valign="Top"><small><i style="color:blue">J</i></small></td>
+      <td valign="Top"><small><i style="color:blue">9.81e-3</i></small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>mm</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>N</small></td>
+      <td valign="Top"><small>MPa</small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>K Kg/l</small></td>
+      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small>9.81e-3</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>mm</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>Mg (ton)</small></td>
+      <td valign="Top"><small>MN</small></td>
+      <td valign="Top"><small>TPa</small></td>
+      <td valign="Top"><small>m/s</small></td>
+      <td valign="Top"><small>G Kg/l</small></td>
+      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small>9.81e-3</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>cm</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>daN</small></td>
+      <td valign="Top"><small>10<sup>5</sup> Pa (bar)</small></td>
+      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small>Kg/l</small></td>
+      <td valign="Top"><small>dJ</small></td>
+      <td valign="Top"><small>9.81e-4</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>cm</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>Kg</small></td>
+      <td valign="Top"><small>10<sup>4</sup> N (KdaN)</small></td>
+      <td valign="Top"><small>10<sup>8</sup> Pa (Kbar)</small></td>
+      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small>K Kg/l</small></td>
+      <td valign="Top"><small>hJ</small></td>
+      <td valign="Top"><small>9.81e-4</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>cm</small></td>
+      <td valign="Top"><small>ms</small></td>
+      <td valign="Top"><small>Mg (ton)</small></td>
+      <td valign="Top"><small>10<sup>7</sup> N(MdaN)</small></td>
+      <td valign="Top"><small>10<sup>11</sup> Pa (Mbar)</small></td>
+      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small>M Kg/l</small></td>
+      <td valign="Top"><small>10<sup>5</sup> J</small></td>
+      <td valign="Top"><small>9.81e-4</small></td>
+	</tr>
+    <tr>
+      <td valign="Top"><small>cm</small></td>
+      <td valign="Top"><small>micro s</small></td>
+      <td valign="Top"><small>g</small></td>
+      <td valign="Top"><small>10<sup>7</sup> N (MdaN)</small></td>
+      <td valign="Top"><small>10<sup>11</sup> Pa (Mbar)</small></td>
+      <td valign="Top"><small>10<sup>4</sup> m/s</small></td>
+      <td valign="Top"><small>Kg/l</small></td>
+      <td valign="Top"><small>10<sup>5</sup> J</small></td>
+      <td valign="Top"><small>9.81e-10</small></td>
+	</tr>
+  </tbody>
+</table>
+
+
+<br>
+
+
+<!-- CONTROLS BLOCK COMMAND -->
+<!-- NEED 10 -->
+
+<p><a name="controls"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size: 16px;">Controls</b><br />
+	<a onmousedown="javascript:ShowHide('HiddenDiv2')" href="javascript:;" ><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDiv2" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">&#187; <b>Controls</b> &#171;</a></li>
+	    <li style="margin-left:55px; "><a href="#controls-run">Run</a></li>
+	    <li style="margin-left:55px; "><a href="#controls-for">For</a></li>
+	    <li style="margin-left:55px; "><a href="#controls-print">Print</a></li>
+	    <li style="margin-left:55px; "><a href="#controls-restore">Restore</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>
+	
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Controls</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Controls</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">The control block is initiated with the word <b>control</b> on a  single
+ line. There can only be one control block in any give indata  file. All
+commands  designed to control the solution process is defined  here. One
+command with  it's associated parameters is defined on each  line.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Controls</b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"> </td>
+            <td valign="Top"> </td>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Controls<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Run, Print<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- RUN COMMAND -->
+<!-- NEED 18 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="controls-run"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Run</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Controls</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This command controls the solution process. The starting time and  the
+ end time are mandatory while control of the step size is optional.  if this
+ is left blank, impact will choose the most optimal step size  for each step
+ during the solution process.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Run from <i>svalue</i> to <i>evalue</i></b> step  <i>stpvalue</i></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>svalue</i></b></td>
+            <td valign="Top">Start time for the solution</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>evalue</i></b></td>
+            <td valign="Top">End time for the solution.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>stpvalue</i></td>
+            <td valign="Top">Stepsize for the solution. Specifying this value disables autostep.
+                             The value can be a single number but could also vary with time. 
+                             It should then be specified within brackets with time, timestep
+                             specified in pairs: [t1,ts1,t2,ts2....tn,tsn]
+                             </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Run from 0.0 to 1.2<br>
+      				   Run from 0.0 to 1.2 step 0.0001<br>
+                       Run from 0.0 to 2.0 step [0,off,1.8,1e-5,2.0,1e-5,2.01,off,10,off]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also
+      </td>
+      <td valign="Top">Controls, Print</td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- PRINT COMMAND -->
+<!-- NEED 14 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="controls-print"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Print</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Controls</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This command controls the print process during the solution.
+      The command can also be repeated with the tracker word if the printing interval
+      is to be set specifically for the trackers. Impact  will print the results 
+      with the interval specified. Depending on how the element perform it's internal 
+      calculations, the output may be local or global stresses and strains. 
+      Displacements of nodes are also printed so that mesh deformation can be followed.
+      If no specific interval will be set for the trackers, they will print at the
+      same time as the general printing occurs.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>print</b> tracker <b>every <i>value</i> step</b></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>value</i></b></td>
+            <td valign="Top">Step time for printing.</td>
+          </tr>
+          </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Print every 0.01 step</td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Controls, Run<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- FOR COMMAND -->
+<!-- NEED 20 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="controls-for"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>For</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Controls</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This command selects which Writer and Trackwriter to use. This selection determines
+      the output format for the result files and thereby the selection of postprocessor. The default is that
+      both the resultfiles and tracker files are printed in GID format. This command is entirely optional and is
+      often left out.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top">For <i>writertype</i> use <i>selected_type</i></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><i>writertype</i></td>
+            <td valign="Top">Choice of writer type to specify. Can be either Writer or TrackWriter.</td>
+          </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>selected_type</i></td>
+            <td valign="Top">The selected type. For writers this can currently only be GIDWriter.
+            Future extensions include Dynawriter and Radiosswriter<br>
+            For Trackwriters this can currently only be GIDTrackWriter.
+            Future extensions include DynaTrackwriter and RadiossTrackwriter<br></td>
+          </tr>
+           </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">For Writer use GIDWriter</td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackers, Elements<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p> </p>
+
+
+<!-- RESTORE COMMAND -->
+<!-- NEED 14 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="controls-restore"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Restore</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Controls</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This command controls the save process during the solution and
+	  allows to create points of restoration of calculation of model. The command also can correct
+	  a calculation step at an error. At occurrence of an error calculation stops. 
+	  In a file error time, an error step are saved. At restart of model time step decreases twice 
+	  ( timestep = timestep_error / 2 ). So there is each time at model start. 
+	  It allows to define a step correctly.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top">restore save <i>value</i></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><i>value</i></td>
+            <td valign="Top">By default OFF. Points of restoration of calculation of model are not created.
+			At parametre PREVIOUS the point of restoration of last step is created. 
+			Parametre ALL creates points of restoration for all steps.
+			</td>
+          </tr>
+          </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Restore save previous</td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Controls<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- MATERIALS BLOCK COMMAND -->
+<!-- NEED 18 -->
+<br>
+<p><a name="materials"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b><span style="font-size: 16px;"> Materials</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDiv3')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDiv3" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">&#187; <b>Materials</b> &#171;</a></li>
+	  <li style="margin-left:55px; "><a href="#materials-elastic">Elastic</a></li>
+	  <li style="margin-left:55px; "><a href="#materials-elasticplastic">Elastic Plastic</a></li>
+	  <li style="margin-left:55px; "><a href="#materials-thermoelasticplastic">Thermo Elastic Plastic</a></li>
+	  <li style="margin-left:55px; "><a href="#materials-spring">Spring</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>	
+	
+	
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Materials</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Materials</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">A specific material is defined by setting the parameters of a  specific
+ material law. There are several material laws available,  depending on material
+ choice. There are laws that are suitable for  metals and other more suitable
+ for foams, which may behave differently.  The material law is then assigned
+ to one or several elements in the  element definition.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Materials of type  <i>mtype</i></b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>mtype</i></b></td>
+            <td valign="Top">The name of a specific  material law. After
+ each block heading, the specific materials are  listed with the parameters
+ defined. One material per line.
+        </td>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Materials of Type Elastic<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elastic, Elastoplastic<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+<p></p>
+
+<!-- MATERIAL ELASTIC -->
+<!-- NEED 18 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="materials-elastic"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Elastic</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Materials</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a simple elastic material law.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i> E = <i>yvalue</i> RHO = <i>dvalue</i> NU = <i>nuvalue</i></b> FAILURE_STRAIN = <i>fstrain</i> FAILURE_STRESS = <i>fstress</i></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the material. Must be unique.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>yvalue</i></b></td>
+            <td valign="Top">Young's modulus for the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dvalue</i></b></td>
+            <td valign="Top">The density of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>nuvalue</i></b></td>
+            <td valign="Top">Poisson's constant of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstrain</i></td>
+            <td valign="Top">The strain at which the material fractures. If an element reaches this
+            strain, it will be removed from the simulation.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstress</i></td>
+            <td valign="Top">The stress at which the material fractures. If an element reaches this
+            stress, it will be removed from the simulation.</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">steel E = 210 D = 0.0000078 NU = 0.3<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Elastoplastic<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- MATERIAL ELASTOPLASTIC -->
+<!-- NEED 45 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="materials-elasticplastic"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Elastoplastic</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Materials</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is an isoparametric elasto-plastic material law. The elastic Young's modulus 
+      defines the stress-strain relation up to the yield stress. Above yield stress, there are several options. 
+      The plastic behaviour can be described by the plastic modulus (EP) which defines a linear relation between 
+      the stress and effective plastic strain. This relation can also be a curve, defined by a range of stress/strain
+      coordinates. The EP in this case has no function and can be omitted. Finally, the relation can also be
+      dependent on the strain rate in which several stress/strain curves are defined together with a parameter
+      setting the velocity for which each curve is representative. The stress for a certain effective strain value is
+      detemined as a linear interpolation from these curves.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i> E = <i>yvalue</i>  RHO = <i>dvalue</i> NU = <i>nuvalue</i> YIELD_STRESS = <i>svalue</i></b>
+      EP = <i>fvalue</i> Y1,Y2.. Y9 = <i>svalue</i> V1,V2..V9 = <i>vvalues</i> FAILURE_STRAIN = <i>fstrain</i> FAILURE_STRESS = <i>fstress</i> </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the material. Must be unique.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>yvalue</i></b></td>
+            <td valign="Top">Young's modulus for the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dvalue</i></b></td>
+            <td valign="Top">The density of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>nuvalue</i></b></td>
+            <td valign="Top">Poisson's constant of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>svalue</i></b></td>
+            <td valign="Top">The yield stress of the material. If this is a single number,
+            				the EP variable must be set in order to define a linear plastic
+            				relation. The second option is to define the yield stress as a
+            				range of strain/stress coordinate pairs. 
+            				Example is [eps0,stress0,eps1,stress2,....,epsn,stressn]. Remember
+            				that the strain is effective plastic strain which is equal to
+            				zero at initial yield. When the Y1,2... parameters are used, this
+            				stress/strain curve is defined for a certain strain rate, defined
+            				in the corresponding vvalue</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fvalue</i></td>
+            <td valign="Top">is the plastic modulus or tangent modulus in the plastic region.
+            				If a curve is defined for the yield stress, this parameter is not
+            				needed.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>vvalue</i></td>
+            <td valign="Top">is the strain rate for which the Yx curve is defined. The V1 value
+            				defines the strain rate for Y1 and so on. The stress/strain curve for
+            				a zero velocity is defined in the ordinary YIELD_STRESS parameter.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstrain</i></td>
+            <td valign="Top">The strain at which the material fractures. If an element reaches this
+            strain, it will be removed from the simulation.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstress</i></td>
+            <td valign="Top">The stress at which the material fractures. If an element reaches this
+            stress, it will be removed from the simulation.</td>
+          </tr>
+          </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">	epsteel E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = 0.180 EP = 0.1<br>
+      					steel2  E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = [0,0.180,0.3,0.220,2.0,0.250]<br>
+						v_steel E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = [0,0.180,0.3,0.220] V1 = 0.2 Y1 = [0,0.200,0.3,0.240]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Elastic<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ </font>
+<p></p>
+
+<!-- MATERIAL ELASTOPLASTIC -->
+<!-- NEED 45 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="materials-thermoelasticplastic"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      
+    <td valign="Top"><big><b>ThermoElastoplastic</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Materials</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      
+    <td valign="Top">This is an isoparametric thermo-elasto-plastic material law. 
+      The elastic Young's modulus defines the stress-strain relation up to the 
+      yield stress . Above yield stress, there are several options. The plastic 
+      behaviour can be described by the plastic modulus (EP) which defines a linear 
+      relation between the stress and effective plastic strain. This relation 
+      can also be a curve, defined by a range of stress/strain coordinates. The 
+      EP in this case has no function and can be omitted. Finally, the relation 
+      can also be dependent on the strain rate in which several stress/strain 
+      curves are defined together with a parameter setting the velocity for which 
+      each curve is representative. The stress for a certain effective strain 
+      value is detemined as a linear interpolation from these curves.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      
+    <td valign="Top"><b><i>name</i> E = <i>yvalue</i> RHO = <i>dvalue</i> NU = 
+      <i>nuvalue</i> YIELD_STRESS = <i>svalue</i></b> <b>T = <i>tvalue</i></b> 
+      <b>A = <i>avalue</i></b> EP = <i>fvalue</i> Y1,Y2.. Y9 = <i>svalue</i> V1,V2..V9 
+      = <i>vvalues</i> FAILURE_STRAIN = <i>fstrain</i> FAILURE_STRESS = <i>fstress</i> 
+    </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the material. Must be unique.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>yvalue</i></b></td>
+            <td valign="Top">Young's modulus for the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dvalue</i></b></td>
+            <td valign="Top">The density of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>nuvalue</i></b></td>
+            <td valign="Top">Poisson's constant of the material.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>svalue</i></b></td>
+            <td valign="Top">The yield stress of the material. If this is a single number,
+            				the EP variable must be set in order to define a linear plastic
+            				relation. The second option is to define the yield stress as a
+            				range of strain/stress coordinate pairs. 
+            				Example is [eps0,stress0,eps1,stress2,....,epsn,stressn]. Remember
+            				that the strain is effective plastic strain which is equal to
+            				zero at initial yield. When the Y1,2... parameters are used, this
+            				stress/strain curve is defined for a certain strain rate, defined
+            				in the corresponding vvalue</td>
+          </tr>
+		  <tr>
+            
+          <td valign="Top"><b><i>tvalue</i></b></td>
+            
+          <td valign="Top">Temperature.</td>
+          </tr>
+		  <tr>
+            
+          <td valign="Top"><b><i>avalue</i></b></td>
+            
+          <td valign="Top">Thermal Coefficient of Expansion.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fvalue</i></td>
+            <td valign="Top">is the plastic modulus or tangent modulus in the plastic region.
+            				If a curve is defined for the yield stress, this parameter is not
+            				needed.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>vvalue</i></td>
+            <td valign="Top">is the strain rate for which the Yx curve is defined. The V1 value
+            				defines the strain rate for Y1 and so on. The stress/strain curve for
+            				a zero velocity is defined in the ordinary YIELD_STRESS parameter.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstrain</i></td>
+            <td valign="Top">The strain at which the material fractures. If an element reaches this
+            strain, it will be removed from the simulation.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>fstress</i></td>
+            <td valign="Top">The stress at which the material fractures. If an element reaches this
+            stress, it will be removed from the simulation.</td>
+          </tr>
+          </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      
+    <td valign="Top"> epsteel E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = 
+      0.180 EP = 0.1 T = 0 A = 0.0000113<br>
+      steel2 E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = [0,0.180,0.3,0.220,2.0,0.250] 
+      T = 0 A = 0.0000113 <br>
+      v_steel E = 210 RHO = 0.0000078 NU = 0.3 YIELD_STRESS = [0,0.180,0.3,0.220] 
+      V1 = 0.2 Y1 = [0,0.200,0.3,0.240] T = 0 A = 0.0000113 </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Elastic<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- MATERIAL SPRING -->
+<!-- NEED 66 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="materials-spring"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Spring</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Materials</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a dummy material which defines all the spring stiffnesses and
+      damping for a spring element. It cannot be used together with any other element types. Stiffness
+      and damping can be defined as a function or constant for all directions. </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i></b> KX = <i>kxvalue</i> KY = <i>kyvalue</i> KZ = <i>kzvalue</i> KRX = <i>krxvalue</i> KRY = <i>kryvalue</i> KRZ = <i>krzvalue</i>
+                                          CX = <i>cxvalue</i> CY = <i>cyvalue</i> CZ = <i>czvalue</i> CRX = <i>crxvalue</i> CRY = <i>cryvalue</i> CRZ = <i>crzvalue</i></td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the material. Must be unique.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>kxvalue</i></td>
+            <td valign="Top">The stiffness along the local x-axis. Can be defined as a constant or a function of the local x-displacement. 
+                             If a function is wanted, the syntax shuld be kx = [d0,K0,d1,K1,...,dN,KN]. By default, this stiffness is assumed 0.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>kyvalue</i></td>
+            <td valign="Top">The stiffness along the local y-axis. Can be defined as a constant or a function of the local y-displacement. 
+                             By default, this stiffness is assumed to be the same as for KX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>kzvalue</i></td>
+            <td valign="Top">The stiffness along the local z-axis. Can be defined as a constant or a function of the local z-displacement. 
+                             By default, this stiffness is assumed to be the same as for KX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>krxvalue</i></td>
+            <td valign="Top">The stiffness around the local x-axis. Can be defined as a constant or a function of the local x-rotation. 
+                             By default, this stiffness is assumed 0.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>kryvalue</i></td>
+            <td valign="Top">The stiffness around the local y-axis. Can be defined as a constant or a function of the local y-rotation. 
+                             By default, this stiffness is assumed to be the same as for KRX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>krzvalue</i></td>
+            <td valign="Top">The stiffness around the local z-axis. Can be defined as a constant or a function of the local z-rotation. 
+                             By default, this stiffness is assumed to be the same as for KRX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>cxvalue</i></td>
+            <td valign="Top">The damping along the local x-axis. Can be defined as a constant or a function of the local x-displacement. 
+                             If a function is wanted, the syntax shuld be cx = [d0,C0,d1,C1,...,dN,CN]. By default, this damping is assumed 0.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>cyvalue</i></td>
+            <td valign="Top">The damping along the local y-axis. Can be defined as a constant or a function of the local y-displacement. 
+                             By default, this damping is assumed to be the same as for CX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>czvalue</i></td>
+            <td valign="Top">The damping along the local z-axis. Can be defined as a constant or a function of the local z-displacement. 
+                             By default, this damping is assumed to be the same as for CX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>crxvalue</i></td>
+            <td valign="Top">The damping around the local x-axis. Can be defined as a constant or a function of the local x-rotation. 
+                             By default, this damping is assumed 0.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>cryvalue</i></td>
+            <td valign="Top">The damping around the local y-axis. Can be defined as a constant or a function of the local y-rotation. 
+                             By default, this damping is assumed to be the same as for CRX.</td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>crzvalue</i></td>
+            <td valign="Top">The stiffness around the local z-axis. Can be defined as a constant or a function of the local z-rotation. 
+                             By default, this damping is assumed to be the same as for CRX.</td>
+          </tr>
+
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">attrib KX = 10 CX = [0,0,1,20,2,off,3,30,45,0]<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Elastoplastic<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+<br>
+<br>
+
+
+
+<!-- ELEMENTS BLOCK COMMAND -->
+<!-- NEED 10 -->
+<p><a name="elements"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b><span style="font-size: 16px;"> Elements</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDiv4')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDiv4" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">&#187; <b>Elements</b> &#171;</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-beam2">Beam 2</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-beamspring2">Beam Spring 2</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-rod2">Rod 2</a></li>	
+	  <li style="margin-left:55px; "><a href="#elements-ctriangle">Contact Triangle</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-cline">Contact Line</a></li>	  
+	  <li style="margin-left:55px; "><a href="#elements-shell4">Shell BT4</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-shell3">Shell CO3</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-solid6">Solid ISO6</a></li>
+	  <li style="margin-left:55px; "><a href="#elements-solid4">Solid ISO4</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>		
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Elements</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">The elements that make up the finite element model
+   are defined  within   this block. Only one type of elements can be defined
+   within each block. </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Elements of Type <i>eltype</i></b><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>eltype</i></b></td>
+            <td valign="Top">Any type of element: Rod_2, Beam_2, Solid_Iso_6, Shell_BT_4, Contact_Triangle
+        </td>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Elements of Type Shell_BT_4<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Rod_2, Beam, Solid_Iso_6, Shell_BT_4, Shell_C0_3<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- BEAM_2 ELEMENT -->
+<!-- NEED 18 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-beam2"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Beam_2</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a simple Beam element which means that it will transfer  moment
+ and also take node rotation into account. The cross section is  assumed
+solid  circular.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i> material=<i>
+  elmaterial</i></b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">The number of the first node etc.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>diameter</i></b></td>
+            <td valign="Top">the cross section diameter of the Beam. The cross
+section is solid circular.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the Beam element
+ uses. This name must be  defined under the material block.
+        </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24] D = 4.73 material = steel<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- CONTACT_TRIANGLE ELEMENT -->
+
+<!-- NEED 40 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-ctriangle"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Contact_Triangle</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a 3 node contact element. 
+      It has no other purpose than detecting if other nodes are about to penetrate it's surface.
+      If this is the case, the element will repel the node with a resulting reaction force onto itself.
+      This element is useful to model contact surfaces. It is also used in most of the other
+      finite elements to handle contact detection.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i>]  T = <i>
+  thickness</i> </b>factor = <i>factor</i> friction = <i>friction</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">
+            <table cellpadding="2" cellspacing="2" border="0" width="100%">
+   <tbody>
+     <tr>
+       <td valign="Top"><img src="images/tria.png" alt="shell image" width="149" height="143">
+       <br>
+       </td>
+       <td valign="Top">
+      <p>Nodes are defined in a counter clockwise direction as shown in the
+  figure. Results from the element can be local stresses and strains.</p>
+
+      <p>The picture shows the local axes where the x-axis direction are
+primarily defined by node 1 and 2.<br>
+  The z-axis is normal to the shell surface.<br>
+  The local y-axis is defined to be octagonal to the x-axis and z-axis.</p>
+       </td>
+     </tr>
+  </tbody>
+</table>
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"> is the thickness of the contact element.  The thickness
+is assumed to be constant over the element width. Nodes outside the thickness are not assumed to
+be in contact. The contact zone extends to half the thickness on each side of the element.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>factor</i></td>
+            <td valign="Top">The repelling force to be used when a node penetrates. 
+            The force will increase linearly as the node intrudes further.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+
+        </td>
+          </tr>
+      </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [113,118,110] t = 1.0 factor = 100 friction = 0.2
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Nodes, Shell_C0_3, Shell_BT_4, Contact_Line<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- CONTACT_LINE ELEMENT -->
+
+<!-- NEED 22 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-cline"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Contact_Line</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This element is a two node contact element of a line segment. The element
+      will provide contact sensitivity within the diameter of the line. Also ends are detected
+      within the radius. Contact is sensed against nodes and other contact_line elements.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i></b> 
+      factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">The number of the first node etc.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>diameter</i></b></td>
+            <td valign="Top">the cross section diameter of the element. The cross
+			section is solid circular.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_factor</i></td>
+            <td valign="Top">The contact factor. This is the reaction force at full penetration of contact node.
+            If nothing is specified, default is 10.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_type</i></td>
+            <td valign="Top">Contact type. Can be OFF to disable contact. Default contact type is BASIC which means
+            that contact sensing is enabled.
+        </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24] D = 4.73<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Nodes, Shell_C0_3, Shell_BT_4, Contact_triangle<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- ROD_2 ELEMENT -->
+
+<!-- NEED 30 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-rod2"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Rod_2</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This element is a two node element of a Rod. The cross section
+ will shrink as the element extends which is important as the rod leaves
+the elastic state and becomes plastic. </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i> material=<i>
+  elmaterial</i></b> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">The number of the first node etc.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>diameter</i></b></td>
+            <td valign="Top">the cross section diameter of the rod. The cross
+section is solid circular.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the rod element
+ uses. This name must be defined under the material block.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_factor</i></td>
+            <td valign="Top">The contact factor. This is the reaction force at full penetration of contact node.
+            If nothing is specified, default is the same as for the contact_line element.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_type</i></td>
+            <td valign="Top">Contact type. Can be OFF to disable contact. Default contact type is BASIC which means
+            that a Contact_Line element will represent the rod. 
+        </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24] D = 4.73 material = steel<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- SPRING BEAM ELEMENT -->
+
+<!-- NEED 32 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-beamspring2"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Beam_Spring_2</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This element is a two node spring element. Since it is a spring, both
+      the stiffness and damping can be defined in six directions. The element attributes are based on the 
+      global coordinate system directions independent of element orientation. Note that time step issues for this element often 
+      be related to the fact that inertia has not been defined on <i>both</i> 
+      the connecting nodes. The element can have contact sensitivity if contact option is turned on (see below).
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>] material=<i>
+  elmaterial</i></b> D = <i>diameter</i> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,node2</i></b></td>
+            <td valign="Top">Node 1 and 2 are the start and end nodes respectively. 
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the spring element
+ 			uses. This material must be of type spring and be defined in the material block.
+ 			The material defines all the stiffness attributes for the element.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>diameter</i></td>
+            <td valign="Top">The cross section diameter of the spring. This is only used for
+            the contact search. Any node within this diameter will be concidered in contact.
+            This does not have to be defined if contact is not enabled.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_factor</i></td>
+            <td valign="Top">The contact factor. This is the reaction force at full penetration of contact node.
+            If nothing is specified, default is the same as for the contact_line element. This 
+            does not have to be defined if contact is not enabled.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_type</i></td>
+            <td valign="Top">Contact type. Can be set to BASIC to enable contact. Contact is disabled 
+            by default for this element.
+        </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24] material = attrib1<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- SHELL_BT_4 ELEMENT -->
+
+<!-- NEED 60 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-shell4"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Shell_BT_4</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a 4 node shell element based on the classical Belytchko-Tsai  formulation.
+It is a very robust design which has become the workhorse  in explicit finite
+element simulations. The element has only one  integration point which means
+that the result are only calculated in  one point which is situated in the
+middle of the element. The advantage  is that the element is very fast. The
+drawback is that it is sensitive  to hourglassing. To prevent this, there
+is an additional compensation  built in to the formulation, called hourglass
+control.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i>,<i>node4</i>]  T = <i>
+  thickness</i> material = <i>elmaterial</i></b> NIP = <i>noip</i> PIP = <i>nopip</i> SHEAR_FACTOR = <i>
+  shearfactor </i>HOURGLASS = <i>hglass </i>MHC = <i>mhc</i> OOPHC = <i>oophc</i>
+   RHC = <i>rhc</i> LOAD = <i>loadname</i> FACTOR = <i>c_factor</i> CONTACT = <i>c_type</i>
+    FRICTION = <i>friction</i> THINNING = <i>thinning</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">
+            <table cellpadding="2" cellspacing="2" border="0" width="100%">
+   <tbody>
+     <tr>
+       <td valign="Top"><img src="images/shell_BT_4.png" alt="shell image" width="149" height="143">
+       <br>
+       </td>
+       <td valign="Top">
+      <p>Nodes are defined in a counter clockwise direction as shown in the
+  figure. Results from the element can be local stresses and strains.</p>
+
+      <p>The picture shows the local axes where the x-axis direction are
+primarily defined by node 1 and 2.<br>
+  The z-axis is normal to the shell surface.<br>
+  The local y-axis is defined primarily by node 1 and 4.</p>
+       </td>
+     </tr>
+  </tbody>
+</table>
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"> is the thickness of the shell.  The thickness
+is assumed to be constant over the element width.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the shell element
+ uses. This name must be defined under the material block.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>noip</i></td>
+            <td valign="Top">the number of integration points through the thickness
+ of the element. All from 1 up to 5 integration points are possible. A minimum
+of three integration points are recommended.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>nopip</i></td>
+            <td valign="Top">the number of the integration point which results will be
+            printed in the result file. Can be anything from 1 up to NIP. 
+            If nothing is specified, it will be the middle point in the shell thickness, for
+            example if NIP = 5, PIP will be equal to 3.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>shearfactor</i></td>
+            <td valign="Top">the arbitrary parameter used to enforce the Kirchhoff
+ normality condition as the shell become thin. Default value is 1.0.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>hglass</i></td>
+            <td valign="Top">a switch to enable or disable hourglass control on the
+ element. It can be either ON or OFF. Default is ON.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>mhc</i></td>
+            <td valign="Top">the Membrane Hourglass Control factor. This factor is multiplied
+ with the calculated hourglass forces acting in the shell membrane plane.
+Default is 0.1.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>oophc</i></td>
+            <td valign="Top">the Out Of Plane Hourglass Control factor. This factor
+ is multiplied with the calculated hourglass forces acting out of the membrane
+ plane, causing ex. twist of the element. Default is 0.1.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>rhc</i></td>
+            <td valign="Top">the Rotational Hourglass Control factor. This factor is
+multiplied with the calculated hourglass moments. Default is 0.1.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>loadname</i></td>
+            <td valign="Top">Name of a load defined under the load block. Pressure onto the shell element is defined this way.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_factor</i></td>
+            <td valign="Top">The contact factor. This is the reaction force at full penetration of contact node.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_type</i></td>
+            <td valign="Top">Contact type. Can be OFF to disable contact. Default contact type is BASIC which means
+            that two Contact_Triangle elements will represent the surface. This works fine for small deformations of the
+            element. ADVANCED will use four Contact_Triangle elements and be able to handle self contact within the element
+            itself, but at a cost of calculation time. EDGE enables edge contact sensitivity along the edges 
+            of the element together with the standard surface contact sensitivity. ADVANCED_EDGE does the latter but together
+            with the advanced contact surface model which uses four Contact_Triangle elements.
+        </td>
+          </tr>
+         <tr>
+            <td valign="Top"><i>friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+
+        </td>
+          </tr>
+         <tr>
+            <td valign="Top"><i>thinning</i></td>
+            <td valign="Top">Determines if the shell should reduce thickness at large
+            strains. Useful in pressing simulations. Default is ON. It can be disabled by 
+            setting equal to OFF.
+        </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [113,118,110,106] nip = 5 t = 1.0 material = steel load = pres
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes, Shell_C0_3<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- SHELL_C0_3 ELEMENT -->
+
+<!-- NEED 42 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-shell3"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Shell_C0_3</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a 3 node shell element based on the classical C0 formulation by Belytchko et. al.
+It complement the BT_4 shell and is common in explicit finite element simulations.
+The element has only one  integration point which means that the result are only calculated in one point
+which is situated in the middle of the element. The advantage  is that the element is very fast. Unlike
+the BT_4 element, this element does not need hourglass control. Triangulars are however by it's nature
+stiffer than the BT_4 element which means it should be used with care.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i>]  T = <i>
+  thickness</i> material = <i>elmaterial</i></b> NIP = <i>noip</i> PIP = <i>nopip</i> LOAD = <i>loadname</i>
+  FACTOR = <i>c_factor</i> CONTACT = <i>c_type</i> FRICTION = <i>friction</i>
+  THINNING = <i>thinning</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">
+            <table cellpadding="2" cellspacing="2" border="0" width="100%">
+   <tbody>
+     <tr>
+       <td valign="Top"><img src="images/tria.png" alt="shell image" width="149" height="143">
+       <br>
+       </td>
+       <td valign="Top">
+      <p>Nodes are defined in a counter clockwise direction as shown in the
+  figure. Results from the element can be local stresses and strains.</p>
+
+      <p>The picture shows the local axes where the x-axis direction are
+primarily defined by node 1 and 2.<br>
+  The z-axis is normal to the shell surface.<br>
+  The local y-axis is defined to be octagonal to the x-axis and z-axis.</p>
+       </td>
+     </tr>
+  </tbody>
+</table>
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"> is the thickness of the shell.  The thickness
+is assumed to be constant over the element width.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the shell element
+ uses. This name must be defined under the material block.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>noip</i></td>
+            <td valign="Top">the number of integration points through the thickness
+ of the element. All from 1 up to 5 integration points are possible. A minimum
+of three integration points are recommended.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>nopip</i></td>
+            <td valign="Top">the number of the integration point which results will be
+            printed in the result file. Can be anyting from 1 up to NIP. 
+            If nothing is specified, it will be the middle point in the shell thickness, for
+            example if NIP = 5, PIP will be equal to 3.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>loadname</i></td>
+            <td valign="Top">Name of a load defined under the load block. Pressure onto the shell element is defined this way.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_factor</i></td>
+            <td valign="Top">The contact factor. This is the reaction force at full penetration of contact node.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>c_type</i></td>
+            <td valign="Top">Parameter to set contact sensitivity type. Can be set to OFF to disable contact. 
+            If unspecified, contact is enabled for surface only. If set to EDGE, the surface contact will be complemented
+            with edge contact sensitivity.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>friction</i></td>
+            <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
+            depending on material and condition. Only useful if contact is enabled.
+            If not set, friction is disabled.
+        </td>
+          </tr>
+         <tr>
+            <td valign="Top"><i>thinning</i></td>
+            <td valign="Top">Determines if the shell should reduce thickness at large
+            strains. Useful in pressing simulations. Default is ON. It can be disabled by 
+            setting equal to OFF.
+        </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [113,118,110] nip = 5 t = 1.0 material = steel load = pres
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes, Shell_BT_4<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- SOLID_ISO_6 ELEMENT -->
+
+<!-- NEED 80 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-solid6"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Solid_Iso_6</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a simple isoparametric solid element with eight integration  points
+ as showed in the figure. The element is available with either  one integration
+ point which is then situated in the middle of the  element, or eight integration
+ points. The benefit of having eight  points are the the element will be
+more  stable since hourglass modes  cannot occur. At the time of writing,
+there is no hourglass control  algorithm implemented which enables a stable
+use of one integration  point which means that this configuration is currently
+not recommended.  The results from the element are stresses and strains in
+global  directions. </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i>,<i>node4</i>,<i>
+  node5</i>,<i>node6</i>,<i>node7</i>,<i>node8</i>]  material=<i>
+  elmaterial</i></b> NIP=<i>noip</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">
+            <table cellpadding="2" cellspacing="2" border="0" width="100%">
+   <tbody>
+     <tr>
+       <td valign="Top"><img src="images/cube.png" alt="cube image">
+       <br>
+       <img src="images/wedge.png" alt="wedge image">
+       <img src="images/pyramid.png" alt="pyramid image">
+       <img src="images/tetra.png" alt="tetra image">
+       </td>
+       <td valign="Top">
+      <p>Nodes are defined as shown in the figure where the local axes are shown as well.
+      Results from the element can be local stresses and strains.</p>
+      <p>Other types of solid elements can be created by collapsing the element edges. This
+      is achieved by assigning the same node number to the original nodes on the cube element.
+      For example, the wedge would be achieved by assigning node nr 1 on position 1 and 2 for
+      the solid element.</p>
+	  <p>In general, the collapse of elements are not as good as rewriting them from scratch.
+	  They are however possible to use, but will not give optimal results, so be aware of this
+	  when using them. Note also that the autostep currently does not work well for a degenerated 
+	  element. A fixed timestep must be set.
+       </td>
+     </tr>
+  </tbody>
+</table>
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>noip</i></td>
+            <td valign="Top">the number of integration points in the element;
+ can either be 1 or 8.  This will also change the result files since results
+ are calculated in  each integration point and the data from each point
+will  then be  printed.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the element
+ uses. This name must be defined under the material block.
+        </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24,34,42,65,76,89,33] material = steel nip = 8<br>
+      				   2 nodes = [23,23,34,42,65,65,89,33] material = steel nip = 8<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- SOLID_ISO_4 ELEMENT -->
+
+<!-- NEED 80 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-solid4"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Solid_Iso_4</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Elements</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This is a tetrahedron solid element. The element is available 
+      with either one integration point (recommended) which is then situated in the 
+      middle of the element, or eight integration points. The results from the element 
+      are stresses and strains in global directions. This element is based on a 
+      degenerated Solid_Iso_6 element.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i>,<i>node4</i>]  
+      material=<i> elmaterial</i></b> NIP=<i>noip</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The element number. Must be a unique number in  the
+ model, i.e. another element cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">
+            <table cellpadding="2" cellspacing="2" border="0" width="100%">
+   <tbody>
+     <tr>
+       <td valign="Top"><img src="images/tetra2.png" alt="tetra image">
+       <br>
+       </td>
+       <td valign="Top">
+      <p>Nodes are defined as shown in the figure where the local axes are shown as well.
+      Results from the element can be global stresses and strains.</p>
+	  <p>Note that the autostep currently does not work well for this element type. Therefore,
+	  a solution involving this element type requires a user defined timestep (see Control).
+       </td>
+     </tr>
+  </tbody>
+</table>
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>noip</i></td>
+            <td valign="Top">the number of integration points in the element;
+ can either be 1 or 8.  One integration point is strongly recommended for this element.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>elmaterial</i></b></td>
+            <td valign="Top">The name of the material that the element
+ uses. This name must be defined under the material block.
+        </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24,34,42] material = steel nip = 1<br>
+      				   2 nodes = [23,23,34,42] material = steel nip = 8<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Elements, Materials, Nodes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+<p></p>
+<p></p>
+<br>
+
+<!-- NODES BLOCK COMMAND -->
+<!-- NEED 12 -->
+<p><a name="nodes"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b><span style="font-size: 16px;"> Nodes</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivNode')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivNode" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">&#187; <b>Nodes</b> &#171;</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>	
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Nodes</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Nodes</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">The node block starts with the keyword <b>nodes</b> on a single line. The
+following lines should then specify the nodes with one node per  line. Impact
+is designed for three dimensional space problems which  means that for each
+node, all three space coordinates must be defined  at all times. If a two
+dimensional problem is to be solved, each node  must be constrained from
+movement in the third dimension.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Nodes</b><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top"> -     </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Nodes
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Node<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- NODE -->
+
+<!-- NEED 40 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Node</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Nodes</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This command defines a node. Impact
+is designed for three dimensional space problems which  means that for each
+node, all three space coordinates must be defined  at all times. If a two
+dimensional problem is to be solved, each node  must be constrained from
+movement in the third dimension.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> X =  <i>xcoord</i> Y = <i>ycoord</i> Z = <i>zcoord</i></b>
+   constraint =  <i>cname</i> loads = <i>lname</i> M = <i>mass</i> Ixx = <i>x_inertia</i>
+    Iyy = <i>y_inertia</i> Izz = <i>z_inertia</i> Ixy = <i>xy_inertia</i> Iyz = <i>yz_inertia</i> Ixz = <i>xz_inertia</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>xcoord, ycoord,  zcoord</i></b></td>
+            <td valign="Top">the space coordinates for the
+ node in respective  direction. The numbers can contain decimals.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>cname</i></td>
+            <td valign="Top">the  name of the constraint set that the node should obey.
+ The constraint  set must be defined elsewhere in the file under the constraint
+ block.  Only one constraint set can be applied on each node. This is an
+ optional parameter and does not have to be defined if the node is  free.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>lname</i></td>
+            <td valign="Top">the name of the load set that the node  should use. The
+ load set must be defined elsewhere in the file under  the load block. Only
+ one load set can be applied to each node. This is  an optional parameter
+and does not have to be defined if there is no  load on the node.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>mass</i></td>
+            <td valign="Top">the weight of the concentrated mass applied to the node. The mass is applied to all spatial directions.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>x_inertia</i></td>
+            <td valign="Top">The inertia around global x-axis applied to the node.</td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>y_inertia</i></td>
+            <td valign="Top">The inertia around global y-axis applied to the node.</td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>z_inertia</i></td>
+            <td valign="Top">The inertia around global z-axis applied to the node.</td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>xy_inertia</i></td>
+            <td valign="Top">The xy inertia component. The yx component is assumed equal.</td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>yz_inertia</i></td>
+            <td valign="Top">The yz inertia component. The zy component is assumed equal.</td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>xz_inertia</i></td>
+            <td valign="Top">The xz inertia component. The zx component is assumed equal.</td>
+        </tr>
+
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Nodes
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Node<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+<p></p>
+
+<!-- CONSTRAINTS BLOCK COMMAND -->
+
+<!-- NEED 10 -->
+<br>
+<p><a name="constraints"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b><span style="font-size: 16px;"> Constraints</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivConst')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivConst" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">&#187; <b>Constraints</b> &#171;</a></li>
+	  <li style="margin-left:55px; "><a href="#constraints-bc">Boundary Conditions</a></li>
+	  <li style="margin-left:55px; "><a href="#constraints-rb">Rigid Body</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>	
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Constraints</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Constraints</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">Under this block heading, the constraint sets are defined. Each set  must
+ be defined on a single line.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Constraints of type <i>ctype</i></b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>            
+      <td valign="Top">
+
+       <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>ctype</i></b></td>
+            <td valign="Top">Any type of constraint: Boundary_Condition, Rigid_Body
+        </td>
+        </tbody>
+      </table>
+
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Constraints of type Boundary_Condition
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Constraint, Node, Load<br>
+      </td>
+    </tr>
+</tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- BOUNDARY_CONDITION -->
+<!-- NEED 35 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="constraints-bc"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Boundary_Condition</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Constraints</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">Defines a boundary condition constraint. A constraint controls movement for the
+ nodes in different directions by setting the acceleration and velocity
+for the node. Any given combination can be set. There is  no need to define
+all the variables. If none is set, the default value is that the node will
+be uncontrolled in that direction.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i></b> ax = <i>value</i> ay = <i>value</i> az =  <i>value</i>
+   vx = <i>value</i> vy = <i>value</i> vz = <i>value</i>  arx = <i>value</i>
+   ary = <i>value</i> arz = <i>value</i> vrx =  <i>value</i> vry = <i>value</i>
+   vrz = <i>value</i> axis = [<i>node1,node2,node3</i>] update = <i>upd</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the constraint. Must be unique.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>value</i></td>
+            <td valign="Top">Value of the constraint. Can be either a simple number (constant)
+            or alternatively a variable over time defined as [t1,y1,t2,y2,...,tn,yn] where y1
+            is the value at time t1 and so on. At this stage, y1 can also be <b>off</b> which means
+            that the constraint will not be effective from this time forward until a new value is set.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>node1,node2,node3</i></td>
+            <td valign="Top">These nodes set up the local coordinate system for the boundary
+            condition. If these are specified, the values specified in the constraint will be
+            assumed to be relating to this local coordinate system. The local x-axis of the 
+            system runs from node1 to node2. Local z-axis is then normal to the plane defined
+            by this x-axis and a vector from node1 to node3. Finally, the y-axis is normal to
+            the x- and z-axis.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>upd</i></td>
+            <td valign="Top">The update option is connected to the axis option. If the local
+            coordinate system is defined and update is set to ON, the nodes defining the
+            coordinate system will be continuosly scanned and the system updated. This means
+            the system can rotate over time.
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">exampleconstraint ax = [0,0,1,1.5,5,off,6,3,100,3] ay = 3.0 az = 0.0
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Node, Load<br>
+      </td>
+    </tr>
+</tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- RIGID_BODY -->
+
+<!-- NEED 17 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="constraints-rb"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Rigid_Body</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Constraints</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">Defines a rigid body constraint. The nodes referring to this constraint
+      are all considered part of a single rigid body. They are all connected to the master node.
+      If specified, the master node can automatically be placed in the centre of gravity for the body. 
+      The movement of the body will be controlled from the master node, on which an ordinary boundary 
+      condition or load can be placed. The master node will automatically be given the mass and inertia
+      for the rigid body, based on the slave nodes mass, inertia and position.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i> master_node = <i>nnum</i></b> update_position = <i>updt</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the constraint. Must be unique.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nnum</i></b></td>
+            <td valign="Top">Node number of the master node. The node will be moved automatically
+            to the centre of gravity of the rigid body before the solution starts.
+        </td>
+        </tr>
+        <tr>
+            <td valign="Top" width="20%"><i>updt</i></td>
+            <td valign="Top">If this is set to ON, the master node will automatically be moved
+            to the centre of mass for the rigid body before the solution starts.
+        </td>
+        </tr>
+
+        </tbody>
+        </table>
+        <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">rb1 master_node = 25
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Boundary_Condition, Node<br>
+      </td>
+    </tr>
+</tbody>
+</table>
+</font>
+
+<p></p>
+<p></p>
+
+<!-- LOADS BLOCK COMMAND -->
+<!-- NEED 10 -->
+<br>
+<p><a name="loads"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a> <b> <span style="font-size: 16px;"> Loads</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivLoad')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivLoad" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">&#187; <b>Loads</b> &#171;</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>		
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Loads</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Loads</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">Under this block heading, the load sets are defined. Each set must
+ be defined on a single line.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>Loads</i></b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options<br>
+      </td>
+      <td valign="Top">-</td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Loads
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Load, Node, Constraint<br>
+      </td>
+    </tr>
+</tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- LOAD -->
+
+<!-- NEED 26 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Load</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Loads</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">The loads block is initiated by the heading above on a single line.  The
+ loads themselves follows, defined one per line. A load set is applied
+on nodes or some elements. It consists of concentrated forces in any direction defined by
+their  x,y and z components. Accelerations, such as gravity can also be
+defined here. Pressure can also be defined.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>name</i> </b>fx = <i>value</i> fy = <i>value</i> fz =  <i>value
+</i>mx =<i> value </i>my =<i> value </i>mz =<i> value </i>ax =<i> acc </i>
+ay =<i> acc </i>az =<i> acc </i>arx =<i> acc </i>ary =<i> acc </i>
+arz =<i> acc</i> p = <i>pressure</i>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top">Name of the load. Must be unique.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>value</i></td>
+            <td valign="Top">Value of the load. Can be either a simple number (constant)
+            or alternatively a variable over time defined as [t1,y1,t2,y2,...,tn,yn] where y1
+            is the value at time t1 and so on. At this stage, y1 can also be <b>off</b> which means
+            that the load will not be effective from this time forward until a new value is set.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>acc</i></td>
+            <td valign="Top">Value of the acceleration. Accelerations are added to the load on a node which
+            makes this the way to simulate gravity. Acceleration can be either a simple number (constant)
+            or alternatively a variable over time defined as [t1,y1,t2,y2,...,tn,yn] where y1
+            is the acceleration at time t1 and so on. At this stage, y1 can also be <b>off</b> which means
+            that the acceleration will not be effective from this time forward until a new value is set.
+        </td>
+        </tr>
+          <tr>
+            <td valign="Top" width="20%"><i>pressure</i></td>
+            <td valign="Top">Value of the pressure. Can be either a simple number (constant)
+            or alternatively a variable over time defined as [t1,y1,t2,y2,...,tn,yn] where y1
+            is the pressure at time t1 and so on. At this stage, y1 can also be <b>off</b> which means
+            that the pressure will not be effective from this time forward until a new value is set.
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">exampleload ax = [0,0,1,1.5,5,off,6,3,100,3] p = 3.0
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Node, Load<br>
+      </td>
+    </tr>
+</tbody>
+</table>
+</font>
+
+<p></p>
+
+
+
+<p> </p>
+<p> </p>
+
+<!-- TRACKERS BLOCK COMMAND -->
+<!-- NEED 10 -->
+<br>
+<p><a name="trackers"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b> <span style="font-size: 16px;"> Trackers</span></b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivTracker')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivTracker" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">&#187; <b>Trackers</b> &#171;</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-nf">Node Force</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-nm">Node Moment</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-nd">Node Displacement</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-ndis">Node Distance</a></li>	  
+	  <li style="margin-left:55px; "><a href="#trackers-sf">Section Force</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-rf">Rod Force</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-bs">Beam Spring</a></li>
+	  <li style="margin-left:55px; "><a href="#trackers-energy">Energy</a></li>	  
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>			
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#ccccff">
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Trackers</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">The trackers are used to track result data from a solution. There are several different
+      trackers, each specially tailored for different results. </td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b>Trackers of Type <i>ttype</i></b><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>ttype</i></b></td>
+            <td valign="Top">Any type of tracker: Nodeforce, Sectionforce, etc
+        </td>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">Trackers of Type Nodeforce<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Nodeforce, Sectionforce<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- NODEFORCE TRACKER -->
+<!-- NEED 35 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-nf"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Nodeforce</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the forces from one or several nodes and plots the result into a file.
+      The file is currently readable by the GID pre/postprocessor but the tracker can also print in a different
+      fileformat. This is controlled by the Trackwriter command. Target is a value set by the user. If this
+      value is reached during simulation, a file will be written (with extension .target). This is useful
+      when debugging new versions of Impact.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>tnode</i></b><i>,tnode,...,tnode</i><b>] DIRECTION = <i>dir</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>tnode</i></b></td>
+            <td valign="Top">The number of the node to track forces from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the force to track. Can be either 'X', 'Y' or 'Z'. It is also
+            possible to select components thereof by adding a - or +, i.e. 'X+' will plot the component
+            acting in the positive X direction. If only X is used, the sum of the positive and negative
+            component will be plotted.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
+            nodetracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23] direction = x+ filename = nodeforce.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- NODEMOMENT TRACKER -->
+<!-- NEED 25 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-nm"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Nodemoment</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the moments from one or several nodes and plots the result into a file.
+      The file is currently readable by the GID pre/postprocessor but the tracker can also print in a different
+      fileformat. This is controlled by the Trackwriter command. Target is a value set by the user. If this
+      value is reached during simulation, a file will be written (with extension .target). This is useful
+      when debugging new versions of Impact.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>tnode</i></b><i>,tnode,...,tnode</i><b>] DIRECTION = <i>dir</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>tnode</i></b></td>
+            <td valign="Top">The number of the node to track moments from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the moment to track. Can be either 'X', 'Y' or 'Z'. It is also
+            possible to select components thereof by adding a - or +, i.e. 'X+' will plot the component
+            acting in the positive X rotation direction. If only X is used, the sum of the positive and negative
+            component will be plotted.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
+            nodetracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23] direction = x+ filename = nodemoment.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Nodeforce, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+
+<!-- NODE DISPLACEMENT TRACKER -->
+<!-- NEED 20 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-nd"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>NodeDisplacement</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the displacement of a single node and plots the result into a file.
+      The file is currently readable by the GID pre/postprocessor but the tracker can also print in a different
+      fileformat. This is controlled by the Trackwriter command. Target is a value set by the user. If this
+      value is reached during simulation, a file will be written (with extension .target). This is useful
+      when debugging new versions of Impact.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> node = [<i>tnode</i>] DIRECTION = <i>dir</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>tnode</i></b></td>
+            <td valign="Top">The number of the node to track displacement from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the displacement to track. Can be either 'X', 'Y' or 'Z'
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
+            nodetracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 node = [23] direction = z filename = nodedisp.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+<!-- NODE ACCELERATION TRACKER -->
+<!-- NEED 26 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-na"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>NodeAcceleration</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the acceleration of a single node and plots the result into a file.
+      The file is currently readable by the GID pre/postprocessor but the tracker can also print in a different
+      fileformat. This is controlled by the Trackwriter command. Target is a value set by the user. If this
+      value is reached during simulation, a file will be written (with extension .target). This is useful
+      when debugging new versions of Impact.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> node = [<i>tnode</i>] DIRECTION = <i>dir</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>tnode</i></b></td>
+            <td valign="Top">The number of the node to track acceleration from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the acceleration to track. Can be either 'X', 'Y' or 'Z'
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
+            nodetracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 node = [23] direction = z filename = nodeacc.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- SECTION FORCE TRACKER -->
+<!-- NEED 22 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-sf"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Sectionforce</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description</td>
+      <td valign="Top">This tracker collects the nodal forces from a range of nodes. The first three of the nodes
+      is the basis of a plane of which a normal axis is calculated. The force from each node is calculated in this
+      direction, summarised and then plotted. A minimum of three nodes must be specified.<br> This tracker is suitable for measuring the load through a cross section
+      of a member or a beam.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>,<i>node3</i></b>,<i>nodeN</i><b>]  direction = <i>dir</i> filename = <i>fname</i></b>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another sectionforcetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,2,..</i></b></td>
+            <td valign="Top">The number of the first node etc. The first three nodes are mandatory. The rest are optional.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the forces to be collected. Can only be equal to "negative". When set, all the
+            forces acting in the opposite direction to the section normal will be summed. If this parameter is not specified
+            at all, the forces acting in the same direction as the section normal will be summed (default).
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The filename of the result file of which the tracker should print the results. Must be unique for
+            each tracker.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 nodes = [23,24,12,34,15] filename = sectionforce_1.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Nodeforce, Trackwriter, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- ENERGY TRACKER -->
+<!-- NEED 30 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-energy"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>Energy</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the energy from the model and plots it. There are
+      several different energy types that can be plotted, but only one per tracker</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> TYPE = <i>ttype</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>ttype</i></b></td>
+            <td valign="Top">The type of energy to plot. Can be one of
+            	<ul>
+            		<li>contact - for contact energy.</li>
+            		<li>external - for external applied energy.</li>
+            		<li>internal - for internal absorbed energy.</li>
+            		<li>hourglass - for hourglass energy used to stabilize some elements.</li>
+            	</ul>	           
+            
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the energytracker should write. Must be a unique name for each
+            energytracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 type = external filename = energy_external.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<p></p>
+
+<!-- NODE DISTANCE TRACKER -->
+<!-- NEED 22 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-ndis"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>NodeDistance</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker calculates the distance between two nodes and plots it
+      as a function of time into a selected file. The distance is the shortest space distance.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> node = [<i>node1</i>,<i>node2</i>] FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another NodeDistance tracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>node1,node2</i></b></td>
+            <td valign="Top">The number of the nodes to track distance between.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
+            tracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 node = [23,15] filename = nodedist.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+<p></p>
+
+<!-- ROD FORCE TRACKER -->
+<!-- NEED 22 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-rf"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>RodForce</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the local force from a given Rod_2 element. The force
+      is then plotted into a file as a function of time. Note that the force is always local and
+      not plotted in any global direction.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> element = [<i>telem</i>] FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another RodForce tracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>telem</i></b></td>
+            <td valign="Top">The number of the Rod_2 element to track force from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
+            tracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 element = [23] filename = rodforce.trk<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+<p></p>
+
+<!-- BEAM SPRING TRACKER -->
+<!-- NEED 26 -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-bs"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>BeamSpring</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top">Trackers</td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the local force from a given Beam_Spring_2 element. The force or moment
+      is then plotted into a file as a function of time. Note that the force or moment is always local and
+      not plotted in any global direction.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><b><i>nr</i> element = [<i>telem</i>] FILENAME = <i>fname</i></b> COMPONENT = <i>comp</i> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another BeamSpring tracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>telem</i></b></td>
+            <td valign="Top">The number of the Beam_Spring_2 element to track force or moment from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
+            tracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>comp</i></td>
+            <td valign="Top">Sets which component to track. Can be one of: FX, FY, FZ, MX, MY, MZ.
+            If nothing is set here, the default is to track the FX component.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top">1 element = [23] filename = beamspring_mz.trk component = mz
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top">Trackwriter, Sectionforce, Trackers, Beam_Spring_2<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p> </p>
+<p> </p>
+
+
+
+
+<p></p>
+<br><br>
+
+<p><a name="other"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size: 16px;">Other Indata and Outdata Formats</b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivOther')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivOther" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">&#187; <b>Other Indata and Outdata Formats</b> &#171;</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+</div>	
+
+
+<p align="justify">Impact is designed to handle other indata and outdata formats. At  the
+ time of writing, there are no additional formats supported but  the process
+ of extending Impact is documented in the programmers manual  for those who
+ would like to.</p>
+
+
+
+<h3>The Impact Translator Mode</h3>
+ 
+<p align="justify">Impact has a mode where it works as a translator between different file formats. 
+This happens when the solver is invoked with both an infile and an outfile.
+Alternatively, this feature is available from the GUI by using the file import button
+available in the editor.</p>
+<p align="justify">Currently, Impact supports files that have been opened with a .msh ending and a .nas ending.
+These represents a file from Gmsh or a file in Nastran format respectively, so make sure that
+your sourcefile has the right ending.</p>
+<p align="justify">Activating the translator can also be done from outside the GUI by writing the follwing at 
+the command prompt:</p>
+
+<code>java run.Impact <i>infile outfile</i></code>
+
+<h3>Nastran models</h3>
+<p align="justify">Impact now supports a basic Nastran to Fembic file format translation. 
+It can mainly be used for translating nodes and elements. 
+Do not expect materials or constraints to be transferred correctly. 
+Currently, only MAT1 and SPC1 types are available, so if you have problems translating 
+files, rename the materials or boundary conditions to get the processing done. 
+Also,if the nodes are expressed in some kind of coordinate system other than the global, 
+do not expect proper geometry.</p>
+
+<p align="justify">The translator also has a problem with the way that engineering number format is 
+expressed. An example can be 0.7800-8. This will not work. When this happens, change
+the number in an editor to 0.780e-8 instead.</p>
+
+<p align="justify">Some programs export a nastran file where the command for a node (GRID) is expressed
+as GRID*. The same applies for elements i.e. CBAR becomes CBAR*. The solution here is to
+replace all * with a simple whitespace and then it should translate correctly.</p>
+
+<p align="justify">To speed up the process of translation, always place the property commands (
+PSHELL or similar) at the top of the file. Unless you do that, it will take ages to
+translate a file.</p>
+
+<h3>Gmsh models</h3>
+<p align="justify">The Open Source Pre and Postprocessor Gmsh is now supported by Impact. The output
+from the preprocessor (Version 1.0 of the .msh format) can be translated into
+Fembic format in the same manner as for the nastran .nas file.</p>
+<p align="justify">When creating models in Gmsh, you can configure the mesh with a couple of special
+parameters that have been defined especially for interface with Impact. These parameters
+are available in a .geo file which you will find in the interface directory in the Impact
+file structure. The file is called <code>impact.geo</code></p>
+<p align="justify">How to use the parameters are shown in another file in the same directory called
+bumper.geo. The geometry should be meshed with the mesh 2D button when running Gmsh
+ and then exported as a .msh file (Version 1.0 file format).
+
+This file can then be read into the Impact editor and then saved as .in file. 
+The file will then automatically be translated into Fembic file format (Impacts native
+file format).
+
+The user then needs to edit the file to set the timestep and other parameters as wanted.
+</p>
+<br /><br />
+
+	
+<p><a name="contact"></a>
+	<a href="#top" title="Back to Block Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25">
+	</a><b style="font-size: 16px;">Contact handling in Impact</b><br />
+
+	<a onmousedown="javascript:ShowHide('HiddenDivContact')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
+
+
+<div  id="HiddenDivContact" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">&#187; <b>Contact Handling in Impact</b> &#171;</a>	</p>
+
+</div>	
+
+<p>Contacts in impact are handled by two element types:</p>
+<ul>
+  <li> Contact_Triangle (CT) </li>
+  <li> Contact_Line (CL) </li>
+</ul>
+<p> The CT is used to sense contact between nodes and surfaces and the
+CL senses contact against other CL elements. Together, these two
+elements can be used to enable contact detection for most cases and
+models. Both of them are classified as elements which means that they
+can directly be part of a model mesh as all elements. The user can for
+example model a wall or a complex rigid contact surface with them.</p>
+<p> Since they only have the sole purpose of sensing contact, the have
+no stiffness at all. This means that if they are used on their own in
+the model, the nodes connecting them should be fixed by constraints to
+prevent them from drifting when in contact. It also means that the user
+can use them in combination with ordinary elements to provide contact
+sensing where this is not default. </p>
+<p> One example where this is useful is when a body has been meshed
+using solid elements, for example an engine block in a car. This body
+can then be "dressed" on the outside with a second mesh of contact
+elements to provide the contact sensitivity against other elements in
+the car. Any contact sensing inside the engine block is not needed and
+valuable calculation time can then be saved with this approach.</p>
+<p> Some elements have contact sensing as default. Examples of these
+are: </p>
+<ul>
+  <li> Shell_C0_3 </li>
+  <li> Shell_BT_4 </li>
+  <li> Rod_2 </li>
+  <li> Beam_2 </li>
+</ul>
+<p> When any of these elements is created, one or several contact
+elements are created by default. These are embedded inside the element
+and share the element nodes. The rod and beam elements use the
+Contact_Line element to sense contact. The Shell elements use the
+Contact_Triangle element to sense contact against the surface and
+optionally Contact_Line elements at the edges to sense contact against
+other edges. </p>
+<p> The contact elements drain quite a bit of computing resources and
+as the number of elements increase, so does the amount of computing
+power since the increase is more than linear. Therefore, some of the
+elements have options to reduce the contact resolution. This means that
+the contact sensing will be less accurate during large deformation of
+the elements, but the solution will run faster. For this reason,
+contact sensing has also not been implemented in the solid elements
+since the user can best minimise the amount of calculations needed, by
+distributing the contact element where they are needed. </p>
+<p> The details of how contact sensing is implemented is explained in
+the programming manual. </p>
+
+
+</div>
+</div>
+
+<div align="center" id="sidebar" style="background-color:#EFFBFB; margin-left:536px; position:fixed; border-style:dotted; border-width:thin; ">
+
+
+<p style="margin-left:10px">	<a href="doc_fembic_en.shtml">CONTENTS</a></p>
+<p style="margin-left:10px">	<a href="#top">Fembic Input Data Block</a></p>
+ 
+ <li style="margin-left:30px; list-style-type: circle;"}><a href="#units"> Units</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#controls"> Controls</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#materials">Materials</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#elements">Elements</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#loads">Loads</a></li>
+	<li style="margin-left:30px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
+
+<p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
+<p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
+
+<br /><br />
+
+	
+</div>
+
+
+
+<!-- =====================================end _doc_fembic_ua.shtml======================================= -->

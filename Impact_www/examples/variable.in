@@ -1,0 +1,75 @@
+# This is an example of an indata file for the Impact Finite Element Program
+# 
+# It is a simple test of the variable constraint function where the end node is controlled over time by the constraint input.
+# The constraint can be turned off by replacing the number with "off". Linear interplation is assumed between the points.
+#
+# Please note that you can view the results with GID while the program is
+# running so there is no need to wait for the completion of this simulation.
+
+nodes
+1 x = 0.0 y = 0.0 z = 0.0 constraint = moving
+2 x = 5.0 y = 0.0 z = -4.0
+3 x = 10.0 y = 0.0 z = -8.0
+4 x = 15.0 y = 0.0 z = -10.0
+5 x = 20.0 y = 0.0 z = -12.0
+
+6 x = 25.0 y = 0.0 z = -13.0
+7 x = 40.0 y = 0.0 z = -13.0
+8 x = 45.0 y = 0.0 z = -14.0
+9 x = 50.0 y = 0.0 z = -14.0
+10 x = 55.0 y = 0.0 z = -15.0
+
+11 x = 70.0 y = 0.0 z = -15.0
+12 x = 75.0 y = 0.0 z = -14.0
+13 x = 80.0 y = 0.0 z = -14.0
+14 x = 85.0 y = 0.0 z = -13.0
+15 x = 90.0 y = 0.0 z = -13.0
+
+16 x = 95.0 y = 0.0 z = -12.0
+17 x = 100.0 y = 0.0 z = -10.0
+18 x = 105.0 y = 0.0 z = -8.0
+19 x = 115.0 y = 0.0 z = -4.0
+20 x = 120.0 y = 0.0 z = 0.0 constraint = moving load = end_load
+
+# D is the diameter of the rod. In this case, it is in mm.
+
+elements of type rod_2
+1 nodes = [1,2] D = 5.0 material = e_steel
+2 nodes = [2,3] D = 5.0 material = e_steel
+3 nodes = [3,4] D = 5.0 material = e_steel
+4 nodes = [4,5] D = 5.0 material = e_steel
+5 nodes = [5,6] D = 5.0 material = e_steel
+6 nodes = [6,7] D = 5.0 material = e_steel
+7 nodes = [7,8] D = 5.0 material = e_steel
+8 nodes = [8,9] D = 5.0 material = e_steel
+9 nodes = [9,10] D = 5.0 material = e_steel
+10 nodes = [10,11] D = 5.0 material = e_steel
+11 nodes = [11,12] D = 5.0 material = e_steel
+12 nodes = [12,13] D = 5.0 material = e_steel
+13 nodes = [13,14] D = 5.0 material = e_steel
+14 nodes = [14,15] D = 5.0 material = e_steel
+15 nodes = [15,16] D = 5.0 material = e_steel
+16 nodes = [16,17] D = 5.0 material = e_steel
+17 nodes = [17,18] D = 5.0 material = e_steel
+18 nodes = [18,19] D = 5.0 material = e_steel
+19 nodes = [19,20] D = 5.0 material = e_steel
+
+constraints of type boundary_condition
+moving Ay = [0,5,4,-5,8,5,12,-5,12.1,off,20,off] Ax = [0,0,12.1,off,20,off] Az = [0,0,1.9,0,2,5,6,-5,10,5,12,0,12.1,off,20,off]
+
+# materials of type elastoplastic
+# e_steel rho = 0.0000078 E = 210 nu = 0.3 yield_stress = 0.180 EP = 0.1
+
+# There is also an elastic material available as follows:
+materials of type elastic
+e_steel rho = 0.0000078 E = 210 nu = 0.3
+
+loads
+end_load Fx = [0,0,14,0,14.1,-0.2,16,off,20,off]
+controls
+run from 0 to 20
+print every 0.1 step
+
+
+
+

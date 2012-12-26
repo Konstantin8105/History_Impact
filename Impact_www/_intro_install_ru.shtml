@@ -1,0 +1,134 @@
+﻿<!-- =====================================start _intro_install_ru.shtml======================================= -->
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+<b><i>should be translated into Russian</i></b>
+
+<p align=justify><b>Installation Prerequisites</b></p>
+
+<p align=justify>Impact is a Java program which means that there is no compilation of
+	sourcecode or similar to be done. <u>This Java program (Impact) can be run in any operating system</u>.
+	However, there are some programs you need to install to be able to run Impact 
+	and to see the results. To get Impact working you need:
+</p>
+<ol>
+  <li><p align=justify>A Java engine - A good Java engine is the 
+  			<a href="http://java.sun.com/javase/downloads/index.jsp"  target="_BLANK">Sun version.</a>
+  			You can take either the Java Runtime Environment (JRE) 
+  			or Java Development Kit (JDK).  			
+  		</p>
+  </li>
+  <li><p align=justify><a href="http://java3d.java.net/binary-builds.html"  target="_BLANK">
+  			Java3D</a> - A scene graph-based 3D application programming interface (API) 
+  			for the Java platform, 
+  		</p>
+  </li>
+</ol> 
+
+<p align=justify>For <a href="http://www.ubuntu.com/">Ubuntu</a> users, Ubuntu Software Center can be used
+	to install Java engine and Java3D. You can search "openjdk-7-jdk"
+	to install the Java engine, and search "java3ds" to install Java3D.<br>
+	Alternatively from terminal (Ctrl+Alt+T): sudo apt-get install openjdk-7-jdk java3ds-fileloader
+</p>
+<br>
+
+<p align=justify><b>Impact Installation </b></p>
+
+<p align=justify>Impact installation is very simple and should be the similar in any operating system:</p>
+<ol>
+	<li><p align=justify><a href="http://sourceforge.net/projects/impact/" target="_BLANK">Download</a> 
+			 the latest Impact version from Impact repository in Sourceforge. The downloaded file
+			 is <b>Impact-x.x.xx.xxx.zip</b>.
+		 </p>
+	</li>
+	<li><p align=justify>Extract the zip file to a directory of your preference. For Windows users the
+			 Winzip program will handle the expansion. If you are running Linux, you can use the terminal
+			 command<br>
+			 <code>tar -xvf Impact-x.x.xx.xxx.zip</code><br>
+		 </p>
+	</li>
+	<li><p align=justify>After successfully extract the zip file, a folder <b>Impact</b> will be created.
+			 Congratulations, the installation is completed, Impact is now ready for you.
+		 </p>
+	</li>
+</ol>
+<br>
+
+<p align=justify><b>Running Impact</b></p>
+
+<p align=justify>After the installation (extraction process) completed, you can try to run Impact.
+	Make sure you have installed the prerequisite software, otherwise Impact will not run.
+</p>
+<ol>
+	<li><p align=justify>Find <code>ImpactGUI_OGL_xxxx.bat (.sh)</code>, where instead of xxxx choose
+			 a file which corresponds to your operating system is used.
+		    <p align=justify>If you are using windows 32 bits, for example, just double click 
+		    	<code>ImpactGUI_OGL_windows_i586.bat</code> </p>
+		    <p align=justify>If you are using Linux 64 bits, for example, you can run the shell
+		     script using the terminal command from Impact folder:<br><br>
+		     <code>bash ImpactGUI_OGL_linux_amd64.sh</code><br>
+		     or<br>
+		     <code>sh ImpactGUI_OGL_linux_amd64.sh</code><br>
+		     </p>
+	</li>
+	<li><p align=justify>Impact window environment should appear on the screen. Click Processor tab
+			 then click <img src="images/open.gif" width="16" height="16" border="0" alt="">
+			 and open one of example Impact input file (<code>3.in</code>) from "examples" folder.
+		 </p>
+	</li>
+	
+	<li><p align=justify>After the the input file has been loaded, now it is ready to run. Click 
+			 the run button <img src="images/run.gif" width="16" height="16" border="0" alt=""> to start 
+			 Impact solver. The solver will create two outdatafiles:<br> <code>xxxxx.in.flavia.res</code> and
+  			 <code>xxxxx.in.flavia.msh</code>
+		 </p>
+	</li>
+	<li><p align=justify>While running, you can see the result. You can open another Impact environment.
+			 Click the Postprocessor tab, then click 
+			 <img src="images/open.gif" width="16" height="16" border="0" alt="">. <br>
+			 Set the file filter, 
+			 Files of type to "Open solver result (.res)".<br>
+			 Open result file from "examples" folder Impact input file (<code>3.in.flavia.res</code>). 			 
+		 </p>
+	</li>
+	
+	<li><p align=justify>Impact post processor will read the result file. After completely loaded in the
+			 post processor, you can examine the simulation result in every time increment.
+		 </p>
+	</li>
+	
+</ol>
+
+</div>
+</div>
+
+<div align="center" id="sidebar">
+	<br> <br>
+   <center><a href="http://java.sun.com/javase/downloads/index.jsp"  target="_BLANK">
+   		  <img src="images/sun-java-logo.jpg" height="130" border="0" alt=""  />
+   		  </a>
+   </center>
+   <br><br>
+   <center><a href="http://java3d.java.net/binary-builds.html"  target="_BLANK">
+  			  <img src="images/logo-java-net.png" width="130" border="0" alt="" />
+  			  </a>
+  	</center>
+  	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+  
+  <center>No Compilation Required</center>
+  	<center><img src="images/simple-install.gif" width="130"  /></center>
+  	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+  	<div align="center">Running input file. Click to magnify</div>
+  	<center><a href="images/impact-env.gif"  rel="lightbox"  title="Running Impact">
+  	<img src="images/impact-env-small.gif" width="80%"  /></a></center>
+  	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+  	
+	<div align="center">Viewing results. Click to magnify</div>
+  	<center><a href="images/simul.gif"  rel="lightbox"  title="Viewing results">    	
+  	<center> <img src="images/simul-small.gif" width="80%"  /></center>
+  
+</div>
+
+
+
+<!-- =====================================end _intro_install_ru.shtml======================================= -->

@@ -1,0 +1,288 @@
+# Impulsively loaded cylindrical panel
+#
+# References: 	1. MSC/DYNA verification manual
+#				2. T. Belytschko, J. Lin and C. S. Tsay, "Explicit Algorithms
+#		 		   for the Nonlinear Dynamics of Shells", Computational
+#				   Methods in Applied Mechanics Engineering. 42, pp 225-251, 1984
+#				3. L. Morino, J. W. Leech and E. A. Witmer, "An Improved Numerical
+#				   Calculation Technique for Large Elasto-Plastic Transient Deformations
+#				   of Thin Shell = Part 2 - Evaluation and Applications, "Journal of
+#                  Applied Mechanics, pp. 429-435, 1971
+#
+# Problem Description
+#
+# A 120 degree cylindrical panel is loaded impulsively over a rectangular area.
+# The initial velocity is radial in direction and a permanent deformation occurs.
+#
+# Only half of the panel is modelled due to symmetry condition along the axis of
+# the cylinder.
+#                                               
+# The loaded area is 10.205 in long and 3.08 in wide. It starts at the end of the cylinder
+# and is centred so only half the width is modelled.
+#
+#
+#
+# Reference Results
+#
+#
+#               Maximum deflection      Time
+# Test          -1.26    in             0.00032
+# LS-Dyna       -1.0     in             0.00040
+# Impact        -1.22    in             0.00037
+#
+# Engineering data
+#
+# Length 			L   =         12.56  in
+# Radius			r   =         2.9375 in
+# Thickness			t   =         0.125  in
+# Young modulus		E   =         10.5E6 psi
+# Plastic modulus	EP  =         10.5E3 psi
+# Density			rho =         2.5E-4 lb-sec^2/in^4
+# Poissons ratio	nu  =         0.3
+# Initial velocity	V0  =		  -5650  in/sec
+
+
+CONTROLS
+RUN FROM 0.00000 TO 0.001
+PRINT EVERY 0.0001 STEP
+PRINT TRACKER EVERY 0.00001 STEP
+
+
+MATERIALS OF TYPE ELASTOPLASTIC
+mat_1 E =  10.5E6 RHO = 2.5E-4 NU = 0.3 YIELD_STRESS = 44000 EP = 10.5E3
+
+
+NODES
+2 x = 0 		y = 2.9375 		z = 0 constraint = corner
+4 x = 2.543949695296783 y = 1.468749875846601 	z = 0 constraint = fixed
+5 x = 0 		y = 2.9375 		z = -12.56 constraint = corner
+7 x = 2.543949695296783 y = 1.468749875846601 	z = -12.56 constraint = fixed
+8 x = 0.5100915454269453 y = 2.892872770324328 	z = 0 constraint = end
+9 x = 1.004684215923924 y = 2.760347057214605 	z = 0 constraint = end
+10 x = 1.468750062076691 y = 2.543949587776793 	z = 0 constraint = end
+11 x = 1.888188676667611 y = 2.250255490228658 	z = 0 constraint = end
+12 x = 2.250255628453675 y = 1.888188511937449 	z = 0 constraint = end
+13 x = 0.5100915454269453 y = 2.892872770324328 z = -12.56 constraint = end
+14 x = 1.004684215923924 y = 2.760347057214605 	z = -12.56 constraint = end
+15 x = 1.468750062076691 y = 2.543949587776793 	z = -12.56 constraint = end
+16 x = 1.888188676667611 y = 2.250255490228658 	z = -12.56 constraint = end
+17 x = 2.250255628453675 y = 1.888188511937449 	z = -12.56 constraint = end
+18 x = 0 		y = 2.9375 		z = -0.785 constraint = v1
+19 x = 0 		y = 2.9375 		z = -1.57 constraint = v1
+20 x = 0 		y = 2.9375 		z = -2.355 constraint = v1
+21 x = 0 		y = 2.9375 		z = -3.14 constraint = v1
+22 x = 0 		y = 2.9375 		z = -3.925 constraint = v1
+23 x = 0 		y = 2.9375 		z = -4.71 constraint = v1
+24 x = 0 		y = 2.9375 		z = -5.495 constraint = v1
+25 x = 0 		y = 2.9375 		z = -6.28 constraint = v1
+26 x = 0 		y = 2.9375 		z = -7.065 constraint = v1
+27 x = 0 		y = 2.9375 		z = -7.850000000000001 constraint = v1
+28 x = 0 		y = 2.9375 		z = -8.635 constraint = v1
+29 x = 0 		y = 2.9375 		z = -9.42 constraint = v1
+30 x = 0 		y = 2.9375 		z = -10.205 constraint = v1
+31 x = 0 		y = 2.9375 		z = -10.99 constraint = sym
+32 x = 0 		y = 2.9375 		z = -11.775 constraint = sym
+34 x = 2.543949695296783 y = 1.468749875846601 z = -0.785 constraint = fixed
+35 x = 2.543949695296783 y = 1.468749875846601 z = -1.57 constraint = fixed
+36 x = 2.543949695296783 y = 1.468749875846601 z = -2.355 constraint = fixed
+37 x = 2.543949695296783 y = 1.468749875846601 z = -3.14 constraint = fixed
+38 x = 2.543949695296783 y = 1.468749875846601 z = -3.925 constraint = fixed
+39 x = 2.543949695296783 y = 1.468749875846601 z = -4.71 constraint = fixed
+40 x = 2.543949695296783 y = 1.468749875846601 z = -5.495 constraint = fixed
+41 x = 2.543949695296783 y = 1.468749875846601 z = -6.28 constraint = fixed
+42 x = 2.543949695296783 y = 1.468749875846601 z = -7.065 constraint = fixed
+43 x = 2.543949695296783 y = 1.468749875846601 z = -7.850000000000001 constraint = fixed
+44 x = 2.543949695296783 y = 1.468749875846601 z = -8.635 constraint = fixed
+45 x = 2.543949695296783 y = 1.468749875846601 z = -9.42 constraint = fixed
+46 x = 2.543949695296783 y = 1.468749875846601 z = -10.205 constraint = fixed
+47 x = 2.543949695296783 y = 1.468749875846601 z = -10.99 constraint = fixed
+48 x = 2.543949695296783 y = 1.468749875846601 z = -11.775 constraint = fixed
+66 x = 0.5100915454269453 y = 2.892872770324328 z = -0.785 constraint = v2
+67 x = 0.5100915454269453 y = 2.892872770324328 z = -1.57 constraint = v2
+68 x = 0.5100915454269453 y = 2.892872770324328 z = -2.355 constraint = v2
+69 x = 0.5100915454269453 y = 2.892872770324328 z = -3.14 constraint = v2
+70 x = 0.5100915454269453 y = 2.892872770324328 z = -3.925 constraint = v2
+71 x = 0.5100915454269453 y = 2.892872770324328 z = -4.71 constraint = v2
+72 x = 0.5100915454269453 y = 2.892872770324328 z = -5.495 constraint = v2
+73 x = 0.5100915454269453 y = 2.892872770324328 z = -6.28 constraint = v2
+74 x = 0.5100915454269453 y = 2.892872770324328 z = -7.065 constraint = v2
+75 x = 0.5100915454269453 y = 2.892872770324328 z = -7.850000000000001 constraint = v2
+76 x = 0.5100915454269453 y = 2.892872770324328 z = -8.635 constraint = v2
+77 x = 0.5100915454269453 y = 2.892872770324328 z = -9.42 constraint = v2
+78 x = 0.5100915454269453 y = 2.892872770324328 z = -10.205 constraint = v2
+79 x = 0.5100915454269453 y = 2.892872770324328 z = -10.99
+80 x = 0.5100915454269453 y = 2.892872770324328 z = -11.775
+82 x = 1.004684215923924 y = 2.760347057214605 z = -0.785 constraint = v3
+83 x = 1.004684215923924 y = 2.760347057214605 z = -1.57 constraint = v3
+84 x = 1.004684215923924 y = 2.760347057214605 z = -2.355 constraint = v3
+85 x = 1.004684215923924 y = 2.760347057214605 z = -3.14 constraint = v3
+86 x = 1.004684215923924 y = 2.760347057214605 z = -3.925 constraint = v3
+87 x = 1.004684215923924 y = 2.760347057214605 z = -4.71 constraint = v3
+88 x = 1.004684215923924 y = 2.760347057214605 z = -5.495 constraint = v3
+89 x = 1.004684215923924 y = 2.760347057214605 z = -6.28 constraint = v3
+90 x = 1.004684215923924 y = 2.760347057214605 z = -7.065 constraint = v3
+91 x = 1.004684215923924 y = 2.760347057214605 z = -7.850000000000001 constraint = v3
+92 x = 1.004684215923924 y = 2.760347057214605 z = -8.635 constraint = v3
+93 x = 1.004684215923924 y = 2.760347057214605 z = -9.42 constraint = v3
+94 x = 1.004684215923924 y = 2.760347057214605 z = -10.205 constraint = v3
+95 x = 1.004684215923924 y = 2.760347057214605 z = -10.99
+96 x = 1.004684215923924 y = 2.760347057214605 z = -11.775
+98 x = 1.468750062076691 y = 2.543949587776793 z = -0.785
+99 x = 1.468750062076691 y = 2.543949587776793 z = -1.57
+100 x = 1.468750062076691 y = 2.543949587776793 z = -2.355
+101 x = 1.468750062076691 y = 2.543949587776793 z = -3.14
+102 x = 1.468750062076691 y = 2.543949587776793 z = -3.925
+103 x = 1.468750062076691 y = 2.543949587776793 z = -4.71
+104 x = 1.468750062076691 y = 2.543949587776793 z = -5.495
+105 x = 1.468750062076691 y = 2.543949587776793 z = -6.28
+106 x = 1.468750062076691 y = 2.543949587776793 z = -7.065
+107 x = 1.468750062076691 y = 2.543949587776793 z = -7.850000000000001
+108 x = 1.468750062076691 y = 2.543949587776793 z = -8.635
+109 x = 1.468750062076691 y = 2.543949587776793 z = -9.42
+110 x = 1.468750062076691 y = 2.543949587776793 z = -10.205
+111 x = 1.468750062076691 y = 2.543949587776793 z = -10.99
+112 x = 1.468750062076691 y = 2.543949587776793 z = -11.775
+114 x = 1.888188676667611 y = 2.250255490228658 z = -0.785
+115 x = 1.888188676667611 y = 2.250255490228658 z = -1.57
+116 x = 1.888188676667611 y = 2.250255490228658 z = -2.355
+117 x = 1.888188676667611 y = 2.250255490228658 z = -3.14
+118 x = 1.888188676667611 y = 2.250255490228658 z = -3.925
+119 x = 1.888188676667611 y = 2.250255490228658 z = -4.71
+120 x = 1.888188676667611 y = 2.250255490228658 z = -5.495
+121 x = 1.888188676667611 y = 2.250255490228658 z = -6.28
+122 x = 1.888188676667611 y = 2.250255490228658 z = -7.065
+123 x = 1.888188676667611 y = 2.250255490228658 z = -7.850000000000001
+124 x = 1.888188676667611 y = 2.250255490228658 z = -8.635
+125 x = 1.888188676667611 y = 2.250255490228658 z = -9.42
+126 x = 1.888188676667611 y = 2.250255490228658 z = -10.205
+127 x = 1.888188676667611 y = 2.250255490228658 z = -10.99
+128 x = 1.888188676667611 y = 2.250255490228658 z = -11.775
+130 x = 2.250255628453675 y = 1.888188511937449 z = -0.785
+131 x = 2.250255628453675 y = 1.888188511937449 z = -1.57
+132 x = 2.250255628453675 y = 1.888188511937449 z = -2.355
+133 x = 2.250255628453675 y = 1.888188511937449 z = -3.14
+134 x = 2.250255628453675 y = 1.888188511937449 z = -3.925
+135 x = 2.250255628453675 y = 1.888188511937449 z = -4.71
+136 x = 2.250255628453675 y = 1.888188511937449 z = -5.495
+137 x = 2.250255628453675 y = 1.888188511937449 z = -6.28
+138 x = 2.250255628453675 y = 1.888188511937449 z = -7.065
+139 x = 2.250255628453675 y = 1.888188511937449 z = -7.850000000000001
+140 x = 2.250255628453675 y = 1.888188511937449 z = -8.635
+141 x = 2.250255628453675 y = 1.888188511937449 z = -9.42
+142 x = 2.250255628453675 y = 1.888188511937449 z = -10.205
+143 x = 2.250255628453675 y = 1.888188511937449 z = -10.99
+144 x = 2.250255628453675 y = 1.888188511937449 z = -11.775
+
+
+ELEMENTS OF TYPE SHELL_BT_4
+45 nodes = [144, 48, 7, 17] t = 0.125 material = mat_1
+46 nodes = [143, 47, 48, 144] t = 0.125 material = mat_1
+47 nodes = [142, 46, 47, 143] t = 0.125 material = mat_1
+48 nodes = [141, 45, 46, 142] t = 0.125 material = mat_1
+49 nodes = [140, 44, 45, 141] t = 0.125 material = mat_1
+50 nodes = [139, 43, 44, 140] t = 0.125 material = mat_1
+51 nodes = [138, 42, 43, 139] t = 0.125 material = mat_1
+52 nodes = [137, 41, 42, 138] t = 0.125 material = mat_1
+53 nodes = [136, 40, 41, 137] t = 0.125 material = mat_1
+54 nodes = [135, 39, 40, 136] t = 0.125 material = mat_1
+55 nodes = [134, 38, 39, 135] t = 0.125 material = mat_1
+56 nodes = [133, 37, 38, 134] t = 0.125 material = mat_1
+57 nodes = [132, 36, 37, 133] t = 0.125 material = mat_1
+58 nodes = [131, 35, 36, 132] t = 0.125 material = mat_1
+59 nodes = [130, 34, 35, 131] t = 0.125 material = mat_1
+60 nodes = [12, 4, 34, 130] t = 0.125 material = mat_1
+61 nodes = [128, 144, 17, 16] t = 0.125 material = mat_1
+62 nodes = [127, 143, 144, 128] t = 0.125 material = mat_1
+63 nodes = [126, 142, 143, 127] t = 0.125 material = mat_1
+64 nodes = [125, 141, 142, 126] t = 0.125 material = mat_1
+65 nodes = [124, 140, 141, 125] t = 0.125 material = mat_1
+66 nodes = [123, 139, 140, 124] t = 0.125 material = mat_1
+67 nodes = [122, 138, 139, 123] t = 0.125 material = mat_1
+68 nodes = [121, 137, 138, 122] t = 0.125 material = mat_1
+69 nodes = [120, 136, 137, 121] t = 0.125 material = mat_1
+70 nodes = [119, 135, 136, 120] t = 0.125 material = mat_1
+71 nodes = [118, 134, 135, 119] t = 0.125 material = mat_1
+72 nodes = [117, 133, 134, 118] t = 0.125 material = mat_1
+73 nodes = [116, 132, 133, 117] t = 0.125 material = mat_1
+74 nodes = [115, 131, 132, 116] t = 0.125 material = mat_1
+75 nodes = [114, 130, 131, 115] t = 0.125 material = mat_1
+76 nodes = [11, 12, 130, 114] t = 0.125 material = mat_1
+77 nodes = [112, 128, 16, 15] t = 0.125 material = mat_1
+78 nodes = [111, 127, 128, 112] t = 0.125 material = mat_1
+79 nodes = [110, 126, 127, 111] t = 0.125 material = mat_1
+80 nodes = [109, 125, 126, 110] t = 0.125 material = mat_1
+81 nodes = [108, 124, 125, 109] t = 0.125 material = mat_1
+82 nodes = [107, 123, 124, 108] t = 0.125 material = mat_1
+83 nodes = [106, 122, 123, 107] t = 0.125 material = mat_1
+84 nodes = [105, 121, 122, 106] t = 0.125 material = mat_1
+85 nodes = [104, 120, 121, 105] t = 0.125 material = mat_1
+86 nodes = [103, 119, 120, 104] t = 0.125 material = mat_1
+87 nodes = [102, 118, 119, 103] t = 0.125 material = mat_1
+88 nodes = [101, 117, 118, 102] t = 0.125 material = mat_1
+89 nodes = [100, 116, 117, 101] t = 0.125 material = mat_1
+90 nodes = [99, 115, 116, 100] t = 0.125 material = mat_1
+91 nodes = [98, 114, 115, 99] t = 0.125 material = mat_1
+92 nodes = [10, 11, 114, 98] t = 0.125 material = mat_1
+93 nodes = [96, 112, 15, 14] t = 0.125 material = mat_1
+94 nodes = [95, 111, 112, 96] t = 0.125 material = mat_1
+95 nodes = [94, 110, 111, 95] t = 0.125 material = mat_1
+96 nodes = [93, 109, 110, 94] t = 0.125 material = mat_1
+97 nodes = [92, 108, 109, 93] t = 0.125 material = mat_1
+98 nodes = [91, 107, 108, 92] t = 0.125 material = mat_1
+99 nodes = [90, 106, 107, 91] t = 0.125 material = mat_1
+100 nodes = [89, 105, 106, 90] t = 0.125 material = mat_1
+101 nodes = [88, 104, 105, 89] t = 0.125 material = mat_1
+102 nodes = [87, 103, 104, 88] t = 0.125 material = mat_1
+103 nodes = [86, 102, 103, 87] t = 0.125 material = mat_1
+104 nodes = [85, 101, 102, 86] t = 0.125 material = mat_1
+105 nodes = [84, 100, 101, 85] t = 0.125 material = mat_1
+106 nodes = [83, 99, 100, 84] t = 0.125 material = mat_1
+107 nodes = [82, 98, 99, 83] t = 0.125 material = mat_1
+108 nodes = [9, 10, 98, 82] t = 0.125 material = mat_1
+109 nodes = [80, 96, 14, 13] t = 0.125 material = mat_1
+110 nodes = [79, 95, 96, 80] t = 0.125 material = mat_1
+111 nodes = [78, 94, 95, 79] t = 0.125 material = mat_1
+112 nodes = [77, 93, 94, 78] t = 0.125 material = mat_1
+113 nodes = [76, 92, 93, 77] t = 0.125 material = mat_1
+114 nodes = [75, 91, 92, 76] t = 0.125 material = mat_1
+115 nodes = [74, 90, 91, 75] t = 0.125 material = mat_1
+116 nodes = [73, 89, 90, 74] t = 0.125 material = mat_1
+117 nodes = [72, 88, 89, 73] t = 0.125 material = mat_1
+118 nodes = [71, 87, 88, 72] t = 0.125 material = mat_1
+119 nodes = [70, 86, 87, 71] t = 0.125 material = mat_1
+120 nodes = [69, 85, 86, 70] t = 0.125 material = mat_1
+121 nodes = [68, 84, 85, 69] t = 0.125 material = mat_1
+122 nodes = [67, 83, 84, 68] t = 0.125 material = mat_1
+123 nodes = [66, 82, 83, 67] t = 0.125 material = mat_1
+124 nodes = [8, 9, 82, 66] t = 0.125 material = mat_1
+125 nodes = [32, 80, 13, 5] t = 0.125 material = mat_1
+126 nodes = [31, 79, 80, 32] t = 0.125 material = mat_1
+127 nodes = [30, 78, 79, 31] t = 0.125 material = mat_1
+128 nodes = [29, 77, 78, 30] t = 0.125 material = mat_1
+129 nodes = [28, 76, 77, 29] t = 0.125 material = mat_1
+130 nodes = [27, 75, 76, 28] t = 0.125 material = mat_1
+131 nodes = [26, 74, 75, 27] t = 0.125 material = mat_1
+132 nodes = [25, 73, 74, 26] t = 0.125 material = mat_1
+133 nodes = [24, 72, 73, 25] t = 0.125 material = mat_1
+134 nodes = [23, 71, 72, 24] t = 0.125 material = mat_1
+135 nodes = [22, 70, 71, 23] t = 0.125 material = mat_1
+136 nodes = [21, 69, 70, 22] t = 0.125 material = mat_1
+137 nodes = [20, 68, 69, 21] t = 0.125 material = mat_1
+138 nodes = [19, 67, 68, 20] t = 0.125 material = mat_1
+139 nodes = [18, 66, 67, 19] t = 0.125 material = mat_1
+140 nodes = [2, 8, 66, 18] t = 0.125 material = mat_1
+                                                              
+CONSTRAINTS OF TYPE BOUNDARY_CONDITION
+fixed  vx = 0 vy = 0 vz = 0 ax = 0 ay = 0 az = 0 vrx = 0 vry = 0 vrz = 0 arx = 0 ary = 0 arz = 0
+sym    vx = 0               ax = 0                       vry = 0 vrz = 0         ary = 0 arz = 0
+v1     vx = 0 vy = [0.0,-5650,0.1E-6,off,100,off] ax = 0 ay = [0.0,0,0.1E-6,off,100,off] vry = 0 vrz = 0 ary = 0 arz = 0
+v2     vz = [0.0,-5650,0.1E-6,off,100,off] az = [0.0,0,0.1E-6,off,100,off] axis = [2,8,5]
+v3     vz = [0.0,-5650,0.1E-6,off,100,off] az = [0.0,0,0.1E-6,off,100,off] axis = [8,9,13]
+v4     vz = [0.0,-5650,0.1E-6,off,100,off] az = [0.0,0,0.1E-6,off,100,off] axis = [9,10,14]
+end           vy = 0 vz = 0        ay = 0 az = 0         vry = 0 vrz = 0         ary = 0 arz = 0
+mov    vx = 0 vy = 0 vz = 0 ax = 0 ay = 0 az = 0 vrx = 0 vry = 0 vrz = 0 arx = 0 ary = 0 arz = 0
+corner vx = 0 vy = 0 vz = 0 ax = 0 ay = 0 az = 0         vry = 0 vrz = 0         ary = 0 arz = 0
+
+TRACKERS OF TYPE NODEDISPLACEMENT
+1 node = [25] direction = y filename = Ver_12.trk  target = [3.7E-4,0.1E-4,-1.222,0.001]
+

@@ -1,0 +1,57 @@
+# PRESSURE TEST - SOLID ELEMENTS
+#
+# Problem Description
+# A pressure load is applied to a block of dimensions 1m x 1m x 1m.
+# The load is applied at time 0 and then held constant for the rest of
+# the time.
+#
+# Model Description
+# The block is modelled using a single Solid_Iso_6 element. Pressure is
+# applied at one side through the use of distributed node loads.
+#
+# Engineering Data
+#  Mass of block          =  1000 kg
+#  Center of gravity      = (0.5,0.5,0.5)
+#  Ixx = Iyy = Izz        = 250 kgm2
+#  ixy = Iyz = Izx        = 0
+#  timestep               = 0.005 seconds
+#
+# Reference results
+#  Total force of block   = 1.0 N
+#  Acceleration of block  = 0.001 m/s2
+#
+# Comparisons of results
+# The block shows a linear increase in velocity to 0.001 m/s in
+# one second. This agrees with theory.
+# 
+
+nodes
+1   x = 0  y = 0  z = 0
+2   x = 1  y = 0  z = 0
+3   x = 1  y = 1  z = 0
+4   x = 0  y = 1  z = 0
+5   x = 0  y = 0  z = 1
+6   x = 1  y = 0  z = 1
+7   x = 1  y = 1  z = 1
+8   x = 0  y = 1  z = 1
+
+elements of type Solid_iso_6
+1   nodes = [1,2,3,4,5,6,7,8]  material = mat1
+
+elements of type shell_C0_3
+1   nodes = [6,3,2]  material = mat1  t = 0.0001  load = press  contact = off
+2   nodes = [6,7,3]  material = mat1  t = 0.0001  load = press  contact = off
+
+loads
+press  p = -1.0
+
+materials of type elastic
+mat1   E = 210000000000  rho = 1000  nu = 0.3
+
+trackers of type NodeVelocity
+1  node = [1]  direction = X  filename = Ver_08.trk target = [1.0,0.000001,0.001,0.00001]
+
+controls
+run from 0 to 1.01 step 0.000025
+print every 0.1 step
+print tracker every 0.001 step

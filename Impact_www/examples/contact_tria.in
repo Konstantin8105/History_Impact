@@ -1,0 +1,58 @@
+# This is a simulation of a couple of simple contact elements
+# A number of triangular elements including contact elements are
+# falling down on a plate of contact elements
+#
+# Please note that you can view the results with GID while the program is
+# running so there is no need to wait for the completion of this simulation.
+
+nodes
+1 x = 0.0 y = 0.0 z = 0.0 load = gravity
+2 x = 2.0 y = 0.0 z = 0.0 load = gravity
+3 x = 4.0 y = 0.0 z = 0.0 load = gravity
+4 x = 6.0 y = 0.0 z = 0.0 load = gravity
+5 x = 8.0 y = 0.0 z = 0.0 load = gravity
+6 x = 10.0 y = 0.0 z = 0.0 load = gravity
+7 x = 0.0 y = 1.0 z = 0.0 load = gravity
+8 x = 2.0 y = 1.0 z = 0.0 load = gravity
+9 x = 4.0 y = 1.0 z = 0.0 load = gravity
+10 x = 6.0 y = 1.0 z = 0.0 load = gravity
+11 x = 8.0 y = 1.0 z = 0.0 load = gravity
+12 x = 10.0 y = 1.0 z = 0.0 load = gravity
+
+13 x = -10 y = -10 z = -10 constraint = fixed_end
+14 x = 20 y = -10 z = 2 constraint = fixed_end
+15 x = 20 y = 10 z = 2 constraint = fixed_end
+16 x = -10 y = 10 z = -10 constraint = fixed_end
+
+# factor stands for the reaction force given by the contact element at full penetration
+
+elements of type shell_C0_3
+1 nodes = [1,2,8] nip = 5 t = 1.0 material = e_steel 
+2 nodes = [8,7,1] nip = 5 t = 1.0 material = e_steel 
+3 nodes = [2,3,9] nip = 5 t = 1.0 material = e_steel 
+4 nodes = [9,8,2] nip = 5 t = 1.0 material = e_steel 
+5 nodes = [3,4,10] nip = 5 t = 1.0 material = e_steel 
+6 nodes = [10,9,3] nip = 5 t = 1.0 material = e_steel 
+7 nodes = [4,5,11] nip = 5 t = 1.0 material = e_steel 
+8 nodes = [11,10,4] nip = 5 t = 1.0 material = e_steel 
+9 nodes = [5,6,12] nip = 5 t = 1.0 material = e_steel 
+10 nodes = [12,11,5] nip = 5 t = 1.0 material = e_steel 
+
+elements of type contact_triangle
+11 nodes = [13,14,15] t = 1.0
+12 nodes = [15,16,13] t = 1.0
+
+constraints of type boundary_condition
+fixed_end Vx = 0 Vy = 0 Vz = 0 Ax = 0 Ay = 0 Az = 0 Vrx = 0 Vry = 0 Vrz = 0 Arx = 0 Ary = 0 Arz = 0
+
+loads
+gravity Az = -9.81
+
+materials of type elastic
+e_steel rho = 0.0000078 E = 210 nu = 0.3 
+
+controls
+run from 0 to 6.0 
+print every 0.02 step
+
+

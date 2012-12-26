@@ -1,0 +1,43 @@
+﻿<!-- =====================================start _index_ru.shtml======================================= -->
+<div style="margin: 10px;">
+<div id="content" class="narrowcolumn">
+<b><i>should be translated into Russian</i></b>
+<p align=justify><i><font size="+1">Welcome to the Impact Finite Element Program</font></i></p>
+
+<p align=justify><b>Impact</b> is an explicit Finite Element Program Suite which simulates dynamic impact events. 
+	It has a range of elements, contact handling and different material laws. Models can be created,
+	solved and analyzed with the included pre- and postprocessor.
+	</p>
+
+<p align=justify>Impact has been designed to be easily extendible and modular to enable programmers
+	a way to easy add features to the program without having to enter other parts of the code. 
+	Impact has been written in Java. This choice of language may seem strange at first, 
+	but with the recent development of Java engines, speed penalty is not that significant.
+	On the other hand, the Object Oriented features and the high portability of Java is a clear 
+	advantage for the future.
+	</p>
+
+<p align=justify> Impact is a Finite Element Code which is based on an Explicit Time stepping algorithm.
+	These kind of codes are used to simulate dynamic phenomena such as car crashes and similar,
+	usually involving large deformations.
+	</p>
+
+<p align=justify>There are quite few explicit codes around which might seem strange since the 
+	other cousin (implicit finite element) are quite common. The implicit codes are used to simulate 
+	static loads in structures. Something that explicit codes does not manage very well. 
+	</p>
+
+
+</div>
+</div>
+
+<div align="center" id="sidebar">
+	<center><a href="http://sourceforge.net/projects/impact/files/impact/Version%200.7.06.038/Impact-0.7.06.038.zip/download" target="_blank"><img src="images/download.gif"  height="32"  /> </a></center>
+   <ul><center><li>Impact-0.7.06-038</li></center></ul>
+   <br> 
+   <center> <img src="images/Bullet_AKM.in-1.gif" height="150"  /></center>
+   <br>
+   <center> <img src="images/example-2-8.png" width="90%"  /></center>
+  
+</div>
+<!-- =====================================end _index_ru.shtml======================================= -->

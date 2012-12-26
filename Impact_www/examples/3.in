@@ -1,0 +1,1190 @@
+CONTROLS
+run from    0.0 to 1 step 0.0001
+print every  0.005 step
+print tracker every 0.001 step
+restore save previous
+
+TRACKERS OF TYPE Nodeforce
+1 nodes = [34] direction = x filename = 2_opora_x.trk
+2 nodes = [34] direction = y filename = 2_opora_y.trk
+2 nodes = [190,241,292,343,394,445] direction = y filename = 2_podacha_y.trk
+
+materials of type elastic
+mat_1 rho = 0.0000078 E = 210 nu = 0.3 
+mat_2 rho = 0.0000050 E = 50 nu = 0.3  failure_stress = 30
+mat_3 rho = 0.0000070 E = 100 nu = 0.3  failure_stress = 150
+
+CONSTRAINTS OF TYPE boundary_condition
+rot1 vrz = -3.14 vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0
+rot2 vrz = 3.14 vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0
+fixed_z vz = 0 az = 0
+pod vx = 0 ax = 0 vz = 0 az = 0 vy = [0,-550,0.13,-550,0.135,0,2,0]
+
+CONSTRAINTS OF TYPE Rigid_Body
+cmass1 master_node = 108
+cmass2 master_node = 34
+
+loads
+gravity Ay = -9.81
+
+NODES
+       1 x =    726.89039054 y =     -0.00000033 z =      0.00000000 constraint = cmass2 
+       2 x =    714.83514404 y =    -38.84885406 z =      0.00000000 constraint = cmass2 
+       3 x =    714.83508301 y =     38.84897614 z =      0.00000000 constraint = cmass2 
+       4 x =    683.15533357 y =     15.76285507 z =      0.00000000 constraint = cmass2 
+       5 x =    667.95347191 y =    -39.41671192 z =      0.00000000 constraint = cmass2 
+       6 x =    697.63525391 y =    -75.71003723 z =      0.00000000 constraint = cmass2 
+       7 x =    697.63525391 y =     75.71008301 z =      0.00000000 constraint = cmass2 
+       8 x =    644.33523962 y =     74.40045975 z =      0.00000000 constraint = cmass2 
+       9 x =    615.60275195 y =     -0.35396709 z =      0.00000000 constraint = cmass2 
+      10 x =    675.60711670 y =   -109.90554047 z =      0.00000000 constraint = cmass2 
+      11 x =    675.60711670 y =    109.90563202 z =      0.00000000 constraint = cmass2 
+      12 x =    630.28907434 y =    -97.88532455 z =      0.00000000 constraint = cmass2 
+      13 x =    582.34287936 y =     56.84340056 z =      0.00000000 constraint = cmass2 
+      14 x =    649.15557861 y =   -140.80694580 z =      0.00000000 constraint = cmass2 
+      15 x =    649.15557861 y =    140.80697632 z =      0.00000000 constraint = cmass2 
+      16 x =    605.88025177 y =    122.76676013 z =      0.00000000 constraint = cmass2 
+      17 x =    563.92655187 y =    -75.61580693 z =      0.00000000 constraint = cmass2 
+      18 x =    618.76702881 y =   -167.84591675 z =      0.00000000 constraint = cmass2 
+      19 x =    618.76696777 y =    167.84597778 z =      0.00000000 constraint = cmass2 
+      20 x =    543.14033906 y =     91.72483810 z =      0.00000000 constraint = cmass2 
+      21 x =    572.43256957 y =   -135.43099628 z =      0.00000000 constraint = cmass2 
+      22 x =    518.99022361 y =     25.11282427 z =      0.00000000 constraint = cmass2 
+      23 x =    554.20165790 y =    154.21998097 z =      0.00000000 constraint = cmass2 
+      24 x =    520.36566992 y =   -104.87354493 z =      0.00000000 constraint = cmass2 
+      25 x =    585.00000000 y =    190.52561951 z =      0.00000000 constraint = cmass2 
+      26 x =    584.99993896 y =   -190.52558899 z =      0.00000000 constraint = cmass2 
+      27 x =    474.75277413 y =    -50.65316814 z =      0.00000000 constraint = cmass2 
+      28 x =    496.02204947 y =    114.82076990 z =      0.00000000 constraint = cmass2 
+      29 x =    548.47540283 y =   -208.42883301 z =      0.00000000 constraint = cmass2 
+      30 x =    548.47534180 y =    208.42886353 z =      0.00000000 constraint = cmass2 
+      31 x =    516.24715350 y =   -175.83979550 z =      0.00000000 constraint = cmass2 
+      32 x =    470.55638966 y =   -121.38347197 z =      0.00000000 constraint = cmass2 
+      33 x =    445.65479525 y =     60.50933028 z =      0.00000000 constraint = cmass2 
+      34 x =    475.0               y =     0.0                 z =      0.00000000 constraint = rot2 
+      35 x =    482.12665542 y =    183.42703783 z =      0.00000000 constraint = cmass2 
+      36 x =    509.86465454 y =   -221.22662354 z =      0.00000000 constraint = cmass2 
+      37 x =    509.86462402 y =    221.22665405 z =      0.00000000 constraint = cmass2 
+      38 x =    445.64308863 y =   -177.80439688 z =      0.00000000 constraint = cmass2 
+      39 x =    402.25895606 y =   -100.85486847 z =      0.00000000 constraint = cmass2 
+      40 x =    469.87750244 y =    228.68368530 z =      0.00000000 constraint = cmass2 
+      41 x =    469.87747192 y =   -228.68365479 z =      0.00000000 constraint = cmass2 
+      42 x =    405.00532270 y =    121.94276052 z =      0.00000000 constraint = cmass2 
+      43 x =    372.10073799 y =     64.54004120 z =      0.00000000 constraint = cmass2 
+      44 x =    365.05126758 y =    -39.20474391 z =      0.00000000 constraint = cmass2 
+      45 x =    412.65919703 y =    186.81110363 z =      0.00000000 constraint = cmass2 
+      46 x =    361.49380654 y =     13.14886283 z =      0.00000000 constraint = cmass2 
+      47 x =    429.24923706 y =   -230.66282654 z =      0.00000000 constraint = cmass2 
+      48 x =    429.24920654 y =    230.66285706 z =      0.00000000 constraint = cmass2 
+      49 x =    383.53652792 y =   -188.66788266 z =      0.00000000 constraint = cmass2 
+      50 x =    366.26211729 y =    174.53028531 z =      0.00000000 constraint = cmass2 
+      51 x =    388.72662354 y =    227.12780762 z =      0.00000000 constraint = cmass2 
+      52 x =    388.72656250 y =   -227.12777710 z =      0.00000000 constraint = cmass2 
+      53 x =    314.33116593 y =     51.45208415 z =      0.00000000 constraint = cmass2 
+      54 x =    333.40990641 y =   -138.35517047 z =      0.00000000 constraint = cmass2 
+      55 x =    326.38418423 y =    117.54849262 z =      0.00000000 constraint = cmass2 
+      56 x =    315.59480162 y =    -78.59868155 z =      0.00000000 constraint = cmass2 
+      57 x =    302.27084008 y =     -7.52746286 z =      0.00000000 constraint = cmass2 
+      58 x =    349.05480528 y =   -218.14347749 z =      0.00000000 constraint = cmass2 
+      59 x =    349.05480419 y =    218.14347716 z =      0.00000000 constraint = cmass2 
+      60 x =    321.43823242 y =   -188.27877808 z =      0.00000000 constraint = cmass2 
+      61 x =    321.43823242 y =    188.27879333 z =      0.00000000 constraint = cmass2 
+      62 x =    298.11553955 y =   -154.95277405 z =      0.00000000 constraint = cmass2 
+      63 x =    298.11547852 y =    154.95272827 z =      0.00000000 constraint = cmass2 
+      64 x =    279.51538086 y =   -118.77803802 z =      0.00000000 constraint = cmass2 
+      65 x =    279.51538086 y =    118.77806091 z =      0.00000000 constraint = cmass2 
+      66 x =    265.97979736 y =    -80.41967010 z =      0.00000000 constraint = cmass2 
+      67 x =    265.97979736 y =     80.41969299 z =      0.00000000 constraint = cmass2 
+      68 x =    257.75762939 y =    -40.58285522 z =      0.00000000 constraint = cmass2 
+      69 x =    257.75762939 y =     40.58287811 z =      0.00000000 constraint = cmass2 
+      70 x =    255.00000000 y =      0.00004530 z =      0.00000000 constraint = cmass2 
+      71 x =    251.89039054 y =      0.00000033 z =      0.00000000 constraint = cmass1 
+      72 x =    239.83514404 y =    -38.84885406 z =      0.00000000 constraint = cmass1 
+      73 x =    239.83511353 y =     38.84897614 z =      0.00000000 constraint = cmass1 
+      74 x =    222.63528442 y =    -75.71003723 z =      0.00000000 constraint = cmass1 
+      75 x =    222.63528442 y =     75.71008301 z =      0.00000000 constraint = cmass1 
+      76 x =    209.13876404 y =     13.26052814 z =      0.00000000 constraint = cmass1 
+      77 x =    193.06479231 y =    -52.46330836 z =      0.00000000 constraint = cmass1 
+      78 x =    200.60714722 y =   -109.90554047 z =      0.00000000 constraint = cmass1 
+      79 x =    200.60713196 y =    109.90563202 z =      0.00000000 constraint = cmass1 
+      80 x =    176.10784259 y =     69.93079150 z =      0.00000000 constraint = cmass1 
+      81 x =    174.15560913 y =    140.80697632 z =      0.00000000 constraint = cmass1 
+      82 x =    174.15557861 y =   -140.80694580 z =      0.00000000 constraint = cmass1 
+      83 x =    149.20767064 y =    -98.72985079 z =      0.00000000 constraint = cmass1 
+      84 x =    140.60278084 y =     -0.35399154 z =      0.00000000 constraint = cmass1 
+      85 x =    135.71419380 y =    112.84115748 z =      0.00000000 constraint = cmass1 
+      86 x =    143.76702881 y =   -167.84591675 z =      0.00000000 constraint = cmass1 
+      87 x =    143.76702881 y =    167.84597778 z =      0.00000000 constraint = cmass1 
+      88 x =    107.34288899 y =     56.84344287 z =      0.00000000 constraint = cmass1 
+      89 x =     96.41901747 y =   -135.57177362 z =      0.00000000 constraint = cmass1 
+      90 x =    110.00002289 y =    190.52560425 z =      0.00000000 constraint = cmass1 
+      91 x =    109.99996948 y =   -190.52558899 z =      0.00000000 constraint = cmass1 
+      92 x =     79.22304374 y =    -60.84492034 z =      0.00000000 constraint = cmass1 
+      93 x =     79.87844455 y =    152.83040527 z =      0.00000000 constraint = cmass1 
+      94 x =     68.14041057 y =     91.72487658 z =      0.00000000 constraint = cmass1 
+      95 x =     43.99022831 y =     25.11289658 z =      0.00000000 constraint = cmass1 
+      96 x =     73.47539520 y =   -208.42883301 z =      0.00000000 constraint = cmass1 
+      97 x =     73.47538757 y =    208.42886353 z =      0.00000000 constraint = cmass1 
+      98 x =     45.36569816 y =   -104.87361298 z =      0.00000000 constraint = cmass1 
+      99 x =     41.24717638 y =   -175.83980954 z =      0.00000000 constraint = cmass1 
+     100 x =     14.23293612 y =    100.09640294 z =      0.00000000 constraint = cmass1 
+     101 x =     34.86468124 y =   -221.22662354 z =      0.00000000 constraint = cmass1 
+     102 x =     34.86463165 y =    221.22665405 z =      0.00000000 constraint = cmass1 
+     103 x =     -0.24713298 y =    -50.65318968 z =      0.00000000 constraint = cmass1 
+     104 x =     -4.44356614 y =   -121.38348458 z =      0.00000000 constraint = cmass1 
+     105 x =      7.12666686 y =    183.42704575 z =      0.00000000 constraint = cmass1 
+     106 x =     -5.12248230 y =    228.68368530 z =      0.00000000 constraint = cmass1 
+     107 x =     -5.12250519 y =   -228.68365479 z =      0.00000000 constraint = cmass1 
+     108 x =     0.0                y =     0.0                   z =      0.00000000 constraint = rot1 
+     109 x =    -29.35689815 y =   -177.80438569 z =      0.00000000 constraint = cmass1 
+     110 x =    -69.99465576 y =    121.94275366 z =      0.00000000 constraint = cmass1 
+     111 x =    -45.75074005 y =   -230.66282654 z =      0.00000000 constraint = cmass1 
+     112 x =    -45.75075531 y =    230.66285706 z =      0.00000000 constraint = cmass1 
+     113 x =    -70.60828320 y =   -121.58866977 z =      0.00000000 constraint = cmass1 
+     114 x =    -62.34076483 y =    186.81110363 z =      0.00000000 constraint = cmass1 
+     115 x =    -91.97132735 y =    -43.19640732 z =      0.00000000 constraint = cmass1 
+     116 x =   -102.89937644 y =     64.54005451 z =      0.00000000 constraint = cmass1 
+     117 x =    -91.72987513 y =   -187.28573994 z =      0.00000000 constraint = cmass1 
+     118 x =   -113.50620930 y =     13.14884650 z =      0.00000000 constraint = cmass1 
+     119 x =    -86.27333832 y =    227.12780762 z =      0.00000000 constraint = cmass1 
+     120 x =    -86.27339935 y =   -227.12777710 z =      0.00000000 constraint = cmass1 
+     121 x =   -108.73788946 y =    174.53026850 z =      0.00000000 constraint = cmass1 
+     122 x =   -128.96393869 y =   -150.12029359 z =      0.00000000 constraint = cmass1 
+     123 x =   -125.94519472 y =    218.14347749 z =      0.00000000 constraint = cmass1 
+     124 x =   -125.94519581 y =   -218.14347716 z =      0.00000000 constraint = cmass1 
+     125 x =   -148.61581577 y =    117.54849262 z =      0.00000000 constraint = cmass1 
+     126 x =   -152.03526130 y =    -98.49550612 z =      0.00000000 constraint = cmass1 
+     127 x =   -168.99594790 y =     41.30137791 z =      0.00000000 constraint = cmass1 
+     128 x =   -171.68759950 y =    -27.13036463 z =      0.00000000 constraint = cmass1 
+     129 x =   -153.56178284 y =   -188.27877808 z =      0.00000000 constraint = cmass1 
+     130 x =   -153.56178284 y =    188.27879333 z =      0.00000000 constraint = cmass1 
+     131 x =   -176.88449097 y =   -154.95277405 z =      0.00000000 constraint = cmass1 
+     132 x =   -176.88452148 y =    154.95272827 z =      0.00000000 constraint = cmass1 
+     133 x =   -195.48461914 y =    118.77806091 z =      0.00000000 constraint = cmass1 
+     134 x =   -195.48464966 y =   -118.77803802 z =      0.00000000 constraint = cmass1 
+     135 x =   -209.02021790 y =    -80.41967010 z =      0.00000000 constraint = cmass1 
+     136 x =   -209.02021790 y =     80.41969299 z =      0.00000000 constraint = cmass1 
+     137 x =   -217.24240112 y =    -40.58285522 z =      0.00000000 constraint = cmass1 
+     138 x =   -217.24240112 y =     40.58287811 z =      0.00000000 constraint = cmass1 
+     139 x =   -220.00001526 y =      0.00004530 z =      0.00000000 constraint = cmass1 
+140	x = 231.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+141	x = 230.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+142	x = 230.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+143	x = 230.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+144	x = 230.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+145	x = 230.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+146	x = 230.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+147	x = 230.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+148	x = 230.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+149	x = 230.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+150	x = 230.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+151	x = 230.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+152	x = 230.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+153	x = 230.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+154	x = 230.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+155	x = 230.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+156	x = 230.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+157	x = 230.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+158	x = 230.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+159	x = 230.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+160	x = 230.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+161	x = 230.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+162	x = 230.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+163	x = 230.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+164	x = 230.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+165	x = 230.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+166	x = 230.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+167	x = 230.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+168	x = 230.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+169	x = 230.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+170	x = 230.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+171	x = 230.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+172	x = 230.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+173	x = 230.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+174	x = 230.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+175	x = 230.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+176	x = 230.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+177	x = 230.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+178	x = 230.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+179	x = 230.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+180	x = 230.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+181	x = 230.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+182	x = 230.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+183	x = 230.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+184	x = 230.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+185	x = 230.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+186	x = 230.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+187	x = 230.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+188	x = 230.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+189	x = 230.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+190	x = 230.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+191	x = 236.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+192	x = 236.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+193	x = 236.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+194	x = 236.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+195	x = 236.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+196	x = 236.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+197	x = 236.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+198	x = 236.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+199	x = 236.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+200	x = 236.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+201	x = 236.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+202	x = 236.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+203	x = 236.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+204	x = 236.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+205	x = 236.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+206	x = 236.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+207	x = 236.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+208	x = 236.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+209	x = 236.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+210	x = 236.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+211	x = 236.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+212	x = 236.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+213	x = 236.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+214	x = 236.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+215	x = 236.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+216	x = 236.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+217	x = 236.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+218	x = 236.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+219	x = 236.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+220	x = 236.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+221	x = 236.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+222	x = 236.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+223	x = 236.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+224	x = 236.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+225	x = 236.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+226	x = 236.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+227	x = 236.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+228	x = 236.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+229	x = 236.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+230	x = 236.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+231	x = 236.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+232	x = 236.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+233	x = 236.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+234	x = 236.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+235	x = 236.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+236	x = 236.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+237	x = 236.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+238	x = 236.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+239	x = 236.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+240	x = 236.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+241	x = 236.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+242	x = 242.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+243	x = 242.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+244	x = 242.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+245	x = 242.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+246	x = 242.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+247	x = 242.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+248	x = 242.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+249	x = 242.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+250	x = 242.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+251	x = 242.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+252	x = 242.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+253	x = 242.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+254	x = 242.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+255	x = 242.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+256	x = 242.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+257	x = 242.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+258	x = 242.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+259	x = 242.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+260	x = 242.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+261	x = 242.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+262	x = 242.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+263	x = 242.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+264	x = 242.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+265	x = 242.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+266	x = 242.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+267	x = 242.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+268	x = 242.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+269	x = 242.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+270	x = 242.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+271	x = 242.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+272	x = 242.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+273	x = 242.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+274	x = 242.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+275	x = 242.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+276	x = 242.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+277	x = 242.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+278	x = 242.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+279	x = 242.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+280	x = 242.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+281	x = 242.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+282	x = 242.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+283	x = 242.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+284	x = 242.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+285	x = 242.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+286	x = 242.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+287	x = 242.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+288	x = 242.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+289	x = 242.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+290	x = 242.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+291	x = 242.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+292	x = 242.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+293	x = 248.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+294	x = 248.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+295	x = 248.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+296	x = 248.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+297	x = 248.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+298	x = 248.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+299	x = 248.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+300	x = 248.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+301	x = 248.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+302	x = 248.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+303	x = 248.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+304	x = 248.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+305	x = 248.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+306	x = 248.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+307	x = 248.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+308	x = 248.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+309	x = 248.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+310	x = 248.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+311	x = 248.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+312	x = 248.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+313	x = 248.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+314	x = 248.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+315	x = 248.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+316	x = 248.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+317	x = 248.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+318	x = 248.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+319	x = 248.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+320	x = 248.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+321	x = 248.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+322	x = 248.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+323	x = 248.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+324	x = 248.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+325	x = 248.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+326	x = 248.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+327	x = 248.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+328	x = 248.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+329	x = 248.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+330	x = 248.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+331	x = 248.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+332	x = 248.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+333	x = 248.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+334	x = 248.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+335	x = 248.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+336	x = 248.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+337	x = 248.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+338	x = 248.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+339	x = 248.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+340	x = 248.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+341	x = 248.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+342	x = 248.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+343	x = 248.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+344	x = 254.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+345	x = 254.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+346	x = 254.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+347	x = 254.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+348	x = 254.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+349	x = 254.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+350	x = 254.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+351	x = 254.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+352	x = 254.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+353	x = 254.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+354	x = 254.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+355	x = 254.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+356	x = 254.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+357	x = 254.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+358	x = 254.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+359	x = 254.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+360	x = 254.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+361	x = 254.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+362	x = 254.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+363	x = 254.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+364	x = 254.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+365	x = 254.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+366	x = 254.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+367	x = 254.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+368	x = 254.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+369	x = 254.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+370	x = 254.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+371	x = 254.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+372	x = 254.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+373	x = 254.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+374	x = 254.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+375	x = 254.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+376	x = 254.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+377	x = 254.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+378	x = 254.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+379	x = 254.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+380	x = 254.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+381	x = 254.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+382	x = 254.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+383	x = 254.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+384	x = 254.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+385	x = 254.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+386	x = 254.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+387	x = 254.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+388	x = 254.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+389	x = 254.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+390	x = 254.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+391	x = 254.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+392	x = 254.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+393	x = 254.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+394	x = 254.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+395	x = 260.0	y = 59.0	z = 0 constraint = fixed_z load = gravity
+396	x = 260.0	y = 65.0	z = 0 constraint = fixed_z load = gravity
+397	x = 260.0	y = 71.0	z = 0 constraint = fixed_z load = gravity
+398	x = 260.0	y = 77.0	z = 0 constraint = fixed_z load = gravity
+399	x = 260.0	y = 83.0	z = 0 constraint = fixed_z load = gravity
+400	x = 260.0	y = 89.0	z = 0 constraint = fixed_z load = gravity
+401	x = 260.0	y = 95.0	z = 0 constraint = fixed_z load = gravity
+402	x = 260.0	y = 101.0	z = 0 constraint = fixed_z load = gravity
+403	x = 260.0	y = 107.0	z = 0 constraint = fixed_z load = gravity
+404	x = 260.0	y = 113.0	z = 0 constraint = fixed_z load = gravity
+405	x = 260.0	y = 119.0	z = 0 constraint = fixed_z load = gravity
+406	x = 260.0	y = 125.0	z = 0 constraint = fixed_z load = gravity
+407	x = 260.0	y = 131.0	z = 0 constraint = fixed_z load = gravity
+408	x = 260.0	y = 137.0	z = 0 constraint = fixed_z load = gravity
+409	x = 260.0	y = 143.0	z = 0 constraint = fixed_z load = gravity
+410	x = 260.0	y = 149.0	z = 0 constraint = fixed_z load = gravity
+411	x = 260.0	y = 155.0	z = 0 constraint = fixed_z load = gravity
+412	x = 260.0	y = 161.0	z = 0 constraint = fixed_z load = gravity
+413	x = 260.0	y = 167.0	z = 0 constraint = fixed_z load = gravity
+414	x = 260.0	y = 173.0	z = 0 constraint = fixed_z load = gravity
+415	x = 260.0	y = 179.0	z = 0 constraint = fixed_z load = gravity
+416	x = 260.0	y = 185.0	z = 0 constraint = fixed_z load = gravity
+417	x = 260.0	y = 191.0	z = 0 constraint = fixed_z load = gravity
+418	x = 260.0	y = 197.0	z = 0 constraint = fixed_z load = gravity
+419	x = 260.0	y = 203.0	z = 0 constraint = fixed_z load = gravity
+420	x = 260.0	y = 209.0	z = 0 constraint = fixed_z load = gravity
+421	x = 260.0	y = 215.0	z = 0 constraint = fixed_z load = gravity
+422	x = 260.0	y = 221.0	z = 0 constraint = fixed_z load = gravity
+423	x = 260.0	y = 227.0	z = 0 constraint = fixed_z load = gravity
+424	x = 260.0	y = 233.0	z = 0 constraint = fixed_z load = gravity
+425	x = 260.0	y = 239.0	z = 0 constraint = fixed_z load = gravity
+426	x = 260.0	y = 245.0	z = 0 constraint = fixed_z load = gravity
+427	x = 260.0	y = 251.0	z = 0 constraint = fixed_z load = gravity
+428	x = 260.0	y = 257.0	z = 0 constraint = fixed_z load = gravity
+429	x = 260.0	y = 263.0	z = 0 constraint = fixed_z load = gravity
+430	x = 260.0	y = 269.0	z = 0 constraint = fixed_z load = gravity
+431	x = 260.0	y = 275.0	z = 0 constraint = fixed_z load = gravity
+432	x = 260.0	y = 281.0	z = 0 constraint = fixed_z load = gravity
+433	x = 260.0	y = 287.0	z = 0 constraint = fixed_z load = gravity
+434	x = 260.0	y = 293.0	z = 0 constraint = fixed_z load = gravity
+435	x = 260.0	y = 299.0	z = 0 constraint = fixed_z load = gravity
+436	x = 260.0	y = 305.0	z = 0 constraint = fixed_z load = gravity
+437	x = 260.0	y = 311.0	z = 0 constraint = fixed_z load = gravity
+438	x = 260.0	y = 317.0	z = 0 constraint = fixed_z load = gravity
+439	x = 260.0	y = 323.0	z = 0 constraint = fixed_z load = gravity
+440	x = 260.0	y = 329.0	z = 0 constraint = fixed_z load = gravity
+441	x = 260.0	y = 335.0	z = 0 constraint = fixed_z load = gravity
+442	x = 260.0	y = 341.0	z = 0 constraint = fixed_z load = gravity
+443	x = 260.0	y = 347.0	z = 0 constraint = fixed_z load = gravity
+444	x = 260.0	y = 353.0	z = 0 constraint = fixed_z load = gravity
+445	x = 260.0	y = 359.0	z = 0 constraint = fixed_z load = gravity
+1000	x = 200.0	y = 360.0	z = 0 constraint = pod
+1001	x = 290.0	y = 360.0	z = 0 constraint = pod
+1002	x = 290.0	y = 400.0	z = 0 constraint = pod
+1003	x = 200.0	y = 400.0	z = 0 constraint = pod
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL TRIANGULAR ELEMENT CONFIGURATION
+
+ELEMENTS OF TYPE shell_C0_3
+       1 nodes = [101,96,99] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       2 nodes = [123,130,121] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       3 nodes = [102,106,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       4 nodes = [71,73,76] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       5 nodes = [135,134,126] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       6 nodes = [124,120,117] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       7 nodes = [81,87,85] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       8 nodes = [136,138,127] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+       9 nodes = [82,78,83] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      10 nodes = [132,133,125] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      11 nodes = [112,119,114] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      12 nodes = [91,86,89] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      13 nodes = [131,129,122] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      14 nodes = [75,79,80] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      15 nodes = [111,107,109] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      16 nodes = [90,97,93] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      17 nodes = [139,137,128] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      18 nodes = [74,72,77] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      19 nodes = [96,91,99] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      20 nodes = [106,112,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      21 nodes = [130,125,121] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      22 nodes = [73,75,76] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      23 nodes = [134,131,126] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      24 nodes = [138,139,127] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      25 nodes = [78,74,77] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      26 nodes = [87,90,93] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      27 nodes = [120,111,117] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      28 nodes = [86,82,83] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      29 nodes = [119,123,121] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      30 nodes = [133,136,125] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      31 nodes = [129,124,117] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      32 nodes = [79,81,85] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      33 nodes = [72,71,76] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      34 nodes = [97,102,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      35 nodes = [137,135,128] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      36 nodes = [107,101,99] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      37 nodes = [83,78,77] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      38 nodes = [122,129,117] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      39 nodes = [109,107,99] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      40 nodes = [85,87,93] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      41 nodes = [114,119,121] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      42 nodes = [125,136,127] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      43 nodes = [77,72,76] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      44 nodes = [80,79,85] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      45 nodes = [93,97,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      46 nodes = [89,86,83] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      47 nodes = [139,128,127] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      48 nodes = [131,122,126] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      49 nodes = [135,126,128] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      50 nodes = [111,109,117] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      51 nodes = [112,114,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      52 nodes = [132,125,130] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      53 nodes = [75,80,76] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      54 nodes = [91,89,99] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      55 nodes = [77,76,84] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      56 nodes = [114,121,110] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      57 nodes = [122,117,113] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      58 nodes = [113,117,109] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      59 nodes = [110,121,125] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      60 nodes = [84,76,80] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      61 nodes = [122,113,126] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      62 nodes = [114,110,105] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      63 nodes = [77,84,83] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      64 nodes = [80,85,88] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      65 nodes = [99,89,98] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      66 nodes = [89,83,92] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      67 nodes = [85,93,94] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      68 nodes = [93,105,100] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      69 nodes = [128,126,115] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      70 nodes = [109,99,104] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      71 nodes = [127,128,118] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      72 nodes = [125,127,116] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      73 nodes = [116,127,118] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      74 nodes = [116,118,108] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      75 nodes = [88,85,94] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      76 nodes = [88,94,95] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      77 nodes = [100,105,110] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      78 nodes = [104,99,98] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      79 nodes = [104,98,103] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      80 nodes = [92,83,84] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      81 nodes = [94,93,100] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      82 nodes = [94,100,95] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      83 nodes = [118,128,115] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      84 nodes = [118,115,108] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      85 nodes = [115,126,113] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      86 nodes = [98,89,92] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      87 nodes = [98,92,103] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      88 nodes = [125,116,110] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      89 nodes = [110,116,108] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      90 nodes = [80,88,84] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      91 nodes = [84,88,95] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      92 nodes = [109,104,113] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      93 nodes = [113,104,103] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      94 nodes = [100,110,108] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      95 nodes = [92,84,95] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      96 nodes = [115,113,103] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      97 nodes = [95,100,108] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      98 nodes = [95,108,103] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+      99 nodes = [103,108,115] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     100 nodes = [95,103,92] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     101 nodes = [58,52,49] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     102 nodes = [15,19,16] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     103 nodes = [66,64,56] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     104 nodes = [59,61,50] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     105 nodes = [14,10,12] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     106 nodes = [36,29,31] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     107 nodes = [1,3,4] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     108 nodes = [67,69,53] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     109 nodes = [37,40,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     110 nodes = [62,60,54] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     111 nodes = [47,41,38] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     112 nodes = [25,30,23] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     113 nodes = [63,65,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     114 nodes = [6,2,5] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     115 nodes = [7,11,8] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     116 nodes = [48,51,45] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     117 nodes = [70,68,57] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     118 nodes = [26,18,21] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     119 nodes = [19,25,23] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     120 nodes = [64,54,56] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     121 nodes = [52,47,49] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     122 nodes = [10,6,12] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     123 nodes = [61,63,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     124 nodes = [29,26,31] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     125 nodes = [69,70,57] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     126 nodes = [3,7,4] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     127 nodes = [40,48,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     128 nodes = [30,37,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     129 nodes = [60,58,49] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     130 nodes = [41,36,31] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     131 nodes = [2,1,4] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     132 nodes = [65,67,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     133 nodes = [18,14,12] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     134 nodes = [51,59,50] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     135 nodes = [68,66,56] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     136 nodes = [11,15,8] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     137 nodes = [57,68,56] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     138 nodes = [12,6,5] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     139 nodes = [38,41,31] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     140 nodes = [54,60,49] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     141 nodes = [16,19,23] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     142 nodes = [21,18,12] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     143 nodes = [5,2,4] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     144 nodes = [50,61,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     145 nodes = [53,69,57] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     146 nodes = [45,51,50] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     147 nodes = [23,30,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     148 nodes = [47,38,49] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     149 nodes = [7,8,4] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     150 nodes = [62,54,64] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     151 nodes = [15,16,8] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     152 nodes = [26,21,31] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     153 nodes = [67,53,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     154 nodes = [48,45,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     155 nodes = [5,4,9] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     156 nodes = [45,50,42] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     157 nodes = [54,49,39] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     158 nodes = [39,49,38] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     159 nodes = [42,50,55] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     160 nodes = [9,4,8] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     161 nodes = [54,39,56] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     162 nodes = [45,42,35] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     163 nodes = [5,9,12] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     164 nodes = [21,12,17] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     165 nodes = [31,21,24] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     166 nodes = [57,56,44] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     167 nodes = [53,57,46] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     168 nodes = [38,31,32] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     169 nodes = [55,53,43] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     170 nodes = [8,16,13] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     171 nodes = [16,23,20] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     172 nodes = [23,35,28] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     173 nodes = [32,31,24] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     174 nodes = [32,24,27] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     175 nodes = [28,35,42] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     176 nodes = [17,12,9] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     177 nodes = [13,16,20] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     178 nodes = [13,20,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     179 nodes = [44,56,39] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     180 nodes = [20,23,28] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     181 nodes = [20,28,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     182 nodes = [46,57,44] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     183 nodes = [46,44,34] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     184 nodes = [43,53,46] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     185 nodes = [43,46,34] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     186 nodes = [24,21,17] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     187 nodes = [24,17,27] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     188 nodes = [38,32,39] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     189 nodes = [39,32,27] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     190 nodes = [8,13,9] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     191 nodes = [9,13,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     192 nodes = [55,43,42] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     193 nodes = [42,43,33] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     194 nodes = [34,44,39] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     195 nodes = [33,43,34] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     196 nodes = [33,34,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     197 nodes = [42,33,28] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     198 nodes = [28,33,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     199 nodes = [17,9,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     200 nodes = [27,17,22] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     201 nodes = [27,22,34] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+     202 nodes = [27,34,39] nip = 5 t =  1.000 material = mat_1 friction = 0.1 factor = 500 CONTACT = EDGE 
+203	nodes = [140,191,141] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+204	nodes = [191,192,141] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+205	nodes = [141,192,142] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+206	nodes = [192,193,142] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+207	nodes = [142,193,143] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+208	nodes = [193,194,143] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+209	nodes = [143,194,144] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+210	nodes = [194,195,144] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+211	nodes = [144,195,145] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+212	nodes = [195,196,145] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+213	nodes = [145,196,146] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+214	nodes = [196,197,146] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+215	nodes = [146,197,147] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+216	nodes = [197,198,147] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+217	nodes = [147,198,148] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+218	nodes = [198,199,148] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+219	nodes = [148,199,149] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+220	nodes = [199,200,149] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+221	nodes = [149,200,150] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+222	nodes = [200,201,150] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+223	nodes = [150,201,151] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+224	nodes = [201,202,151] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+225	nodes = [151,202,152] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+226	nodes = [202,203,152] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+227	nodes = [152,203,153] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+228	nodes = [203,204,153] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+229	nodes = [153,204,154] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+230	nodes = [204,205,154] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+231	nodes = [154,205,155] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+232	nodes = [205,206,155] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+233	nodes = [155,206,156] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+234	nodes = [206,207,156] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+235	nodes = [156,207,157] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+236	nodes = [207,208,157] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+237	nodes = [157,208,158] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+238	nodes = [208,209,158] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+239	nodes = [158,209,159] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+240	nodes = [209,210,159] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+241	nodes = [159,210,160] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+242	nodes = [210,211,160] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+243	nodes = [160,211,161] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+244	nodes = [211,212,161] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+245	nodes = [161,212,162] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+246	nodes = [212,213,162] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+247	nodes = [162,213,163] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+248	nodes = [213,214,163] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+249	nodes = [163,214,164] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+250	nodes = [214,215,164] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+251	nodes = [164,215,165] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+252	nodes = [215,216,165] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+253	nodes = [165,216,166] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+254	nodes = [216,217,166] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+255	nodes = [166,217,167] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+256	nodes = [217,218,167] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+257	nodes = [167,218,168] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+258	nodes = [218,219,168] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+259	nodes = [168,219,169] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+260	nodes = [219,220,169] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+261	nodes = [169,220,170] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+262	nodes = [220,221,170] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+263	nodes = [170,221,171] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+264	nodes = [221,222,171] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+265	nodes = [171,222,172] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+266	nodes = [222,223,172] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+267	nodes = [172,223,173] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+268	nodes = [223,224,173] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+269	nodes = [173,224,174] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+270	nodes = [224,225,174] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+271	nodes = [174,225,175] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+272	nodes = [225,226,175] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+273	nodes = [175,226,176] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+274	nodes = [226,227,176] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+275	nodes = [176,227,177] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+276	nodes = [227,228,177] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+277	nodes = [177,228,178] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+278	nodes = [228,229,178] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+279	nodes = [178,229,179] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+280	nodes = [229,230,179] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+281	nodes = [179,230,180] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+282	nodes = [230,231,180] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+283	nodes = [180,231,181] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+284	nodes = [231,232,181] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+285	nodes = [181,232,182] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+286	nodes = [232,233,182] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+287	nodes = [182,233,183] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+288	nodes = [233,234,183] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+289	nodes = [183,234,184] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+290	nodes = [234,235,184] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+291	nodes = [184,235,185] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+292	nodes = [235,236,185] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+293	nodes = [185,236,186] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+294	nodes = [236,237,186] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+295	nodes = [186,237,187] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+296	nodes = [237,238,187] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+297	nodes = [187,238,188] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+298	nodes = [238,239,188] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+299	nodes = [188,239,189] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+300	nodes = [239,240,189] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+301	nodes = [189,240,190] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+302	nodes = [240,241,190] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+303	nodes = [191,242,192] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+304	nodes = [242,243,192] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+305	nodes = [192,243,193] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+306	nodes = [243,244,193] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+307	nodes = [193,244,194] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+308	nodes = [244,245,194] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+309	nodes = [194,245,195] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+310	nodes = [245,246,195] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+311	nodes = [195,246,196] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+312	nodes = [246,247,196] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+313	nodes = [196,247,197] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+314	nodes = [247,248,197] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+315	nodes = [197,248,198] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+316	nodes = [248,249,198] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+317	nodes = [198,249,199] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+318	nodes = [249,250,199] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+319	nodes = [199,250,200] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+320	nodes = [250,251,200] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+321	nodes = [200,251,201] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+322	nodes = [251,252,201] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+323	nodes = [201,252,202] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+324	nodes = [252,253,202] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+325	nodes = [202,253,203] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+326	nodes = [253,254,203] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+327	nodes = [203,254,204] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+328	nodes = [254,255,204] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+329	nodes = [204,255,205] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+330	nodes = [255,256,205] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+331	nodes = [205,256,206] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+332	nodes = [256,257,206] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+333	nodes = [206,257,207] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+334	nodes = [257,258,207] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+335	nodes = [207,258,208] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+336	nodes = [258,259,208] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+337	nodes = [208,259,209] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+338	nodes = [259,260,209] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+339	nodes = [209,260,210] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+340	nodes = [260,261,210] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+341	nodes = [210,261,211] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+342	nodes = [261,262,211] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+343	nodes = [211,262,212] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+344	nodes = [262,263,212] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+345	nodes = [212,263,213] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+346	nodes = [263,264,213] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+347	nodes = [213,264,214] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+348	nodes = [264,265,214] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+349	nodes = [214,265,215] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+350	nodes = [265,266,215] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+351	nodes = [215,266,216] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+352	nodes = [266,267,216] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+353	nodes = [216,267,217] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+354	nodes = [267,268,217] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+355	nodes = [217,268,218] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+356	nodes = [268,269,218] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+357	nodes = [218,269,219] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+358	nodes = [269,270,219] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+359	nodes = [219,270,220] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+360	nodes = [270,271,220] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+361	nodes = [220,271,221] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+362	nodes = [271,272,221] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+363	nodes = [221,272,222] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+364	nodes = [272,273,222] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+365	nodes = [222,273,223] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+366	nodes = [273,274,223] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+367	nodes = [223,274,224] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+368	nodes = [274,275,224] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+369	nodes = [224,275,225] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+370	nodes = [275,276,225] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+371	nodes = [225,276,226] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+372	nodes = [276,277,226] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+373	nodes = [226,277,227] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+374	nodes = [277,278,227] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+375	nodes = [227,278,228] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+376	nodes = [278,279,228] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+377	nodes = [228,279,229] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+378	nodes = [279,280,229] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+379	nodes = [229,280,230] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+380	nodes = [280,281,230] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+381	nodes = [230,281,231] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+382	nodes = [281,282,231] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+383	nodes = [231,282,232] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+384	nodes = [282,283,232] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+385	nodes = [232,283,233] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+386	nodes = [283,284,233] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+387	nodes = [233,284,234] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+388	nodes = [284,285,234] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+389	nodes = [234,285,235] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+390	nodes = [285,286,235] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+391	nodes = [235,286,236] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+392	nodes = [286,287,236] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+393	nodes = [236,287,237] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+394	nodes = [287,288,237] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+395	nodes = [237,288,238] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+396	nodes = [288,289,238] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+397	nodes = [238,289,239] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+398	nodes = [289,290,239] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+399	nodes = [239,290,240] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+400	nodes = [290,291,240] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+401	nodes = [240,291,241] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+402	nodes = [291,292,241] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+403	nodes = [242,293,243] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+404	nodes = [293,294,243] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+405	nodes = [243,294,244] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+406	nodes = [294,295,244] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+407	nodes = [244,295,245] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+408	nodes = [295,296,245] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+409	nodes = [245,296,246] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+410	nodes = [296,297,246] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+411	nodes = [246,297,247] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+412	nodes = [297,298,247] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+413	nodes = [247,298,248] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+414	nodes = [298,299,248] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+415	nodes = [248,299,249] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+416	nodes = [299,300,249] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+417	nodes = [249,300,250] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+418	nodes = [300,301,250] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+419	nodes = [250,301,251] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+420	nodes = [301,302,251] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+421	nodes = [251,302,252] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+422	nodes = [302,303,252] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+423	nodes = [252,303,253] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+424	nodes = [303,304,253] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+425	nodes = [253,304,254] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+426	nodes = [304,305,254] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+427	nodes = [254,305,255] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+428	nodes = [305,306,255] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+429	nodes = [255,306,256] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+430	nodes = [306,307,256] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+431	nodes = [256,307,257] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+432	nodes = [307,308,257] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+433	nodes = [257,308,258] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+434	nodes = [308,309,258] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+435	nodes = [258,309,259] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+436	nodes = [309,310,259] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+437	nodes = [259,310,260] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+438	nodes = [310,311,260] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+439	nodes = [260,311,261] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+440	nodes = [311,312,261] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+441	nodes = [261,312,262] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+442	nodes = [312,313,262] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+443	nodes = [262,313,263] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+444	nodes = [313,314,263] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+445	nodes = [263,314,264] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+446	nodes = [314,315,264] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+447	nodes = [264,315,265] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+448	nodes = [315,316,265] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+449	nodes = [265,316,266] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+450	nodes = [316,317,266] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+451	nodes = [266,317,267] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+452	nodes = [317,318,267] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+453	nodes = [267,318,268] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+454	nodes = [318,319,268] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+455	nodes = [268,319,269] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+456	nodes = [319,320,269] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+457	nodes = [269,320,270] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+458	nodes = [320,321,270] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+459	nodes = [270,321,271] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+460	nodes = [321,322,271] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+461	nodes = [271,322,272] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+462	nodes = [322,323,272] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+463	nodes = [272,323,273] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+464	nodes = [323,324,273] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+465	nodes = [273,324,274] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+466	nodes = [324,325,274] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+467	nodes = [274,325,275] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+468	nodes = [325,326,275] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+469	nodes = [275,326,276] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+470	nodes = [326,327,276] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+471	nodes = [276,327,277] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+472	nodes = [327,328,277] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+473	nodes = [277,328,278] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+474	nodes = [328,329,278] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+475	nodes = [278,329,279] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+476	nodes = [329,330,279] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+477	nodes = [279,330,280] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+478	nodes = [330,331,280] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+479	nodes = [280,331,281] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+480	nodes = [331,332,281] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+481	nodes = [281,332,282] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+482	nodes = [332,333,282] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+483	nodes = [282,333,283] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+484	nodes = [333,334,283] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+485	nodes = [283,334,284] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+486	nodes = [334,335,284] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+487	nodes = [284,335,285] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+488	nodes = [335,336,285] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+489	nodes = [285,336,286] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+490	nodes = [336,337,286] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+491	nodes = [286,337,287] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+492	nodes = [337,338,287] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+493	nodes = [287,338,288] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+494	nodes = [338,339,288] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+495	nodes = [288,339,289] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+496	nodes = [339,340,289] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+497	nodes = [289,340,290] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+498	nodes = [340,341,290] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+499	nodes = [290,341,291] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+500	nodes = [341,342,291] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+501	nodes = [291,342,292] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+502	nodes = [342,343,292] nip = 5 t = 1 material = mat_3 friction = 0.1 factor = 500 CONTACT = EDGE
+503	nodes = [293,344,294] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+504	nodes = [344,345,294] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+505	nodes = [294,345,295] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+506	nodes = [345,346,295] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+507	nodes = [295,346,296] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+508	nodes = [346,347,296] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+509	nodes = [296,347,297] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+510	nodes = [347,348,297] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+511	nodes = [297,348,298] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+512	nodes = [348,349,298] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+513	nodes = [298,349,299] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+514	nodes = [349,350,299] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+515	nodes = [299,350,300] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+516	nodes = [350,351,300] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+517	nodes = [300,351,301] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+518	nodes = [351,352,301] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+519	nodes = [301,352,302] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+520	nodes = [352,353,302] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+521	nodes = [302,353,303] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+522	nodes = [353,354,303] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+523	nodes = [303,354,304] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+524	nodes = [354,355,304] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+525	nodes = [304,355,305] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+526	nodes = [355,356,305] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+527	nodes = [305,356,306] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+528	nodes = [356,357,306] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+529	nodes = [306,357,307] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+530	nodes = [357,358,307] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+531	nodes = [307,358,308] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+532	nodes = [358,359,308] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+533	nodes = [308,359,309] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+534	nodes = [359,360,309] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+535	nodes = [309,360,310] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+536	nodes = [360,361,310] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+537	nodes = [310,361,311] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+538	nodes = [361,362,311] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+539	nodes = [311,362,312] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+540	nodes = [362,363,312] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+541	nodes = [312,363,313] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+542	nodes = [363,364,313] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+543	nodes = [313,364,314] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+544	nodes = [364,365,314] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+545	nodes = [314,365,315] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+546	nodes = [365,366,315] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+547	nodes = [315,366,316] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+548	nodes = [366,367,316] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+549	nodes = [316,367,317] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+550	nodes = [367,368,317] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+551	nodes = [317,368,318] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+552	nodes = [368,369,318] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+553	nodes = [318,369,319] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+554	nodes = [369,370,319] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+555	nodes = [319,370,320] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+556	nodes = [370,371,320] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+557	nodes = [320,371,321] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+558	nodes = [371,372,321] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+559	nodes = [321,372,322] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+560	nodes = [372,373,322] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+561	nodes = [322,373,323] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+562	nodes = [373,374,323] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+563	nodes = [323,374,324] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+564	nodes = [374,375,324] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+565	nodes = [324,375,325] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+566	nodes = [375,376,325] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+567	nodes = [325,376,326] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+568	nodes = [376,377,326] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+569	nodes = [326,377,327] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+570	nodes = [377,378,327] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+571	nodes = [327,378,328] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+572	nodes = [378,379,328] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+573	nodes = [328,379,329] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+574	nodes = [379,380,329] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+575	nodes = [329,380,330] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+576	nodes = [380,381,330] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+577	nodes = [330,381,331] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+578	nodes = [381,382,331] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+579	nodes = [331,382,332] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+580	nodes = [382,383,332] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+581	nodes = [332,383,333] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+582	nodes = [383,384,333] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+583	nodes = [333,384,334] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+584	nodes = [384,385,334] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+585	nodes = [334,385,335] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+586	nodes = [385,386,335] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+587	nodes = [335,386,336] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+588	nodes = [386,387,336] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+589	nodes = [336,387,337] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+590	nodes = [387,388,337] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+591	nodes = [337,388,338] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+592	nodes = [388,389,338] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+593	nodes = [338,389,339] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+594	nodes = [389,390,339] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+595	nodes = [339,390,340] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+596	nodes = [390,391,340] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+597	nodes = [340,391,341] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+598	nodes = [391,392,341] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+599	nodes = [341,392,342] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+600	nodes = [392,393,342] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+601	nodes = [342,393,343] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+602	nodes = [393,394,343] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+603	nodes = [344,395,345] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+604	nodes = [395,396,345] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+605	nodes = [345,396,346] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+606	nodes = [396,397,346] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+607	nodes = [346,397,347] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+608	nodes = [397,398,347] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+609	nodes = [347,398,348] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+610	nodes = [398,399,348] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+611	nodes = [348,399,349] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+612	nodes = [399,400,349] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+613	nodes = [349,400,350] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+614	nodes = [400,401,350] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+615	nodes = [350,401,351] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+616	nodes = [401,402,351] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+617	nodes = [351,402,352] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+618	nodes = [402,403,352] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+619	nodes = [352,403,353] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+620	nodes = [403,404,353] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+621	nodes = [353,404,354] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+622	nodes = [404,405,354] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+623	nodes = [354,405,355] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+624	nodes = [405,406,355] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+625	nodes = [355,406,356] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+626	nodes = [406,407,356] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+627	nodes = [356,407,357] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+628	nodes = [407,408,357] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+629	nodes = [357,408,358] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+630	nodes = [408,409,358] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+631	nodes = [358,409,359] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+632	nodes = [409,410,359] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+633	nodes = [359,410,360] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+634	nodes = [410,411,360] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+635	nodes = [360,411,361] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+636	nodes = [411,412,361] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+637	nodes = [361,412,362] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+638	nodes = [412,413,362] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+639	nodes = [362,413,363] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+640	nodes = [413,414,363] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+641	nodes = [363,414,364] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+642	nodes = [414,415,364] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+643	nodes = [364,415,365] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+644	nodes = [415,416,365] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+645	nodes = [365,416,366] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+646	nodes = [416,417,366] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+647	nodes = [366,417,367] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+648	nodes = [417,418,367] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+649	nodes = [367,418,368] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+650	nodes = [418,419,368] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+651	nodes = [368,419,369] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+652	nodes = [419,420,369] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+653	nodes = [369,420,370] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+654	nodes = [420,421,370] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+655	nodes = [370,421,371] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+656	nodes = [421,422,371] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+657	nodes = [371,422,372] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+658	nodes = [422,423,372] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+659	nodes = [372,423,373] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+660	nodes = [423,424,373] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+661	nodes = [373,424,374] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+662	nodes = [424,425,374] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+663	nodes = [374,425,375] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+664	nodes = [425,426,375] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+665	nodes = [375,426,376] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+666	nodes = [426,427,376] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+667	nodes = [376,427,377] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+668	nodes = [427,428,377] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+669	nodes = [377,428,378] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+670	nodes = [428,429,378] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+671	nodes = [378,429,379] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+672	nodes = [429,430,379] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+673	nodes = [379,430,380] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+674	nodes = [430,431,380] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+675	nodes = [380,431,381] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+676	nodes = [431,432,381] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+677	nodes = [381,432,382] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+678	nodes = [432,433,382] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+679	nodes = [382,433,383] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+680	nodes = [433,434,383] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+681	nodes = [383,434,384] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+682	nodes = [434,435,384] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+683	nodes = [384,435,385] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+684	nodes = [435,436,385] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+685	nodes = [385,436,386] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+686	nodes = [436,437,386] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+687	nodes = [386,437,387] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+688	nodes = [437,438,387] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+689	nodes = [387,438,388] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+690	nodes = [438,439,388] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+691	nodes = [388,439,389] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+692	nodes = [439,440,389] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+693	nodes = [389,440,390] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+694	nodes = [440,441,390] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+695	nodes = [390,441,391] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+696	nodes = [441,442,391] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+697	nodes = [391,442,392] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+698	nodes = [442,443,392] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+699	nodes = [392,443,393] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+700	nodes = [443,444,393] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+701	nodes = [393,444,394] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+702	nodes = [444,445,394] nip = 5 t = 1 material = mat_2 friction = 0.8 factor = 500 CONTACT = EDGE
+
+ELEMENTS OF TYPE shell_BT_4
+1000 nodes = [1000,1001,1002,1003] nip = 5 t = 1 material = mat_1 factor = 1000 contact = ADVANCED_EDGE
+

@@ -1,0 +1,83 @@
+# Uniformely Loaded Cylinder
+#
+# References: 	
+#		1. MSC/DYNA verification manual
+#		2. T. Belytschko and C. S. Tsay, "WHAMSE: A Program for Three-Dimensional
+#          Nonlinear Structure Dynamics", EPRI NP-2250, 1982
+#		3. S. Timoshenko and J.N. Goodier, "Theory of Elasticity", 2nd ed.,
+#		   McGraw-Hill, New York, 1951.
+#
+#
+# Problem Description
+#
+# A cylinder is subjected for a uniform pressure load which is applied directly at
+# the start and then held constant.
+#
+#
+# Reference Results
+#
+# The analytical result for the deflection in the centre of the plate is shown
+# by reference 3:
+#
+# MAX_DEFLECTION = 2*Pressure*radii^2 / (E*thickness)
+#
+# FREQUENCY = (1 / radii) * sqrt( E / density )
+#
+#
+# Results
+#
+# Elastic material law
+# --------------------
+#               Maximum Z disp.   Maximum X disp.  Period
+# Analytical    6.641E-5   in     5.8104E-6        3.1045E-4 s
+# LS-Dyna       6.676E-5   in     5.782 E-6        3.094 E-4 s
+# Impact                          5.78  E-6        3.0   E-4 s
+#
+#
+#
+# Engineering data
+#
+# Width                  b  =       1.0 in
+# Thickness		         t  =       0.1 in
+# Young modulus		     E  =     3.0E7 psi
+# Density		       rho  =   7.234E-4 lb-sec^2/in^4
+# Poissons ratio        nu  =       0.0
+# Pressure load          P  =       1.0 psi
+#
+#
+
+CONTROLS
+run from    0.00000 to    3.5E-4
+print every  0.25E-4 step
+print tracker every 0.1E-6 step
+
+
+MATERIALS OF TYPE ELASTIC
+mat_1 E = 3.0E7 RHO =  7.234E-4 NU =  0.0
+
+
+NODES
+       1 x =     -0.87156000 y =      0.00000000 z =      9.96195000 constraint = sym_1
+       2 x =      0.87156000 y =      0.00000000 z =      9.96195000 constraint = sym_2
+       3 x =     -0.87156000 y =      1.00000000 z =      9.96195000 constraint = sym_1
+       4 x =      0.87156000 y =      1.00000000 z =      9.96195000 constraint = sym_2
+       5 x =      0.0        y =      0.0        z =      0.00000000 constraint = fixed
+       6 x =      0.0        y =      1.0        z =      0.00000000 constraint = fixed
+
+
+
+ELEMENTS OF TYPE shell_BT_4
+       1 nodes = [1,2,4,3] t =  0.1 material = mat_1 load = pressure
+
+
+CONSTRAINTS OF TYPE boundary_condition
+       sym_1 ay = 0 az = 0 vy = 0 vz = 0 arx = 0 vrx = 0 axis = [1,5,3]
+       sym_2 ay = 0 az = 0 vy = 0 vz = 0 arx = 0 vrx = 0 axis = [2,5,4]
+       fixed ax = 0 ay = 0 az = 0 vx = 0 vy = 0 vz = 0
+
+LOADS
+pressure p = 1.0
+
+
+TRACKERS OF TYPE NODEDISPLACEMENT
+1 node = [2] direction = x filename = Ver_10.trk target = [3.1E-4,1E-5,0.0,0.1E-6]

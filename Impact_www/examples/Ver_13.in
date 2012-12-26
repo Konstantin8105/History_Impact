@@ -1,0 +1,145 @@
+# Wave propagation in a bar
+#
+# References
+# 1. Concepts and Applications of Finite Element Analysis
+#    Robert D. Cook et al. Third Edition, ISBN 0-471-84788-7
+#
+# Problem Description
+# An undamped uniform steel bar is loaded in the tip with a load
+# that is held constant from the start.
+# The bar is initially at rest and is modelled by 40 rod elements
+# of equal length. The bar is only allowed to move in one direction
+# making this a one dimensional problem.
+# 
+# The stress / time history of element 20 midpoint is read with a
+# tracker.
+#
+# 
+# Engineering Data
+# 
+# Rod Length:                   L = 20.0 in
+# Cross sectional area:         A = 1.0 in2 => D = 1.128 in
+# Young's modulus:              E = 30 (E6) psi
+# Poissons Ratio:               nu = 0.3
+# Mass density:                 rho = 7.4E-4 lb-sec2/in4
+#
+# Load:							P0 = 100 lb applied at t=0 and constant
+#
+# Results
+# For exact results, see the book references.
+# The following description is taken from a graph in the book.
+#
+# In words, the stresses in rod 20 should remain = 0 until time
+# 5.0E-5 sec when a pressure of 100 psi (-100) should occur as an average level.
+#
+# This level remains until reflection of wave occurs at 1.5E-4 sec and
+# the pressure increases to 200 psi (-200).
+#
+# The tracker reflects this in Impact as a load (lb) in the rod.
+# With an area of 1 in2, this corresponds to -100 / -200 lb respectively.
+#
+
+nodes
+1	x =  0.0	y = 0	z = 0 constraint = line load = hit
+2	x =  0.5	y = 0	z = 0 constraint = line
+3	x =  1.0	y = 0	z = 0 constraint = line
+4	x =  1.5	y = 0	z = 0 constraint = line
+5	x =  2.0	y = 0	z = 0 constraint = line
+6	x =  2.5	y = 0	z = 0 constraint = line
+7	x =  3.0	y = 0	z = 0 constraint = line
+8	x =  3.5	y = 0	z = 0 constraint = line
+9	x =  4.0	y = 0	z = 0 constraint = line
+10	x =  4.5	y = 0	z = 0 constraint = line
+11	x =  5.0	y = 0	z = 0 constraint = line
+12	x =  5.5	y = 0	z = 0 constraint = line
+13	x =  6.0	y = 0	z = 0 constraint = line
+14	x =  6.5	y = 0	z = 0 constraint = line
+15	x =  7.0	y = 0	z = 0 constraint = line
+16	x =  7.5	y = 0	z = 0 constraint = line
+17	x =  8.0	y = 0	z = 0 constraint = line
+18	x =  8.5	y = 0	z = 0 constraint = line
+19	x =  9.0	y = 0	z = 0 constraint = line
+20	x =  9.5	y = 0	z = 0 constraint = line
+21	x = 10.0	y = 0	z = 0 constraint = line
+22	x = 10.5	y = 0	z = 0 constraint = line
+23	x = 11.0	y = 0	z = 0 constraint = line
+24	x = 11.5	y = 0	z = 0 constraint = line
+25	x = 12.0	y = 0	z = 0 constraint = line
+26	x = 12.5	y = 0	z = 0 constraint = line
+27	x = 13.0	y = 0	z = 0 constraint = line
+28	x = 13.5	y = 0	z = 0 constraint = line
+29	x = 14.0	y = 0	z = 0 constraint = line
+30	x = 14.5	y = 0	z = 0 constraint = line
+31	x = 15.0	y = 0	z = 0 constraint = line
+32	x = 15.5	y = 0	z = 0 constraint = line
+33	x = 16.0	y = 0	z = 0 constraint = line
+34	x = 16.5	y = 0	z = 0 constraint = line
+35	x = 17.0	y = 0	z = 0 constraint = line
+36	x = 17.5	y = 0	z = 0 constraint = line
+37	x = 18.0	y = 0	z = 0 constraint = line
+38	x = 18.5	y = 0	z = 0 constraint = line
+39	x = 19.0	y = 0	z = 0 constraint = line
+40	x = 19.5	y = 0	z = 0 constraint = line
+41	x = 20.0	y = 0	z = 0 constraint = fixed
+
+
+elements of type rod_2
+1	nodes = [1,2]	D = 1.128	material = mat_1
+2	nodes = [2,3]	D = 1.128	material = mat_1
+3	nodes = [3,4]	D = 1.128	material = mat_1
+4	nodes = [4,5]	D = 1.128	material = mat_1	
+5	nodes = [5,6]	D = 1.128	material = mat_1	
+6	nodes = [6,7]	D = 1.128	material = mat_1	
+7	nodes = [7,8]	D = 1.128	material = mat_1	
+8	nodes = [8,9]	D = 1.128	material = mat_1	
+9	nodes = [9,10]	D = 1.128	material = mat_1	
+10	nodes = [10,11]	D = 1.128	material = mat_1	
+11	nodes = [11,12]	D = 1.128	material = mat_1	
+12	nodes = [12,13]	D = 1.128	material = mat_1	
+13	nodes = [13,14]	D = 1.128	material = mat_1	
+14	nodes = [14,15]	D = 1.128	material = mat_1	
+15	nodes = [15,16]	D = 1.128	material = mat_1	
+16	nodes = [16,17]	D = 1.128	material = mat_1	
+17	nodes = [17,18]	D = 1.128	material = mat_1	
+18	nodes = [18,19]	D = 1.128	material = mat_1	
+19	nodes = [19,20]	D = 1.128	material = mat_1	
+20	nodes = [20,21]	D = 1.128	material = mat_1	
+21	nodes = [21,22]	D = 1.128	material = mat_1	
+22	nodes = [22,23]	D = 1.128	material = mat_1	
+23	nodes = [23,24]	D = 1.128	material = mat_1	
+24	nodes = [24,25]	D = 1.128	material = mat_1	
+25	nodes = [25,26]	D = 1.128	material = mat_1	
+26	nodes = [26,27]	D = 1.128	material = mat_1	
+27	nodes = [27,28]	D = 1.128	material = mat_1	
+28	nodes = [28,29]	D = 1.128	material = mat_1	
+29	nodes = [29,30]	D = 1.128	material = mat_1	
+30	nodes = [30,31]	D = 1.128	material = mat_1	
+31	nodes = [31,32]	D = 1.128	material = mat_1	
+32	nodes = [32,33]	D = 1.128	material = mat_1	
+33	nodes = [33,34]	D = 1.128	material = mat_1	
+34	nodes = [34,35]	D = 1.128	material = mat_1	
+35	nodes = [35,36]	D = 1.128	material = mat_1	
+36	nodes = [36,37]	D = 1.128	material = mat_1	
+37	nodes = [37,38]	D = 1.128	material = mat_1	
+38	nodes = [38,39]	D = 1.128	material = mat_1	
+39	nodes = [39,40]	D = 1.128	material = mat_1	
+40	nodes = [40,41]	D = 1.128	material = mat_1	
+
+materials of type elastic
+mat_1 E = 30E6 nu = 0.3 rho = 7.4E-4
+
+constraints of type boundary_condition
+fixed	vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0 vrz = 0 ax = 0 ay = 0 az = 0 arx = 0 ary = 0 arz = 0
+line	vy = 0 vz = 0 ay = 0 az = 0
+
+trackers of type rodforce
+1 element = [20] filename = Ver_13.trk
+
+loads
+hit	fx = 100
+
+controls
+run from 0 to 0.2E-3 step 0.2E-6
+print every 1.0E-6 step
+print tracker every 1.0e-6 step
+

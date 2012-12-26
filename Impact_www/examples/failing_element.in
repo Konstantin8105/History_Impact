@@ -1,0 +1,142 @@
+controls
+run from 0 to 0.30 step 0.00001
+print every 0.005 step
+
+materials of type elastic
+mat1 E = 210 nu = 0.3 rho = 0.00000078 failure_strain = 0.0205 failure_stress = 2.0
+
+constraints of type boundary_condition
+fixed vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0 vrz = 0 ax = 0 ay = 0 az = 0 arx = 0 ary = 0 arz = 0
+moving vy = 20
+flat vz = 0 az = 0
+
+nodes
+1	x = 0.0	y = 10.0	z = 0.0 constraint = fixed
+2	x = 0.0	y = 0.0	z = 0.0 constraint = fixed
+3	x = 8.47017	y = 0.0	z = 0.0 constraint = flat
+4	x = 16.9403	y = 0.0	z = 0.0 constraint = flat
+5	x = 25.4105	y = 0.0	z = 0.0 constraint = flat
+6	x = 33.8807	y = 0.0	z = 0.0 constraint = flat
+7	x = 41.7483	y = 3.04732	z = 0.0 constraint = flat
+8	x = 50.0	y = 4.0631	z = 0.0 constraint = flat
+9	x = 58.2517	y = 3.04732	z = 0.0 constraint = flat
+10	x = 66.1193	y = 0.0	z = 0.0 constraint = flat
+11	x = 74.5895	y = 0.0	z = 0.0 constraint = flat
+12	x = 83.0596	y = 0.0	z = 0.0 constraint = flat
+13	x = 91.5298	y = 0.0	z = 0.0 constraint = flat
+14	x = 100.0	y = 0.0	z = 0.0 constraint = flat
+15	x = 100.0	y = 10.0	z = 0.0 constraint = flat
+16	x = 90.0	y = 10.0	z = 0.0 constraint = moving
+17	x = 80.0	y = 10.0	z = 0.0 constraint = flat
+18	x = 70.0	y = 10.0	z = 0.0 constraint = flat
+19	x = 60.0	y = 10.0	z = 0.0 constraint = flat
+20	x = 50.0	y = 10.0	z = 0.0 constraint = flat
+21	x = 40.0	y = 10.0	z = 0.0 constraint = flat
+22	x = 30.0	y = 10.0	z = 0.0 constraint = flat
+23	x = 20.0	y = 10.0	z = 0.0 constraint = flat
+24	x = 9.99999	y = 10.0	z = 0.0 constraint = flat
+25	x = 40.8742	y = 6.52366	z = 0.0 constraint = flat
+26	x = 45.3787	y = 6.30473	z = 0.0 constraint = flat
+27	x = 45.0	y = 10.0	z = 0.0 constraint = flat
+28	x = 45.8742	y = 3.55521	z = 0.0 constraint = flat
+29	x = 50.0134	y = 5.90001	z = 0.0 constraint = flat
+30	x = 54.1258	y = 3.55521	z = 0.0 constraint = flat
+31	x = 54.6032	y = 6.27368	z = 0.0 constraint = flat
+32	x = 59.1258	y = 6.52366	z = 0.0 constraint = flat
+33	x = 55.0	y = 10.0	z = 0.0 constraint = flat
+34	x = 44.3278	y = 7.63784	z = 0.0 constraint = flat
+35	x = 45.6981	y = 8.36846	z = 0.0 constraint = flat
+36	x = 44.321	y = 8.08938	z = 0.0 constraint = flat
+37	x = 47.3015	y = 5.5163	z = 0.0 constraint = flat
+38	x = 48.2028	y = 4.99356	z = 0.0 constraint = flat
+39	x = 48.1079	y = 6.40811	z = 0.0 constraint = flat
+40	x = 51.8141	y = 4.99471	z = 0.0 constraint = flat
+41	x = 52.7016	y = 5.46449	z = 0.0 constraint = flat
+42	x = 51.8972	y = 6.38684	z = 0.0 constraint = flat
+43	x = 55.6461	y = 7.61163	z = 0.0 constraint = flat
+44	x = 55.6787	y = 8.07802	z = 0.0 constraint = flat
+45	x = 54.2781	y = 8.3475	z = 0.0 constraint = flat
+46	x = 47.5	y = 10.0	z = 0.0 constraint = flat
+47	x = 47.7825	y = 8.10796	z = 0.0 constraint = flat
+48	x = 50.007	y = 7.48743	z = 0.0 constraint = flat
+49	x = 50.0051	y = 4.59495	z = 0.0 constraint = flat
+50	x = 47.9371	y = 3.80915	z = 0.0 constraint = flat
+51	x = 52.2143	y = 8.08258	z = 0.0 constraint = flat
+52	x = 52.0629	y = 3.80915	z = 0.0 constraint = flat
+53	x = 52.5	y = 10.0	z = 0.0 constraint = flat
+
+elements of type SHELL_C0_3
+1	nodes = [24,1,3] 	material = mat1 NIP = 5 T = 10
+2	nodes = [3,1,2] 	material = mat1 NIP = 5 T = 10
+3	nodes = [24,3,4] 	material = mat1 NIP = 5 T = 10
+4	nodes = [24,4,23] 	material = mat1 NIP = 5 T = 10
+5	nodes = [23,4,5] 	material = mat1 NIP = 5 T = 10
+6	nodes = [23,5,22] 	material = mat1 NIP = 5 T = 10
+7	nodes = [22,5,6] 	material = mat1 NIP = 5 T = 10
+8	nodes = [22,6,21] 	material = mat1 NIP = 5 T = 10
+9	nodes = [7,25,6] 	material = mat1 NIP = 5 T = 10
+10	nodes = [34,35,36] 	material = mat1 NIP = 5 T = 10
+11	nodes = [37,38,39] 	material = mat1 NIP = 5 T = 10
+12	nodes = [40,41,42] 	material = mat1 NIP = 5 T = 10
+13	nodes = [43,44,45] 	material = mat1 NIP = 5 T = 10
+14	nodes = [19,32,10] 	material = mat1 NIP = 5 T = 10
+15	nodes = [19,10,18] 	material = mat1 NIP = 5 T = 10
+16	nodes = [18,10,11] 	material = mat1 NIP = 5 T = 10
+17	nodes = [18,11,17] 	material = mat1 NIP = 5 T = 10
+18	nodes = [17,11,12] 	material = mat1 NIP = 5 T = 10
+19	nodes = [17,12,16] 	material = mat1 NIP = 5 T = 10
+20	nodes = [16,12,13] 	material = mat1 NIP = 5 T = 10
+21	nodes = [16,13,15] 	material = mat1 NIP = 5 T = 10
+22	nodes = [15,13,14] 	material = mat1 NIP = 5 T = 10
+23	nodes = [25,36,21] 	material = mat1 NIP = 5 T = 10
+24	nodes = [26,34,7] 	material = mat1 NIP = 5 T = 10
+25	nodes = [46,35,47] 	material = mat1 NIP = 5 T = 10
+26	nodes = [47,39,48] 	material = mat1 NIP = 5 T = 10
+27	nodes = [28,37,7] 	material = mat1 NIP = 5 T = 10
+28	nodes = [49,38,50] 	material = mat1 NIP = 5 T = 10
+29	nodes = [48,42,51] 	material = mat1 NIP = 5 T = 10
+30	nodes = [52,40,49] 	material = mat1 NIP = 5 T = 10
+31	nodes = [31,41,9] 	material = mat1 NIP = 5 T = 10
+32	nodes = [51,45,53] 	material = mat1 NIP = 5 T = 10
+33	nodes = [32,43,9] 	material = mat1 NIP = 5 T = 10
+34	nodes = [33,44,19] 	material = mat1 NIP = 5 T = 10
+35	nodes = [21,6,25] 	material = mat1 NIP = 5 T = 10
+36	nodes = [9,10,32] 	material = mat1 NIP = 5 T = 10
+37	nodes = [25,34,36] 	material = mat1 NIP = 5 T = 10
+38	nodes = [26,35,34] 	material = mat1 NIP = 5 T = 10
+39	nodes = [27,36,35] 	material = mat1 NIP = 5 T = 10
+40	nodes = [26,37,39] 	material = mat1 NIP = 5 T = 10
+41	nodes = [28,38,37] 	material = mat1 NIP = 5 T = 10
+42	nodes = [29,39,38] 	material = mat1 NIP = 5 T = 10
+43	nodes = [29,40,42] 	material = mat1 NIP = 5 T = 10
+44	nodes = [30,41,40] 	material = mat1 NIP = 5 T = 10
+45	nodes = [31,42,41] 	material = mat1 NIP = 5 T = 10
+46	nodes = [31,43,45] 	material = mat1 NIP = 5 T = 10
+47	nodes = [32,44,43] 	material = mat1 NIP = 5 T = 10
+48	nodes = [33,45,44] 	material = mat1 NIP = 5 T = 10
+49	nodes = [20,46,47] 	material = mat1 NIP = 5 T = 10
+50	nodes = [27,35,46] 	material = mat1 NIP = 5 T = 10
+51	nodes = [26,47,35] 	material = mat1 NIP = 5 T = 10
+52	nodes = [20,47,48] 	material = mat1 NIP = 5 T = 10
+53	nodes = [26,39,47] 	material = mat1 NIP = 5 T = 10
+54	nodes = [29,48,39] 	material = mat1 NIP = 5 T = 10
+55	nodes = [8,49,50] 	material = mat1 NIP = 5 T = 10
+56	nodes = [29,38,49] 	material = mat1 NIP = 5 T = 10
+57	nodes = [28,50,38] 	material = mat1 NIP = 5 T = 10
+58	nodes = [20,48,51] 	material = mat1 NIP = 5 T = 10
+59	nodes = [29,42,48] 	material = mat1 NIP = 5 T = 10
+60	nodes = [31,51,42] 	material = mat1 NIP = 5 T = 10
+61	nodes = [8,52,49] 	material = mat1 NIP = 5 T = 10
+62	nodes = [30,40,52] 	material = mat1 NIP = 5 T = 10
+63	nodes = [29,49,40] 	material = mat1 NIP = 5 T = 10
+64	nodes = [20,51,53] 	material = mat1 NIP = 5 T = 10
+65	nodes = [31,45,51] 	material = mat1 NIP = 5 T = 10
+66	nodes = [33,53,45] 	material = mat1 NIP = 5 T = 10
+67	nodes = [27,21,36] 	material = mat1 NIP = 5 T = 10
+68	nodes = [25,7,34] 	material = mat1 NIP = 5 T = 10
+69	nodes = [26,7,37] 	material = mat1 NIP = 5 T = 10
+70	nodes = [30,9,41] 	material = mat1 NIP = 5 T = 10
+71	nodes = [31,9,43] 	material = mat1 NIP = 5 T = 10
+72	nodes = [32,19,44] 	material = mat1 NIP = 5 T = 10
+
+

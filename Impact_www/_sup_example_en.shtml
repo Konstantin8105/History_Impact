@@ -1,0 +1,456 @@
+<!-- =====================================start _sup_example_en.shtml======================================= -->
+
+<link type="text/css" rel="stylesheet" href="css/other.css">
+
+<div style="margin-left: 60px; margin-right: 60px">
+<div id="content">
+
+<h4>Below some example problems.</h4>
+<p>You can share example problems from the <a href="/phpbb/" target="_blank">Users Forum</a></p>
+
+<table cellpadding="1" cellspacing="1" border="1" width="100%">
+     <tbody>
+	 <tr>
+    <td valign="top" width="5">
+      <div align="center"><b>Pictures</b><br>
+      </div>
+    </td>
+         
+    <td valign="top" width="18%">
+      <div align="center"><b>Model Fembic Indata file</b></div>
+    </td>
+    <td valign="top">
+      <div align="center"><b>Description</b><br>
+      </div>
+    </td>
+       </tr>
+	   <tr>
+    <td valign="top"><img src="examples/pipes.gif" width="168"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/pipes.in">pipes.in</a></td>
+         
+    <td valign="top">A simple example of impact and sliding of two pipes.
+    One end of the first pipe is fixed, while the end of the second pipe
+    is moving at a constant velocity. This shows an impact and sliding simulation. </td>
+       </tr>
+	   
+	   <tr>
+    <td valign="top"><img src="examples/Bullet_AKM.in.gif" width="168" height="163"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Bullet_AKM.in">Bullet_AKM.in</a></td>
+         
+    <td valign="top">A simple example of the destruction (bullet AKM).<br />
+    The solid elements of the bullets are covered with triangular contact 
+    elements. The velocity of the bullet is defined as an initial velocity
+    before impacting the plate.
+    
+    </td>
+       </tr>
+       
+	   <tr>
+    <td valign="top"><img src="examples/bumper.gif" width="168"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/bumper.in">bumper.in</a></td>
+         <td valign="top">A simple example of crash simulation of a bumper with
+         another object.<br>
+         </td>
+       </tr>
+      
+	   
+	   <tr>
+    <td valign="top"><img src="examples/3.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/3.in">3.in</a></td>
+         <td valign="top">A simple example of the destruction.<br>
+         </td>
+       </tr>
+
+      <tr>
+         
+    <td valign="top"><img src="examples/stamping.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/stamping.in">stamping.in</a><br>
+         </td>
+         <td valign="top">A simple example of the forming operations.<br>
+         </td>
+       </tr>
+
+
+    <tr>    
+    <td valign="top"><img src="examples/ball_in_contact.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/ball_in_contact.in">ball_in_contact.in</a><br>
+         </td>
+         <td valign="top">A simple example of the contact facilities in Impact.<br>
+         </td>
+       </tr>
+       
+       <tr>
+         
+    <td valign="top"><img src="examples/cylinder.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/cylinder.in">cylinder.in</a><br>
+         </td>
+         
+    <td valign="top">An example of a rigid wall crushing a cylinder.<br>
+         </td>
+       </tr>  
+            
+        <tr>
+         
+    <td valign="top"><img src="examples/tracker.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/tracker.in">tracker.in</a><br>
+         </td>
+         <td valign="top">This is an example of a square profile subjected
+to a vertical load in one end. If all goes well, this will initiate a buckling
+of the profile.         </td>
+       </tr>
+
+     
+       <tr>
+         
+    <td valign="top"><img src="examples/balls_in_contact.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/balls_in_contact.in">balls_in_contact.in</a><br>
+         </td>
+         <td valign="top">A simple example of the contact facilities in Impact.
+Two steel balls (shells) are in contact.         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/contact_tria.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/contact_tria.in">contact_tria.in</a><br>
+         </td>
+         <td valign="top">This is a simulation of a couple of simple contact
+elements. A number of triangular elements including contact elements are
+falling down on a plate of contact elements.         </td>
+       </tr>
+
+       <tr>
+         
+    <td valign="top"><img src="examples/failing_element.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/failing_element.in">failing_element.in</a><br>
+         </td>
+         <td valign="top">A simple example of the destruction.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/impact_logo.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/impact_logo.in">impact_logo.in</a><br>
+         </td>
+         <td valign="top">This is an example of an indata file for the Impact
+Finite Element Program.  It is a simple mix of rod and solid elements which
+are connected to each other.  The model is fixed in the upper left corner
+and is pulled by a constant force in the lower right corner. Sometimes this
+combination can be tricky and need a firm hand on the timestep control. In
+this case, it has been set to a fixed value. Autostep does not suffice.</td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/shells.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/shells.in">shells.in</a><br>
+         </td>
+         <td valign="top">A simple example of the contact facilities in Impact.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/springboard.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/springboard.in">springboard.in</a><br>
+         </td>
+         <td valign="top">This is a model of a simple springboard consisting
+of three elements through the thickness and 4 along. The Board is fixed rigidly
+at one end and loaded in the other. <br>
+         </td>
+       </tr>
+
+       <tr>
+         
+    <td valign="top"><img src="examples/variable.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/variable.in">variable.in</a><br>
+         </td>
+         <td valign="top"> It is a simple test of the variable constraint
+function where the end node is controlled over time by the constraint input.
+The constraint can be turned off by replacing the number with "off". Linear
+interplation is assumed between the points.         </td>
+       </tr>
+       
+    <tr>
+    <td valign="top"><img src="examples/optimization.in.gif" width="142" height="167"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/optimization.in">optimization.in</a></td>
+         
+    <td valign="top">A simple example of the topology optimization of structure. 
+      If you are running some of the example problems supplied, you need to add 
+      the path to the examples directory. <br><br>The syntax then becomes: <br>
+      <b>java -Xmx1000m -cp .;doc;bin;Impact.jar run.ImpactOpt steps=20 ignore.stress_i=35 
+      examples/optimization.in</b></td>
+       </tr>
+
+    <tr>
+    <td valign="top"><br><img src="examples/optimization2.in.gif"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/optimization2.in">optimization2.in</a></td>
+         
+    <td valign="top">A simple example of the topology optimization of structure. 
+      If you are running some of the example problems supplied, you need to add 
+      the path to the examples directory. <br><br>The syntax then becomes: <br>
+      <b>java -Xmx1000m -cp .;doc;bin;Impact.jar run.ImpactOpt steps=50 ignore.stress_i=35 
+      examples/optimization2.in</b></td>
+     </tr>
+  </tbody>   
+</table>    
+ 
+<h4>Verification problems</h4> 
+ 
+<table cellpadding="1" cellspacing="1" border="1" width="100%">
+     <tbody>       
+     
+     	 <tr>
+    <td valign="top" width="5">
+      <div align="center"><b>Pictures</b><br>
+      </div>
+    </td>
+         
+    <td valign="top" width="18%">
+      <div align="center"><b>Model Fembic Indata file</b></div>
+    </td>
+    <td valign="top">
+      <div align="center"><b>Description</b><br>
+      </div>
+    </td>
+       </tr>
+
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_01.in.gif"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/tracker.in">Ver_01.in</a><br>
+         </td>
+         
+    <td valign="top">Impulsively loaded cantilever beam using C0 triangle shell 
+      elements.<br>
+      An elastic cantilever beam is held fixed in one end and loaded by a uniform 
+      end along the length. The load is applied from the start and held constant 
+      over time.</td>
+       </tr>
+       <tr>
+         <td valign="top"><br>
+      <img src="examples/Ver_02.in.gif" width="168" height="58"> </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_02.in">Ver_02.in</a> <br>
+         </td>
+         
+    <td valign="top">Impulsively loaded cantilever beam using Belytschko-Tsai 
+      shell elements.<br>
+      An elastic cantilever beam is held fixed in one end and loaded by a uniform 
+      end along the length. The load is applied from the start and held constant 
+      over time.<br>
+    </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_03.in.gif" width="168" height="58"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_03.in">Ver_03.in</a> <br>
+         </td>
+         
+    <td valign="top">Mass Impacting Rod using Rod_2 elements.<br>
+      An elastic rod is fixed in one end and then struck in the other end by a 
+      moving mass. The mass is rigid and has an initial velocity of V0. The free 
+      end of the rod has the same initial velocity which is at the instant of 
+      impact. The relative motion of the mass and the rod end is the parameters 
+      of interest here. The rod is modeled using 20 ROD_2 elements and a free 
+      node representing the impacted mass. The contact is handled by Impact as 
+      default, extending from the free end by a radius, the same as the rod cross 
+      section radius. The timestep is reduced and fixed to prevent numerical instabilities. 
+      Two trackers are used to print the nodal displacements into files for viewing.</td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_04.in.gif" width="168" height="58"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_04.in">Ver_04.in</a> <br>
+         </td>
+         
+    <td valign="top">Simply Supported Plate Problem. A square plate is simply 
+      supported on all four sides and subjected to a suddenly applied uniform 
+      load.</td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_05.in.gif" width="168" height="58"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_05.in">Ver_05.in</a> <br>
+         </td>
+         
+    <td valign="top">Impulsively loaded clamped beam. An aluminum beam which is 
+      clamped at both ends is loaded impulsively over its central poortion. Due 
+      to the symmetry of the geometry and loading, only a quarter of the beam 
+      is modeled. 10 shell elements are used. The end nodes are fully constrained 
+      apart from the nodes at the symmetry lines. Shell_BT_4 elements with 5 integration 
+      points through the thickness are used.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_06.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_06.in">Ver_06.in</a> <br>
+         </td>
+         
+    <td valign="top">The problem consists of two steel blocks in contact. They 
+      slide relatve to each other. The top block is elastic while to bottom is 
+      rigid. A special layer handles the contact sensitivity and friction The 
+      lower surface of the block is fully constrained. The top block has a constant 
+      force of 10E9 N applied at an angle alpha, equal to the angle of friction 
+      of the contact surface. Both blocks are modeled using SOLID_6 elements and 
+      use elastic materials. A rigid body connects all the nodes on the upper 
+      block to enable a uniform velocity. The contact surface is enabled bu applying 
+      CONTACT_TRIANGLE elements on the underside of the moving block. They also 
+      ahndles the friction.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_07.in.gif" width="168" height="58"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_07.in">Ver_07.in</a> <br>
+         </td>
+         
+    <td valign="top">An elastic steel rod has the velocity of one of its ends 
+      increased from 0 to 1 m/s at time zero and thereafter held constant. The 
+      rod is otherwise unconstrained. One rod_2 element is used to model the rod. 
+      The timestep is scaled by 0.05 to ensure that oscillation should not make 
+      the solution unstable.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_08.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_08.in">Ver_08.in</a> <br>
+         </td>
+         
+    <td valign="top">A pressure load is applied to a block of dimensions 1m x 
+      1m x 1m. The load is applied at time 0 and then held constant for the rest 
+      of the time. The block is modelled using a single Solid_Iso_6 element. Pressure 
+      is applied at one side through the use of distributed node loads.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_09.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_09.in">Ver_09.in</a> <br>
+         </td>
+         
+    <td valign="top">A spring is fixed in one end and is connected to a mass at 
+      the other end. The mass has an inital velocity resulting in an oscillation. 
+      No damping is applied in this problem.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_10.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_10.in">Ver_10.in</a> <br>
+         </td>
+         
+    <td valign="top">A cylinder is subjected for a uniform pressure load which 
+      is applied directly at the start and then held constant.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_11.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_11.in">Ver_11.in</a> <br>
+         </td>
+         
+    <td valign="top">Three rods with length L make up a structure. The structure 
+      is given an inital velocity V which sets the structure in rotation. The 
+      rod elements are pinned to the ground, but have free rotation connections.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_12.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_12.in">Ver_12.in</a> <br>
+         </td>
+         
+    <td valign="top">A 120 degree cylindrical panel is loaded impulsively over 
+      a rectangular area. The initial velocity is radial in direction and a permanent 
+      deformation occurs. Only half of the panel is modelled due to symmetry condition 
+      along the axis of the cylinder. The loaded area is 10.205 in long and 3.08 
+      in wide. It starts at the end of the cylinder and is centred so only half 
+      the width is modelled.<br>
+         </td>
+       </tr>
+       <tr>
+         
+    <td valign="top"><img src="examples/Ver_13.in.gif" width="168" height="56"><br>
+         </td>
+         
+    <td valign="top"><a  target="_blank"  href="examples/Ver_13.in">Ver_13.in</a> <br>
+         </td>
+         
+    <td valign="top">Wave propagation in a bar. An undamped uniform steel bar 
+      is loaded in the tip with a load that is held constant from the start. The 
+      bar is initially at rest and is modelled by 40 rod elements of equal length. 
+      The bar is only allowed to move in one direction making this a one dimensional 
+      problem. The stress / time history of element 20 midpoint is read with a 
+      tracker.<br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+
+
+
+</div>
+</div> 
+
+
+
+
+
+<!-- =====================================end _sup_example_en.shtml======================================= -->

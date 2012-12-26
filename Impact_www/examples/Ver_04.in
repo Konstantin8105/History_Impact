@@ -1,0 +1,148 @@
+# Simply Supported Plate Problem
+#
+# References: 	
+#		1. MSC/DYNA verification manual
+#		2. T. Belytschko, J. Lin and C. S. Tsay, "Explicit Algorithms
+#		   for the Nonlinear Dynamics of Shells", Computational
+#		   Methods in Applied Mechanics Engineering. 42, pp 225-251, 1984
+#		3. S. Timoshenko and J.N. Goodier, "Theory of Elasticity", 2nd ed.,
+#		   McGraw-Hill, New York, 1951.
+#
+# Problem Description
+#
+# A square plate is simply supported on all four sides and subjected to a suddenly
+# applied uniform load.
+#
+# Reference Results
+#
+# The analytical result for the deflection in the centre of the plate is shown
+# by reference 3.
+#
+#
+# Elastic material law
+# --------------------
+#               Maximum deflection      Period
+# Analytical    0.2129   in             1.070 ms
+# LS-Dyna       0.220    in             1.103 ms
+# Impact        0.2209   in             1.095 ms
+#
+# ElastioPlastic material law
+# --------------------
+#               Maximum deflection      
+# Analytical    N/A      in             
+# LS-Dyna 3 pts 0.3143   in             
+# Impact  3 pts 0.3118   in             
+# LS-Dyna 5 pts 0.2963   in
+# Impact  5 pts 0.2971   in
+#
+#
+# Engineering data
+#
+# Length 		         L  =        10 in
+# Thickness		         t  =       0.5 in
+# Young modulus		     E  =      10E7 psi
+# Density		       rho  =  2.588E-4 lb-sec^2/in^4
+# Poissons ratio        nu  =       0.3
+# Yield stress       yield  =     30000 psi
+# Plastic modulus       Ep  =     0.107 psi
+# Pressure load          P  =       300 psi
+# Isotropic hardening beta  =       1.0
+
+#    ANALYSIS RUN TIME CONTROL
+
+CONTROLS
+run from    0.00000 to    0.00120
+print every  0.00010 step
+print tracker every 0.000010 step
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL MATERIAL CONFIGURATION
+MATERIALS OF TYPE ELASTOPLASTIC
+mat_1 E = 10000000.00000 RHO =     0.0002588000 NU =  0.300 YIELD_STRESS = 30000.00000 EP =   0.107
+#MATERIALS OF TYPE ELASTIC
+#mat_1 E = 10000000.00000 RHO =     0.0002588000 NU =  0.300
+
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL NODAL POINT CONFIGURATION
+
+NODES
+       1 x =      0.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_10
+       2 x =      1.25000000 y =      0.00000000 z =      0.00000000 constraint = Constr_13
+       3 x =      0.00000000 y =      1.25000000 z =      0.00000000 constraint = Constr_12
+       4 x =      1.25000000 y =      1.25000000 z =      0.00000000
+       5 x =      2.50000000 y =      0.00000000 z =      0.00000000 constraint = Constr_13
+       6 x =      0.00000000 y =      2.50000000 z =      0.00000000 constraint = Constr_12
+       7 x =      2.50000000 y =      1.25000000 z =      0.00000000
+       8 x =      1.25000000 y =      2.50000000 z =      0.00000000
+       9 x =      2.50000000 y =      2.50000000 z =      0.00000000
+      10 x =      3.75000000 y =      0.00000000 z =      0.00000000 constraint = Constr_13
+      11 x =      0.00000000 y =      3.75000000 z =      0.00000000 constraint = Constr_12
+      12 x =      3.75000000 y =      1.25000000 z =      0.00000000
+      13 x =      1.25000000 y =      3.75000000 z =      0.00000000
+      14 x =      3.75000000 y =      2.50000000 z =      0.00000000
+      15 x =      2.50000000 y =      3.75000000 z =      0.00000000
+      16 x =      5.00000000 y =      0.00000000 z =      0.00000000 constraint = Constr_15
+      17 x =      0.00000000 y =      5.00000000 z =      0.00000000 constraint = Constr_14
+      18 x =      5.00000000 y =      1.25000000 z =      0.00000000 constraint = Constr_11
+      19 x =      1.25000000 y =      5.00000000 z =      0.00000000 constraint = Constr_11
+      20 x =      3.75000000 y =      3.75000000 z =      0.00000000
+      21 x =      5.00000000 y =      2.50000000 z =      0.00000000 constraint = Constr_11
+      22 x =      2.50000000 y =      5.00000000 z =      0.00000000 constraint = Constr_11
+      23 x =      5.00000000 y =      3.75000000 z =      0.00000000 constraint = Constr_11
+      24 x =      3.75000000 y =      5.00000000 z =      0.00000000 constraint = Constr_11
+      25 x =      5.00000000 y =      5.00000000 z =      0.00000000 constraint = Constr_11
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL TRIANGULAR ELEMENT CONFIGURATION
+
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL QUADRILATERAL ELEMENT CONFIGURATION
+
+ELEMENTS OF TYPE shell_BT_4
+       1 nodes = [2,4,3,1] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       2 nodes = [5,7,4,2] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       3 nodes = [10,12,7,5] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       4 nodes = [16,18,12,10] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       5 nodes = [4,8,6,3] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       6 nodes = [7,9,8,4] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       7 nodes = [12,14,9,7] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       8 nodes = [18,21,14,12] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+       9 nodes = [8,13,11,6] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      10 nodes = [9,15,13,8] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      11 nodes = [14,20,15,9] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      12 nodes = [21,23,20,14] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      13 nodes = [13,19,17,11] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      14 nodes = [15,22,19,13] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      15 nodes = [20,24,22,15] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+      16 nodes = [23,25,24,20] nip = 5 t =  0.500 material = mat_1 shear_factor = 1.000 mhc = 0.100 oophc = 0.100 rhc = 0.100 load = Load_41
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL HEXAHEDRONAL ELEMENT CONFIGURATION
+
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL BOUNDARY CONDITIONS
+
+CONSTRAINTS OF TYPE boundary_condition
+Constr_10 ax = 0 vx = 0 ay = 0 vy = 0 arx = 0 vrx = 0 ary = 0 vry = 0
+Constr_11 az = 0 vz = 0 
+Constr_12 ax = 0 vx = 0 ary = 0 arz = 0 vry = 0 vrz = 0 
+Constr_13 ay = 0 vy = 0 arx = 0 arz = 0 vrx = 0 vrz = 0 
+Constr_14 ax = 0 vx = 0 az = 0 vz = 0 ary = 0 arz = 0 vry = 0 vrz = 0 
+Constr_15 ay = 0 vy = 0 az = 0 vz = 0 arx = 0 arz = 0 vrx = 0 vrz = 0 
+
+CONSTRAINTS OF TYPE Rigid_Body
+
+#-------------------------------------------------------------------
+#    ANALYSIS MODEL LOADS
+
+LOADS
+Load_41 p = 300.0
+
+#-------------------------------------------------------------------
+#    TRACKERS
+
+TRACKERS OF TYPE NODEDISPLACEMENT
+1 node = [1] direction = z filename = Ver_04.trk target = [0.00075,0.000001,0.2971,0.0001]

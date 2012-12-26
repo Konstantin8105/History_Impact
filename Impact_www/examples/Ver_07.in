@@ -1,0 +1,60 @@
+#
+# Enforced Velocity Test
+#
+# Problem description
+# An elastic steel rod has the velocity of one of its ends increased 
+# from 0 to 1 m/s at time zero and thereafter held constant.
+# The rod is otherwise unconstrained
+#
+# Model description
+# One rod_2 element is used to model the rod.
+# The timestep is scaled by 0.05 to ensure that oscillation should not
+# make the solution unstable.
+#
+# Engineering data
+#  Density          =   7850 kg/m3
+#  Youngs modulus   =  210E9 N/m2
+#  Poissons ratio   =    0.3
+#  Rod Section Area =      1 m2
+#
+# Reference results
+# Node 1 should move with a constant velocity of 1 m/s
+# The rod should have a cyclic velocity with a mean value of 1 m/s, an 
+# amplitude of 1 m/s and a period of 0.77E-3 s according to:
+#
+# Sound speed = sqrt(Youngs_modulus/density) = 5172 m/s
+# Time for a sound wave to pass along a rod = 1/5172 = 0.193E-3 s
+# Time for one period = 4*0.193E9 = 0.77E-3 s
+#
+# Comparisons of results
+# Node 1 has a constant velocity of 1 m/s which corresponds with 
+# theory.
+# Node 2 results:
+#
+#                MSC-Dyna  Impact  Theory
+# amplitude      1.0       1.0     1.0
+# period         0.00086   0.00086 0.00077
+#
+#
+
+nodes
+1   x = 0  y = 0  z = 0  constraint = moving
+2   x = 1  y = 0  z = 0
+
+elements of type rod_2
+1  nodes = [1,2]  material = mat1  D = 1.1284
+
+materials of type elastic
+mat1  E = 210000000000  rho = 7850  nu = 0.3
+
+constraints of type boundary_condition
+moving  vx = 1.0  ax = 0.0
+
+trackers of type nodevelocity
+1  node = [2]  direction = X  filename = Ver_07.trk target = [0.00043,0.000001,2.0,0.001]
+
+controls
+run from 0 to 0.002 step 0.000001
+print every 0.0001 step
+print tracker every 0.00001 step
+

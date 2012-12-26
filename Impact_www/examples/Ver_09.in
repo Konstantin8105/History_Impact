@@ -1,0 +1,52 @@
+# Undamped Single Degree of Freedom Oscillator
+#
+# References: 	
+#       1. MSC/DYNA verification manual
+#
+# Problem Description
+#
+# A spring is fixed in one end and is connected to a mass at the other end.
+# The mass has an inital velocity resulting in an oscillation.
+# No damping is applied in this problem.
+#
+# Reference Results
+#
+# The analytical result for the deflection of the mass is as follows:
+#
+# x(t) = V(0) * sin(omega*t) / omega 
+# omega = sqrt( k / m)
+# where k is the spring stiffness and m is the end mass
+#
+# Impact results correspond well with theory.
+#
+# Engineering data
+#
+# Length 		L   =         1 m
+# Stiffness  	k   =         1 N / m
+# End mass		m   =         1 kg
+# Velocity      Vi  =         1 m / s
+
+
+nodes
+1   x =  0.0  y =  0.0  z =  0.0           constraint = fixed
+2   x = 10.0  y =  0.0  z =  0.0   m = 1.0 constraint = moving
+3   x =  5.0  y =  5.0  z =  0.0           constraint = fixed
+
+elements of type BEAM_SPRING_2
+1	nodes = [1,2,3]	material = mat_1
+
+materials of type SPRING
+mat_1 kx = 1.0
+
+constraints of type boundary_condition
+fixed	vx = 0 vy = 0 vz = 0 vrx = 0 vry = 0 vrz = 0 ax = 0 ay = 0 az = 0 arx = 0 ary = 0 arz = 0
+moving ax = [0.0, 0.0, 0.0001, off, 100.0, off] vx = [0.0, 1.0, 0.0001, off, 100.0, off] 
+
+trackers of type nodedisplacement
+1 node = [2] direction = x filename = Ver_09.trk target = [15.71, 0.00001, 0.0, 0.01]
+
+controls
+run from 0 to 17.0 step 0.001
+print every 0.1 step
+print tracker every 0.01 step
+
