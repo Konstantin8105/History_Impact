@@ -5,15 +5,14 @@
 <div style="margin: 10px;">
 <div id="content" class="narrowcolumn">
 
-<h2>Usage of Impact</h2>
+<h2>Pengunaan Impact</h2>
 
-<p>Impact can be run from two different modes: GUI and Command modes.
-There is a complete GUI based environment available where a solution
-can be run from model to analysis. It is also possible to run the
-Impact solver from command line.</p>
+<p>Impact boleh dijalankan dari dua mod yang berbeza: GUI dan Mod Arahan. 
+Terdapat asas persekitaran GUI yang lengkap dimana penyelesaian boleh dilakukan dari 
+model kepada analisis. Ia juga boleh menjalankan penyelesai Impact dari arahan barisan.</p>
 <ul>
-  <li><a href="#gui">GUI Environment</a> </li>
-  <li><a href="#command">Impact Commands</a> </li>
+  <li><a href="#gui">Persekitaran GUI</a> </li>
+  <li><a href="#command">Arahan Impact</a> </li>
 </ul>
 <!-- <center><img src="gui.gif"></center>
 <a name="gui"></a> -->

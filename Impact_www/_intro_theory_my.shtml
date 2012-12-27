@@ -1,48 +1,46 @@
 ﻿<!-- =====================================start _intro_theory_my.shtml======================================= -->
 <div style="margin: 10px;">
 <div id="content" class="narrowcolumn">
-<b><i>should be translated into Bahasa Melayu</i></b>
 
-<p align=justify><b>Impact is written in Java</b></p>
+<p align=justify><b>Impact ditulis dalam Java</b></p>
 
-<p>Impact is written in Java for two reasons:</p>
+<p>Impact ditulis dalam Java kerana dua sebab:</p>
 <ol>
-	<li><p align=justify>Java is an Object Oriented language and that suits Finite Element 
-	Programming perfectly</p></li>
-	<li><p>Java is clean, simple and extremely portable.</p></li>
+	<li><p align=justify>Java adalah bahasa berorientasikan objek dan oleh itu  
+	amat sesuai dengan Pengaturcaraan Unsur Terhingga.</p></li>
+	<li><p>Java adalah bersih, ringkas dan sangat mudah alih.</p></li>
 </ol>
 
-<p align=justify>On the other hand, Java might seem like a strange choice since this is a high 
-	performance number crunching type of software and Java is not known to be competitive to ex. 
-	Fortran or C++ in this area. 
-	True, it is slower but with the new interpreters from IBM and Sun, 
-	the built in runtime compiling actually gets the speed up quite a bit 
-	so this is not such an issue after all. 
+<p align=justify>Java mungkin kelihatan seperti pilihan yang aneh kerana 
+ini merupakan jenis perisian yang berprestasi tinggi dan Jawa tidak dikenali 
+untuk menjadi lebih berdaya saing berbanding ex-Fortran atau C++  dalam bidang ini. 
+Benar, ia adalah perlahan tetapi dengan jurubahasa baru dari IBM dan Sun, 
+susunan masa larian terbina  sebenarnya mendapat kelajuan dan oleh yang demikian ia tidaklah menjadi isu. 
 </p>
 
-<p align=justify>The explicit code is based on the simple formula of F=M*A where F represents 
-	a force, M is the mass of a body and A is the resulting acceleration of that body.
+<p align=justify>Kod eksplisit adalah berdasarkan formula mudah F = M * A,  
+dimana F mewakili daya, M ialah jisim badan dan A adalah pecutan yang terhasil daripada badan itu.
 </p>
 
-<p align=justify>All the code does is to calculate the acceleration for the body, 
-	use a small step in time to translate this acceleration into a little displacement 
-	of the body. This displacement is then used to calculate a responding force since 
-	the body is elastic and can be stretched (thus creating a reaction force). 
-	This force is then used to calculate an acceleration and then the process is repeated 
-	again from the beginning.
+<p align=justify>Semua kod adalah untuk mengira pecutan untuk badan, 
+gunakan langkah kecil dalam masa untuk menterjemahkan pecutan ini ke dalam sedikit anjakan badan.
+Anjakan ini kemudiannya digunakan untuk mengira daya tindakbalas dengan mengambilkira badan 
+adalah elastik dan boleh diregangkan (sekali gus mewujudkan daya tindak balas). 
+Daya ini kemudiannya digunakan untuk mengira pecutan dan kemudian proses ini akan berulang 
+sekali lagi dari awal.
 </p>
 
-<p align=justify>As long as the timestep is sufficiently small, the results are accurate.</p>
+<p align=justify>Selagi selang masa cukup kecil, keputusan adalah tepat.</p>
 <br>
 
-<p align=justify><b>Literature of Interest </b></p>
-<p align=justify>There are a large number of books available on Finite Element Theory.  
-	Most of them describe Finite Element from a static point of view and is therefore of
-	limited interest to the potential Impact programmer. 
+<p align=justify><b>Menarik berkenaan Kesusasteraan</b></p>
+<p align=justify>Terdapat sebilangan besar buku-buku yang boleh didapati pada Teori Unsur Terhingga. 
+Kebanyakannya menggambarkan Unsur Terhingga dari sudut pandangan statik dan oleh itu memberikan 
+potensi faedah terhad kepada pengaturcara Impact.
 </p>
 
-<p align=justify>On the other hand, the theory of element formulation is often usable to a
-large extent and having that in mind, here are a few proposals:</p>
+<p align=justify>Sebaliknya, teori formulasi elemen sering digunakan ke tahap yang besar dan 
+menyedari tentang hal itu, di sini dinyatakan beberapa cadangan:</p>
 
 <ul>
   <li><p align=justify>Concepts And Applications Of Finite Element Analysis, Third edition -
@@ -53,21 +51,21 @@ large extent and having that in mind, here are a few proposals:</p>
 		Wing Kam Liu, Brian Moran. ISBN 0-471-98773-5</p></li>
 </ul>
 
-<p align=justify> The first book is recommended to beginners and engineers in general
-	since it deals with most issues from a linear algebra perspective. This
-	makes the code writing quite close to the Impact format. It is also a very
-	good book and the one I have had best feedback from.
+<p align=justify>Buku pertama disyorkan untuk pemula dan jurutera secara umum kerana ia berkaitan 
+dengan  kebanyakan isu-isuvdari perspektif algebra lelurus. Ini menjadikan kod bertulis agak 
+dekat dengan format Impact. Ia juga merupakan sebuah buku yang sangat baik dan satu yang 
+telah mempunyai maklum balas yang terbaik.
 </p>
 
-<p align=justify>Ted Belytschko's book is the "bible" in this field. The man behind
-	explicit codes have finally written a compendium on the theory and some
-	principle algorithms are also shown. However, for an engineers perspective,
-	this book is quite deep in its places and is more suitable as a reference
-	than as a learning book for beginners.
+<p align=justify>Buku Ted Belytschko  merupakan "kitab" dalam bidang ini. 
+Orang di sebalik kod eksplisit akhirnya telah menulis ringkasan mengenai teori dan 
+beberapa prinsip algoritma juga ditunjukkan. Walau bagaimanapun, untuk perspektif jurutera, 
+buku ini adalah agak mendalam dan adalah lebih sesuai sebagai rujukan daripada sebagai buku 
+pembelajaran untuk pemula.
 </p>
 
-<p align=justify>There are also some papers written which are of interest.
-	These papers form the basis of coming shell element extension to Impact.
+<p align=justify>Terdapat juga beberapa rujukan bertulis yang berkaitan. 
+Rujukan ini membentuk asas kepada  elemen kelompang lanjutan kepada Impact.
 </p>
 
 <ul>
@@ -83,13 +81,13 @@ large extent and having that in mind, here are a few proposals:</p>
 	</li>
 </ul>
 
-<p align=justify>To understand the concept behind object orientation, inheritance etc, the
-	following book is a pleasure to read:
+<p align=justify>Untuk memahami konsep di sebalik orientasi, warisan dan sebagainya, 
+buku berikut dapat memberikan kepuasan untuk dibaca:
 </p>
 
 <ul>
-  <li><p align=justify><a href="http://mindview.net/Books/TIJ4" target="_blank" title="Thinking in Java">Thinking in Java</a> - Burce Eckel. The old edition of this book is free to <a href="http://www.mindviewinc.com/Books/downloads.html" target="_blank" title="Free Download: Thinking in Java">download</a>. 
-		</p>
+  <li><p align=justify><a href="http://mindview.net/Books/TIJ4" target="_blank" title="Thinking in Java">Thinking in Java</a> - Burce Eckel. Edisi lama buku ini boleh<a href="http://www.mindviewinc.com/Books/downloads.html" target="_blank" title="Free Download: Thinking in Java"> dimuat turun</a>. 
+		secara percuma</p>
 	</li> 
 </ul>
 
