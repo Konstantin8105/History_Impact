@@ -2,66 +2,87 @@
 
 <link type="text/css" rel="stylesheet" href="css/other.css">
 
-<div style="margin: 10px;">
-<div id="content" class="narrowcolumn">
+<div style="margin-left: 60px; margin-right: 60px">
+<div id="content" >
 <h2>Impact Repository</h2>
 
-<p>Impact source codes are kept in <a href="http://sourceforge.net/" target="_blank" title="Click here to view Sourceforge">Sourceforge</a> CVS (Concurrent Versions System) repository.</p>
+<p>Impact source codes are kept in <a href="http://sourceforge.net/" target="_blank" title="Click here to view Sourceforge">Sourceforge</a> SVN (subversion) repository.</p>
 
-<p>CVS (Concurrent Versions System) is a tool used by many software developers to manage
-changes within their source code tree. CVS provides the means to store not only 
-the current version of a piece of source code, but a record of all changes 
-(and who made those changes) that have occurred to that source code. 
-Use of CVS is particularly common on projects with multiple developers, 
-since CVS ensures changes made by one developer are not accidentally removed when 
-another developer posts their changes to the source tree.</p>
+<p>This Source Code Management is a tool software developers which supports 
+collaborative development of software within a team, and the tracking of changes 
+to software source code over time.</p>
 
-<p>Though CVS repositories are most commonly accessed using a special piece of software 
-called a CVS client, Sourceforge also provide a web-based interface to view CVS repositories.
-<a href="http://impact.cvs.sourceforge.net/viewvc/impact/Impact/" target="_blank" 
+<p>Subversion is used by developers, and advanced users who need the very latest 
+changes to the software (before releases occur). Software users generally do not 
+need Subversion; typically they will download official file releases made 
+available by the project instead</p>
+
+<p>Though SVN repositories are most commonly accessed using a special piece of software 
+called a SVN client, Sourceforge also provide a web-based interface to view SVN repositories.
+<a href="http://sourceforge.net/p/impact/code/11/tree/" target="_blank" 
 title="Click here to browse the source codes in Sourceforge">
-Browsing the CVS tree</a> 
+Browsing the SVN tree</a> 
 gives you a great view into the current status of this project's code. 
 You may also view the complete history of any file in the repository.</p>
 
-<h2>Using CVS Client</h2>
-<p>The most convenient way to access Impact CVS repository and to follow 
+<h2>Using SVN Client</h2>
+<p>The most convenient way to access Impact SVN repository and to follow 
 any updates by the developers and to commit changes (if you are the developer and
 have write access to the repository)
-is by using CVS client.</p>
+is by using SVN client.
+</p>
 
-<p>There are many free CVS clients available. 
-<a href="http://www.eclipse.org/downloads/" target="_blank" 
-title="Click to download Eclipse">Eclipse</a> 
-is one of them that supports Windows, Linux and Mac operating systems. 
-In Windows OS, you need to download first then install it to your computer.
-For Ubuntu users, just select Eclipse from Ubuntu Software Center and click Install.</p>
+<p>There are many free SVN clients available. In Windows system,
+<a href="http://tortoisesvn.tigris.org/" target="_blank" 
+title="Click to download Eclipse">TortoiseSVN</a> is a friendly
+environment integrated to explorer. In Ubuntu system, <a href="http://pysvn.tigris.org/" target="_blank" 
+title="Click to download Eclipse">PySVN</a> is available to install from ubuntu software center.
+For IDE programming, <a href="http://www.eclipse.org/downloads/" target="_blank" 
+title="Click to download Eclipse">Eclipse</a> and <a href="http://netbeans.org/" target="_blank" 
+title="Click to download Eclipse">Netbeans</a> support Windows, Linux and Mac operating systems.
+</p>
 
-<h3>Anonymous CVS Access</h3>
-<p>Impact in SourceForge CVS repository can be checked out through anonymous (pserver) 
-CVS. Password is not required but no write access is given. 
-Follow the steps below in Eclipse:</p>
-<ol>
-	<li>Select a new project directory</li>
-	<li>Create a new project (<em>File</em> > <em>New </em>> <em>Project</em>)</li>
-	<li>Select <em>CVS</em> > <em>Projects from CVS</em></li>
-	<li>Enter repository location information<br />
-					Host: <code>impact.cvs.sourceforge.net</code><br />
-					Repository path: <code>/cvsroot/impact</code><br />
-					Username: <code>anonymous</code></li>
-	<li>Select <em>impact</em> module and click Finish button. The source codes will be
-	    downloaded to your local folder defined in step 1.</li>
-</ol>
-<p>If you have modified the codes to improve Impact or you have new codes to implement
+<h2>SVN Access</h2>
+
+<h4>Read-Only Access</h4>
+
+<p>Impact in SourceForge SVN repository can be checked out with read-only access. 
+Username and password are not required but no write access is given. 
+The source codes can be obtained using this method.
+</p>
+
+<p>Users may checkout to the following repository:</p>
+<code>http://svn.code.sf.net/p/impact/code</code>
+<p>or to a specific directory</p>
+<code>http://svn.code.sf.net/p/impact/code</code><br />
+<code>http://svn.code.sf.net/p/impact/code/branches</code><br />
+<code>http://svn.code.sf.net/p/impact/code/trunk</code>
+
+<p>If you need to know some basic subversion client instructions, 
+you can visit <a href="http://sourceforge.net/apps/trac/sourceforge/wiki/Subversion%20client%20instructions" target="_blank" 
+title="Click to download Eclipse">subversion in sourceforge</a>. </p>
+
+<h4>Developer Access</h4>
+
+<p>If you modify the codes to improve Impact or you have new codes to implement
 new features, please send them to 
-<a href="mailto:YuriyMikhaylovskiy@yahoo.com?subject=[Impact%20Codes%20to%20review]">Impact project administrator</a> to review. 
-You might be granted a developer access to the repository after reviewing the codes.</p>
+<a href="mailto:YuriyMikhaylovskiy@yahoo.com?subject=[Impact%20Codes%20to%20review]">Impact project administrator</a> to review.
+When sending (by email) the codes for the first time, your GPL statement 
+(<i>I hereby license my contributions to Impact under the Gnu General Public 
+License version 2 or later</i>) is required. You might be granted a developer access to 
+the repository after reviewing the codes. All developers should 
+<a href="https://sourceforge.net/user/registration" target="_blank" 
+title="Click to download Eclipse">register</a> in Sourceforge.
+</p>
+<p>The developer write-read access repository can be seen from the <a href="http://sourceforge.net/p/impact/code/11/tree/" target="_blank" 
+title="Click to download Eclipse">SVN tree</a> (login required). 
+The SVN repository will ask username and password.
+</p>
 
 
 </div>
 </div>
-
-
+<!--  
 <div align="center" id="sidebar">
 
 <p style="margin-top:550px"></p>
@@ -72,6 +93,6 @@ You might be granted a developer access to the repository after reviewing the co
 
   
 </div>
-
+-->
 
 <!-- =====================================end _dev_source_my.shtml======================================= -->

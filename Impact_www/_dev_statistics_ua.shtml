@@ -4,6 +4,7 @@
 
 <div style="margin: 10px;">
 <div id="content" class="narrowcolumn">
+<!--  
 <h3>Developer CVS Access via Secure Shell (SSH)</h3>
 <p>Only project developers can access the CVS tree via this method. 
 A SSH client must be installed on your client machine. Every developer should register
@@ -30,13 +31,27 @@ Follow the steps below in Eclipse:</p>
 	<li>Right click, select Team</li>
 	<li>Select Commit and click. The changes will be sent to the repository</li>
 </ol>
+-->
+
+<h3>Impact Developer Team</h3>
+<p>If you know Java and you want to contribute as a developer in Impact, 
+you can send patches or changes to 
+<a href="mailto:YuriyMikhaylovskiy@yahoo.com?subject=%5BImpact%20Developer%5D">
+Impact administrator</a> to review your codes. SVN developer access will be granted,
+and it is the decision from the project administrator.<br />
+When sending (by email) the codes for the first time, your GPL statement (
+<i>I hereby license my contributions to Impact under the Gnu General Public
+License version 2 or later</i>) is required.</p> 
 
 
 <h3>Impact Web Translation</h3>
 <p>If you want to contribute as a translator of this Impact website for localization, 
 you may contact the
 <a href="mailto:was.uthm@gmail.com?subject=Impact%20Web%20Localization">
-web administrator</a> to make your local language available.</p>
+web administrator</a> to make your local language available.<br />
+When sending (by email) your translations for the first time, your GPL statement (
+<i>I hereby license my contributions to Impact under the Gnu General Public
+License version 2 or later</i>) is required.</p> </p>
 
 <h3>Download Statistics</h3>
 
@@ -95,11 +110,16 @@ $(function () {
         if (data.length > 0)
             $.plot($("#placeholder"), data, options
            );
+          $("#example-section9 #flotcontainer").UseTooltip();  
     }
 
     plotAccordingToChoices();
        
 });
+
+
+
+
 
 </script>
 
@@ -107,14 +127,15 @@ $(function () {
 </div>
 
 <div align="center" id="sidebar">
-
+<!--  
 <p style="margin-top:220px"></p>
  
   	<div align="center">Commit changes from Eclipse. <br />Click to magnify</div>
   	<center><a href="images/eclipse-commit-new.png"  rel="lightbox"  title="Commit changes from Eclipse">
   	<img src="images/eclipse-commit-new.png" width="80%"  /></a></center>
+-->
 
-  <p style="margin-top:200px; text-align:center"></p>
+  <p style="margin-top:460px; text-align:center"></p>
 
  
 <a href="http://sourceforge.net/projects/impact/files/stats/timeline" target="_blank" >Latest Weekly download timeline</a><br />
@@ -122,6 +143,7 @@ $(function () {
 
 
 </div>
+
 
 
 <!-- =====================================end _dev_statistics_ua.shtml======================================= -->
