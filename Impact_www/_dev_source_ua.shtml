@@ -34,12 +34,12 @@ is by using SVN client.
 
 <p>There are many free SVN clients available. In Windows system,
 <a href="http://tortoisesvn.tigris.org/" target="_blank" 
-title="Click to download Eclipse">TortoiseSVN</a> is a friendly
+title="Website TortoiseSVN">TortoiseSVN</a> is a friendly
 environment integrated to explorer. In Ubuntu system, <a href="http://pysvn.tigris.org/" target="_blank" 
-title="Click to download Eclipse">PySVN</a> is available to install from ubuntu software center.
+title="Website PySVN">PySVN</a> is available to install from ubuntu software center.
 For IDE programming, <a href="http://www.eclipse.org/downloads/" target="_blank" 
 title="Click to download Eclipse">Eclipse</a> and <a href="http://netbeans.org/" target="_blank" 
-title="Click to download Eclipse">Netbeans</a> support Windows, Linux and Mac operating systems.
+title="Website Netbeans">Netbeans</a> support Windows, Linux and Mac operating systems.
 </p>
 
 <h2>SVN Access</h2>
@@ -60,7 +60,7 @@ The source codes can be obtained using this method.
 
 <p>If you need to know some basic subversion client instructions, 
 you can visit <a href="http://sourceforge.net/apps/trac/sourceforge/wiki/Subversion%20client%20instructions" target="_blank" 
-title="Click to download Eclipse">subversion in sourceforge</a>. </p>
+title="Subversion information">subversion in sourceforge</a>. </p>
 
 <h4>Developer Access</h4>
 
@@ -72,10 +72,10 @@ When sending (by email) the codes for the first time, your GPL statement
 License version 2 or later</i>) is required. You might be granted a developer access to 
 the repository after reviewing the codes. All developers should 
 <a href="https://sourceforge.net/user/registration" target="_blank" 
-title="Click to download Eclipse">register</a> in Sourceforge.
+title="Sourceforge user registration">register</a> in Sourceforge.
 </p>
 <p>The developer write-read access repository can be seen from the <a href="http://sourceforge.net/p/impact/code/11/tree/" target="_blank" 
-title="Click to download Eclipse">SVN tree</a> (login required). 
+title="SVN repository tree">SVN tree</a> (login required). 
 The SVN repository will ask username and password.
 </p>
 
