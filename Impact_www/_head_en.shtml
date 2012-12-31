@@ -34,6 +34,7 @@
 
 </script>
 <link href="http://impact-fem.org" rel="canonical" >
+<meta name="google-translate-customization" content="1a9837d5d273c138-43377cb3246a2608-g9f576cf8fbdca0f2-12"></meta>
 </head>
 <body>
 <div id="page">
@@ -44,11 +45,14 @@
 <a href="index.shtml" class="nomargin"><img src="images/ImpactLogo.png"  title="Impact" alt="" border="0" class="nomargin" ></a>
 <div class="description" > 
 <br>
+<!--  
 <a href="index.shtml" class="nomargin"><img src="images/us.png" title="English" alt="" border="0" class="nomargin" ></a>
 <a href="index_ru.shtml" class="nomargin"><img src="images/ru.png" title="Russian" alt="" border="0"></a>
 <a href="index_ua.shtml" class="nomargin"><img src="images/ua.png" title="Ukrainian" alt="" border="0"></a>
 <a href="index_my.shtml" class="nomargin"><img src="images/my.png" title="Bahasa Melayu" alt="" border="0"></a>
+-->
 <!-- <a href="index_id.shtml" class="nomargin"><img src="images/id.png" title="Bahasa Indonesia" alt="" border="0"></a> -->
+
 <br>
 
 <!-- menu -->
@@ -125,6 +129,13 @@ so.write("wpcumuluscontent");
 </script>
 </div>
 
+
  </div>
+<div id="google_translate_element" style="text-align:right; margin-right:20px"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,de,en,es,fr,id,ms,ru,uk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </div>
 <!-- =====================================end _head_en.shtml======================================= -->

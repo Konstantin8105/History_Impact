@@ -3998,13 +3998,13 @@ the programming manual. </p>
 </div>
 </div>
 
-<div align="center" id="sidebar" style="background-color:#EFFBFB; margin-left:536px; position: fixed; border-style:dotted; border-width:thin;">
+<div align="center" id="sidebar" style="background-color:#EFFBFB; margin-left:536px; margin-top:20px;position: fixed; border-style:dotted; border-width:thin;">
 
 
 <p style="margin-left:10px">	<a href="doc_fembic_en.shtml">CONTENTS</a></p>
 <p style="margin-left:10px">	<a href="#top">Fembic Input Data Block</a></p>
  
- <li style="margin-left:30px; list-style-type: circle;"}><a href="#units"> Units</a></li>
+ <li style="margin-left:30px; list-style-type: circle;"><a href="#units"> Units</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#controls"> Controls</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#materials">Materials</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
