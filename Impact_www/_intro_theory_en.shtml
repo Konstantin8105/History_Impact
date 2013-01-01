@@ -44,12 +44,12 @@
 large extent and having that in mind, here are a few proposals:</p>
 
 <ul>
-  <li><p align=justify>Concepts And Applications Of Finite Element Analysis, Third edition -
-		Robert D. Cook, David S. Malkus, Michael E. Plesha, ISBN 0-471-84788-7</p></li>
-	<li><p align=justify>The Finite Element Method - Linear Static and Dynamic Finite Element
-		Analysis - Thomas J. R. Hughes, ISBN 0-484-41181-8</p></li>
-	<li><p align=justify>Nonlinear Finite Elements for Continua and Structures - Ted Belytschko,
-		Wing Kam Liu, Brian Moran. ISBN 0-471-98773-5</p></li>
+  <li><p align=justify><span class="notranslate">Concepts And Applications Of Finite Element Analysis, Third edition -
+		Robert D. Cook, David S. Malkus, Michael E. Plesha, ISBN 0-471-84788-7</span></p></li>
+	<li><p align=justify><span class="notranslate">The Finite Element Method - Linear Static and Dynamic Finite Element
+		Analysis - Thomas J. R. Hughes, ISBN 0-484-41181-8</span></p></li>
+	<li><p align=justify><span class="notranslate">Nonlinear Finite Elements for Continua and Structures - Ted Belytschko,
+		Wing Kam Liu, Brian Moran. ISBN 0-471-98773-5</span></p></li>
 </ul>
 
 <p align=justify> The first book is recommended to beginners and engineers in general
@@ -70,14 +70,14 @@ large extent and having that in mind, here are a few proposals:</p>
 </p>
 
 <ul>
-  <li><p align=justify><a href="http://www.sciencedirect.com/science/article/pii/0045782584900264" target="_blank" title="Explicit Algorithms For The Nonlinear Dynamics Of Shells">Explicit Algorithms For The Nonlinear Dynamics Of Shells - Ted
+  <li><p align=justify><span class="notranslate"><a href="http://www.sciencedirect.com/science/article/pii/0045782584900264" target="_blank" title="Explicit Algorithms For The Nonlinear Dynamics Of Shells">Explicit Algorithms For The Nonlinear Dynamics Of Shells - Ted
 			Belytchko</a>, Jerry I. Lin, Chen-Shyh Tsay, Computer methods in applied
-			mechanics and engineering 42 (1984), page 225-251
+			mechanics and engineering 42 (1984), page 225-251</span>
 		</p>
 	</li>
-  <li><p align=justify><a href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1620180711/abstract" target="_blank" title="An explicit formulation for an efficient triangular plate-bending element">An Explicit Formulation For An Efficient Triangular Plate-Bending
+  <li><p align=justify><span class="notranslate"><a href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1620180711/abstract" target="_blank" title="An explicit formulation for an efficient triangular plate-bending element">An Explicit Formulation For An Efficient Triangular Plate-Bending
 			Element</a> - Jean-Louis Batoz, International journal for numerical methods in
-			engineering, Vol. 18, page 1077-1089 (1982) 
+			engineering, Vol. 18, page 1077-1089 (1982) </span>
 		</p>
 	</li>
 </ul>
@@ -87,7 +87,7 @@ large extent and having that in mind, here are a few proposals:</p>
 </p>
 
 <ul>
-  <li><p align=justify><a href="http://mindview.net/Books/TIJ4" target="_blank" title="Thinking in Java">Thinking in Java</a> - Burce Eckel. The old edition of this book is free to <a href="http://www.mindviewinc.com/Books/downloads.html" target="_blank" title="Free Download: Thinking in Java">download</a>. 
+  <li><p align=justify><span class="notranslate"><a href="http://mindview.net/Books/TIJ4" target="_blank" title="Thinking in Java">Thinking in Java</a> - Burce Eckel. </span> The old edition of this book is <a href="http://www.mindviewinc.com/Books/downloads.html" target="_blank" title="Free Download: Thinking in Java">free</a>. 
 		</p>
 	</li> 
 </ul>

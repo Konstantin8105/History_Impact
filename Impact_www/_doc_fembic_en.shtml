@@ -24,7 +24,7 @@ document.getElementById(divId).style.display = 'none';
 	It  is designed to be simple to read and understand, and is written in  free format
 	which means that you can type as you wish and do not have  to put data at
 	specific locations in the file. A file which is written  in Fembic should
-	have a name which ends with <b>.in</b> and be in ASCII  format.</p>
+	have a name which ends with <span class="notranslate"><b> .in</b></span> and be in ASCII  format.</p>
  
 <p align=justify>Comments may be included on any line but must be preceded by a # character.
  	Every text written behind this sign will be ignored and the parser will
@@ -40,6 +40,7 @@ document.getElementById(divId).style.display = 'none';
  	and may be repeated. A block must start on a new line using  any of the
 	keywords.  Each keyword and the related data will now be described.</p>
 <ul>
+<span class="notranslate">
 	<li><a href="#controls">Controls</a></li>
 	<li><a href="#materials">Materials</a></li>
 	<li><a href="#nodes">Nodes</a></li>
@@ -47,6 +48,7 @@ document.getElementById(divId).style.display = 'none';
 	<li><a href="#constraints">Constraints</a></li>
 	<li><a href="#loads">Loads</a></li>
 	<li><a href="#trackers">Trackers</a></li>
+</span>
 <!--  	<li><a href="#other">Other Indata and Outdata Formats</a></li> -->
 <!--  	<li><a href="#contact">Contact Handling in Impact</a></li>	 -->
 </ul>
@@ -55,14 +57,14 @@ document.getElementById(divId).style.display = 'none';
 <p><a name="units"></a>
 	<a href="#top" title="Back to Block Contents">
 	<img src="images/buton_close_o.gif" width="30" height="25" >
-	</a><b style="font-size: 16px; " >Units</b><br />
+	</a><span class="notranslate"><b style="font-size: 16px; " >Units</b></span><br />
 <a onmousedown="javascript:ShowHide('HiddenDiv')" href="javascript:;" ><button name="ShowandHide" type="button">Show/Hide Contents</button></a> </p>
 
 
 <div  id="HiddenDiv" style="DISPLAY: none; background-color:#EFFBFB;" >
 
 <p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
- 
+<span class="notranslate"> 
  <li style="margin-left:40px; list-style-type: circle;"><a href="#units">&#187; <b>Units</b> &#171;</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls"> Controls</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
@@ -71,7 +73,7 @@ document.getElementById(divId).style.display = 'none';
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
-
+</span>
 <p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
 <p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
 
@@ -299,14 +301,14 @@ combinations for SI units, but similar principles also works for any other units
 <p><a name="controls"></a>
 	<a href="#top" title="Back to Block Contents">
 	<img src="images/buton_close_o.gif" width="30" height="25">
-	</a><b style="font-size: 16px;">Controls</b><br />
+	</a><b style="font-size: 16px;"><span class="notranslate">Controls</span></b><br />
 	<a onmousedown="javascript:ShowHide('HiddenDiv2')" href="javascript:;" ><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
 
 
 <div  id="HiddenDiv2" style="DISPLAY: none; background-color:#EFFBFB;" >
 
 <p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
- 
+<span class="notranslate"> 
  <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">&#187; <b>Controls</b> &#171;</a></li>
 	    <li style="margin-left:55px; "><a href="#controls-run">Run</a></li>
@@ -319,7 +321,7 @@ combinations for SI units, but similar principles also works for any other units
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
-
+</span>
 <p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
 <p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
 
@@ -330,15 +332,15 @@ combinations for SI units, but similar principles also works for any other units
   <tbody>
     <tr>
       <td valign="Top" width="20%"><big><b>Command</b></big></td>
-      <td valign="Top"><big><b>Controls</b></big></td>
+      <td valign="Top"><big><b><span class="notranslate">Controls</span></b></big></td>
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top">Controls</td>
+      <td valign="Top"><span class="notranslate">Controls<span class="notranslate"></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
-      <td valign="Top">The control block is initiated with the word <b>control</b> on a  single
+      <td valign="Top">The control block is initiated with the word <b><span class="notranslate">control </span></b> on a  single
  line. There can only be one control block in any give indata  file. All
 commands  designed to control the solution process is defined  here. One
 command with  it's associated parameters is defined on each  line.</td>
@@ -346,7 +348,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b>Controls</b>
+      <td valign="Top"><b><span class="notranslate">Controls</span></b>
       </td>
     </tr>
     <tr>
@@ -364,13 +366,13 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Example<br>
       </td>
-      <td valign="Top">Controls<br>
+      <td valign="Top"><span class="notranslate">Controls</span><br>
       </td>
     </tr>
     <tr>
       <td valign="Top">See also<br>
       </td>
-      <td valign="Top">Run, Print<br>
+      <td valign="Top"><span class="notranslate">Run, Print</span><br>
       </td>
     </tr>
   </tbody>
@@ -387,11 +389,11 @@ command with  it's associated parameters is defined on each  line.</td>
   <tbody>
     <tr>
       <td valign="Top" width="20%"><big><b>Command</b></big></td>
-      <td valign="Top"><big><b>Run</b></big></td>
+      <td valign="Top"><big><b><span class="notranslate">Run</span></b></big></td>
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top">Controls</td>
+      <td valign="Top"><span class="notranslate">Controls</span></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
@@ -403,7 +405,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b>Run from <i>svalue</i> to <i>evalue</i></b> step  <i>stpvalue</i></td>
+      <td valign="Top"><span class="notranslate"><b>Run from <i>svalue</i> to <i>evalue</i></b> step  <i>stpvalue</i></span></td>
     </tr>
     <tr>
       <td valign="Top">Options</td>
@@ -433,15 +435,15 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Example<br>
       </td>
-      <td valign="Top">Run from 0.0 to 1.2<br>
+      <td valign="Top"><span class="notranslate">Run from 0.0 to 1.2<br>
       				   Run from 0.0 to 1.2 step 0.0001<br>
-                       Run from 0.0 to 2.0 step [0,off,1.8,1e-5,2.0,1e-5,2.01,off,10,off]
+                       Run from 0.0 to 2.0 step [0,off,1.8,1e-5,2.0,1e-5,2.01,off,10,off] </span>
       </td>
     </tr>
     <tr>
       <td valign="Top">See also
       </td>
-      <td valign="Top">Controls, Print</td>
+      <td valign="Top"><span class="notranslate">Controls, Print</span></td>
     </tr>
   </tbody>
 </table>
@@ -457,11 +459,11 @@ command with  it's associated parameters is defined on each  line.</td>
   <tbody>
     <tr>
       <td valign="Top" width="20%"><big><b>Command</b></big></td>
-      <td valign="Top"><big><b>Print</b></big></td>
+      <td valign="Top"><big><span class="notranslate"><b>Print</b></span></big></td>
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top">Controls</td>
+      <td valign="Top"><span class="notranslate">Controls</span></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
@@ -477,7 +479,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b>print</b> tracker <b>every <i>value</i> step</b></td>
+      <td valign="Top"><span class="notranslate"><b>print</b> tracker <b>every</span> <i>value</i> <span class="notranslate">step</span></b></td>
     </tr>
     <tr>
       <td valign="Top">Options</td>
@@ -495,12 +497,12 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Example<br>
       </td>
-      <td valign="Top">Print every 0.01 step</td>
+      <td valign="Top"><span class="notranslate">Print every 0.01 step</span></td>
     </tr>
     <tr>
       <td valign="Top">See also<br>
       </td>
-      <td valign="Top">Controls, Run<br>
+      <td valign="Top"><span class="notranslate">Controls, Run</span><br>
       </td>
     </tr>
   </tbody>
@@ -517,11 +519,11 @@ command with  it's associated parameters is defined on each  line.</td>
   <tbody>
     <tr>
       <td valign="Top" width="20%"><big><b>Command</b></big></td>
-      <td valign="Top"><big><b>For</b></big></td>
+      <td valign="Top"><big><b><span class="notranslate">For</span></b></big></td>
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top">Controls</td>
+      <td valign="Top"><span class="notranslate">Controls</span></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
@@ -533,7 +535,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top">For <i>writertype</i> use <i>selected_type</i></td>
+      <td valign="Top"><span class="notranslate">For </span><i>writertype</i><span class="notranslate"> use </span><i>selected_type</i></td>
     </tr>
     <tr>
       <td valign="Top">Options</td>
@@ -558,12 +560,12 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Example<br>
       </td>
-      <td valign="Top">For Writer use GIDWriter</td>
+      <td valign="Top"><span class="notranslate">For Writer use GIDWriter</span></td>
     </tr>
     <tr>
       <td valign="Top">See also<br>
       </td>
-      <td valign="Top">Trackers, Elements<br>
+      <td valign="Top"><span class="notranslate">Trackers, Elements</span><br>
       </td>
     </tr>
   </tbody>
@@ -581,11 +583,11 @@ command with  it's associated parameters is defined on each  line.</td>
   <tbody>
     <tr>
       <td valign="Top" width="20%"><big><b>Command</b></big></td>
-      <td valign="Top"><big><b>Restore</b></big></td>
+      <td valign="Top"><big><b><span class="notranslate">Restore</span></b></big></td>
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top">Controls</td>
+      <td valign="Top"><span class="notranslate">Controls</span></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
@@ -599,7 +601,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top">restore save <i>value</i></td>
+      <td valign="Top"><span class="notranslate">restore save </span><i>value</i></td>
     </tr>
     <tr>
       <td valign="Top">Options</td>
@@ -620,12 +622,12 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">Example<br>
       </td>
-      <td valign="Top">Restore save previous</td>
+      <td valign="Top"><span class="notranslate">Restore save previous</span></td>
     </tr>
     <tr>
       <td valign="Top">See also<br>
       </td>
-      <td valign="Top">Controls<br>
+      <td valign="Top"><span class="notranslate">Controls</span><br>
       </td>
     </tr>
   </tbody>
@@ -3929,7 +3931,7 @@ The user then needs to edit the file to set the timestep and other parameters as
 <div  id="HiddenDivContact" style="DISPLAY: none; background-color:#EFFBFB;" >
 
 <p style="margin-left:10px">	<a href="doc_fembic_en.shtml">Fembic Input Data Block</a></p>
- 
+ <span class="notranslate">
  <li style="margin-left:40px; list-style-type: circle;"><a href="#units"> Units</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#controls">Controls</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
@@ -3938,7 +3940,7 @@ The user then needs to edit the file to set the timestep and other parameters as
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#loads">Loads</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
-
+</span>
 <p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
 <p style="margin-left:10px">	<a href="#contact">&#187; <b>Contact Handling in Impact</b> &#171;</a>	</p>
 
@@ -4003,7 +4005,7 @@ the programming manual. </p>
 
 <p style="margin-left:10px">	<a href="doc_fembic_en.shtml">CONTENTS</a></p>
 <p style="margin-left:10px">	<a href="#top">Fembic Input Data Block</a></p>
- 
+<span class="notranslate"> 
  <li style="margin-left:30px; list-style-type: circle;"><a href="#units"> Units</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#controls"> Controls</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#materials">Materials</a></li>
@@ -4012,7 +4014,7 @@ the programming manual. </p>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#constraints">Constraints</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#loads">Loads</a></li>
 	<li style="margin-left:30px; list-style-type: circle;"><a href="#trackers">Trackers</a></li>
-
+<span class="notranslate">
 <p style="margin-left:10px"><a href="#other">Other Indata and Outdata Formats</a></p>
 <p style="margin-left:10px">	<a href="#contact">Contact Handling in Impact</a>	</p>
 
