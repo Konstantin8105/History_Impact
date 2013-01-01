@@ -5,12 +5,12 @@
 
 <p align=justify><i><font size="+1">Welcome to the Impact Finite Element Program</font></i></p>
 
-<p align=justify><b>Impact</b> is an explicit Finite Element Program Suite which simulates dynamic impact events. 
+<p align=justify><b><span class="notranslate">Impact </span></b> is an explicit Finite Element Program Suite which simulates dynamic impact events. 
 	It has a range of elements, contact handling and different material laws. Models can be created,
 	solved and analyzed with the included pre- and postprocessor.
 	</p>
 
-<p align=justify>Impact has been designed to be easily extendible and modular to enable programmers
+<p align=justify><span class="notranslate">Impact </span> has been designed to be easily extendible and modular to enable programmers
 	a way to easy add features to the program without having to enter other parts of the code. 
 	Impact has been written in Java. This choice of language may seem strange at first, 
 	but with the recent development of Java engines, speed penalty is not that significant.
@@ -18,7 +18,7 @@
 	advantage for the future.
 	</p>
 
-<p align=justify> Impact is a Finite Element Code which is based on an Explicit Time stepping algorithm.
+<p align=justify><span class="notranslate">Impact </span> is a Finite Element Code which is based on an Explicit Time stepping algorithm.
 	These kind of codes are used to simulate dynamic phenomena such as car crashes and similar,
 	usually involving large deformations.
 	</p>
