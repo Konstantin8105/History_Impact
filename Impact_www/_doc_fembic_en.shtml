@@ -250,7 +250,7 @@ combinations for SI units, but similar principles also works for any other units
       <td valign="Top"><small>g</small></td>
       <td valign="Top"><small>daN</small></td>
       <td valign="Top"><small>10<sup>5</sup> Pa (bar)</small></td>
-      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
       <td valign="Top"><small>Kg/l</small></td>
       <td valign="Top"><small>dJ</small></td>
       <td valign="Top"><small>9.81e-4</small></td>
@@ -261,7 +261,7 @@ combinations for SI units, but similar principles also works for any other units
       <td valign="Top"><small>Kg</small></td>
       <td valign="Top"><small>10<sup>4</sup> N (KdaN)</small></td>
       <td valign="Top"><small>10<sup>8</sup> Pa (Kbar)</small></td>
-      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
       <td valign="Top"><small>K Kg/l</small></td>
       <td valign="Top"><small>hJ</small></td>
       <td valign="Top"><small>9.81e-4</small></td>
@@ -272,7 +272,7 @@ combinations for SI units, but similar principles also works for any other units
       <td valign="Top"><small>Mg (ton)</small></td>
       <td valign="Top"><small>10<sup>7</sup> N(MdaN)</small></td>
       <td valign="Top"><small>10<sup>11</sup> Pa (Mbar)</small></td>
-      <td valign="Top"><small>dam/s</small></td>
+      <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
       <td valign="Top"><small>M Kg/l</small></td>
       <td valign="Top"><small>10<sup>5</sup> J</small></td>
       <td valign="Top"><small>9.81e-4</small></td>
@@ -336,7 +336,7 @@ combinations for SI units, but similar principles also works for any other units
     </tr>
     <tr>
       <td valign="Top">Block</td>
-      <td valign="Top"><span class="notranslate">Controls</span>></td>
+      <td valign="Top"><span class="notranslate">Controls</span></td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
@@ -527,7 +527,7 @@ command with  it's associated parameters is defined on each  line.</td>
     </tr>
     <tr>
       <td valign="Top">Description       </td>
-      <td valign="Top">This command selects which Writer and Trackwriter to use. This selection determines
+      <td valign="Top">This command selects which <span class="notranslate">  Writer</span> and Trackwriter to use. This selection determines
       the output format for the result files and thereby the selection of postprocessor. The default is that
       both the resultfiles and tracker files are printed in GID format. This command is entirely optional and is
       often left out.</td>
@@ -1363,8 +1363,8 @@ section is solid circular.
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b><i>nr</i><span class="notranslate"> nodes = [</span><i>node1</i>,<i>node2</i>,<i>node3</i>]  T = <i>
-  thickness</i> </b>factor = <i>factor</i> friction = <i>friction</i>
+      <td valign="Top"><span class="notranslate"> <b><i>nr</i><span class="notranslate"> nodes = [</span><i>node1</i>,<i>node2</i>,<i>node3</i>]  T = <i>
+  thickness</i> </b>factor = <i>factor</i> friction = <i>friction</i></span>
       </td>
     </tr>
     <tr>
@@ -1402,20 +1402,20 @@ primarily defined by node 1 and 2.<br>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> thickness</span></i></b></td>
             <td valign="Top"> is the thickness of the contact element.  The thickness
 is assumed to be constant over the element width. Nodes outside the thickness are not assumed to
 be in contact. The contact zone extends to half the thickness on each side of the element.
             </td>
           </tr>
           <tr>
-            <td valign="Top"><i>factor</i></td>
+            <td valign="Top"><i><span class="notranslate"> factor</span></i></td>
             <td valign="Top">The repelling force to be used when a node penetrates. 
             The force will increase linearly as the node intrudes further.
         </td>
           </tr>
           <tr>
-            <td valign="Top"><i>friction</i></td>
+            <td valign="Top"><i><span class="notranslate"> friction</span></i></td>
             <td valign="Top">The friction coefficient to be used. Usually between 0.2 and 0.8 
             depending on material and condition. Only useful if contact is enabled.
             If not set, friction is disabled.
@@ -1469,8 +1469,8 @@ be in contact. The contact zone extends to half the thickness on each side of th
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i></b> 
-      factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      <td valign="Top"><span class="notranslate"> <b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i></b> 
+      factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i></span>
       </td>
     </tr>
     <tr>
@@ -1561,8 +1561,8 @@ the elastic state and becomes plastic. </td>
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i> material=<i>
-  elmaterial</i></b> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      <td valign="Top"><span class="notranslate"> <b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>]  D=<i>diameter</i> material=<i>
+  elmaterial</i></b> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i></span>
       </td>
     </tr>
     <tr>
@@ -1582,7 +1582,7 @@ the elastic state and becomes plastic. </td>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>diameter</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> diameter</span></i></b></td>
             <td valign="Top">the cross section diameter of the rod. The cross
 section is solid circular.
             </td>
@@ -1662,8 +1662,8 @@ section is solid circular.
     <tr>
       <td valign="Top">Syntax<br>
       </td>
-      <td valign="Top"><b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>] material=<i>
-  elmaterial</i></b> D = <i>diameter</i> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i>
+      <td valign="Top"><span class="notranslate"> <b><i>nr</i> nodes = [<i>node1</i>,<i>node2</i>] material=<i>
+  elmaterial</i></b> D = <i>diameter</i> factor = <i>c_factor</i> friction = <i>c_friction</i> contact = <i>c_type</i></span>
       </td>
     </tr>
     <tr>
@@ -1690,7 +1690,7 @@ section is solid circular.
         </td>
           </tr>
           <tr>
-            <td valign="Top"><i>diameter</i></td>
+            <td valign="Top"><i><span class="notranslate"> diameter</span></i></td>
             <td valign="Top">The cross section diameter of the spring. This is only used for
             the contact search. Any node within this diameter will be concidered in contact.
             This does not have to be defined if contact is not enabled.
@@ -1811,7 +1811,7 @@ primarily defined by node 1 and 2.<br>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> thickness</span></i></b></td>
             <td valign="Top"> is the thickness of the shell.  The thickness
 is assumed to be constant over the element width.
             </td>
@@ -1995,7 +1995,7 @@ primarily defined by node 1 and 2.<br>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>thickness</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> thickness</span></i></b></td>
             <td valign="Top"> is the thickness of the shell.  The thickness
 is assumed to be constant over the element width.
             </td>
@@ -2289,7 +2289,7 @@ will  then be  printed.
 <p><a name="nodes"></a>
 	<a href="#top" title="Back to Block Contents">
 	<img src="images/buton_close_o.gif" width="30" height="25">
-	</a><b><span style="font-size: 16px;"> Nodes</span></b><br />
+	</a><b><span style="font-size: 16px;"><span class="notranslate">  Nodes</span></span></b><br />
 
 	<a onmousedown="javascript:ShowHide('HiddenDivNode')" href="javascript:;"><button name="ShowandHide" type="button"> Show/Hide Contents</button></a> </p>
 
@@ -2325,7 +2325,7 @@ will  then be  printed.
     </tr>
     <tr>
       <td valign="Top">Description       </td>
-      <td valign="Top">The node block starts with the keyword <b>nodes</b> on a single line. The
+      <td valign="Top">The node block starts with the keyword <b><span class="notranslate"> nodes </span></b> on a single line. The
 following lines should then specify the nodes with one node per  line. Impact
 is designed for three dimensional space problems which  means that for each
 node, all three space coordinates must be defined  at all times. If a two
@@ -2419,7 +2419,7 @@ and does not have to be defined if there is no  load on the node.
         </td>
         </tr>
           <tr>
-            <td valign="Top" width="20%"><i>mass</i></td>
+            <td valign="Top" width="20%"><i><span class="notranslate"> mass</span></i></td>
             <td valign="Top">the weight of the concentrated mass applied to the node. The mass is applied to all spatial directions.
         </td>
         </tr>
@@ -2829,7 +2829,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
       <table cellpadding="2" cellspacing="2" border="0" width="100%">
         <tbody>
           <tr>
-            <td valign="Top" width="20%"><b><i>name</i></b></td>
+            <td valign="Top" width="20%"><b><i><span class="notranslate"> name</span></i></b></td>
             <td valign="Top">Name of the load. Must be unique.
         </td>
         </tr>
@@ -3026,7 +3026,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> fname</span></i></b></td>
             <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
             nodetracker.
             </td>
@@ -3128,7 +3128,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i><span class="notranslate"> filename</span></i></b></td>
             <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
             nodetracker.
             </td>
@@ -3228,7 +3228,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
             nodetracker.
             </td>
@@ -3326,7 +3326,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
             nodetracker.
             </td>
@@ -3424,7 +3424,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
             </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The filename of the result file of which the tracker should print the results. Must be unique for
             each tracker.
             </td>
@@ -3500,7 +3500,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the energytracker should write. Must be a unique name for each
             energytracker.
             </td>
@@ -3591,7 +3591,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
             tracker.
             </td>
@@ -3680,7 +3680,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
             tracker.
             </td>
@@ -3769,7 +3769,7 @@ arz =<i> acc</i> p = <i>pressure</i></span>
          </td>
           </tr>
           <tr>
-            <td valign="Top"><b><i>filename</i></b></td>
+            <td valign="Top"><b><i>fname</i></b></td>
             <td valign="Top">The name of the file of which the tracker should write. Must be a unique name for each
             tracker.
             </td>
