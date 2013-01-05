@@ -126,7 +126,7 @@ so.write("wpcumuluscontent");
 </div>
 
  </div>
- <div id="google_translate_element" style="text-align:right; margin-right:20px"></div><script type="text/javascript">
+ <div id="google_translate_element" style="margin-left:600px; margin-top:-25px"></div><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,de,en,es,fr,id,ms,ru,uk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }

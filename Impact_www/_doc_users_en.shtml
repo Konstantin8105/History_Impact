@@ -514,7 +514,7 @@ manual</p>
 </div>
 </div>
 
-<div align="center" id="sidebar" style="background-color:#EFFBFB;	 margin-left:536px; margin-top:20px; position:fixed; border-style:dotted; border-width:thin; ">
+<div align="center" id="sidebar" style="background-color:#EFFBFB;	 margin-left:536px; margin-top:0px; position:fixed; border-style:dotted; border-width:thin; ">
 
 
 <p style="margin-left:10px; margin-top:0">	<a href="doc_users_en.shtml">CONTENTS</a></p>
