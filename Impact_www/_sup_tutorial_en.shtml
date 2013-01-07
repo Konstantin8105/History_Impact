@@ -2,13 +2,56 @@
 
 <link type="text/css" rel="stylesheet" href="css/other.css">
 
+<script language="JavaScript">
+function ShowHide(divId)
+{
+if(document.getElementById(divId).style.display == 'none')
+{
+document.getElementById(divId).style.display='block';
+}
+else
+{
+document.getElementById(divId).style.display = 'none';
+}
+}
+</script>
 
-<div style="margin: 10px;">
-<div id="content" class="narrowcolumn">
 
+<div style="margin-left: 60px; margin-right: 60px">
+<div id="content">
+<br />
+<a name="top"></a><p>The following tutorials will guide users to get started. 
+The exercises are not too complicated so new users can follow them easily.</p>
+<ol>
+	<li><a href="#pre">Using build-in <span class="notranslate">Impact</span> Pre-processor</a></li>
+	    <ul>Exercise 1a: Rectangular plate under pressure</ul>
+	    <ul><br /> </ul>
+<!-- 	    <ul>Exercise 1b:</ul> -->
+	<li><a href="#gid">Using <span class="notranslate">GiD</span> to <span class="notranslate">Impact</span> Interface</a></li>
+	    <ul>Exercise 2a: Impacting cantilever plate</ul>
+	    <ul>Exercise 2b: Colliding cylinders</ul>
+</ol>
 
-<h2>Please come back later ...</h2>
+<br />
 
+<table width=100% bgcolor=#F2F2F2>
+      <tr>
+         <td>
+<p><a name="pre"></a>
+	<a href="#top" title="Back to Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25" >
+	</a><b style="font-size: 14px; " >Using build-in <span class="notranslate">Impact</span> Pre-processor</b></p>
+         </td>
+     </tr>
+</table> 
+
+<a name="exercise-1a"></a><h4>Exercise 1a: Rectangular plate under pressure</h4>
+<p>A rectangular plate (thickness 1mm) is loaded with an increasing pressure from 0 to 0.002 GPa in 1 ms. 
+The plate is made of steel. The modulus of elasticity 210 GPa, Poisson's ratio 0.3, 
+Yield stress 0.18 GPa and the elastic-plastic modulus 0.1. The edges of the plate are all fixed.
+The simulation of the plate under pressure is observed in 1 ms.</p>
+
+<p style="text-align:center;">
 <object
 data="http://www.youtube.com/v/VsS_P_sQymk?rel=0&amp;feature=player_embedded&amp;version=3"
 type="application/x-shockwave-flash" height="340" width="430"><param
@@ -17,10 +60,425 @@ value="http://www.youtube.com/v/VsS_P_sQymk?rel=0&amp;feature=player_embedded&am
 <param name="wmode" value="transparent"><param name="allowFullScreen"
 value="true">
 </object> 
+</p>
+
+<p>Input file: <a target="_blank" href="examples/example_001_plate.in">example_001_plate.in</a></p>
+
+<!-- <a name="exercise-1b"></a><h4>Exercise 1b: .....</h4> -->
+
+<br />
+<table width=100% bgcolor=#F2F2F2>
+      <tr>
+         <td>
+<p><a name="gid"></a>
+	<a href="#top" title="Back to Contents">
+	<img src="images/buton_close_o.gif" width="30" height="25" >
+	</a><b style="font-size: 14px; " >Using <span class="notranslate">GiD</span> to <span class="notranslate">Impact</span> Interface</b></p
+         </td>
+     </tr>
+</table>  
+
+<p>GiD to Impact interface can be found in Impact folder (/interfaces).</p>
+	<ul>
+		    <li>Unzip the latest impact version</li>
+      <li>Go to impact directory and find a folder "interfaces"</li>
+      <li>Copy a folder "impact.gid"</li>
+		    <li>Find the directory where you install GID (In Windows normally under C:/program files)
+         and open the folder.</li>
+      <li>Find a folder "problemtypes"</li>
+      <li>Paste the folder "impact.gid" to the folder "problemtypes". Done!</li>
+	</ul>
+<p>
+
+<a name="exercise-2a"></a><h4>Exercise 2a: Cantilever Plate</h4>
+
+<div align="center">
+	<table cellpadding="0" cellspacing="0" border="2">
+		<tr>
+			<td><div align="center"><img src="images/example-1.png" width="75%"  ></div></td>
+			<td width="50%">An impactor hits vertically at the tip of a cantilever Aluminium 2024-T3 plate (100mm x 50mm
+			thickness of 2 mm) fixed at one end. 
+			    The impactor has a constant velocity of 3 m/s. Simulation time: 15 ms.</td>
+		</tr>
+	</table>
+</div>
+
+<a onmousedown="javascript:ShowHide('HiddenDivEx2a')" href="javascript:;" ><button name="ShowandHide" type="button">Show/Hide Tutorial Exercise 2a</button></a> </p>
+<div  id="HiddenDivEx2a" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<h4>Plate geometry Modelling</h4>
+<p>
+Activate coordinate tool:
+<ul><li>Utilities > Tools > Coordinates windows</li></ul>
+<ul><li>Geometry > Create > Point</li></ul>
+Entering point data:
+<ul><li>In coordinates window: (0,0,0); (100,0,0); (100,50,0) and (0,50,0)</li></ul> 
+<ul><li>Click <img src="images/zframe.gif" width="16" height="16"> to fit view</li></ul>
+<ul><li>If you want to see the label 
+you can use <img src="images/label.png" width="16" height="16" border="0" alt=""> button to enable and disable labels</li>
+</ul>
+Create lines:
+<ul><li>Click the <img src="images/line16x16.gif" width="16" height="16" border="0" alt=""> button to start defining lines</li></ul>
+<ul><li>Right click, the select Contextual > Join, or you can use a shortcut Ctrl+A</li></ul>
+<ul><li>Create lines by clicking the corresponding nodes. Once you have finished, 
+just click [Esc] to complete drawing lines</li></ul>
+</p>
+<p>
+Creating surface:
+<ul><li>Click <img src="images/surface.gif" width="16" height="16" border="0" alt=""> to define NURBS surface</li></ul> 
+<ul><li>Start clicking the lines. After completed all four lines, click [Esc]
+button to complete the operation</li></ul>
+</p>
+<div align="center"><img src="images/example-1-1.png" width="317" height="182" border="0" alt="">
+</div>
+<h4>Impactor geometry modelling</h4>
+<p>
+Drawing in different layer:
+<ul><li>The impactor will be drawn in different layer. Click the 
+<img src="images/layer.gif" width="16" height="16" border="0" alt=""> button. A layer window will appear</li></ul>
+<ul><li>Click <img src="images/newtopic.gif" width="16" height="16" border="0" alt=""> button, you will see layer 1 is created</li></ul>
+<ul><li>You can hide and show layers by clicking <img src="images/layer_on.gif" width="14" height="14" border="0" alt=""> button</li></ul>
+<ul><li>Now hide layer 0 by clicking <img src="images/layer_on.gif" width="14" height="14" border="0" alt=""> next to layer 0</li></ul>
+</p>
+<p>
+Drawing impactor:
+ <ul><li>Utilities > Tools > Coordinates windows</li></ul>
+ <ul><li>Geometry > Create > Point</li></ul>
+ <ul><li>In coordinates window: (100,0,10)</li></ul>
+ <ul><li>From the standard bar, find <img src="images/copy16x16.gif" width="16" height="16" border="0" alt=""> and click it.
+ This will open copy dialog where translation and rotation ob objects can be done from here.</li></ul>
+ <ul><li>Rotation of the point and extruding to create line should be performed</li></ul>
+ <div align="center"><img src="images/example-1-2.png" width="188" height="494" border="0" alt=""></div>
+ <ul><li>Click Select button then click the point that you want to rotate (point 5), then click finish</li></ul>
+ <ul><li>Change the angle to -90, and do the same thing</li></ul>
+ <div align="center"><img src="images/example-1-3.png" width="549" height="266" border="0" alt=""></div>
+ <ul><li>From the standard bar, click again <img src="images/copy16x16.gif" width="16" height="16" border="0" alt=""></li></ul>
+ <ul><li>Lines 5 and 6 should be translated 50 mm. While translating, the lines extruded into surfaces. 
+ Click Select button, click lines 5 and 6, then click Finish button</li></ul>
+ <div align="center"><img src="images/example-1-4.png" width="525" height="450" border="0" alt=""></div>
+ <ul><li>Now you have a complete geometry drawing plate and the impactor. If you show all layers, and show in render
+ (Right click, Render > Smooth), also use transparent view (click button in layer dialog), you should get this image:</li></ul>
+ <div align="center"><img src="images/example-1-5.png" width="374" height="189" border="0" alt=""></div>
+</p>
+<h4>Finite Element Meshing (plate, layer 0)</h4>
+<ul><li>Show layer 0 (plate) only and hide layer 1 (impactor), use <img src="images/layer_on.gif" width="14" height="14" border="0" alt="">
+to show/hide layers</li></ul>
+<ul><li>If you are in Render mode, turn it back to Normal mode (Right click, Render > Normal)</li></ul>
+<ul><li>If the surface is not clearly visible, you can rotate (<img src="images/rotate16x16.gif" width="16" height="16" border="0" alt="">), or from the menu View > Rotate > Plane XY(original)
+then fit view (<img src="images/zframe.gif" width="16" height="16" border="0" alt="">)</li></ul>
+<ul><li>Define quadrilateral element, Mesh > Element type > Quadrilateral</li></ul>
+<ul><li>Select the surface by clicking the surface (indicated by pink color). When you click the surface,
+ the color will turn red, which means selected. Press [Esc] to finish selection</li></ul>
+ <ul><li>Mesh > Structured > Surfaces > Assign number of cells, then select the surface by clicking the pink line,
+ then press [Esc] </li></ul>
+ <ul><li>A window popped up, enter number of cells assigned to lines: 15, press Assign button</li></ul>
+ <ul><li>Click one of long edge line (blue color). When you click, it turns to red (also the opposite line),
+ then press [Esc]</li></ul>
+ <ul><li>A window popped up again, enter number of cells assigned to lines: 6, press Assign button</li></ul>
+ <ul><li>Click one of short edge line (blue color). When you click, it turns to red (also the opposite line),
+ then press [Esc], then press Close button</li></ul>
+ <ul><li>Mesh > Generate mesh , or you can you a shortcut Ctrl+G. If a dialog asking the old mesh will be erased,
+ just press OK button to continue</li></ul>
+ <ul><li>You are requested to enter the size of elements. Ignore it, press OK button. Element meshing will be 
+ generated, click View mesh button</li></ul>
+ <div align="center"><img src="images/example-1-7.png" width="325" height="192" border="0" alt=""></div>
+ <ul><li>If you want to see the element and node labels, 
+ use the toggle icon label <img src="images/label.png" width="16" height="16" border="0" alt=""></li></ul>
+ 
+ 
+ <h4>Finite Element Meshing (impactor, layer 1)</h4>
+ <ul><li>Show layer 1 (impactor) only and hide layer 0 (plate), use <img src="images/layer_on.gif" width="14" height="14" border="0" alt="">
+to show/hide layers</li></ul>
+<ul><li>You will see the impactor already meshed. This is generated automatically, without your control.
+We are going to control instead of using the automatic generated mesh</li></ul>
+<ul><li>If the surface is not clearly visible, you can rotate (<img src="images/rotate16x16.gif" width="16" height="16" border="0" alt="">), or from the menu View > Rotate > Plane XY(original)
+then fit view (<img src="images/zframe.gif" width="16" height="16" border="0" alt="">)</li></ul>
+<ul><li>Define triangular element, Mesh > Element type > Triangle</li></ul>
+<ul><li>Click the two surfaces (indicated by pink color). Every time you click the surface,
+ the color will turn red, which means selected. Press [Esc] to finish selection</li></ul>
+ <ul><li>Mesh > Structured > Surfaces > Assign number of cells, then select both surfaces,
+ then press [Esc] </li></ul>
+ <ul><li>A window popped up, enter number of cells assigned to lines: 5, press Assign button</li></ul>
+ <ul><li>Click one of curve line (blue color) of the first and the second surfaces. When you click, it turns to red (also the opposite line).
+ To finish the selection operation press [Esc]</li></ul>
+ <ul><li>A window popped up again, enter number of cells assigned to lines: 3, press Assign button</li></ul>
+ <ul><li>Click one of the straight lines (blue color). When you click, it turns to red (also other straight lines),
+ then press [Esc], then press Close button</li></ul>
+ <ul><li>Mesh > Generate mesh , or you can you a shortcut Ctrl+G. If a dialog asking the old mesh will be erased,
+ just press OK button to continue</li></ul>
+ <ul><li>You are requested to enter the size of elements. Ignore it, press OK button. Element meshing will be 
+ generated, click View mesh button</li></ul>
+ <div align="center"><img src="images/example-1-8.png" width="325" height="192" border="0" alt=""></div>
+ 
+ 
+ <h4>Material definition (plate, layer 0)</h4>
+  <ul><li>You have to make sure that you have activated GiD to Impact interface (Data > Problem type > Impact)</li></ul>
+  <ul><li>Show layer 0 (plate) only and hide layer 1 (impactor), use <img src="images/layer_on.gif" width="14" height="14" border="0" alt="">
+to show/hide layers</li></ul>
+<ul><li>Data > Materials > STANDARD MATERIALS, select ALUMINUM 2024 T3, and change the thickness to 2.0</li></ul>
+<div align="center"><img src="images/example-1-9.png"  width="300" ></div>
+<ul><li>Click Assign > Elements, select all elements (left click and drag to cover all elements), 
+the selected elements turns to red color, then press [Esc] to finish the selection process</li></ul>
+<ul><li>If you want to see the plate has been assigned with material, Data > Materials > STANDARD MATERIALS 
+then click Draw > All materials. Click Finish button to finish viewing materials</li></ul>
+
+<h4>Material definition (impactor, layer 1)</h4>
+ <ul><li>Show layer 1 (impactor) only and hide layer 0 (plate), use <img src="images/layer_on.gif" width="14" height="14" border="0" alt="">
+to show/hide layers</li></ul>
+<ul><li>Data > Materials > CONTACT ELEMENT ONLY, select CONTACT TRIANGLE 1, and change the thickness to 1.0.
+The contact zone extends to half the thickness on each side of the element</li></ul>
+<div align="center"><img src="images/example-1-10.png" ></div>
+<ul><li>Click Assign > Elements, select all elements (left click and drag to cover all elements), 
+the selected elements turns to red color, then press [Esc] to finish the selection process</li></ul>
+<ul><li>If you want to see the plate has been assigned with material, Data > Materials > CONTACT ELEMENT ONLY 
+then click Draw > All materials. Click Finish button to finish viewing materials</li></ul>
+
+<h4>Boundary Conditions (impactor, layer 1)</h4>
+<ul><li>You are still working in layer 1, Data > Conditions</li></ul>
+<div align="center"><img src="images/example-1-11.png" width="365" height="398" border="0" alt=""></div>
+<ul><li>Click Assign button and select all nodes</li></ul>
+
+<h4>Boundary Conditions (plate, layer 0)</h4>
+ <ul><li>Show layer 0 (plate) only and hide layer 1 (impactor), use <img src="images/layer_on.gif" width="14" height="14" border="0" alt="">
+to show/hide layers</li></ul>
+<ul><li>Data > Conditions, select ID 2 and set all 0 for fixed constraints</li></ul>
+<div align="center"><img src="images/example-1-12.png" ></div>
+<ul><li>Click Assign button and select the nodes to be constrained</li></ul>
+
+<h4>Simulation settings</h4>
+<ul><li>Set simulation time to 15 ms, Data > Problem Data > TIME CONTROL</li></ul>
+<div align="center"><img src="images/example-1-13.png" width="344" height="344" border="0" alt=""></div>
+
+<h4>Tracker control point</h4>
+<ul><li>To monitor a specific node, you can use this Impact feature; Data > Conditions, 
+select Tracker point. The file will be saved in Impact directory, not in GiD directory</li></ul>
+<div align="center"><img src="images/example-1-14.png" width="365" height="258" border="0" alt=""></div> 
+
+<h4>User information</h4>
+<ul><li>For a better record, you can save user information; Data > Problem Data > TITLE</li></ul>
+<div align="center"><img src="images/example-1-15.png" width="339" height="154" border="0" alt=""></div>
+
+<h4>Create Impact input file</h4>
+<ul><li>File > Export > Calculation file, change Files of type: All files(*), enter the file name: example-1.in,
+then press Save button</li></ul>
+<div align="center"><img src="images/example-1-16.png" width="383" height="177" border="0" alt=""></div>
+
+<h4>Running Impact input file (example-1)</h4>
+<ul><li>Open Impact program. If you are in Windows, run ImpactGUI_*.bat. If you are in Linux, run ImpactGUI_*.sh</li></ul>
+<ul><li>Click Processor tab, load Impact input file from the folder that you save example-1.in by clicking <img src="images/import.gif" width="16" height="16" border="0" alt=""> button</li></ul>
+<div align="center"><img src="images/example-1-17.png" width="514" height="395" border="0" alt=""></div>
+<ul><li>Run this file by clicking <img src="images/run.gif" width="16" height="16" border="0" alt=""> button</li></ul>
+
+<h4>Viewing results using Impact Post Processor</h4>
+<ul><li>Click the Post processor tab in Impact window, then click <img src="images/import.gif" width="16" height="16" border="0" alt=""></li></ul> 
+<ul><li>Go to the directory where you save example-1.in, Files of type: Open solver result (*.res)</li></ul>
+<ul><li>Select example-1.in.flavia.res and press Open </li></ul>
+<div align="center"><img src="images/example-1-19.png" width="525" height="518" border="0" alt=""></div>
+
+<h4>Plotting results using Impact Graph</h4>
+<ul><li>Click Graph tab in Impact window, then click <img src="images/duplicate.png" width="16" height="16" border="0" alt=""></li></ul>
+<ul><li>Go to Impact directory and select the tracker file: plate-disp.trk and press Open.
+You will see the displacement history of the node that you have selected</li></ul>
+<ul><li>To add new charts (intensity stress history) from res file, click <img src="images/new.gif" width="16" height="16" border="0" alt="">
+select STRESSES(I), enter number of elements 60-63 (it means: 60, 61, 62, and 63). Now you can compare them</li></ul>
+<div align="center"><img src="images/example-1-21.png" width="525" height="450" border="0" alt=""></div>
+
+<h4>Viewing results using GiD Post Processor</h4>
+<ul><li>In GiD, click <img src="images/prepost.gif" width="16" height="16" border="0" alt=""> icon, from the menu
+Files > Open, select example-1.in.flavia.res and press Open. The results will be loaded in GiD</li></ul>
+<ul><li>Click deformation icon <img src="images/PostBarDeformation.gif" width="16" height="16" border="0" alt="">
+and set the magnification factor 1.0</li></ul>
+<ul><li>Click contour fill icon <img src="images/PostBarContourFill.gif" width="16" height="16" border="0" alt="">
+then select DISPLACEMENTS > |DISPLACEMENTS|</li></ul>
+<ul><li>Animation can be shown from the menu Window > Animate, and click play button <img src="images/play.gif" width="16" height="16" border="0" alt=""></li></ul>
+<div align="center"><img src="images/example-1-22.png" width="525" height="450" border="0" alt=""></div>
+
+<h4>Plotting results using GiD Post Processor</h4>
+<ul><li>Click point evolution icon <img src="images/PostBarGraphPointEvolution.gif" width="16" height="16" border="0" alt=""></li></ul>
+<ul><li>Select LOCAL STRESSES > TypeSHELL BT4 >Sxx-LOCAL STRESSES. Select the element of interest (at the tip of the plate)</li></ul>
+<br>
+<div align="center"><img src="images/example-1-23.png" width="525" height="450" border="0" alt=""></div>
+<br>
+
+</div>
 
 
+<br />
+<a name="exercise-2b"></a><h4>Exercise 2b: Colliding cylinders</h4>
+
+
+<div align="center">
+	<table cellpadding="0" cellspacing="0" border="2">
+		<tr>
+			<td><div align="center"><img src="images/example-2.png" width="75%"></div></td>
+			<td width="50%">A steel cylinder (1 mm thickness, radius 20 mm, length 200 mm) is fixed in both ends. 
+			    Another cylinder (the same geometry and material) in 90 deg orientation 
+			    is colliding the fixed-end cylinder. 
+			    The motion of cylinder is in the direction of x-axis with the velocity of 10 m/s. 
+			    Simulation time: 20 ms.	</td>
+		</tr>
+	</table>
+</div>
+<a onmousedown="javascript:ShowHide('HiddenDivEx2b')" href="javascript:;" ><button name="ShowandHide" type="button">Show/Hide Tutorial Exercise 2b</button></a> </p>
+<div  id="HiddenDivEx2b" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<h4>Geometry Modelling Cylinder 1</h4>
+Create points
+
+<ul><li>Activate coordinates windows: Tools > Coordinates windows</li></ul>
+<ul><li>Create point: Geometry > Create > Point. 
+Then using the coordinate windows dialog, define poins: (20,0,0) and (20,0,200)</li></ul>
+<ul><li>To see all points in your screen, you can fit view by pressing 
+<img src="images/zframe.gif" width="16" height="16" border="0" alt=""> icon.
+If you want to rotate, you can use 
+<img src="images/rotate16x16.gif" width="16" height="16" border="0" alt=""></li></ul> 
+<ul><li>If you want to see the label of the points, you can use <img src="images/label.png" width="16" height="16" border="0" alt=""> button.
+You should see the points you have created</li></ul>
+
+ Create line
+
+<ul><li>Click create line button <img src="images/line16x16.gif" width="16" height="16" border="0" alt="">, 
+then click right button of your mouse, select Contextual, then select Join or Ctrl+A</li></ul>
+<ul><li>Click point 1 then point 2 [Esc] [Esc]. You will see a line has been created</li></ul>
+
+Create surface
+
+<ul><li>Click the copy/transform button <img src="images/copy16x16.gif" width="16" height="16" border="0" alt="">,
+a copy dialog appears. Make sure Entity type: Lines, and Transformation: Rotation</li></ul>
+<ul><li>Enter Angle: 180 </li></ul>
+<ul><li>Define the rotation axis. In the first point, leave it (0,0,0), In the second point, set to (0,0,1)
+Select Do extrude: Surfaces</li></ul>
+<div align="center"><img src="images/example-2-1.png" width="175"></div>
+<ul><li>Click Select button then click the line, [Esc]. You will see a surface is generated, 
+which is half of the cylinder</li></ul>
+<ul><li>Change the Angle data to -180, and do the same thing as before. 
+You will create another surface so you have created a complete cylinder</li></ul>
+<ul><li>You can see the cylinder, if you see in rendered, right click and select Render > Smooth. 
+If you want to see in normal (unrendered), do the same but select normal</li></ul>
+
+<h4>Geometry Modelling Cylinder 2</h4>
+
+Create point
+
+<ul><li>Select layer icon <img src="images/layer.gif" width="16" height="16" border="0" alt="">, since we want to draw the cylinder in different layer (layer 1), 
+then click  in the layers dialog. You will see layer 1 is created.</li></ul>
+<ul><li>Activate coordinates windows: Tools > Coordinates windows</li></ul>
+<ul><li>Create point: Geometry > Create > Point. Then using the coordinate windows dialog, 
+define points: (30,0,100), (30,100,100) and (30,-100,100)</li></ul>
+
+Create line
+
+<ul><li>Click create line button , then click right button of your mouse, 
+select Contextual, then select Join</li></ul>
+<ul><li>Using the same method as in cylinder 1, create two lines</li></ul>
+
+Create surface
+
+<ul><li>Click the copy/transform icon <img src="images/copy16x16.gif" width="16" height="16" border="0" alt="">,
+a copy dialog appears. Make sure Entity type: Lines, and Transformation: Rotation</li></ul>
+<ul><li>Enter Angle: 180 </li></ul>
+<ul><li>Define the rotation axis. In the first point (50,0,100). In the second point, set to (50,1,100)</li></ul>
+<ul><li>Select Do extrude: Surfaces</li></ul>
+<ul><li>Click Select button then click the two line, [Esc]. You will see two surfaces are created, 
+which is half of the cylinder</li></ul>
+<ul><li>Change the Angle data to -180, and do the same thing as before. You will create two other surfaces</li></ul>
+<ul><li>If you render, then you see two cylinders have been created, one in layer 0 and another one in layer 1</li></ul>
+<div align="center"><img src="images/example-2-0.png" width="300"></div>
+
+<h4>Meshing Model</h4>
+
+Cylinder 1
+
+<ul><li>Hide object in layer 1</li></ul>
+<ul><li>Mesh > Structured > Surfaces > Assign number of cells, then try to control your meshing, 
+for example the cross-section divided into 20 cells and along the cylinder divided by 12 cells</li></ul>
+<ul><li>Mesh > Element type > Quadrilateral, then select the surfaces</li></ul>
+
+Cylinder 2
+
+<ul><li>Now show object in layer 1 and hide object in layer 0</li></ul>
+<ul><li>Do the same thing to define the meshing</li></ul>
+<ul><li>Define all surfaces for Quadrilateral elements</li></ul>
+<ul><li>Show all layers</li></ul>
+<ul><li>Mesh > Generate mesh (or Ctrl+G)</li></ul>
+
+<h4>Analytical Model</h4>
+
+Cylinder 1
+
+<ul><li>Assign material Elastoplastic 1 (Data > Materials > GENERAL ELASTOPLASTIC) 
+to all elements of cylinder 1</li></ul>
+<div align="center"><img src="images/example-2-3.png" width="300" ></div>
+<br>
+<ul><li>Assign boundary conditions fixed (all 0) to both ends, from the menu Data > Conditions,
+Boundary Conditions P. Use ID 1</li></ul>
+
+Cylinder 2
+
+<ul><li>Assign material Elastoplastic 2 (Data > Materials > GENERAL ELASTOPLASTIC) 
+to all elements of cylinder 2</li></ul>
+<div align="center"><img src="images/example-2-2.png" width="300" ></div>
+<ul><li>Assign boundary in one end, velocity-x: -10, velocity-y: 0, velocity-z: 0. Use ID 2</li></ul>
+<div align="center"><img src="images/example-2-9.png" width="300" ></div>
+
+<h4>Simulation settings</h4>
+
+<ul><li>Set the simulation time 20 ms, Data > Problem Data > TIME CONTROL</li></ul>
+<ul><li>For a better record, you can save user information; Data > Problem Data > TITLE</li></ul>
+
+<h4>Create Impact input file</h4>
+<ul><li>File > Export > Calculation file, change Files of type: All files(*), 
+enter the file name: example-2.in,
+then press Save button</li></ul>
+
+<h4>Simulation in Impact</h4>
+<ul><li>Run IMPACT program</li></ul>
+<ul><li>Click Processor tab, then open the IMPACT input file example-2.in 
+(using <img src="images/new.gif" width="16" height="16" border="0" alt="">)</li></ul>
+<ul><li>The input file will be loaded in the editor box. You can edit your file here and save the modification, 
+if necessary</li></ul>
+<ul><li>Run the input file using the start button 
+<img src="images/run.gif" width="16" height="16" border="0" alt=""></li></ul>
+
+<h4>Viewing Results in Impact Post Processor</h4>
+<ul><li>Click to Post Processor tab</li></ul>
+<ul><li>Open result file , files of type: Open solver result (*.res), select example-2.in.flavia.res</li></ul>
+<ul><li>By changing the simulation time, you can see the results at 0 ms, 5ms and 10 ms</li></ul>
+<br>
+
+At 0 ms
+<div align="center">
+	<table>
+		<tr>
+			<td><div align="center"><img src="images/example-2-4.png" width="250" ></div></td>
+		</tr>
+	</table>
+</div>
+
+At 5 ms
+<div align="center">
+	<table>
+		<tr>
+			<td><div align="center"><img src="images/example-2-5.png" width="250" ></div></td>
+			<td><div align="center"><img src="images/example-2-6.png" width="250" ></div></td>
+		</tr>
+	</table>
+</div>
+
+At 10 ms
+<div align="center">
+	<table>
+		<tr>
+			<td><div align="center"><img src="images/example-2-7.png" width="250" ></div></td>
+			<td><div align="center"><img src="images/example-2-8.png" width="250" ></div></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<!--  
 <p style="text-align:right"><img src="images/underconstruction.jpeg" width="25%" height="25%" alt="" ></p>
-
+-->
 
 
 </div>
