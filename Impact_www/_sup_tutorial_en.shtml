@@ -78,16 +78,18 @@ value="true">
      </tr>
 </table>  
 
+<p>You have to install <a href="http://www.gidhome.com/" target="_blank" title="GiD website">GiD</a>, then GiD to Impact interface can be integrated to GiD.</p>
 <p>GiD to Impact interface can be found in Impact folder (/interfaces).</p>
 	<ul>
-		    <li>Unzip the latest impact version</li>
-      <li>Go to impact directory and find a folder "interfaces"</li>
+		    <li><a href="http://sourceforge.net/projects/impact/files/impact/" target="_blank" title="Find the latest version here">Download</a> the latest version of Impact then  unzip it</li>
+      <li>Go to unzipped Impact directory and find a folder "interfaces"</li>
       <li>Copy a folder "impact.gid"</li>
 		    <li>Find the directory where you install GID (In Windows normally under C:/program files)
          and open the folder.</li>
       <li>Find a folder "problemtypes"</li>
       <li>Paste the folder "impact.gid" to the folder "problemtypes". Done!</li>
 	</ul>
+	<p>To activate GiD to Impact interface, from GiD menu <b>Data</b>, click <b>Problem types</b> then select <b>Impact</b>.</p>
 <p>
 
 <a name="exercise-2a"></a><h4>Exercise 2a: Cantilever Plate</h4>
