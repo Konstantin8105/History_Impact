@@ -5,11 +5,65 @@
 <div style="margin: 10px;">
 <div id="content" class="narrowcolumn">
 
-<h2>Please come back later ...</h2>
+<a name="installation"></a><h2>Installation GiD to Impact Interface</h2>
+
+<p>You have to install <a href="http://www.gidhome.com/" target="_blank" title="GiD website">GiD</a> first, 
+then GiD to Impact interface can be integrated into your GiD environment.</p>
+
+<p>GiD to Impact interface is an additional module that should be integrated into GiD environment.
+This module should be placed in a proper location 
+(<code>/problemtypes</code>) of the GiD installation folder. All external GiD interface modules should be saved under 
+<code>problemtypes</code> folder.</p>
+
+<p>The integration process is as simple as copy and paste.</p>
+
+<h4>Step 1: Copy from Impact</h4>
+<ul>
+      <li>If you have downloaded the latest version of Impact, the GiD to Impact interface module
+          can be found in your Impact folder.
+          Else, <a href="http://sourceforge.net/projects/impact/files/impact/" target="_blank" title="Find the latest version here">download</a> 
+          the latest version of Impact then  unzip it.</li>
+      <li>Go to unzipped Impact directory and find a folder "interfaces"</li>
+      <li>Copy the folder "impact.gid"</li>
+</ul>
+
+<h4>Step 2: Paste into GiD</h4>
+<ul>
+		    <li>Find the directory where you install GID (In Windows normally under C:/program files)
+          and open the folder.</li>
+      <li>Find a folder "problemtypes"</li>
+      <li>Paste the copied folder "impact.gid" into the folder "problemtypes". Done!</li>
+	</ul>
+<p>To activate GiD to Impact interface, from GiD menu <b>Data</b>, click <b>Problem types</b> 
+then select <b>Impact</b>.</p>
+<br />
+
+<a name="intmanual"></a><h2>GiD to Impact Interface</h2>
+<p>... under construction  ..</p>
 
 <p style="text-align:right"><img src="images/underconstruction.jpeg" width="25%" height="25%" alt="" ></p>
 </div>
 </div>
 
+<div align="center" id="sidebar" style="background-color:#EFFBFB;	 margin-left:536px; margin-top:0px; position:fixed; border-style:dotted; border-width:thin; ">
+
+
+<p style="margin-left:10px; margin-top:0">	<a href="doc_giditerface_en.shtml">CONTENTS</a></p>
+ <li style="margin-left:10px; list-style-type: none;"><a href="#Installation">Installation</a></li>
+ <li style="margin-left:10px; list-style-type: none;"><a href="#intmanual"> GUI to Impact Manual</a></li>
+<br />
+
+<div style="border-bottom: solid #CCCCCC;border-bottom-width: 1px; width: 100%;"></div>
+
+<p style="margin-top:10px">
+<!-- 
+<center>Open GUI Impact. Click to magnify</center>
+  	<center><a href="images/gui.gif"  rel="lightbox"  title="Open GUI Impact">
+  	<img src="images/gui-small.gif" width="80%"  /></a></center>
+-->
+</p>
+
+	
+</div>
 
 <!-- =====================================end _doc_gidinterface_en.shtml======================================= -->

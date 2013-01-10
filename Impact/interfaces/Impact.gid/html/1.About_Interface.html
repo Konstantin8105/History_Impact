@@ -1,4 +1,4 @@
-<!-------------------------------------------------------------
+<!-- 
          Impact - Dynamic Finite Element Program Suite
   -------------------------------------------------------------
          Impact Developer Team
@@ -8,7 +8,7 @@
 
          Last Modified: 05.05.2011
          by Waluyo Adi Siswanto
-  ------------------------------------------------------------->
+ -->
 
 <html > 
 <p>
@@ -114,25 +114,39 @@
 		</li>
 	</ul>
 
-<p>GiD-Impact interface is available as free and open source, and can be found in Impact folder
-   (/interfaces).</p>
-	<ul>
-		<li>Find the directory where you install GID (In Windows normally under
-			 C:/program files)
-         and open the folder.</li>
+<p><b>GiD to Impact interface Installation:</b></p>
+<p>You have to install GiD (<font face="courier" color="blue"> http://www.gidhome.com/</font>) first, 
+then GiD to Impact interface can be integrated into your GiD environment.</p>
+
+<p>GiD to Impact interface is an additional module that should be integrated into GiD environment.
+This module should be placed in a proper location 
+(<code>/problemtypes</code>) of the GiD installation folder. All external GiD interface modules should be saved under 
+<code>problemtypes</code> folder.</p>
+
+<p>The integration process is as simple as copy and paste.</p>
+
+<p>Step 1: Copy from Impact</p>
+<ul>
+      <li>If you have downloaded the latest version of Impact, the GiD to Impact interface module
+          can be found in your Impact folder.
+          Else, download (<font face="courier" color="blue">http://sourceforge.net/projects/impact/files/impact/</font>) 
+          the latest version of Impact then  unzip it.</li>
+      <li>Go to unzipped Impact directory and find a folder "interfaces"</li>
+      <li>Copy the folder "impact.gid"</li>
+</ul>
+
+<p>Step 2: Paste into GiD</p>
+<ul>
+		    <li>Find the directory where you install GID (In Windows normally under C:/program files)
+          and open the folder.</li>
       <li>Find a folder "problemtypes"</li>
-      <li>Create a new folder "Impact" under "problemtypes"</li>
-      <li>Go to impact directory and find a folder "interfaces".</li>
-      <li>Copy a folder "impact.gid"</li>
-      <li>Paste this folder "impact.gid" to the folder "Impact" that you have created
-			 before. Done!</li>
+      <li>Paste the copied folder "impact.gid" into the folder "problemtypes". Done!</li>
 	</ul>
-<p>
-In order to activate GiD to Impact interface, go to menu<br>
-Data > Problem type > Impact and select Impact, 
-</p>
+<p>To activate GiD to Impact interface, from GiD menu <b>Data</b>, click <b>Problem types</b> 
+then select <b>Impact</b>.</p>
+<br />
 <div align="center">
-<img src="images/activate-impact.png">
+<img src="images/activate-impact-new.png">
 </div>
 <p></p>
 <table width=100% bgcolor=#F2F2F2>
