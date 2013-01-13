@@ -46,11 +46,23 @@ The exercises are not too complicated so new users can follow them easily.</p>
 </table> 
 
 <a name="exercise-1a"></a><h4>Exercise 1a: Rectangular plate under pressure</h4>
-<p>A rectangular plate (thickness 1mm) is loaded with an increasing pressure from 0 to 0.002 GPa in 1 ms. 
+
+<div align="center">
+	<table cellpadding="0" cellspacing="0" border="2">
+		<tr>
+			<td><div align="center"><img src="images/plate-pressure.png" width="75%"  ></div></td>
+			<td width="50%">A rectangular plate (thickness 1mm) is loaded with an increasing pressure from 0 to 0.002 GPa in 1 ms. 
 The plate is made of steel. The modulus of elasticity 210 GPa, Poisson's ratio 0.3, 
 Yield stress 0.18 GPa and the elastic-plastic modulus 0.1. The edges of the plate are all fixed.
-The simulation of the plate under pressure is observed in 1 ms.</p>
+The simulation of the plate under pressure is observed in 1 ms.</td>
+		</tr>
+	</table>
+</div>
 
+<a onmousedown="javascript:ShowHide('HiddenDivEx1a')" href="javascript:;" ><button name="ShowandHide" type="button">Show/Hide Tutorial Exercise 1a</button></a> </p>
+<div  id="HiddenDivEx1a" style="DISPLAY: none; background-color:#EFFBFB;" >
+
+<p>Below is the tutorial video.</p>
 <p style="text-align:center;">
 <object
 data="http://www.youtube.com/v/VsS_P_sQymk?rel=0&amp;feature=player_embedded&amp;version=3"
@@ -64,6 +76,9 @@ value="true">
 
 <p>Input file: <a target="_blank" href="examples/example_001_plate.in">example_001_plate.in</a></p>
 
+</div>
+
+
 <!-- <a name="exercise-1b"></a><h4>Exercise 1b: .....</h4> -->
 
 <br />
@@ -73,7 +88,7 @@ value="true">
 <p><a name="gid"></a>
 	<a href="#top" title="Back to Contents">
 	<img src="images/buton_close_o.gif" width="30" height="25" >
-	</a><b style="font-size: 14px; " >Using <span class="notranslate">GiD</span> to <span class="notranslate">Impact</span> Interface</b></p
+	</a><b style="font-size: 14px; " >Using <span class="notranslate">GiD</span> to <span class="notranslate">Impact</span> Interface</b></p>
          </td>
      </tr>
 </table>  
