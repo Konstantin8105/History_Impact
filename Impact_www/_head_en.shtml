@@ -37,6 +37,14 @@
 <meta name="google-translate-customization" content="1a9837d5d273c138-43377cb3246a2608-g9f576cf8fbdca0f2-12"></meta>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="page">
 <div id="header">
 <div id="headerimg">
