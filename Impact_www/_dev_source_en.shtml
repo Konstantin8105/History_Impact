@@ -19,7 +19,7 @@ available by the project instead</p>
 
 <p>Though SVN repositories are most commonly accessed using a special piece of software 
 called a SVN client, Sourceforge also provide a web-based interface to view SVN repositories.
-<a href="http://sourceforge.net/p/impact/code/11/tree/" target="_blank" 
+<a href="http://sourceforge.net/p/impact/code/" target="_blank" 
 title="Click here to browse the source codes in Sourceforge">
 Browsing the SVN tree</a> 
 gives you a great view into the current status of this project's code. 
