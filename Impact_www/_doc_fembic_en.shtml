@@ -102,190 +102,190 @@ combinations for SI units, but similar principles also works for any other units
       <td valign="Top"><small><b>Gravity</b></small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>Kg</small></td>
-      <td valign="Top"><small>Kg m/s<sup>2</sup></small></td>
-      <td valign="Top"><small>N/m<sup>2</sup></small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>Kg/m<sup>3</sup></small></td>
-      <td valign="Top"><small>Kgm<sup>2</sup>/s<sup>2</sup></small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg m/s<sup>2</sup></span></small></td>
+      <td valign="Top"><small><span class="notranslate">N/m<sup>2</sup></span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg/m<sup>3</sup></span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kgm<sup>2</sup>/s<sup>2</sup></span></small></td>
       <td valign="Top"><small>9.81</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>Kg</small></td>
-      <td valign="Top"><small>N</small></td>
-      <td valign="Top"><small>Pa</small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>m Kg/l</small></td>
-      <td valign="Top"><small>J</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg</span></small></td>
+      <td valign="Top"><small><span class="notranslate">N</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Pa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">J</span></small></td>
       <td valign="Top"><small>9.81</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>mN</small></td>
-      <td valign="Top"><small>mPa</small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>micro Kg/l</small></td>
-      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">micro Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mJ</span></small></td>
       <td valign="Top"><small>9.81</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>Mg (ton)</small></td>
-      <td valign="Top"><small>KN</small></td>
-      <td valign="Top"><small>KPa</small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>Kg/l</small></td>
-      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg (ton)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KJ</span></small></td>
       <td valign="Top"><small>9.81</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>Kg</small></td>
-      <td valign="Top"><small>MN</small></td>
-      <td valign="Top"><small>MPa</small></td>
-      <td valign="Top"><small>Km/s</small></td>
-      <td valign="Top"><small>m Kg/l</small></td>
-      <td valign="Top"><small>MJ</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Km/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MJ</span></small></td>
       <td valign="Top"><small>9.81e-6</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>KN</small></td>
-      <td valign="Top"><small>KPa</small></td>
-      <td valign="Top"><small>Km/s</small></td>
-      <td valign="Top"><small>micro Kg/l</small></td>
-      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Km/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">micro Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KJ</span></small></td>
       <td valign="Top"><small>9.81e-6</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>m</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>Mg (ton)</small></td>
-      <td valign="Top"><small>GN</small></td>
-      <td valign="Top"><small>GPa</small></td>
-      <td valign="Top"><small>Km/s</small></td>
-      <td valign="Top"><small>Kg/l</small></td>
-      <td valign="Top"><small>GJ</small></td>
+      <td valign="Top"><small><span class="notranslate">m</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg (ton)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">GN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">GPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Km/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">GJ</span></small></td>
       <td valign="Top"><small>9.81e-6</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>mm</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>Kg</small></td>
-      <td valign="Top"><small>mN</small></td>
-      <td valign="Top"><small>KPa</small></td>
-      <td valign="Top"><small>mm/s</small></td>
-      <td valign="Top"><small>M Kg/l</small></td>
-      <td valign="Top"><small>micro J</small></td>
+      <td valign="Top"><small><span class="notranslate">mm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mm/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">M Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">micro J</span></small></td>
       <td valign="Top"><small>9.81e+3</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>mm</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>micro N</small></td>
-      <td valign="Top"><small>Pa</small></td>
-      <td valign="Top"><small>mm/s</small></td>
-      <td valign="Top"><small>g/mm<sup>3</sup></small></td>
-      <td valign="Top"><small>nJ</small></td>
+      <td valign="Top"><small><span class="notranslate">mm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">micro N</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Pa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mm/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g/mm<sup>3</sup></span></small></td>
+      <td valign="Top"><small><span class="notranslate">nJ</span></small></td>
       <td valign="Top"><small>9.81e+3</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>mm</small></td>
-      <td valign="Top"><small>s</small></td>
-      <td valign="Top"><small>Mg (ton)</small></td>
-      <td valign="Top"><small>N</small></td>
-      <td valign="Top"><small>MPa</small></td>
-      <td valign="Top"><small>mm/s</small></td>
-      <td valign="Top"><small>Mg/mm<sup>3</sup></small></td>
-      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small><span class="notranslate">mm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg (ton)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">N</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mm/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg/mm<sup>3</sup></span></small></td>
+      <td valign="Top"><small><span class="notranslate">mJ</span></small></td>
       <td valign="Top"><small>9.81e+3</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small><i style="color:blue">mm</i></small></td>
-      <td valign="Top"><small><i style="color:blue">ms</i></small></td>
-      <td valign="Top"><small><i style="color:blue">Kg</i></small></td>
-      <td valign="Top"><small><i style="color:blue">KN</i></small></td>
-      <td valign="Top"><small><i style="color:blue">GPa</i></small></td>
-      <td valign="Top"><small><i style="color:blue">m/s</i></small></td>
-      <td valign="Top"><small><i style="color:blue">M Kg/l</i></small></td>
-      <td valign="Top"><small><i style="color:blue">J</i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">mm</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">ms</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">Kg</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">KN</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">GPa</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">m/s</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">M Kg/l</span></i></small></td>
+      <td valign="Top"><small><i style="color:blue"><span class="notranslate">J</span></i></small></td>
       <td valign="Top"><small><i style="color:blue">9.81e-3</i></small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>mm</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>N</small></td>
-      <td valign="Top"><small>MPa</small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>K Kg/l</small></td>
-      <td valign="Top"><small>mJ</small></td>
+      <td valign="Top"><small><span class="notranslate">mm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">N</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">K Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">mJ</span></small></td>
       <td valign="Top"><small>9.81e-3</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>mm</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>Mg (ton)</small></td>
-      <td valign="Top"><small>MN</small></td>
-      <td valign="Top"><small>TPa</small></td>
-      <td valign="Top"><small>m/s</small></td>
-      <td valign="Top"><small>G Kg/l</small></td>
-      <td valign="Top"><small>KJ</small></td>
+      <td valign="Top"><small><span class="notranslate">mm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg (ton)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">MN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">TPa</span></small></td>
+      <td valign="Top"><small><span class="notranslate">m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">G Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">KJ</span></small></td>
       <td valign="Top"><small>9.81e-3</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>cm</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>daN</small></td>
-      <td valign="Top"><small>10<sup>5</sup> Pa (bar)</small></td>
+      <td valign="Top"><small><span class="notranslate">cm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">daN</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>5</sup> Pa (bar)</span></small></td>
       <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
-      <td valign="Top"><small>Kg/l</small></td>
-      <td valign="Top"><small>dJ</small></td>
+      <td valign="Top"><small><span class="notranslate">Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">dJ</span></small></td>
       <td valign="Top"><small>9.81e-4</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>cm</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>Kg</small></td>
-      <td valign="Top"><small>10<sup>4</sup> N (KdaN)</small></td>
-      <td valign="Top"><small>10<sup>8</sup> Pa (Kbar)</small></td>
+      <td valign="Top"><small><span class="notranslate">cm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>4</sup> N (KdaN)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>8</sup> Pa (Kbar)</span></small></td>
       <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
-      <td valign="Top"><small>K Kg/l</small></td>
-      <td valign="Top"><small>hJ</small></td>
+      <td valign="Top"><small><span class="notranslate">K Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">hJ</span></small></td>
       <td valign="Top"><small>9.81e-4</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>cm</small></td>
-      <td valign="Top"><small>ms</small></td>
-      <td valign="Top"><small>Mg (ton)</small></td>
-      <td valign="Top"><small>10<sup>7</sup> N(MdaN)</small></td>
-      <td valign="Top"><small>10<sup>11</sup> Pa (Mbar)</small></td>
+      <td valign="Top"><small><span class="notranslate">cm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">ms</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Mg (ton)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>7</sup> N(MdaN)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>11</sup> Pa (Mbar)</span></small></td>
       <td valign="Top"><small><span class="notranslate"> dam/s</span></small></td>
-      <td valign="Top"><small>M Kg/l</small></td>
-      <td valign="Top"><small>10<sup>5</sup> J</small></td>
+      <td valign="Top"><small><span class="notranslate">M Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>5</sup> J</span></small></td>
       <td valign="Top"><small>9.81e-4</small></td>
 	</tr>
     <tr>
-      <td valign="Top"><small>cm</small></td>
-      <td valign="Top"><small>micro s</small></td>
-      <td valign="Top"><small>g</small></td>
-      <td valign="Top"><small>10<sup>7</sup> N (MdaN)</small></td>
-      <td valign="Top"><small>10<sup>11</sup> Pa (Mbar)</small></td>
-      <td valign="Top"><small>10<sup>4</sup> m/s</small></td>
-      <td valign="Top"><small>Kg/l</small></td>
-      <td valign="Top"><small>10<sup>5</sup> J</small></td>
+      <td valign="Top"><small><span class="notranslate">cm</span></small></td>
+      <td valign="Top"><small><span class="notranslate">micro s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">g</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>7</sup> N (MdaN)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>11</sup> Pa (Mbar)</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>4</sup> m/s</span></small></td>
+      <td valign="Top"><small><span class="notranslate">Kg/l</span></small></td>
+      <td valign="Top"><small><span class="notranslate">10<sup>5</sup> J</span></small></td>
       <td valign="Top"><small>9.81e-10</small></td>
 	</tr>
   </tbody>
