@@ -2675,6 +2675,106 @@ arz =<i> acc</i> p = <i>pressure</i>
 
 <p></p>
 
+
+<!-- NODE VELOCITY TRACKER -->
+
+<font face="Helvetica, Arial, sans-serif">
+<table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="trackers-nv"></a>
+  <tbody>
+    <tr>
+      <td valign="Top" width="20%"><big><b>Command</b></big></td>
+      <td valign="Top"><big><b>NodeVelocity</b></big></td>
+    </tr>
+    <tr>
+      <td valign="Top">Block</td>
+      <td valign="Top"><span class="notranslate">Trackers</span></td>
+    </tr>
+    <tr>
+      <td valign="Top">Description       </td>
+      <td valign="Top">This tracker reads the velocity of a single node and plots the result into a file.
+      The file is currently readable by the GID pre/postprocessor but the tracker can also print in a different
+      fileformat. This is controlled by the Trackwriter command. Target is a value set by the user. If this
+      value is reached during simulation, a file will be written (with extension .target). This is useful
+      when debugging new versions of Impact.</td>
+    </tr>
+    <tr>
+      <td valign="Top">Syntax<br>
+      </td>
+      <td valign="Top"><span class="notranslate"><b><i>nr</i> node = [<i>tnode</i>] DIRECTION = <i>dir</i> FILENAME = <i>fname</i></b> TARGET = [<i>ttime,timetol,tvalue,valuetol</i>]</span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Options</td>
+      <td valign="Top">
+      <table cellpadding="2" cellspacing="2" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="Top" width="20%"><b><i>nr</i></b></td>
+            <td valign="Top">The tracker number. Must be a unique number in  the
+ model, i.e. another nodetracker cannot have the same number.
+        </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>tnode</i></b></td>
+            <td valign="Top">The number of the node to track velocity from.
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>dir</i></b></td>
+            <td valign="Top">The direction of the velocity to track. Can be either 'X', 'Y' or 'Z'
+         </td>
+          </tr>
+          <tr>
+            <td valign="Top"><b><i>fname</i></b></td>
+            <td valign="Top">The name of the file of which the nodetracker should write. Must be a unique name for each
+            nodetracker.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttime</i></td>
+            <td valign="Top">The time where the target is to be checked.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>ttol</i></td>
+            <td valign="Top">The tolerance for the target time
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>tvalue</i></td>
+            <td valign="Top">The target value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="Top"><i>valuetol</i></td>
+            <td valign="Top">The tolerance for the target value
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">Example<br>
+      </td>
+      <td valign="Top"><span class="notranslate">1 node = [23] direction = z filename = nodevelo-z.trk</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="Top">See also<br>
+      </td>
+      <td valign="Top"><span class="notranslate">Trackwriter, Trackers, NodeDisplacement</span><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+
+<p></p>
+
+
+
 <!------------------------------------------------------------------------------>
 <!-- NODE ACCELERATION TRACKER ------------------------------------------------->
 <!------------------------------------------------------------------------------>
