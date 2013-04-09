@@ -1,3 +1,8 @@
+#-------------------------------------------------------------------
+Version Updated --/04/2013 by Waluyo Adi Siswanto
+  - Fix incorrect contact definition when it is off
+  
+#-------------------------------------------------------------------
 Version Updated 09/05/2011 by Waluyo Adi Siswanto
   - Fix problem when Update-Node-COG is used
   - Fix incorrect constraints when Master-Node-Constraint is OFF

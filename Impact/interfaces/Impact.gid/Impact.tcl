@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------
 # GiD to IMPACT Interface is GUI problemtype module for Impact
-# Copyright (C) 2004-2011  Impact Developer Team
+# Copyright (C) 2004-2013  Impact Developer Team
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,8 +23,9 @@
 #   
 # --------------------------------------------------------------------
 # Interface Last modified by: Waluyo Adi Siswanto
-# Date:             05 May 2011 (written as the version)
+# Date:             -- April 2013 (written as the version)
 # --------------------------------------------------------------------
+#
 
 proc InitGIDProject {dir} {
 
@@ -42,13 +43,13 @@ proc CreateWindow {dir mat cond} {
     InitWindow $w "GiD to Impact Interface" Impact
 
     frame $w.top
-    label $w.top.title_text -text "    Impact: Dynamic Finite Element Program Suite    "   
+    label $w.top.title_text -text "      Impact: Dynamic Finite Element Program Suite      "   
  
     frame $w.information  -relief ridge -bd 5
     label $w.information.path        -text " "
-    label $w.information.materials   -text "         Version 05.05.2011\n  \
-                                                See menu Impact-Help for detail explanation"
-    label $w.information.conditions  -text "      --> bug report: was.uthm@gmail.com <--\n"
+    label $w.information.materials   -text "             Version --/Apr/2013\n \ \ \ \ \ \ \ \ \ \ See menu Impact-Help for detail explanation"
+    label $w.information.conditions  -text "\n --> bug report: http://sourceforge.net/p/impact/tickets <--\n \n"                                              
+#    label $w.information.conditions  -text "      --> or email: was.uthm@gmail.com <--\n"
 
     frame $w.bottom
     button $w.bottom.start -text "CONTINUE" \
