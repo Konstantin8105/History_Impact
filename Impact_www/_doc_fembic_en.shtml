@@ -1187,7 +1187,7 @@ command with  it's associated parameters is defined on each  line.</td>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#materials">Materials</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#nodes">Nodes</a></li>
 	<li style="margin-left:40px; list-style-type: circle;"><a href="#elements">&#187; <b>Elements</b> &#171;</a></li>
-	  <li style="margin-left:55px; "><a href="#elements-beam2">Beam 2</a></li>
+	  <!-- <li style="margin-left:55px; "><a href="#elements-beam2">Beam 2</a></li> -->
 	  <li style="margin-left:55px; "><a href="#elements-beamspring2">Beam Spring 2</a></li>
 	  <li style="margin-left:55px; "><a href="#elements-rod2">Rod 2</a></li>	
 	  <li style="margin-left:55px; "><a href="#elements-ctriangle">Contact Triangle</a></li>
@@ -1235,7 +1235,7 @@ command with  it's associated parameters is defined on each  line.</td>
         <tbody>
           <tr>
             <td valign="Top" width="20%"><b><i>eltype</i></b></td>
-            <td valign="Top">Any type of element: Rod_2, Beam_2, Solid_Iso_6, Shell_BT_4, Contact_Triangle
+            <td valign="Top">Any type of element: Rod_2, Solid_Iso_6, Shell_BT_4, Contact_Triangle
         </td>
         </tbody>
       </table>
@@ -1250,7 +1250,7 @@ command with  it's associated parameters is defined on each  line.</td>
     <tr>
       <td valign="Top">See also<br>
       </td>
-      <td valign="Top"><span class="notranslate">Rod_2, Beam, Solid_Iso_6, Shell_BT_4, Shell_C0_3</span><br>
+      <td valign="Top"><span class="notranslate">Rod_2,  Solid_Iso_6, Shell_BT_4, Shell_C0_3</span><br>
       </td>
     </tr>
   </tbody>
@@ -1261,7 +1261,7 @@ command with  it's associated parameters is defined on each  line.</td>
 
 <!-- BEAM_2 ELEMENT -->
 <!-- NEED 18 -->
-
+<!--
 <font face="Helvetica, Arial, sans-serif">
 <table cellpadding="2" cellspacing="2" border="1" width="100%" bgcolor="#cdffc9"><a name="elements-beam2"></a>
   <tbody>
@@ -1334,7 +1334,7 @@ section is solid circular.
 </table>
 </font>
 
-
+-->
 <p></p>
 
 <!-- CONTACT_TRIANGLE ELEMENT -->
