@@ -387,6 +387,7 @@ public void solve(byte step) {
     if(infile==null)return;
     try{
       RandomAccessFile out = new RandomAccessFile(fout, "rw");
+      out.seek(0);
       out.writeBytes("# "+ver+"\n");
       out.writeBytes("# Model: \t"+sourcefile+"\n");
       out.writeBytes("# "+new Date()+"\n\n");
