@@ -1,0 +1,862 @@
+# Cable Problem (Cable under quazi static loading)
+# Span =  91.44 m
+# Sag =  1.0668 m
+# dia =  3.9878E-02 m
+# Young's Modulus E =  165474168000 Pa
+# Density = Weight/Len/Area =  7029.83583560387 kg/m^3
+# Max Stress =  8273708400 Pa
+# 
+ 
+ 
+ 
+CONTROLS 
+run from 0.0 to   17.2272727272727
+print every 0.1 step 
+ 
+ 
+MATERIALS OF TYPE ELASTIC 
+CableSteel E =  165474168000 RHO =  7029.83583560387 NU = 0.3   FAILURE_STRESS =  8273708400
+Carrier E =  165474168000 RHO =  14918.52987564 NU = 0.3   FAILURE_STRESS =  8273708400
+ 
+ 
+CONSTRAINTS OF TYPE BOUNDARY_CONDITION 
+FIXED_ALL VX = 0 VY = 0 VZ = 0 VRX = 0 VRY = 0 VRZ = 0 AX = 0 AY = 0 AZ = 0 ARX = 0 ARY = 0 ARZ = 0 
+ 
+ 
+LOADS  
+GRAVITY AY = [0,0, 5,-9.81, 17.2272727272727,-9.81] 
+ 
+ 
+CONSTRAINTS OF TYPE BOUNDARY_CONDITION 
+MOVE_X VX = [0,0, 7,0, 12.1136363636364, 17.8816, 17.2272727272727,0]   VZ = 0 AZ = 0   VRY = 0 ARY = 0 
+FIX_CABLE VZ = 0 AZ = 0 
+ 
+Trackers of Type Nodeforce
+1 nodes = [1] direction = x+ filename = nodeforce1.trk 
+2 nodes = [ 201] direction = x+ filename = nodeforce2.trk 
+ 
+ 
+Trackers of Type RodForce
+1 element = [1] filename = rodforce.trk
+ 
+ 
+Trackers of Type NodeDisplacement
+1 node = [ 100] direction = y filename = nodedisp.trk
+ 
+ 
+NODES 
+1  X = 0.0 	Y = 0.0 	Z = 0.0 	Constraint = FIXED_ALL 	Load = GRAVITY
+ 2  X= 0.4572  Y = -2.122932E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 3  X= 0.9144  Y = -4.22452799999999E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 4  X= 1.3716  Y = -6.30478800000001E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 5  X= 1.8288  Y = -8.36371200000001E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 6  X= 2.286  Y = -0.104013 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 7  X= 2.7432  Y = -0.12417552 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 8  X= 3.2004  Y = -0.14412468 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 9  X= 3.6576  Y = -0.16386048 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 10  X= 4.1148  Y = -0.18338292 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 11  X= 4.572  Y = -0.202692 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 12  X= 5.0292  Y = -0.22178772 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 13  X= 5.4864  Y = -0.24067008 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 14  X= 5.9436  Y = -0.25933908 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 15  X= 6.4008  Y = -0.27779472 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 16  X= 6.858  Y = -0.296037 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 17  X= 7.3152  Y = -0.31406592 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 18  X= 7.7724  Y = -0.33188148 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 19  X= 8.2296  Y = -0.34948368 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 20  X= 8.6868  Y = -0.36687252 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 21  X= 9.144  Y = -0.384048 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 22  X= 9.6012  Y = -0.40101012 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 23  X= 10.0584  Y = -0.41775888 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 24  X= 10.5156  Y = -0.43429428 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 25  X= 10.9728  Y = -0.45061632 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 26  X= 11.43  Y = -0.466725 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 27  X= 11.8872  Y = -0.48262032 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 28  X= 12.3444  Y = -0.49830228 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 29  X= 12.8016  Y = -0.51377088 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 30  X= 13.2588  Y = -0.52902612 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 31  X= 13.716  Y = -0.544068 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 32  X= 14.1732  Y = -0.55889652 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 33  X= 14.6304  Y = -0.57351168 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 34  X= 15.0876  Y = -0.58791348 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 35  X= 15.5448  Y = -0.60210192 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 36  X= 16.002  Y = -0.616077 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 37  X= 16.4592  Y = -0.62983872 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 38  X= 16.9164  Y = -0.64338708 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 39  X= 17.3736  Y = -0.65672208 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 40  X= 17.8308  Y = -0.66984372 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 41  X= 18.288  Y = -0.682752 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 42  X= 18.7452  Y = -0.69544692 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 43  X= 19.2024  Y = -0.70792848 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 44  X= 19.6596  Y = -0.72019668 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 45  X= 20.1168  Y = -0.73225152 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 46  X= 20.574  Y = -0.744093 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 47  X= 21.0312  Y = -0.75572112 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 48  X= 21.4884  Y = -0.76713588 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 49  X= 21.9456  Y = -0.77833728 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 50  X= 22.4028  Y = -0.78932532 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 51  X= 22.86  Y = -0.8001 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 52  X= 23.3172  Y = -0.81066132 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 53  X= 23.7744  Y = -0.82100928 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 54  X= 24.2316  Y = -0.83114388 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 55  X= 24.6888  Y = -0.84106512 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 56  X= 25.146  Y = -0.850773 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 57  X= 25.6032  Y = -0.86026752 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 58  X= 26.0604  Y = -0.86954868 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 59  X= 26.5176  Y = -0.87861648 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 60  X= 26.9748  Y = -0.88747092 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 61  X= 27.432  Y = -0.896112 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 62  X= 27.8892  Y = -0.90453972 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 63  X= 28.3464  Y = -0.91275408 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 64  X= 28.8036  Y = -0.92075508 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 65  X= 29.2608  Y = -0.92854272 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 66  X= 29.718  Y = -0.936117 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 67  X= 30.1752  Y = -0.94347792 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 68  X= 30.6324  Y = -0.95062548 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 69  X= 31.0896  Y = -0.95755968 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 70  X= 31.5468  Y = -0.96428052 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 71  X= 32.004  Y = -0.970788 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 72  X= 32.4612  Y = -0.97708212 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 73  X= 32.9184  Y = -0.98316288 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 74  X= 33.3756  Y = -0.98903028 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 75  X= 33.8328  Y = -0.99468432 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 76  X= 34.29  Y = -1.000125 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 77  X= 34.7472  Y = -1.00535232 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 78  X= 35.2044  Y = -1.01036628 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 79  X= 35.6616  Y = -1.01516688 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 80  X= 36.1188  Y = -1.01975412 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 81  X= 36.576  Y = -1.024128 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 82  X= 37.0332  Y = -1.02828852 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 83  X= 37.4904  Y = -1.03223568 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 84  X= 37.9476  Y = -1.03596948 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 85  X= 38.4048  Y = -1.03948992 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 86  X= 38.862  Y = -1.042797 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 87  X= 39.3192  Y = -1.04589072 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 88  X= 39.7764  Y = -1.04877108 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 89  X= 40.2336  Y = -1.05143808 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 90  X= 40.6908  Y = -1.05389172 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 91  X= 41.148  Y = -1.056132 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 92  X= 41.6052  Y = -1.05815892 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 93  X= 42.0624  Y = -1.05997248 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 94  X= 42.5196  Y = -1.06157268 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 95  X= 42.9768  Y = -1.06295952 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 96  X= 43.434  Y = -1.064133 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 97  X= 43.8912  Y = -1.06509312 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 98  X= 44.3484  Y = -1.06583988 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 99  X= 44.8056  Y = -1.06637328 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 100  X= 45.2628  Y = -1.06669332 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 101  X= 45.72  Y = -1.0668 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 102  X= 46.1772  Y = -1.06669332 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 103  X= 46.6344  Y = -1.06637328 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 104  X= 47.0916  Y = -1.06583988 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 105  X= 47.5488  Y = -1.06509312 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 106  X= 48.006  Y = -1.064133 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 107  X= 48.4632  Y = -1.06295952 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 108  X= 48.9204  Y = -1.06157268 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 109  X= 49.3776  Y = -1.05997248 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 110  X= 49.8348  Y = -1.05815892 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 111  X= 50.292  Y = -1.056132 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 112  X= 50.7492  Y = -1.05389172 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 113  X= 51.2064  Y = -1.05143808 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 114  X= 51.6636  Y = -1.04877108 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 115  X= 52.1208  Y = -1.04589072 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 116  X= 52.578  Y = -1.042797 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 117  X= 53.0352  Y = -1.03948992 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 118  X= 53.4924  Y = -1.03596948 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 119  X= 53.9496  Y = -1.03223568 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 120  X= 54.4068  Y = -1.02828852 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 121  X= 54.864  Y = -1.024128 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 122  X= 55.3212  Y = -1.01975412 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 123  X= 55.7784  Y = -1.01516688 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 124  X= 56.2356  Y = -1.01036628 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 125  X= 56.6928  Y = -1.00535232 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 126  X= 57.15  Y = -1.000125 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 127  X= 57.6072  Y = -0.99468432 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 128  X= 58.0644  Y = -0.98903028 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 129  X= 58.5216  Y = -0.98316288 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 130  X= 58.9788  Y = -0.97708212 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 131  X= 59.436  Y = -0.970788 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 132  X= 59.8932  Y = -0.96428052 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 133  X= 60.3504  Y = -0.95755968 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 134  X= 60.8076  Y = -0.95062548 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 135  X= 61.2648  Y = -0.94347792 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 136  X= 61.722  Y = -0.936117 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 137  X= 62.1792  Y = -0.92854272 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 138  X= 62.6364  Y = -0.92075508 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 139  X= 63.0936  Y = -0.91275408 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 140  X= 63.5508  Y = -0.90453972 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 141  X= 64.008  Y = -0.896112 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 142  X= 64.4652  Y = -0.88747092 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 143  X= 64.9224  Y = -0.87861648 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 144  X= 65.3796  Y = -0.86954868 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 145  X= 65.8368  Y = -0.86026752 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 146  X= 66.294  Y = -0.850773 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 147  X= 66.7512  Y = -0.84106512 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 148  X= 67.2084  Y = -0.83114388 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 149  X= 67.6656  Y = -0.82100928 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 150  X= 68.1228  Y = -0.81066132 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 151  X= 68.58  Y = -0.8001 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 152  X= 69.0372  Y = -0.78932532 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 153  X= 69.4944  Y = -0.77833728 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 154  X= 69.9516  Y = -0.76713588 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 155  X= 70.4088  Y = -0.75572112 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 156  X= 70.866  Y = -0.744093 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 157  X= 71.3232  Y = -0.73225152 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 158  X= 71.7804  Y = -0.72019668 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 159  X= 72.2376  Y = -0.70792848 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 160  X= 72.6948  Y = -0.69544692 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 161  X= 73.152  Y = -0.682752 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 162  X= 73.6092  Y = -0.66984372 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 163  X= 74.0664  Y = -0.65672208 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 164  X= 74.5236  Y = -0.64338708 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 165  X= 74.9808  Y = -0.62983872 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 166  X= 75.438  Y = -0.616077 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 167  X= 75.8952  Y = -0.60210192 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 168  X= 76.3524  Y = -0.58791348 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 169  X= 76.8096  Y = -0.57351168 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 170  X= 77.2668  Y = -0.55889652 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 171  X= 77.724  Y = -0.544068 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 172  X= 78.1812  Y = -0.52902612 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 173  X= 78.6384  Y = -0.51377088 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 174  X= 79.0956  Y = -0.49830228 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 175  X= 79.5528  Y = -0.48262032 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 176  X= 80.01  Y = -0.466725 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 177  X= 80.4672  Y = -0.45061632 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 178  X= 80.9244  Y = -0.43429428 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 179  X= 81.3816  Y = -0.41775888 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 180  X= 81.8388  Y = -0.40101012 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 181  X= 82.296  Y = -0.384048 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 182  X= 82.7532  Y = -0.36687252 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 183  X= 83.2104  Y = -0.34948368 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 184  X= 83.6676  Y = -0.33188148 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 185  X= 84.1248  Y = -0.31406592 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 186  X= 84.582  Y = -0.296037 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 187  X= 85.0392  Y = -0.27779472 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 188  X= 85.4964  Y = -0.25933908 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 189  X= 85.9536  Y = -0.24067008 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 190  X= 86.4108  Y = -0.22178772 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 191  X= 86.868  Y = -0.202692 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 192  X= 87.3252  Y = -0.183382919999999 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 193  X= 87.7824  Y = -0.16386048 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 194  X= 88.2396  Y = -0.14412468 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 195  X= 88.6968  Y = -0.12417552 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 196  X= 89.154  Y = -0.104013 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 197  X= 89.6112  Y = -8.36371200000001E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 198  X= 90.0684  Y = -6.30478800000001E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 199  X= 90.5256  Y = -4.22452799999999E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 200  X= 90.9828  Y = -2.12293199999993E-02 	Z = 0.0 	Load = GRAVITY  Constraint = FIX_CABLE 
+ 201  X =  91.44  Y = 0.0 	Z = 0.0 	Constraint = FIXED_ALL 	Load = GRAVITY
+ 
+ 202  X = 0.0 	Y = 0.0 	Z =  3.6576 	Constraint = FIXED_ALL 	Load = GRAVITY
+ 203  X= 0.4572  Y = -2.122932E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 204  X= 0.9144  Y = -4.22452799999999E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 205  X= 1.3716  Y = -6.30478800000001E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 206  X= 1.8288  Y = -8.36371200000001E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 207  X= 2.286  Y = -0.104013 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 208  X= 2.7432  Y = -0.12417552 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 209  X= 3.2004  Y = -0.14412468 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 210  X= 3.6576  Y = -0.16386048 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 211  X= 4.1148  Y = -0.18338292 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 212  X= 4.572  Y = -0.202692 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 213  X= 5.0292  Y = -0.22178772 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 214  X= 5.4864  Y = -0.24067008 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 215  X= 5.9436  Y = -0.25933908 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 216  X= 6.4008  Y = -0.27779472 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 217  X= 6.858  Y = -0.296037 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 218  X= 7.3152  Y = -0.31406592 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 219  X= 7.7724  Y = -0.33188148 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 220  X= 8.2296  Y = -0.34948368 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 221  X= 8.6868  Y = -0.36687252 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 222  X= 9.144  Y = -0.384048 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 223  X= 9.6012  Y = -0.40101012 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 224  X= 10.0584  Y = -0.41775888 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 225  X= 10.5156  Y = -0.43429428 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 226  X= 10.9728  Y = -0.45061632 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 227  X= 11.43  Y = -0.466725 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 228  X= 11.8872  Y = -0.48262032 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 229  X= 12.3444  Y = -0.49830228 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 230  X= 12.8016  Y = -0.51377088 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 231  X= 13.2588  Y = -0.52902612 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 232  X= 13.716  Y = -0.544068 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 233  X= 14.1732  Y = -0.55889652 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 234  X= 14.6304  Y = -0.57351168 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 235  X= 15.0876  Y = -0.58791348 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 236  X= 15.5448  Y = -0.60210192 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 237  X= 16.002  Y = -0.616077 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 238  X= 16.4592  Y = -0.62983872 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 239  X= 16.9164  Y = -0.64338708 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 240  X= 17.3736  Y = -0.65672208 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 241  X= 17.8308  Y = -0.66984372 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 242  X= 18.288  Y = -0.682752 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 243  X= 18.7452  Y = -0.69544692 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 244  X= 19.2024  Y = -0.70792848 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 245  X= 19.6596  Y = -0.72019668 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 246  X= 20.1168  Y = -0.73225152 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 247  X= 20.574  Y = -0.744093 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 248  X= 21.0312  Y = -0.75572112 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 249  X= 21.4884  Y = -0.76713588 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 250  X= 21.9456  Y = -0.77833728 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 251  X= 22.4028  Y = -0.78932532 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 252  X= 22.86  Y = -0.8001 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 253  X= 23.3172  Y = -0.81066132 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 254  X= 23.7744  Y = -0.82100928 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 255  X= 24.2316  Y = -0.83114388 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 256  X= 24.6888  Y = -0.84106512 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 257  X= 25.146  Y = -0.850773 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 258  X= 25.6032  Y = -0.86026752 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 259  X= 26.0604  Y = -0.86954868 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 260  X= 26.5176  Y = -0.87861648 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 261  X= 26.9748  Y = -0.88747092 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 262  X= 27.432  Y = -0.896112 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 263  X= 27.8892  Y = -0.90453972 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 264  X= 28.3464  Y = -0.91275408 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 265  X= 28.8036  Y = -0.92075508 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 266  X= 29.2608  Y = -0.92854272 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 267  X= 29.718  Y = -0.936117 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 268  X= 30.1752  Y = -0.94347792 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 269  X= 30.6324  Y = -0.95062548 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 270  X= 31.0896  Y = -0.95755968 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 271  X= 31.5468  Y = -0.96428052 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 272  X= 32.004  Y = -0.970788 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 273  X= 32.4612  Y = -0.97708212 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 274  X= 32.9184  Y = -0.98316288 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 275  X= 33.3756  Y = -0.98903028 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 276  X= 33.8328  Y = -0.99468432 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 277  X= 34.29  Y = -1.000125 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 278  X= 34.7472  Y = -1.00535232 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 279  X= 35.2044  Y = -1.01036628 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 280  X= 35.6616  Y = -1.01516688 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 281  X= 36.1188  Y = -1.01975412 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 282  X= 36.576  Y = -1.024128 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 283  X= 37.0332  Y = -1.02828852 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 284  X= 37.4904  Y = -1.03223568 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 285  X= 37.9476  Y = -1.03596948 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 286  X= 38.4048  Y = -1.03948992 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 287  X= 38.862  Y = -1.042797 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 288  X= 39.3192  Y = -1.04589072 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 289  X= 39.7764  Y = -1.04877108 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 290  X= 40.2336  Y = -1.05143808 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 291  X= 40.6908  Y = -1.05389172 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 292  X= 41.148  Y = -1.056132 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 293  X= 41.6052  Y = -1.05815892 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 294  X= 42.0624  Y = -1.05997248 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 295  X= 42.5196  Y = -1.06157268 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 296  X= 42.9768  Y = -1.06295952 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 297  X= 43.434  Y = -1.064133 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 298  X= 43.8912  Y = -1.06509312 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 299  X= 44.3484  Y = -1.06583988 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 300  X= 44.8056  Y = -1.06637328 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 301  X= 45.2628  Y = -1.06669332 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 302  X= 45.72  Y = -1.0668 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 303  X= 46.1772  Y = -1.06669332 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 304  X= 46.6344  Y = -1.06637328 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 305  X= 47.0916  Y = -1.06583988 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 306  X= 47.5488  Y = -1.06509312 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 307  X= 48.006  Y = -1.064133 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 308  X= 48.4632  Y = -1.06295952 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 309  X= 48.9204  Y = -1.06157268 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 310  X= 49.3776  Y = -1.05997248 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 311  X= 49.8348  Y = -1.05815892 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 312  X= 50.292  Y = -1.056132 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 313  X= 50.7492  Y = -1.05389172 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 314  X= 51.2064  Y = -1.05143808 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 315  X= 51.6636  Y = -1.04877108 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 316  X= 52.1208  Y = -1.04589072 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 317  X= 52.578  Y = -1.042797 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 318  X= 53.0352  Y = -1.03948992 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 319  X= 53.4924  Y = -1.03596948 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 320  X= 53.9496  Y = -1.03223568 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 321  X= 54.4068  Y = -1.02828852 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 322  X= 54.864  Y = -1.024128 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 323  X= 55.3212  Y = -1.01975412 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 324  X= 55.7784  Y = -1.01516688 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 325  X= 56.2356  Y = -1.01036628 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 326  X= 56.6928  Y = -1.00535232 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 327  X= 57.15  Y = -1.000125 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 328  X= 57.6072  Y = -0.99468432 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 329  X= 58.0644  Y = -0.98903028 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 330  X= 58.5216  Y = -0.98316288 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 331  X= 58.9788  Y = -0.97708212 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 332  X= 59.436  Y = -0.970788 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 333  X= 59.8932  Y = -0.96428052 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 334  X= 60.3504  Y = -0.95755968 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 335  X= 60.8076  Y = -0.95062548 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 336  X= 61.2648  Y = -0.94347792 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 337  X= 61.722  Y = -0.936117 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 338  X= 62.1792  Y = -0.92854272 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 339  X= 62.6364  Y = -0.92075508 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 340  X= 63.0936  Y = -0.91275408 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 341  X= 63.5508  Y = -0.90453972 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 342  X= 64.008  Y = -0.896112 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 343  X= 64.4652  Y = -0.88747092 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 344  X= 64.9224  Y = -0.87861648 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 345  X= 65.3796  Y = -0.86954868 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 346  X= 65.8368  Y = -0.86026752 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 347  X= 66.294  Y = -0.850773 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 348  X= 66.7512  Y = -0.84106512 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 349  X= 67.2084  Y = -0.83114388 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 350  X= 67.6656  Y = -0.82100928 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 351  X= 68.1228  Y = -0.81066132 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 352  X= 68.58  Y = -0.8001 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 353  X= 69.0372  Y = -0.78932532 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 354  X= 69.4944  Y = -0.77833728 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 355  X= 69.9516  Y = -0.76713588 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 356  X= 70.4088  Y = -0.75572112 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 357  X= 70.866  Y = -0.744093 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 358  X= 71.3232  Y = -0.73225152 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 359  X= 71.7804  Y = -0.72019668 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 360  X= 72.2376  Y = -0.70792848 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 361  X= 72.6948  Y = -0.69544692 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 362  X= 73.152  Y = -0.682752 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 363  X= 73.6092  Y = -0.66984372 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 364  X= 74.0664  Y = -0.65672208 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 365  X= 74.5236  Y = -0.64338708 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 366  X= 74.9808  Y = -0.62983872 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 367  X= 75.438  Y = -0.616077 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 368  X= 75.8952  Y = -0.60210192 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 369  X= 76.3524  Y = -0.58791348 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 370  X= 76.8096  Y = -0.57351168 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 371  X= 77.2668  Y = -0.55889652 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 372  X= 77.724  Y = -0.544068 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 373  X= 78.1812  Y = -0.52902612 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 374  X= 78.6384  Y = -0.51377088 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 375  X= 79.0956  Y = -0.49830228 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 376  X= 79.5528  Y = -0.48262032 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 377  X= 80.01  Y = -0.466725 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 378  X= 80.4672  Y = -0.45061632 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 379  X= 80.9244  Y = -0.43429428 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 380  X= 81.3816  Y = -0.41775888 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 381  X= 81.8388  Y = -0.40101012 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 382  X= 82.296  Y = -0.384048 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 383  X= 82.7532  Y = -0.36687252 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 384  X= 83.2104  Y = -0.34948368 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 385  X= 83.6676  Y = -0.33188148 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 386  X= 84.1248  Y = -0.31406592 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 387  X= 84.582  Y = -0.296037 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 388  X= 85.0392  Y = -0.27779472 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 389  X= 85.4964  Y = -0.25933908 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 390  X= 85.9536  Y = -0.24067008 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 391  X= 86.4108  Y = -0.22178772 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 392  X= 86.868  Y = -0.202692 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 393  X= 87.3252  Y = -0.183382919999999 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 394  X= 87.7824  Y = -0.16386048 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 395  X= 88.2396  Y = -0.14412468 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 396  X= 88.6968  Y = -0.12417552 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 397  X= 89.154  Y = -0.104013 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 398  X= 89.6112  Y = -8.36371200000001E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 399  X= 90.0684  Y = -6.30478800000001E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 400  X= 90.5256  Y = -4.22452799999999E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 401  X= 90.9828  Y = -2.12293199999993E-02 	Z =  3.6576 	Load = GRAVITY  Constraint = FIX_CABLE
+ 402  X =  91.44  Y = 0.0 	Z =  3.6576 	Constraint = FIXED_ALL 	Load = GRAVITY
+ 
+ 403  X = 0  Y =  2.533778E-02 	Z =  -0.19939 	 	Load = GRAVITY Constraint = MOVE_X 
+ 404  X =  3.6576  Y =   2.533778E-02  	Z =  -0.19939  	Load = GRAVITY   Constraint = MOVE_X 
+ 405  X =  3.6576  Y =   2.533778E-02  	Z =  3.85699 	 	Load = GRAVITY   Constraint = MOVE_X 
+ 406  X = 0  Y =   2.533778E-02  	Z =  3.85699 	 	Load = GRAVITY Constraint = MOVE_X 
+ 
+ELEMENTS OF TYPE Rod_2
+ 1  nodes = [ 1, 2] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 2  nodes = [ 2, 3] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 3  nodes = [ 3, 4] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 4  nodes = [ 4, 5] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 5  nodes = [ 5, 6] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 6  nodes = [ 6, 7] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 7  nodes = [ 7, 8] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 8  nodes = [ 8, 9] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 9  nodes = [ 9, 10] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 10  nodes = [ 10, 11] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 11  nodes = [ 11, 12] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 12  nodes = [ 12, 13] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 13  nodes = [ 13, 14] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 14  nodes = [ 14, 15] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 15  nodes = [ 15, 16] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 16  nodes = [ 16, 17] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 17  nodes = [ 17, 18] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 18  nodes = [ 18, 19] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 19  nodes = [ 19, 20] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 20  nodes = [ 20, 21] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 21  nodes = [ 21, 22] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 22  nodes = [ 22, 23] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 23  nodes = [ 23, 24] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 24  nodes = [ 24, 25] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 25  nodes = [ 25, 26] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 26  nodes = [ 26, 27] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 27  nodes = [ 27, 28] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 28  nodes = [ 28, 29] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 29  nodes = [ 29, 30] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 30  nodes = [ 30, 31] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 31  nodes = [ 31, 32] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 32  nodes = [ 32, 33] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 33  nodes = [ 33, 34] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 34  nodes = [ 34, 35] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 35  nodes = [ 35, 36] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 36  nodes = [ 36, 37] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 37  nodes = [ 37, 38] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 38  nodes = [ 38, 39] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 39  nodes = [ 39, 40] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 40  nodes = [ 40, 41] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 41  nodes = [ 41, 42] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 42  nodes = [ 42, 43] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 43  nodes = [ 43, 44] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 44  nodes = [ 44, 45] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 45  nodes = [ 45, 46] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 46  nodes = [ 46, 47] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 47  nodes = [ 47, 48] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 48  nodes = [ 48, 49] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 49  nodes = [ 49, 50] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 50  nodes = [ 50, 51] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 51  nodes = [ 51, 52] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 52  nodes = [ 52, 53] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 53  nodes = [ 53, 54] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 54  nodes = [ 54, 55] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 55  nodes = [ 55, 56] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 56  nodes = [ 56, 57] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 57  nodes = [ 57, 58] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 58  nodes = [ 58, 59] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 59  nodes = [ 59, 60] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 60  nodes = [ 60, 61] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 61  nodes = [ 61, 62] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 62  nodes = [ 62, 63] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 63  nodes = [ 63, 64] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 64  nodes = [ 64, 65] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 65  nodes = [ 65, 66] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 66  nodes = [ 66, 67] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 67  nodes = [ 67, 68] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 68  nodes = [ 68, 69] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 69  nodes = [ 69, 70] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 70  nodes = [ 70, 71] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 71  nodes = [ 71, 72] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 72  nodes = [ 72, 73] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 73  nodes = [ 73, 74] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 74  nodes = [ 74, 75] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 75  nodes = [ 75, 76] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 76  nodes = [ 76, 77] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 77  nodes = [ 77, 78] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 78  nodes = [ 78, 79] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 79  nodes = [ 79, 80] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 80  nodes = [ 80, 81] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 81  nodes = [ 81, 82] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 82  nodes = [ 82, 83] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 83  nodes = [ 83, 84] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 84  nodes = [ 84, 85] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 85  nodes = [ 85, 86] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 86  nodes = [ 86, 87] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 87  nodes = [ 87, 88] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 88  nodes = [ 88, 89] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 89  nodes = [ 89, 90] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 90  nodes = [ 90, 91] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 91  nodes = [ 91, 92] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 92  nodes = [ 92, 93] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 93  nodes = [ 93, 94] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 94  nodes = [ 94, 95] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 95  nodes = [ 95, 96] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 96  nodes = [ 96, 97] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 97  nodes = [ 97, 98] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 98  nodes = [ 98, 99] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 99  nodes = [ 99, 100] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 100  nodes = [ 100, 101] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 101  nodes = [ 101, 102] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 102  nodes = [ 102, 103] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 103  nodes = [ 103, 104] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 104  nodes = [ 104, 105] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 105  nodes = [ 105, 106] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 106  nodes = [ 106, 107] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 107  nodes = [ 107, 108] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 108  nodes = [ 108, 109] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 109  nodes = [ 109, 110] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 110  nodes = [ 110, 111] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 111  nodes = [ 111, 112] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 112  nodes = [ 112, 113] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 113  nodes = [ 113, 114] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 114  nodes = [ 114, 115] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 115  nodes = [ 115, 116] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 116  nodes = [ 116, 117] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 117  nodes = [ 117, 118] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 118  nodes = [ 118, 119] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 119  nodes = [ 119, 120] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 120  nodes = [ 120, 121] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 121  nodes = [ 121, 122] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 122  nodes = [ 122, 123] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 123  nodes = [ 123, 124] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 124  nodes = [ 124, 125] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 125  nodes = [ 125, 126] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 126  nodes = [ 126, 127] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 127  nodes = [ 127, 128] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 128  nodes = [ 128, 129] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 129  nodes = [ 129, 130] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 130  nodes = [ 130, 131] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 131  nodes = [ 131, 132] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 132  nodes = [ 132, 133] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 133  nodes = [ 133, 134] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 134  nodes = [ 134, 135] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 135  nodes = [ 135, 136] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 136  nodes = [ 136, 137] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 137  nodes = [ 137, 138] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 138  nodes = [ 138, 139] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 139  nodes = [ 139, 140] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 140  nodes = [ 140, 141] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 141  nodes = [ 141, 142] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 142  nodes = [ 142, 143] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 143  nodes = [ 143, 144] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 144  nodes = [ 144, 145] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 145  nodes = [ 145, 146] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 146  nodes = [ 146, 147] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 147  nodes = [ 147, 148] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 148  nodes = [ 148, 149] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 149  nodes = [ 149, 150] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 150  nodes = [ 150, 151] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 151  nodes = [ 151, 152] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 152  nodes = [ 152, 153] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 153  nodes = [ 153, 154] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 154  nodes = [ 154, 155] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 155  nodes = [ 155, 156] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 156  nodes = [ 156, 157] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 157  nodes = [ 157, 158] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 158  nodes = [ 158, 159] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 159  nodes = [ 159, 160] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 160  nodes = [ 160, 161] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 161  nodes = [ 161, 162] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 162  nodes = [ 162, 163] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 163  nodes = [ 163, 164] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 164  nodes = [ 164, 165] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 165  nodes = [ 165, 166] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 166  nodes = [ 166, 167] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 167  nodes = [ 167, 168] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 168  nodes = [ 168, 169] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 169  nodes = [ 169, 170] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 170  nodes = [ 170, 171] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 171  nodes = [ 171, 172] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 172  nodes = [ 172, 173] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 173  nodes = [ 173, 174] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 174  nodes = [ 174, 175] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 175  nodes = [ 175, 176] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 176  nodes = [ 176, 177] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 177  nodes = [ 177, 178] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 178  nodes = [ 178, 179] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 179  nodes = [ 179, 180] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 180  nodes = [ 180, 181] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 181  nodes = [ 181, 182] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 182  nodes = [ 182, 183] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 183  nodes = [ 183, 184] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 184  nodes = [ 184, 185] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 185  nodes = [ 185, 186] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 186  nodes = [ 186, 187] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 187  nodes = [ 187, 188] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 188  nodes = [ 188, 189] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 189  nodes = [ 189, 190] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 190  nodes = [ 190, 191] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 191  nodes = [ 191, 192] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 192  nodes = [ 192, 193] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 193  nodes = [ 193, 194] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 194  nodes = [ 194, 195] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 195  nodes = [ 195, 196] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 196  nodes = [ 196, 197] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 197  nodes = [ 197, 198] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 198  nodes = [ 198, 199] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 199  nodes = [ 199, 200] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 200  nodes = [ 200, 201] 	D =  3.9878E-02  Material = CableSteel  Factor =  8273708.4  Friction = 0.01
+ 
+ 201  nodes = [ 202, 203] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 202  nodes = [ 203, 204] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 203  nodes = [ 204, 205] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 204  nodes = [ 205, 206] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 205  nodes = [ 206, 207] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 206  nodes = [ 207, 208] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 207  nodes = [ 208, 209] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 208  nodes = [ 209, 210] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 209  nodes = [ 210, 211] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 210  nodes = [ 211, 212] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 211  nodes = [ 212, 213] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 212  nodes = [ 213, 214] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 213  nodes = [ 214, 215] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 214  nodes = [ 215, 216] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 215  nodes = [ 216, 217] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 216  nodes = [ 217, 218] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 217  nodes = [ 218, 219] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 218  nodes = [ 219, 220] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 219  nodes = [ 220, 221] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 220  nodes = [ 221, 222] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 221  nodes = [ 222, 223] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 222  nodes = [ 223, 224] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 223  nodes = [ 224, 225] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 224  nodes = [ 225, 226] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 225  nodes = [ 226, 227] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 226  nodes = [ 227, 228] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 227  nodes = [ 228, 229] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 228  nodes = [ 229, 230] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 229  nodes = [ 230, 231] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 230  nodes = [ 231, 232] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 231  nodes = [ 232, 233] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 232  nodes = [ 233, 234] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 233  nodes = [ 234, 235] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 234  nodes = [ 235, 236] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 235  nodes = [ 236, 237] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 236  nodes = [ 237, 238] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 237  nodes = [ 238, 239] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 238  nodes = [ 239, 240] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 239  nodes = [ 240, 241] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 240  nodes = [ 241, 242] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 241  nodes = [ 242, 243] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 242  nodes = [ 243, 244] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 243  nodes = [ 244, 245] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 244  nodes = [ 245, 246] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 245  nodes = [ 246, 247] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 246  nodes = [ 247, 248] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 247  nodes = [ 248, 249] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 248  nodes = [ 249, 250] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 249  nodes = [ 250, 251] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 250  nodes = [ 251, 252] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 251  nodes = [ 252, 253] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 252  nodes = [ 253, 254] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 253  nodes = [ 254, 255] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 254  nodes = [ 255, 256] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 255  nodes = [ 256, 257] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 256  nodes = [ 257, 258] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 257  nodes = [ 258, 259] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 258  nodes = [ 259, 260] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 259  nodes = [ 260, 261] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 260  nodes = [ 261, 262] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 261  nodes = [ 262, 263] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 262  nodes = [ 263, 264] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 263  nodes = [ 264, 265] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 264  nodes = [ 265, 266] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 265  nodes = [ 266, 267] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 266  nodes = [ 267, 268] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 267  nodes = [ 268, 269] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 268  nodes = [ 269, 270] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 269  nodes = [ 270, 271] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 270  nodes = [ 271, 272] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 271  nodes = [ 272, 273] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 272  nodes = [ 273, 274] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 273  nodes = [ 274, 275] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 274  nodes = [ 275, 276] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 275  nodes = [ 276, 277] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 276  nodes = [ 277, 278] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 277  nodes = [ 278, 279] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 278  nodes = [ 279, 280] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 279  nodes = [ 280, 281] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 280  nodes = [ 281, 282] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 281  nodes = [ 282, 283] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 282  nodes = [ 283, 284] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 283  nodes = [ 284, 285] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 284  nodes = [ 285, 286] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 285  nodes = [ 286, 287] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 286  nodes = [ 287, 288] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 287  nodes = [ 288, 289] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 288  nodes = [ 289, 290] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 289  nodes = [ 290, 291] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 290  nodes = [ 291, 292] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 291  nodes = [ 292, 293] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 292  nodes = [ 293, 294] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 293  nodes = [ 294, 295] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 294  nodes = [ 295, 296] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 295  nodes = [ 296, 297] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 296  nodes = [ 297, 298] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 297  nodes = [ 298, 299] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 298  nodes = [ 299, 300] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 299  nodes = [ 300, 301] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 300  nodes = [ 301, 302] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 301  nodes = [ 302, 303] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 302  nodes = [ 303, 304] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 303  nodes = [ 304, 305] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 304  nodes = [ 305, 306] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 305  nodes = [ 306, 307] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 306  nodes = [ 307, 308] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 307  nodes = [ 308, 309] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 308  nodes = [ 309, 310] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 309  nodes = [ 310, 311] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 310  nodes = [ 311, 312] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 311  nodes = [ 312, 313] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 312  nodes = [ 313, 314] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 313  nodes = [ 314, 315] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 314  nodes = [ 315, 316] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 315  nodes = [ 316, 317] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 316  nodes = [ 317, 318] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 317  nodes = [ 318, 319] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 318  nodes = [ 319, 320] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 319  nodes = [ 320, 321] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 320  nodes = [ 321, 322] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 321  nodes = [ 322, 323] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 322  nodes = [ 323, 324] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 323  nodes = [ 324, 325] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 324  nodes = [ 325, 326] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 325  nodes = [ 326, 327] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 326  nodes = [ 327, 328] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 327  nodes = [ 328, 329] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 328  nodes = [ 329, 330] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 329  nodes = [ 330, 331] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 330  nodes = [ 331, 332] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 331  nodes = [ 332, 333] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 332  nodes = [ 333, 334] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 333  nodes = [ 334, 335] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 334  nodes = [ 335, 336] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 335  nodes = [ 336, 337] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 336  nodes = [ 337, 338] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 337  nodes = [ 338, 339] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 338  nodes = [ 339, 340] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 339  nodes = [ 340, 341] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 340  nodes = [ 341, 342] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 341  nodes = [ 342, 343] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 342  nodes = [ 343, 344] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 343  nodes = [ 344, 345] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 344  nodes = [ 345, 346] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 345  nodes = [ 346, 347] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 346  nodes = [ 347, 348] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 347  nodes = [ 348, 349] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 348  nodes = [ 349, 350] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 349  nodes = [ 350, 351] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 350  nodes = [ 351, 352] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 351  nodes = [ 352, 353] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 352  nodes = [ 353, 354] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 353  nodes = [ 354, 355] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 354  nodes = [ 355, 356] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 355  nodes = [ 356, 357] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 356  nodes = [ 357, 358] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 357  nodes = [ 358, 359] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 358  nodes = [ 359, 360] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 359  nodes = [ 360, 361] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 360  nodes = [ 361, 362] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 361  nodes = [ 362, 363] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 362  nodes = [ 363, 364] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 363  nodes = [ 364, 365] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 364  nodes = [ 365, 366] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 365  nodes = [ 366, 367] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 366  nodes = [ 367, 368] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 367  nodes = [ 368, 369] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 368  nodes = [ 369, 370] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 369  nodes = [ 370, 371] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 370  nodes = [ 371, 372] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 371  nodes = [ 372, 373] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 372  nodes = [ 373, 374] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 373  nodes = [ 374, 375] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 374  nodes = [ 375, 376] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 375  nodes = [ 376, 377] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 376  nodes = [ 377, 378] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 377  nodes = [ 378, 379] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 378  nodes = [ 379, 380] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 379  nodes = [ 380, 381] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 380  nodes = [ 381, 382] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 381  nodes = [ 382, 383] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 382  nodes = [ 383, 384] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 383  nodes = [ 384, 385] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 384  nodes = [ 385, 386] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 385  nodes = [ 386, 387] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 386  nodes = [ 387, 388] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 387  nodes = [ 388, 389] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 388  nodes = [ 389, 390] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 389  nodes = [ 390, 391] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 390  nodes = [ 391, 392] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 391  nodes = [ 392, 393] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 392  nodes = [ 393, 394] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 393  nodes = [ 394, 395] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 394  nodes = [ 395, 396] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 395  nodes = [ 396, 397] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 396  nodes = [ 397, 398] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 397  nodes = [ 398, 399] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 398  nodes = [ 399, 400] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 399  nodes = [ 400, 401] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 400  nodes = [ 401, 402] 	D =  3.9878E-02  Material = CableSteel  Factor =   8273708.4  Friction = 0.01
+ 
+elements of type shell_C0_3 
+ 401   nodes = [ 403, 405, 406]   material = carrier  t =  1E-02 CONTACT=Edge Factor =  8273708.4   Friction = 0.01
+ 402   nodes = [ 403, 404, 405]    material = carrier  t =  1E-02 CONTACT=Edge Factor =  8273708.4   Friction = 0.01
