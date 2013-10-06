@@ -15,28 +15,31 @@
  * USA
  */
 package gui;
+
 import javax.media.j3d.*;
 import javax.vecmath.*;
 import com.sun.j3d.utils.geometry.*;
+
 /**
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
-public class PostProcessor_shp_xyz_z extends OrientedShape3D{//Shape3D {
-  public PostProcessor_shp_xyz_z() {
-    setCapability(Shape3D.ALLOW_GEOMETRY_READ);
-    Appearance app = new Appearance();
-    ColoringAttributes ca = new ColoringAttributes();
-    ca.setColor(new Color3f(java.awt.Color.blue));
-    app.setColoringAttributes(ca);
-    this.setAppearance(app);
-    Font3D f3d = new Font3D(new java.awt.Font("font3d", java.awt.Font.PLAIN, 6), new FontExtrusion());
-    Text3D txt_z = new Text3D(f3d, "Z", new Point3f(0,0,50));
-    txt_z.setCapability(LineArray.ALLOW_COUNT_READ);
-    txt_z.setCapability(LineArray.ALLOW_FORMAT_READ);
-    txt_z.setCapability(LineArray.ALLOW_COORDINATE_READ);
-    this.setAlignmentMode(OrientedShape3D.ROTATE_ABOUT_POINT);
-    this.setRotationPoint(new Point3f(0,0,50));
-    this.setGeometry(txt_z);
-  }
+public class PostProcessor_shp_xyz_z extends OrientedShape3D {// Shape3D {
+	public PostProcessor_shp_xyz_z() {
+		setCapability(Shape3D.ALLOW_GEOMETRY_READ);
+		Appearance app = new Appearance();
+		ColoringAttributes ca = new ColoringAttributes();
+		ca.setColor(new Color3f(java.awt.Color.blue));
+		app.setColoringAttributes(ca);
+		this.setAppearance(app);
+		Font3D f3d = new Font3D(new java.awt.Font("font3d",
+				java.awt.Font.PLAIN, 6), new FontExtrusion());
+		Text3D txt_z = new Text3D(f3d, "Z", new Point3f(0, 0, 50));
+		txt_z.setCapability(LineArray.ALLOW_COUNT_READ);
+		txt_z.setCapability(LineArray.ALLOW_FORMAT_READ);
+		txt_z.setCapability(LineArray.ALLOW_COORDINATE_READ);
+		this.setAlignmentMode(OrientedShape3D.ROTATE_ABOUT_POINT);
+		this.setRotationPoint(new Point3f(0, 0, 50));
+		this.setGeometry(txt_z);
+	}
 }

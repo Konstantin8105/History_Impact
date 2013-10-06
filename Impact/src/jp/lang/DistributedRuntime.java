@@ -20,9 +20,9 @@ import uka.karmi.rmi.server.ReplicatedObject;
 
 /**
  * @author pc58410
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class DistributedRuntime {
 
@@ -44,7 +44,7 @@ public class DistributedRuntime {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -73,7 +73,7 @@ public class DistributedRuntime {
 	 */
 	public static void setReadOnly(ReplicatedObject r, Object o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**

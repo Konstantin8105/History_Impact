@@ -20,14 +20,15 @@ import java.io.IOException;
 
 /**
  * @author pc58410
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public interface Patchable {
 
 	public void createPatch(Object copy, PatchOutput s) throws IOException;
 
-    public void applyPatch(Object copy, PatchInput s) throws IOException, ClassNotFoundException;
+	public void applyPatch(Object copy, PatchInput s) throws IOException,
+			ClassNotFoundException;
 
 }

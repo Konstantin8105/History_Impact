@@ -23,97 +23,88 @@ import run.RplVector;
 import run.TrackWriter;
 import run.Tracker;
 
-
 /**
  * Insert the type's description here. Creation date: (2001-10-31 00.44.39)
- *
+ * 
  * @author:
  */
 public class GidTrackWriter extends TrackWriter {
-    private double time;
-    private int counter;
+	private double time;
+	private int counter;
 
-    /**
-     * GidTrackWriter constructor comment.
-     */
-    public GidTrackWriter(RplVector tlist) {
-        super(tlist);
-        counter = 0;
-    }
+	/**
+	 * GidTrackWriter constructor comment.
+	 */
+	public GidTrackWriter(RplVector tlist) {
+		super(tlist);
+		counter = 0;
+	}
 
-    
-    /**
-     * This method does any nessessary checking and initializations for the
-     * writer Creation date: (23/11/01 %T)
-     */
-    public void initialize() {
-    }
+	/**
+	 * This method does any nessessary checking and initializations for the
+	 * writer Creation date: (23/11/01 %T)
+	 */
+	public void initialize() {
+	}
 
-    /**
-     * Insert the method's description here. Creation date: (07/11/01 %T)
-     */
-    public void write(double currtime) {
-        try {
-            writeResult(currtime);
-            counter++;
-        } catch (IOException ioe) {
-            System.out.println("Error during Track Writing phase:" + ioe);
+	/**
+	 * Insert the method's description here. Creation date: (07/11/01 %T)
+	 */
+	public void write(double currtime) {
+		try {
+			writeResult(currtime);
+			counter++;
+		} catch (IOException ioe) {
+			System.out.println("Error during Track Writing phase:" + ioe);
 
-            return;
-        }
-    }
+			return;
+		}
+	}
 
-    /**
-     * This method writes the calculated results from the solutions. The amount
-     * of data to be written is decided by the controlobject. Creation date:
-     * (24/11/01 %T)
-     *
-     * @exception java.io.IOException The exception description.
-     */
-    private void writeResult(double currtime)
-        throws java.io.IOException
-    {
-        int i;
-        Tracker temp_tracker;
+	/**
+	 * This method writes the calculated results from the solutions. The amount
+	 * of data to be written is decided by the controlobject. Creation date:
+	 * (24/11/01 %T)
+	 * 
+	 * @exception java.io.IOException
+	 *                The exception description.
+	 */
+	private void writeResult(double currtime) throws java.io.IOException {
+		int i;
+		Tracker temp_tracker;
 
-        /* The Graph file that GID uses is a standard ASCII file. Every line of the file is
-         *  a poit of the Graph with X and Y coordinates separated by a space. Comment lines
-         *  are also allowed and should begin with a '#'. The title of the Graph and the
-         *  labels for the X and Y axis can also be configured. If a comment line contains
-         *  the keyword 'Graf:' the string between quotes that follows this keyword will be
-         *  used as the title of the graph. The string between quotes the follows the
-         *  keyword 'X:' will be used as label for the X axis. The same is also true for
-         *  the Y axis but for the keyword 'Y:'
-         *
-         *  An example:
-         *
-         *  #" Graf: "Nodes 26, 27, .. Graf."
-         *  #
-         *  # X: "Time" Y: "Sxx Strains"
-         *  0.001  0.1234
-         *  0.002  0.1323
-         *  0.003  0.1412
-         *  # End
-         */
+		/*
+		 * The Graph file that GID uses is a standard ASCII file. Every line of
+		 * the file is a poit of the Graph with X and Y coordinates separated by
+		 * a space. Comment lines are also allowed and should begin with a '#'.
+		 * The title of the Graph and the labels for the X and Y axis can also
+		 * be configured. If a comment line contains the keyword 'Graf:' the
+		 * string between quotes that follows this keyword will be used as the
+		 * title of the graph. The string between quotes the follows the keyword
+		 * 'X:' will be used as label for the X axis. The same is also true for
+		 * the Y axis but for the keyword 'Y:'
+		 * 
+		 * An example:
+		 * 
+		 * #" Graf: "Nodes 26, 27, .. Graf." # # X: "Time" Y: "Sxx Strains"
+		 * 0.001 0.1234 0.002 0.1323 0.003 0.1412 # End
+		 */
 
-        // Loop through the tracker list and make each tracker write its data
-        for (i = 0; i < trackerlist.size(); i++) {
-            temp_tracker = (Tracker) trackerlist.elementAt(i);
+		// Loop through the tracker list and make each tracker write its data
+		for (i = 0; i < trackerlist.size(); i++) {
+			temp_tracker = (Tracker) trackerlist.elementAt(i);
 
-            if (counter == 0) {
-                temp_tracker.print_Gid(Tracker.RESULT_HEADER, currtime);
-            } else {
-                temp_tracker.print_Gid(Tracker.RESULT, currtime);
-            }
-        }
-    }
+			if (counter == 0) {
+				temp_tracker.print_Gid(Tracker.RESULT_HEADER, currtime);
+			} else {
+				temp_tracker.print_Gid(Tracker.RESULT, currtime);
+			}
+		}
+	}
 
-    /**
-     * This method checks that all mandatory parameters have been set
-     */
-    public void checkIndata()
-        throws IllegalArgumentException
-    {
-    }
+	/**
+	 * This method checks that all mandatory parameters have been set
+	 */
+	public void checkIndata() throws IllegalArgumentException {
+	}
 }
-

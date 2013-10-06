@@ -20,34 +20,38 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 /**
- *  Post Processor GUI
- *
+ * Post Processor GUI
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
 public class PostProcessorGUI extends JFrame {
-  PostProcessor post;
+	PostProcessor post;
 
-  public PostProcessorGUI() {
-    post = new PostProcessor();
-    try {
-      setTitle(post.ver);
-      getContentPane().setLayout(new BorderLayout());
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      setBounds(50,50,screenSize.width-100, screenSize.height-100);
-	  setExtendedState(JFrame.MAXIMIZED_BOTH);
-      addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {
-		  post.exit();
-          System.exit(0);
-        }
-      });
-      getContentPane().add(post, BorderLayout.CENTER);
-      show();
-    }catch(Exception e) { e.printStackTrace();}
-  }
-  public static void main(String[] args) {
-    new PostProcessorGUI();
-  }
+	public PostProcessorGUI() {
+		post = new PostProcessor();
+		try {
+			setTitle(post.ver);
+			getContentPane().setLayout(new BorderLayout());
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			setBounds(50, 50, screenSize.width - 100, screenSize.height - 100);
+			setExtendedState(JFrame.MAXIMIZED_BOTH);
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					post.exit();
+					System.exit(0);
+				}
+			});
+			getContentPane().add(post, BorderLayout.CENTER);
+			show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new PostProcessorGUI();
+	}
 }

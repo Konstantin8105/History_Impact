@@ -20,9 +20,9 @@ import Jama.Matrix;
 
 /**
  * @author pc58410
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class UnmarshalStream {
 
@@ -38,7 +38,7 @@ public class UnmarshalStream {
 	 */
 	public void request(int _size) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class UnmarshalStream {
 	 */
 	public void accept(int _size) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class UnmarshalStream {
 	 */
 	public void register(Matrix matrix, int _id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

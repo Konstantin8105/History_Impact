@@ -16,21 +16,21 @@
  */
 
 package j3d.utilities;
+
 import j3d._Object;
 
 import java.util.Comparator;
 
 public class Comparer implements Comparator {
 
-    /**
-     * @param args
-     */
-    public int compare(Object obj1, Object obj2)
-    {
-            int i1 = Integer.parseInt(((_Object)obj1).get_Id());
-            int i2 = Integer.parseInt(((_Object)obj2).get_Id());
+	/**
+	 * @param args
+	 */
+	public int compare(Object obj1, Object obj2) {
+		int i1 = Integer.parseInt(((_Object) obj1).get_Id());
+		int i2 = Integer.parseInt(((_Object) obj2).get_Id());
 
-            return Math.abs(i1) - Math.abs(i2);
-    }
+		return Math.abs(i1) - Math.abs(i2);
+	}
 
 }

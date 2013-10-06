@@ -15,71 +15,79 @@
  * USA
  */
 package util;
+
 import j3d.shp;
 
 import java.util.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
-public class QSortZ{
-   private void QuickSort(Vector v, int lo0, int hi0){
-      int lo = lo0;
-      int hi = hi0;
-      float mid;
+public class QSortZ {
+	private void QuickSort(Vector v, int lo0, int hi0) {
+		int lo = lo0;
+		int hi = hi0;
+		float mid;
 
-      if ( hi0 > lo0){
+		if (hi0 > lo0) {
 
-         /* Arbitrarily establishing partition element as the midpoint of
-          * the array.
-          */
-         mid = ((shp)v.elementAt(( lo0 + hi0 )/2)).get_Z();
+			/*
+			 * Arbitrarily establishing partition element as the midpoint of the
+			 * array.
+			 */
+			mid = ((shp) v.elementAt((lo0 + hi0) / 2)).get_Z();
 
-         // loop through the array until indices cross
-         while( lo <= hi ) {
-            /* find the first element that is greater than or equal to
-             * the partition element starting from the left Index.
-             */
-	     while( ( lo < hi0 ) && ( ((shp)v.elementAt(lo)).get_Z() < mid ))
-		 ++lo;
+			// loop through the array until indices cross
+			while (lo <= hi) {
+				/*
+				 * find the first element that is greater than or equal to the
+				 * partition element starting from the left Index.
+				 */
+				while ((lo < hi0) && (((shp) v.elementAt(lo)).get_Z() < mid))
+					++lo;
 
-            /* find an element that is smaller than or equal to
-             * the partition element starting from the right Index.
-             */
-	     while( ( hi > lo0 ) && ( ((shp)v.elementAt(hi)).get_Z() > mid ))
-		 --hi;
+				/*
+				 * find an element that is smaller than or equal to the
+				 * partition element starting from the right Index.
+				 */
+				while ((hi > lo0) && (((shp) v.elementAt(hi)).get_Z() > mid))
+					--hi;
 
-            // if the indexes have not crossed, swap
-            if( lo <= hi ) {
-               swap(v, lo, hi);
-               ++lo;
-               --hi;
-            }
-         }
+				// if the indexes have not crossed, swap
+				if (lo <= hi) {
+					swap(v, lo, hi);
+					++lo;
+					--hi;
+				}
+			}
 
-         /* If the right index has not reached the left side of array
-          * must now sort the left partition.
-          */
-         if( lo0 < hi )
-            QuickSort(v, lo0, hi);
+			/*
+			 * If the right index has not reached the left side of array must
+			 * now sort the left partition.
+			 */
+			if (lo0 < hi)
+				QuickSort(v, lo0, hi);
 
-         /* If the left index has not reached the right side of array
-          * must now sort the right partition.
-          */
-         if( lo < hi0 ) QuickSort(v, lo, hi0);
-      }
-   }
+			/*
+			 * If the left index has not reached the right side of array must
+			 * now sort the right partition.
+			 */
+			if (lo < hi0)
+				QuickSort(v, lo, hi0);
+		}
+	}
 
-   private void swap(Vector v, int i, int j){
-      Object T  = v.elementAt(i);
-      v.setElementAt(v.elementAt(j),i);
-      v.setElementAt(T,j);
-   }
+	private void swap(Vector v, int i, int j) {
+		Object T = v.elementAt(i);
+		v.setElementAt(v.elementAt(j), i);
+		v.setElementAt(T, j);
+	}
 
-   public void sort(Vector v){
-      QuickSort(v, 0, v.size()-1);
-   }
+	public void sort(Vector v) {
+		QuickSort(v, 0, v.size() - 1);
+	}
 
 }

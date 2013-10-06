@@ -30,77 +30,73 @@ import run.Node;
 import run.RplVector;
 import run.Writer;
 
-
 /**
  * Insert the type's description here. Creation date: (2001-10-31 00.44.39)
- *
+ * 
  * @author:
  */
 public class FembicWriter extends Writer {
-    private RplVector constraintlist;
-    private Controlset controlset;
-    private RplVector loadlist;
-    private RplVector materiallist;
+	private RplVector constraintlist;
+	private Controlset controlset;
+	private RplVector loadlist;
+	private RplVector materiallist;
 
+	/**
+	 * FembicWriter constructor comment.
+	 */
+	public FembicWriter(RplVector nlist, RplVector elist) {
+		super(nlist, elist);
+	}
 
-    /**
-     * FembicWriter constructor comment.
-     */
-    public FembicWriter(RplVector nlist, RplVector elist) {
-        super(nlist, elist);
-    }
+	public FembicWriter(RplVector nlist, RplVector elist, Controlset cset,
+			RplVector clist, RplVector mlist, RplVector llist) {
+		super(nlist, elist);
+		constraintlist = clist;
+		controlset = cset;
+		loadlist = llist;
+		materiallist = mlist;
+	}
 
-    public FembicWriter(RplVector nlist, RplVector elist, Controlset cset, RplVector clist ,RplVector mlist, RplVector llist) {
-        super(nlist, elist);
-        constraintlist = clist;
-        controlset = cset;
-        loadlist = llist;
-        materiallist = mlist;
-    }
+	/**
+	 * Insert the method's description here. Creation date: (23/11/01 %T)
+	 */
+	private void open() {
+	}
 
+	/**
+	 * This method does any nessessary checking and initializations for the
+	 * writer Creation date: (23/11/01 %T)
+	 */
+	public void initialize() {
+	}
 
-    /**
-     * Insert the method's description here. Creation date: (23/11/01 %T)
-     */
-    private void open() {
-    }
+	/**
+	 * Insert the method's description here. Creation date: (07/11/01 %T)
+	 */
+	public void write(String fname, double currtime) throws java.io.IOException {
+		int i;
+		int j;
+		int k;
+		String type;
+		Element temp_element;
+		Node temp_node;
+		Load temp_load;
+		Constraint temp_constraint;
+		Material temp_material;
 
-    /**
-     * This method does any nessessary checking and initializations for the
-     * writer Creation date: (23/11/01 %T)
-     */
-    public void initialize() {
-    }
+		try {
 
-    /**
-     * Insert the method's description here. Creation date: (07/11/01 %T)
-     */
-    public void write(String fname, double currtime) throws java.io.IOException {
-        int i;
-        int j;
-        int k;
-        String type;
-        Element temp_element;
-        Node temp_node;
-        Load temp_load;
-        Constraint temp_constraint;
-        Material temp_material;
+			// Open a file to write to
+			BufferedWriter bw = new BufferedWriter(new FileWriter(fname));
 
+			bw.write("# This file has been translated into Fembic format\n");
+			bw.write("# by Impact acting as a translator. \n");
+			bw.write("# \n");
 
-        try {
+			// Start by writing all the nodes
+			bw.write("\nNODES\n");
 
-        // Open a file to write to
-        BufferedWriter bw = new BufferedWriter( new FileWriter(fname) );
-
-
-        bw.write("# This file has been translated into Fembic format\n");
-        bw.write("# by Impact acting as a translator. \n");
-        bw.write("# \n");
-
-		// Start by writing all the nodes
-        bw.write("\nNODES\n");
-
-             for (k = 0; k < nodelist.size(); k++) {
+			for (k = 0; k < nodelist.size(); k++) {
 
 				temp_node = (Node) nodelist.elementAt(k);
 
@@ -124,165 +120,164 @@ public class FembicWriter extends Writer {
 				}
 			}
 
-        bw.write("\n");
-		
+			bw.write("\n");
 
-		// Time to write all the elements.
-        // Loop through the element list and make each element of a new type
-		// write its header
+			// Time to write all the elements.
+			// Loop through the element list and make each element of a new type
+			// write its header
 
-        for (i = 0; i < elementlist.size(); i++) {
-            temp_element = (Element) elementlist.elementAt(i);
+			for (i = 0; i < elementlist.size(); i++) {
+				temp_element = (Element) elementlist.elementAt(i);
 
-            if (! temp_element.isProcessed()) {
+				if (!temp_element.isProcessed()) {
 
-                // We have found an unprocessed element. Print a subheader and then all data from elements of same type.
-                type = temp_element.getType();
-                bw.write("\nELEMENTS OF TYPE " + type);
-                bw.write("\n");
+					// We have found an unprocessed element. Print a subheader
+					// and then all data from elements of same type.
+					type = temp_element.getType();
+					bw.write("\nELEMENTS OF TYPE " + type);
+					bw.write("\n");
 
-                // Now, run through the array, print element data and try to find elements of the same type and mark as processed
+					// Now, run through the array, print element data and try to
+					// find elements of the same type and mark as processed
 
-                for (j = i; j < elementlist.size(); j++) {
-                    temp_element = (Element) elementlist.elementAt(j);
+					for (j = i; j < elementlist.size(); j++) {
+						temp_element = (Element) elementlist.elementAt(j);
 
-                    if (
-                        (temp_element.getType().equals(type)) &&
-                        ! temp_element.isProcessed()
-                    ) {
-                        bw.write(temp_element.print_Fembic(Element.MESH, 0));
-                        temp_element.setProcessed(true);
-                    }
-                }
+						if ((temp_element.getType().equals(type))
+								&& !temp_element.isProcessed()) {
+							bw.write(temp_element.print_Fembic(Element.MESH, 0));
+							temp_element.setProcessed(true);
+						}
+					}
 
-            }
-        }
+				}
+			}
 
-        // Finished writing elements. Now set them as unprocessed.
-        for (k = 0; k < elementlist.size(); k++) {
-            ((Element) elementlist.elementAt(k)).setProcessed(false);
-        }
+			// Finished writing elements. Now set them as unprocessed.
+			for (k = 0; k < elementlist.size(); k++) {
+				((Element) elementlist.elementAt(k)).setProcessed(false);
+			}
 
-		// Start by writing all the loads
-        
-        if (loadlist.size() > 0) {
-        bw.write("\nLOADS\n");
+			// Start by writing all the loads
 
-             for (k = 0; k < loadlist.size(); k++) {
-             	
-             	temp_load = (Load) loadlist.elementAt(k);
-             	
-                bw.write( temp_load.getName() + " \t" );
-                bw.write( temp_load.print_Fembic(Element.MESH) + " \t" );
+			if (loadlist.size() > 0) {
+				bw.write("\nLOADS\n");
 
-             }
+				for (k = 0; k < loadlist.size(); k++) {
 
-        bw.write("\n");
-        }
+					temp_load = (Load) loadlist.elementAt(k);
 
-		// Time to write all the constraints.
-        // Loop through the constraint list and make each constraint of a new type write its header
+					bw.write(temp_load.getName() + " \t");
+					bw.write(temp_load.print_Fembic(Element.MESH) + " \t");
 
-		if (constraintlist.size() > 0)
-        for (i = 0; i < constraintlist.size(); i++) {
-            temp_constraint = (Constraint) constraintlist.elementAt(i);
+				}
 
-            if (! temp_constraint.isProcessed()) {
+				bw.write("\n");
+			}
 
-                // We have found an unprocessed element. Print a subheader and then all data from elements of same type.
-                type = temp_constraint.getType();
-                bw.write("\nCONSTRAINTS OF TYPE " + type);
-                bw.write("\n");
+			// Time to write all the constraints.
+			// Loop through the constraint list and make each constraint of a
+			// new type write its header
 
-                // Now, run through the array, print constraint data and try to find constraints of the same type and mark as processed
+			if (constraintlist.size() > 0)
+				for (i = 0; i < constraintlist.size(); i++) {
+					temp_constraint = (Constraint) constraintlist.elementAt(i);
 
-                for (j = i; j < constraintlist.size(); j++) {
-                    temp_constraint = (Constraint) constraintlist.elementAt(j);
+					if (!temp_constraint.isProcessed()) {
 
-                    if (
-                        (temp_constraint.getType().equals(type)) &&
-                        ! temp_constraint.isProcessed()
-                    ) {
-                        bw.write(temp_constraint.print_Fembic(Element.MESH));
-                        temp_constraint.setProcessed(true);
-                    }
-                }
+						// We have found an unprocessed element. Print a
+						// subheader and then all data from elements of same
+						// type.
+						type = temp_constraint.getType();
+						bw.write("\nCONSTRAINTS OF TYPE " + type);
+						bw.write("\n");
 
-            }
-        }
+						// Now, run through the array, print constraint data and
+						// try to find constraints of the same type and mark as
+						// processed
 
-        // Finished writing elements. Now set them as unprocessed.
-        for (k = 0; k < constraintlist.size(); k++) {
-            ((Constraint) constraintlist.elementAt(k)).setProcessed(false);
-        }
+						for (j = i; j < constraintlist.size(); j++) {
+							temp_constraint = (Constraint) constraintlist
+									.elementAt(j);
 
+							if ((temp_constraint.getType().equals(type))
+									&& !temp_constraint.isProcessed()) {
+								bw.write(temp_constraint
+										.print_Fembic(Element.MESH));
+								temp_constraint.setProcessed(true);
+							}
+						}
 
-		// Time to write all the materials.
-        // Loop through the material list and make each material of a new type write its header
+					}
+				}
 
-        for (i = 0; i < materiallist.size(); i++) {
-            temp_material = (Material) materiallist.elementAt(i);
+			// Finished writing elements. Now set them as unprocessed.
+			for (k = 0; k < constraintlist.size(); k++) {
+				((Constraint) constraintlist.elementAt(k)).setProcessed(false);
+			}
 
-            if (! temp_material.isProcessed()) {
+			// Time to write all the materials.
+			// Loop through the material list and make each material of a new
+			// type write its header
 
-                // We have found an unprocessed material. Print a subheader and then all data from materials of same type.
-                type = temp_material.getType();
-                bw.write("\nMATERIALS OF TYPE " + type);
-                bw.write("\n");
+			for (i = 0; i < materiallist.size(); i++) {
+				temp_material = (Material) materiallist.elementAt(i);
 
-                // Now, run through the array, print material data and try to find materials of the same type and mark as processed
+				if (!temp_material.isProcessed()) {
 
-                for (j = i; j < materiallist.size(); j++) {
-                    temp_material = (Material) materiallist.elementAt(j);
+					// We have found an unprocessed material. Print a subheader
+					// and then all data from materials of same type.
+					type = temp_material.getType();
+					bw.write("\nMATERIALS OF TYPE " + type);
+					bw.write("\n");
 
-                    if (
-                        (temp_material.getType().equals(type)) &&
-                        ! temp_material.isProcessed()
-                    ) {
-                        bw.write(temp_material.print_Fembic(Element.MESH));
-                        temp_material.setProcessed(true);
-                    }
-                }
+					// Now, run through the array, print material data and try
+					// to find materials of the same type and mark as processed
 
-            }
-        }
+					for (j = i; j < materiallist.size(); j++) {
+						temp_material = (Material) materiallist.elementAt(j);
 
-        // Finished writing materials. Now set them as unprocessed.
-        for (k = 0; k < materiallist.size(); k++) {
-            ((Material) materiallist.elementAt(k)).setProcessed(false);
-        }
+						if ((temp_material.getType().equals(type))
+								&& !temp_material.isProcessed()) {
+							bw.write(temp_material.print_Fembic(Element.MESH));
+							temp_material.setProcessed(true);
+						}
+					}
 
+				}
+			}
 
+			// Finished writing materials. Now set them as unprocessed.
+			for (k = 0; k < materiallist.size(); k++) {
+				((Material) materiallist.elementAt(k)).setProcessed(false);
+			}
 
-		// Write controlset
-        bw.write("\nCONTROLS\n");
-		bw.write(controlset.print_Fembic(Element.MESH));
+			// Write controlset
+			bw.write("\nCONTROLS\n");
+			bw.write(controlset.print_Fembic(Element.MESH));
 
+			// finished! flush and close.
+			bw.flush();
+			bw.close();
 
-        // finished! flush and close.
-        bw.flush();
-        bw.close();
+		} catch (IOException ioe) {
+			System.out.println(ioe);
+		}
 
-        } catch (IOException ioe) {
-            System.out.println(ioe);
-        }
+	}
 
- }
+	/**
+	 * Dummy method. This will never happen. Used only for translator.
+	 */
+	public void writeParallel(String fname, double time, int[] indicies,
+			Barrier barrier, int client_nr, int nr_of_clients)
+			throws java.io.IOException {
 
-    /**
-     * Dummy method. This will never happen. Used only for translator.
-     */
-    public void writeParallel(String fname, double time, int[] indicies, Barrier barrier, int client_nr, int nr_of_clients) throws java.io.IOException {
-    	
-    }
+	}
 
-    
-    /**
-     * This method checks that all mandatory parameters have been set
-     */
-    public void checkIndata()
-        throws IllegalArgumentException
-    {
-    }
+	/**
+	 * This method checks that all mandatory parameters have been set
+	 */
+	public void checkIndata() throws IllegalArgumentException {
+	}
 }
-

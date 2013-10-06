@@ -20,23 +20,35 @@ import java.awt.*;
 import java.awt.geom.*;
 
 import javax.media.opengl.GL;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
-public interface shp{
-  public void transform2D(Matrix3D trans, Vector3D cor, Canvas3D J3D);
-  public void paint(Graphics2D g, Canvas3D j3d);
-  public void paintGL(GL gl, Graphics2D g2D, Canvas3D j3d, float rcx, float rcy, float rcz, float scale);
-  public float get_Z();
-  public boolean isPickPoint(int x, int y, boolean openGL);
-  public boolean isPickPoint(Rectangle2D r, boolean openGL);
-  public void setPicked(boolean selected);
-  public void setShow(boolean s);
-  public boolean isShow();
-  public float[] getBoundaries();
-  public float[] get2DBoundaries();
-  
+public interface shp {
+	public void transform2D(Matrix3D trans, Vector3D cor, Canvas3D J3D);
+
+	public void paint(Graphics2D g, Canvas3D j3d);
+
+	public void paintGL(GL gl, Graphics2D g2D, Canvas3D j3d, float rcx,
+			float rcy, float rcz, float scale);
+
+	public float get_Z();
+
+	public boolean isPickPoint(int x, int y, boolean openGL);
+
+	public boolean isPickPoint(Rectangle2D r, boolean openGL);
+
+	public void setPicked(boolean selected);
+
+	public void setShow(boolean s);
+
+	public boolean isShow();
+
+	public float[] getBoundaries();
+
+	public float[] get2DBoundaries();
+
 }

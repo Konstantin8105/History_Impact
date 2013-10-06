@@ -23,442 +23,412 @@ import run.elements.*;
 
 import java.io.*;
 
-
 /**
  * This tracker reads the force or moment in a spring element and plots this
  * into a file as a function of time.
- *
+ * 
  * @author Jonas Forssell, Yuriy Mikhaylovskiy
- *
+ * 
  * @see Tracker, TrackWriter, GidTrackWriter
  */
 public class BeamSpringTracker extends Tracker {
-    private static int TYPE = 10;
-    private Beam_Spring_2 spring;
-    private int component;
-    private boolean Element_is_set;
-    private boolean File_is_set;
-    private boolean Target_is_set;
-    private boolean Component_is_set;
-
-    /**
-     * Constructor
-     */
-    public BeamSpringTracker() {
-        component = 0; // By default, collect the spring Fx force.
-    }
-
-    /**
-     * Collects the data from the nodes
-     */
-    public void collectData()
-        throws IllegalArgumentException
-    {
-        // No data needs to be continuously collected so this is empty.
-        // Data is only collected just before printing.
-    }
-
-    /**
-     * Collects the data from the nodes only on request at printtime.
-     */
-    private void collectOwnData()
-        throws IllegalArgumentException
-    {
-        // Calculate the distance by collecting positions from the nodes.
-        switch (component) {
-        case 0:
-            result = spring.getFx();
-
-            break;
-
-        case 1:
-            result = spring.getFy();
-
-            break;
-
-        case 2:
-            result = spring.getFz();
-
-            break;
-
-        case 3:
-            result = spring.getMx();
-
-            break;
-
-        case 4:
-            result = spring.getMy();
-
-            break;
-
-        case 5:
-            result = spring.getMz();
-
-            break;
-
-        default:
-            result = 0;
-        }
-    }
-
-    /**
-     * Calculates results based on collected data.
-     */
-    public void calculate() {
-        // No calculation needed. Already done in collection stage. 
-    }
-
-    /**
-     * This method checks the data in the indatafile and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param run.Token[] - An array containing the text to be parsed but
-     *        split into tokens.
-     * @param lineno int - The line number of the indata file being parsed
-     * @param globalnodelist java.util.Vector - A vector containing all the
-     *        nodes in the solution. This resides in the ModelSmp object.
-     * @param globalelementlist java.util.Vector - A vector containing all the
-     *        elements in the solution. This resides in the ModelSmp object.
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Fembic(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-        int number_of_elements;
-        int j;
-        Jama.Matrix dummy = new Jama.Matrix(3, 1);
-        int i = 0;
-
-        while (i < param.length) {
-            // The element is defined
-            if (
-                param[i].getw().toUpperCase().equals("ELEMENT") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the element is defined in param3, with the format
-                // [elementnr]
-                if (
-                    ! param[i + 2].getw().toUpperCase().startsWith("[") ||
-                    ! param[i + 2].getw().toUpperCase().endsWith("]")
-                ) {
-                    throw new java.text.ParseException(
-                        "Error, element number definition should be [elementnr]",
-                        lineno
-                    );
-                }
-
-                // Ok, now find the numbers
-                try {
-                    number_of_elements = super.getNumberOfNodes(
-                            param[i + 2].getw().toUpperCase()
-                        );
-
-                    if (number_of_elements != 1) {
-                        throw new java.text.ParseException(
-                            "Illegal number of elements defined. Only one allowed",
-                            lineno
-                        );
-                    }
-
-                    // Now, find the element
-                    spring = (Beam_Spring_2) super.findElement(
-                            super.getNodeNumber(
-                                1, param[i + 2].getw().toUpperCase()
-                            ), globalelementlist
-                        );
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e + "In line " + lineno);
-                }
-
-                i += 3;
-                Element_is_set = true;
-            } else
-            // A target for the tracker is set
-            if (
-                param[i].getw().toUpperCase().equals("TARGET") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the node is delivered in param3, with the simple nodenumber
-                if (param[i + 2].is_a_number()) {
-                    throw new java.text.ParseException(
-                        "Illegal argument, Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
-                        lineno
-                    );
-                }
-
-                try {
-                    targettime = super.getNumber(
-                            1, param[i + 2].getw().toUpperCase()
-                        );
-                    timetolerance = super.getNumber(
-                            2, param[i + 2].getw().toUpperCase()
-                        );
-                    target = super.getNumber(
-                            3, param[i + 2].getw().toUpperCase()
-                        );
-                    tolerance = super.getNumber(
-                            4, param[i + 2].getw().toUpperCase()
-                        );
-                } catch (IllegalArgumentException e) {
-                    throw new java.text.ParseException(
-                        "Illegal argument or value missing; Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
-                        lineno
-                    );
-                }
-
-                i += 3;
-                Target_is_set = true;
-            } else
-            // The type of data to collect should be defined.
-            if (
-                param[i].getw().toUpperCase().equals("FILENAME") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the material name is delivered in param3
-                filename = new String(param[i + 2].getw().trim());
-                i += 3;
-                File_is_set = true;
-            } else
-            // The filename of the tracker is defined
-            if (
-                param[i].getw().toUpperCase().equals("COMPONENT") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the component name is delivered in param3
-                if (param[i + 2].getw().trim().toUpperCase().equals("FX")) {
-                    component = 0;
-                } else if (
-                    param[i + 2].getw().trim().toUpperCase().equals("FY")
-                ) {
-                    component = 1;
-                } else if (
-                    param[i + 2].getw().trim().toUpperCase().equals("FZ")
-                ) {
-                    component = 2;
-                } else if (
-                    param[i + 2].getw().trim().toUpperCase().equals("MX")
-                ) {
-                    component = 3;
-                } else if (
-                    param[i + 2].getw().trim().toUpperCase().equals("MY")
-                ) {
-                    component = 4;
-                } else if (
-                    param[i + 2].getw().trim().toUpperCase().equals("MZ")
-                ) {
-                    component = 5;
-                }
-
-                i += 3;
-                Component_is_set = true;
-            } else {
-                // Neither element nor filename is defined. Then the parameter is wrong.
-                throw new java.text.ParseException(
-                    "Unknown Tracker parameter ", lineno
-                );
-            }
-        }
-    }
-
-    /**
-     * This method checks the data in the indatafile in Nastran format and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param run.Token[] - An array containing the text to be parsed but
-     *        split into tokens.
-     * @param lineno int - The line number of the indata file being parsed
-     * @param globalnodelist java.util.Vector - A vector containing all the
-     *        nodes in the solution. This resides in the ModelSmp object.
-     * @param globalelementlist java.util.Vector - A vector containing all the
-     *        elements in the solution. This resides in the ModelSmp object.
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Nastran(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-    }
+	private static int TYPE = 10;
+	private Beam_Spring_2 spring;
+	private int component;
+	private boolean Element_is_set;
+	private boolean File_is_set;
+	private boolean Target_is_set;
+	private boolean Component_is_set;
 
 	/**
-     * This method checks the data in the indatafile in Nastran format and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param run.Token[] - An array containing the text to be parsed but
-     *        split into tokens.
-     * @param lineno int - The line number of the indata file being parsed
-     * @param globalnodelist java.util.Vector - A vector containing all the
-     *        nodes in the solution. This resides in the ModelSmp object.
-     * @param globalelementlist java.util.Vector - A vector containing all the
-     *        elements in the solution. This resides in the ModelSmp object.
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Gmsh(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-    }
+	 * Constructor
+	 */
+	public BeamSpringTracker() {
+		component = 0; // By default, collect the spring Fx force.
+	}
 
+	/**
+	 * Collects the data from the nodes
+	 */
+	public void collectData() throws IllegalArgumentException {
+		// No data needs to be continuously collected so this is empty.
+		// Data is only collected just before printing.
+	}
 
+	/**
+	 * Collects the data from the nodes only on request at printtime.
+	 */
+	private void collectOwnData() throws IllegalArgumentException {
+		// Calculate the distance by collecting positions from the nodes.
+		switch (component) {
+		case 0:
+			result = spring.getFx();
 
+			break;
 
+		case 1:
+			result = spring.getFy();
 
-    /**
-     * This method checks that all mandatory parameters have been set
-     */
-    public void checkIndata()
-        throws IllegalArgumentException
-    {
-        if (! Element_is_set) {
-            throw new IllegalArgumentException(
-                "No element defined for this SpringTracker: " + number
-            );
-        }
+			break;
 
-        if (! File_is_set) {
-            throw new IllegalArgumentException(
-                "No Filename defined for this SpringTracker: " + number
-            );
-        }
-    }
+		case 2:
+			result = spring.getFz();
 
-    /**
-     * This method is used to create the lines needed in the result file. The
-     * method creates a string which is printed directly. However, due to the
-     * fact that the line may be different depending on what is requested to
-     * be printed and that the number of methods should be kept down, the
-     * first parameter here is a control parameter. This parameter describes
-     * what should be printed. The second parameter is the current time.
-     *
-     * @param ctrl int - A control parameter, used to control the printing of a
-     *        result or header file.
-     * @param currtime int - The current solution time.
-     */
-    public void print_Gid(int ctrl, double currtime)
-        throws IOException, IllegalArgumentException
-    {
-    	BufferedWriter bw;
-    	// Start by collecting data (needed here since it is not done continuously
-        collectOwnData();
+			break;
 
-        // Check for target and if reached, write this into target file
-        if (Target_is_set) {
-            if (super.checkTarget(currtime)) {
-                try {
-                    bw = new BufferedWriter(
-                            new FileWriter(filename + ".target", true)
-                        );
+		case 3:
+			result = spring.getMx();
 
-                    // OK, file was openend allright. Now, proceed to write the results.
-                    bw.write(
-                        "Target was reached at time: " + currtime +
-                        " with result: " + result + "\n"
-                    );
-                    bw.flush();
-                    bw.close();
-                } catch (IOException ioe) {
-                    System.out.println(
-                        "Error in writing target result file: " + filename +
-                        ".target"
-                    );
-                    throw ioe;
-                }
-            }
-        }
+			break;
 
-        // Now proceed
-        String out;
-        int i;
+		case 4:
+			result = spring.getMy();
 
-        switch (ctrl) {
-        case RESULT_HEADER:
+			break;
 
-            /* This is the first time the tracker is asked to write something. Therefore, a
-             * header is suitable to start with and the file should be created */
-            try {
-                bw = new BufferedWriter(new FileWriter(filename));
+		case 5:
+			result = spring.getMz();
 
-                // OK, file was openend allright. Now, proceed to write the header.
-                out = new String(
-                        "# Impact SpringTracker results from tracker number: " +
-                        number + "\n"
-                    );
-                out += "# The following element is read in the section:\n";
-                out += "# \n# ";
-                out += (spring.getNumber() + ": ");
-                out += "\n# \n";
-                out += "# X: time \t Y: spring force or moment: ";
-                out += "\n#\n";
-                bw.write(out);
-                bw.flush();
-                bw.close();
-            } catch (IOException ioe) {
-                System.out.println(
-                    "Error in creating the SpringTracker file: " + filename
-                );
-                throw ioe;
-            }
+			break;
 
-            // If all goes well, we should just return.
-            return;
+		default:
+			result = 0;
+		}
+	}
 
-        case RESULT:
+	/**
+	 * Calculates results based on collected data.
+	 */
+	public void calculate() {
+		// No calculation needed. Already done in collection stage.
+	}
 
-            /* This is not the first time the tracker is asked to write something. Therefore, the
-             * file must be opened for append. */
-            try {
-                bw = new BufferedWriter(new FileWriter(filename, true));
+	/**
+	 * This method checks the data in the indatafile and sets the corresponding
+	 * parameters for the Tracker. It is defined in the element due to the fact
+	 * of isolating the Tracker from the main program, thus making adding a new
+	 * Tracker a simpler issue. Creation date: (08/09/01 %T)
+	 * 
+	 * @param param
+	 *            run.Token[] - An array containing the text to be parsed but
+	 *            split into tokens.
+	 * @param lineno
+	 *            int - The line number of the indata file being parsed
+	 * @param globalnodelist
+	 *            java.util.Vector - A vector containing all the nodes in the
+	 *            solution. This resides in the ModelSmp object.
+	 * @param globalelementlist
+	 *            java.util.Vector - A vector containing all the elements in the
+	 *            solution. This resides in the ModelSmp object.
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Fembic(Token[] param, int lineno,
+			RplVector globalnodelist, RplVector globalelementlist)
+			throws java.text.ParseException {
+		int number_of_elements;
+		int j;
+		Jama.Matrix dummy = new Jama.Matrix(3, 1);
+		int i = 0;
 
-                // OK, file was openend allright. Now, proceed to write the results.
-                bw.write(currtime + "\t" + result + "\n");
-                bw.flush();
-                bw.close();
-            } catch (IOException ioe) {
-                System.out.println(
-                    "Error in writing results to the SpringTracker file: " +
-                    filename
-                );
-                throw ioe;
-            }
+		while (i < param.length) {
+			// The element is defined
+			if (param[i].getw().toUpperCase().equals("ELEMENT")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the element is defined in param3, with the
+				// format
+				// [elementnr]
+				if (!param[i + 2].getw().toUpperCase().startsWith("[")
+						|| !param[i + 2].getw().toUpperCase().endsWith("]")) {
+					throw new java.text.ParseException(
+							"Error, element number definition should be [elementnr]",
+							lineno);
+				}
 
-            // If everything went well, we will just return.
-            return;
+				// Ok, now find the numbers
+				try {
+					number_of_elements = super.getNumberOfNodes(param[i + 2]
+							.getw().toUpperCase());
 
-        default:
-            throw new IllegalArgumentException(
-                "Unknown parameter for print_Gid in SpringTracker number: " +
-                number
-            );
-        }
-    }
+					if (number_of_elements != 1) {
+						throw new java.text.ParseException(
+								"Illegal number of elements defined. Only one allowed",
+								lineno);
+					}
 
-    /**
-     * Sets up any initial conditions needed. Creation date: (27/09/01 %T)
-     */
-    public void setInitialConditions() {
-    }
+					// Now, find the element
+					spring = (Beam_Spring_2) super.findElement(
+							super.getNodeNumber(1, param[i + 2].getw()
+									.toUpperCase()), globalelementlist);
+				} catch (IllegalArgumentException e) {
+					System.out.println(e + "In line " + lineno);
+				}
 
-    /**
-     * Returns the tracker type number The type variable is defined in the
-     * superclass Tracker
-     */
-    public int getType() {
-        return TYPE;
-    }
+				i += 3;
+				Element_is_set = true;
+			} else
+			// A target for the tracker is set
+			if (param[i].getw().toUpperCase().equals("TARGET")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the node is delivered in param3, with the
+				// simple nodenumber
+				if (param[i + 2].is_a_number()) {
+					throw new java.text.ParseException(
+							"Illegal argument, Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
+							lineno);
+				}
+
+				try {
+					targettime = super.getNumber(1, param[i + 2].getw()
+							.toUpperCase());
+					timetolerance = super.getNumber(2, param[i + 2].getw()
+							.toUpperCase());
+					target = super.getNumber(3, param[i + 2].getw()
+							.toUpperCase());
+					tolerance = super.getNumber(4, param[i + 2].getw()
+							.toUpperCase());
+				} catch (IllegalArgumentException e) {
+					throw new java.text.ParseException(
+							"Illegal argument or value missing; Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
+							lineno);
+				}
+
+				i += 3;
+				Target_is_set = true;
+			} else
+			// The type of data to collect should be defined.
+			if (param[i].getw().toUpperCase().equals("FILENAME")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the material name is delivered in param3
+				filename = new String(param[i + 2].getw().trim());
+				i += 3;
+				File_is_set = true;
+			} else
+			// The filename of the tracker is defined
+			if (param[i].getw().toUpperCase().equals("COMPONENT")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the component name is delivered in param3
+				if (param[i + 2].getw().trim().toUpperCase().equals("FX")) {
+					component = 0;
+				} else if (param[i + 2].getw().trim().toUpperCase()
+						.equals("FY")) {
+					component = 1;
+				} else if (param[i + 2].getw().trim().toUpperCase()
+						.equals("FZ")) {
+					component = 2;
+				} else if (param[i + 2].getw().trim().toUpperCase()
+						.equals("MX")) {
+					component = 3;
+				} else if (param[i + 2].getw().trim().toUpperCase()
+						.equals("MY")) {
+					component = 4;
+				} else if (param[i + 2].getw().trim().toUpperCase()
+						.equals("MZ")) {
+					component = 5;
+				}
+
+				i += 3;
+				Component_is_set = true;
+			} else {
+				// Neither element nor filename is defined. Then the parameter
+				// is wrong.
+				throw new java.text.ParseException(
+						"Unknown Tracker parameter ", lineno);
+			}
+		}
+	}
+
+	/**
+	 * This method checks the data in the indatafile in Nastran format and sets
+	 * the corresponding parameters for the Tracker. It is defined in the
+	 * element due to the fact of isolating the Tracker from the main program,
+	 * thus making adding a new Tracker a simpler issue. Creation date:
+	 * (08/09/01 %T)
+	 * 
+	 * @param param
+	 *            run.Token[] - An array containing the text to be parsed but
+	 *            split into tokens.
+	 * @param lineno
+	 *            int - The line number of the indata file being parsed
+	 * @param globalnodelist
+	 *            java.util.Vector - A vector containing all the nodes in the
+	 *            solution. This resides in the ModelSmp object.
+	 * @param globalelementlist
+	 *            java.util.Vector - A vector containing all the elements in the
+	 *            solution. This resides in the ModelSmp object.
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Nastran(Token[] param, int lineno,
+			RplVector globalnodelist, RplVector globalelementlist)
+			throws java.text.ParseException {
+	}
+
+	/**
+	 * This method checks the data in the indatafile in Nastran format and sets
+	 * the corresponding parameters for the Tracker. It is defined in the
+	 * element due to the fact of isolating the Tracker from the main program,
+	 * thus making adding a new Tracker a simpler issue. Creation date:
+	 * (08/09/01 %T)
+	 * 
+	 * @param param
+	 *            run.Token[] - An array containing the text to be parsed but
+	 *            split into tokens.
+	 * @param lineno
+	 *            int - The line number of the indata file being parsed
+	 * @param globalnodelist
+	 *            java.util.Vector - A vector containing all the nodes in the
+	 *            solution. This resides in the ModelSmp object.
+	 * @param globalelementlist
+	 *            java.util.Vector - A vector containing all the elements in the
+	 *            solution. This resides in the ModelSmp object.
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Gmsh(Token[] param, int lineno, RplVector globalnodelist,
+			RplVector globalelementlist) throws java.text.ParseException {
+	}
+
+	/**
+	 * This method checks that all mandatory parameters have been set
+	 */
+	public void checkIndata() throws IllegalArgumentException {
+		if (!Element_is_set) {
+			throw new IllegalArgumentException(
+					"No element defined for this SpringTracker: " + number);
+		}
+
+		if (!File_is_set) {
+			throw new IllegalArgumentException(
+					"No Filename defined for this SpringTracker: " + number);
+		}
+	}
+
+	/**
+	 * This method is used to create the lines needed in the result file. The
+	 * method creates a string which is printed directly. However, due to the
+	 * fact that the line may be different depending on what is requested to be
+	 * printed and that the number of methods should be kept down, the first
+	 * parameter here is a control parameter. This parameter describes what
+	 * should be printed. The second parameter is the current time.
+	 * 
+	 * @param ctrl
+	 *            int - A control parameter, used to control the printing of a
+	 *            result or header file.
+	 * @param currtime
+	 *            int - The current solution time.
+	 */
+	public void print_Gid(int ctrl, double currtime) throws IOException,
+			IllegalArgumentException {
+		BufferedWriter bw;
+		// Start by collecting data (needed here since it is not done
+		// continuously
+		collectOwnData();
+
+		// Check for target and if reached, write this into target file
+		if (Target_is_set) {
+			if (super.checkTarget(currtime)) {
+				try {
+					bw = new BufferedWriter(new FileWriter(
+							filename + ".target", true));
+
+					// OK, file was openend allright. Now, proceed to write the
+					// results.
+					bw.write("Target was reached at time: " + currtime
+							+ " with result: " + result + "\n");
+					bw.flush();
+					bw.close();
+				} catch (IOException ioe) {
+					System.out.println("Error in writing target result file: "
+							+ filename + ".target");
+					throw ioe;
+				}
+			}
+		}
+
+		// Now proceed
+		String out;
+		int i;
+
+		switch (ctrl) {
+		case RESULT_HEADER:
+
+			/*
+			 * This is the first time the tracker is asked to write something.
+			 * Therefore, a header is suitable to start with and the file should
+			 * be created
+			 */
+			try {
+				bw = new BufferedWriter(new FileWriter(filename));
+
+				// OK, file was openend allright. Now, proceed to write the
+				// header.
+				out = new String(
+						"# Impact SpringTracker results from tracker number: "
+								+ number + "\n");
+				out += "# The following element is read in the section:\n";
+				out += "# \n# ";
+				out += (spring.getNumber() + ": ");
+				out += "\n# \n";
+				out += "# X: time \t Y: spring force or moment: ";
+				out += "\n#\n";
+				bw.write(out);
+				bw.flush();
+				bw.close();
+			} catch (IOException ioe) {
+				System.out.println("Error in creating the SpringTracker file: "
+						+ filename);
+				throw ioe;
+			}
+
+			// If all goes well, we should just return.
+			return;
+
+		case RESULT:
+
+			/*
+			 * This is not the first time the tracker is asked to write
+			 * something. Therefore, the file must be opened for append.
+			 */
+			try {
+				bw = new BufferedWriter(new FileWriter(filename, true));
+
+				// OK, file was openend allright. Now, proceed to write the
+				// results.
+				bw.write(currtime + "\t" + result + "\n");
+				bw.flush();
+				bw.close();
+			} catch (IOException ioe) {
+				System.out
+						.println("Error in writing results to the SpringTracker file: "
+								+ filename);
+				throw ioe;
+			}
+
+			// If everything went well, we will just return.
+			return;
+
+		default:
+			throw new IllegalArgumentException(
+					"Unknown parameter for print_Gid in SpringTracker number: "
+							+ number);
+		}
+	}
+
+	/**
+	 * Sets up any initial conditions needed. Creation date: (27/09/01 %T)
+	 */
+	public void setInitialConditions() {
+	}
+
+	/**
+	 * Returns the tracker type number The type variable is defined in the
+	 * superclass Tracker
+	 */
+	public int getType() {
+		return TYPE;
+	}
 }
-

@@ -21,16 +21,16 @@ package run.elements;
  * @author: Jonas Forssell, Yuriy Mikhaylovskiy.
  */
 public class Ldata implements java.io.Serializable {
-        public Contact_Line cline;
-        public double q;
-        public double vec;
-        public boolean vec_is_set;
-        public boolean checked;
+	public Contact_Line cline;
+	public double q;
+	public double vec;
+	public boolean vec_is_set;
+	public boolean checked;
 
-        public Ldata(Contact_Line line, double q) {
-            cline = line;
-            this.q = q;
-            checked = true;
-        }
+	public Ldata(Contact_Line line, double q) {
+		cline = line;
+		this.q = q;
+		checked = true;
+	}
 
 }

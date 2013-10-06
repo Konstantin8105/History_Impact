@@ -15,122 +15,135 @@
  * USA
  */
 package j3d;
+
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import javax.swing.tree.*;
 import javax.swing.*;
 import gui.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
-public abstract class _Object implements Cloneable{
-  public int master_type = Canvas3D.NONE;
-  public int geometry_type = Canvas3D.NONE;
-  protected String Id;
-  public boolean selected = false;
-  public boolean processed = false;
-  protected boolean add = false;
-  protected int input_pointer = 0;
-  protected boolean show = true;
-  protected PreProcessor PreP;
-  protected Canvas3D J3D;
-  protected Circle circle;
+public abstract class _Object implements Cloneable {
+	public int master_type = Canvas3D.NONE;
+	public int geometry_type = Canvas3D.NONE;
+	protected String Id;
+	public boolean selected = false;
+	public boolean processed = false;
+	protected boolean add = false;
+	protected int input_pointer = 0;
+	protected boolean show = true;
+	protected PreProcessor PreP;
+	protected Canvas3D J3D;
+	protected Circle circle;
 
-// *******************************************************
+	// *******************************************************
 
-  public abstract Object[] get_Array(Canvas3D j3d);
+	public abstract Object[] get_Array(Canvas3D j3d);
 
-  public abstract void reset(boolean do_mesh);
+	public abstract void reset(boolean do_mesh);
 
-  public abstract _Node[] get_Nodes();
+	public abstract _Node[] get_Nodes();
 
-  public abstract _Object[] get_Elements();
-  
-  public abstract void replaceObjectWith(_Object o, _Object replacement);
+	public abstract _Object[] get_Elements();
 
-  public abstract void transform3D(Matrix3D trans);
+	public abstract void replaceObjectWith(_Object o, _Object replacement);
 
-  public abstract void mesh(int type, float size);
+	public abstract void transform3D(Matrix3D trans);
 
-  public abstract void deselectRequiredObjects();
+	public abstract void mesh(int type, float size);
 
-  public abstract boolean isSelected();
+	public abstract void deselectRequiredObjects();
 
-  public abstract boolean isPickPoint(int x, int y, boolean show, boolean openGL);
+	public abstract boolean isSelected();
 
-  public abstract boolean isPickPoint(Rectangle2D r, boolean show, boolean openGL);
+	public abstract boolean isPickPoint(int x, int y, boolean show,
+			boolean openGL);
 
-  public abstract void setSelected(boolean sel);
+	public abstract boolean isPickPoint(Rectangle2D r, boolean show,
+			boolean openGL);
 
-  public String get_Id(){ return Id; }
+	public abstract void setSelected(boolean sel);
 
-  public void set_Id(String id){ Id=id; }
+	public String get_Id() {
+		return Id;
+	}
 
-  public abstract MutableTreeNode get_TreeNode();
+	public void set_Id(String id) {
+		Id = id;
+	}
 
-  public abstract JPanel getEditPanel(Canvas3D j3d, PreProcessor pp);
+	public abstract MutableTreeNode get_TreeNode();
 
-  public abstract _Object duplicate(Canvas3D j3d, boolean add);
+	public abstract JPanel getEditPanel(Canvas3D j3d, PreProcessor pp);
 
-  public int getMaster_type() {
-      return master_type;
-  }
-  public void setMaster_type(int master_type) {
-      this.master_type = master_type;
-  }
-  public int getGeometryType() {
-      return geometry_type;
-  }
-  public void setGeometryType(int type) {
-      this.geometry_type = type;
-  }
+	public abstract _Object duplicate(Canvas3D j3d, boolean add);
 
-  public Vector3D getCenter() {
-      return new Vector3D(0.0f,0.0f,0.0f);
-  }
+	public int getMaster_type() {
+		return master_type;
+	}
 
-  public boolean isProcessed() {
-      return processed;
-  }
-  public void setProcessed(boolean processed) {
-      this.processed = processed;
-  }
+	public void setMaster_type(int master_type) {
+		this.master_type = master_type;
+	}
 
-  public void requestFocus() {
+	public int getGeometryType() {
+		return geometry_type;
+	}
 
-  }
+	public void setGeometryType(int type) {
+		this.geometry_type = type;
+	}
 
-  public void requestAction() {
+	public Vector3D getCenter() {
+		return new Vector3D(0.0f, 0.0f, 0.0f);
+	}
 
-  }
+	public boolean isProcessed() {
+		return processed;
+	}
 
-  public void setShow(boolean s) {
-      show = s;
-  }
+	public void setProcessed(boolean processed) {
+		this.processed = processed;
+	}
 
-  public boolean isShow() {
-      return show;
-  }
+	public void requestFocus() {
 
-  public _Object[] getBorderObjects() {
-      return null;
-  }
+	}
 
-  protected void checkDefaultKey(KeyEvent e) {
+	public void requestAction() {
 
-      if (e.getKeyCode() == KeyEvent.VK_ESCAPE) PreP.clearEditPanel();
+	}
 
-  }
-  
-  public void setCircle(Circle c) {
-      circle = c;
-  }
+	public void setShow(boolean s) {
+		show = s;
+	}
 
-  public Circle getCircle() {
-      return circle;
-  }
+	public boolean isShow() {
+		return show;
+	}
+
+	public _Object[] getBorderObjects() {
+		return null;
+	}
+
+	protected void checkDefaultKey(KeyEvent e) {
+
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+			PreP.clearEditPanel();
+
+	}
+
+	public void setCircle(Circle c) {
+		circle = c;
+	}
+
+	public Circle getCircle() {
+		return circle;
+	}
 
 }

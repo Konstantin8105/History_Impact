@@ -15,37 +15,38 @@
  * USA
  */
 package gui;
+
 import java.awt.*;
 import java.io.*;
 
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
-public class Material implements Serializable, Cloneable{
-  public Color color;
-  public String name;
-  public String type;
-  public String description;
+public class Material implements Serializable, Cloneable {
+	public Color color;
+	public String name;
+	public String type;
+	public String description;
 
+	public Material() {
 
-  public Material() {
+	}
 
-  }
-  public Material(Material n) {
-      this.color = n.color;
-      this.name = new String(n.name);
-      this.type = new String(n.type);
-      this.description = new String(n.description);
-  }
+	public Material(Material n) {
+		this.color = n.color;
+		this.name = new String(n.name);
+		this.type = new String(n.type);
+		this.description = new String(n.description);
+	}
 
-  public Material(String n, String t, String d, Color cl) {
-      this.color = cl;
-      this.name = n;
-      this.type = t;
-      this.description = d;
-  }
+	public Material(String n, String t, String d, Color cl) {
+		this.color = cl;
+		this.name = n;
+		this.type = t;
+		this.description = d;
+	}
 
 }

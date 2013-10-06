@@ -24,215 +24,216 @@ import javax.swing.tree.DefaultTreeModel;
 
 /**
  * @author pc58410
- *
+ * 
  */
 public interface Canvas3D {
 
-    public static final byte GRAPHICSMODE_WIREFRAME=0;
-    public static final byte GRAPHICSMODE_SURFACE=1;
-    public static final byte GRAPHICSMODE_SOLID=2;
-    public static final byte GRAPHICSMODE_NADA=-1;
-    public static final byte RENDERMODE_HIDE=0;
-    public static final byte RENDERMODE_SHADE=1;
-    public static final byte RENDERMODE_RENDER=2;
-    public static final Color SELECTCOLOR=Color.red;
-    //public static float GRADIENTCONTRAST=0.2f;
-    //public static int GRADIENTCOLOR=50;
-    public static final byte GRIDPLANE_XY=0;
-    public static final byte GRIDPLANE_YZ=1;
-    public static final byte GRIDPLANE_XZ=2;
-    public static final int MESH_Dummy_2=0;
-    public static final int MESH_Rod_2=1;
-    public static final int MESH_Beam_2=2;
-    public static final int MESH_Beam_Spring_2=3;
-    public static final int MESH_Contact_Line=4;
-    public static final int MESH_Contact_Triangle=5;
-    public static final int MESH_Dummy_4=6;
-    public static final int MESH_Shell_C0_3=7;
-    public static final int MESH_Shell_BT_4=8;
-    public static final int MESH_Solid_Iso_6=9;
-    public static final int MESH_Shell_Opt_3_or_4=10;
-    public static final int MESH_Solid_Iso_4=11;
-    
-    // Codes for handling of geometry
-    public static final int NONE = 0;
-    public static final int CURVE = 1;
-    public static final int SURFACE = 2;
-    public static final int VOLUME = 3;
-    public static final double PICKDISTANCE = 50; // Picking sensing distance squared (d*d)
-    public static final double MINMESHANGLE = 2; // Minimum value of B for acceptable mesh
-    
-    
-    public void view_top();
+	public static final byte GRAPHICSMODE_WIREFRAME = 0;
+	public static final byte GRAPHICSMODE_SURFACE = 1;
+	public static final byte GRAPHICSMODE_SOLID = 2;
+	public static final byte GRAPHICSMODE_NADA = -1;
+	public static final byte RENDERMODE_HIDE = 0;
+	public static final byte RENDERMODE_SHADE = 1;
+	public static final byte RENDERMODE_RENDER = 2;
+	public static final Color SELECTCOLOR = Color.red;
+	// public static float GRADIENTCONTRAST=0.2f;
+	// public static int GRADIENTCOLOR=50;
+	public static final byte GRIDPLANE_XY = 0;
+	public static final byte GRIDPLANE_YZ = 1;
+	public static final byte GRIDPLANE_XZ = 2;
+	public static final int MESH_Dummy_2 = 0;
+	public static final int MESH_Rod_2 = 1;
+	public static final int MESH_Beam_2 = 2;
+	public static final int MESH_Beam_Spring_2 = 3;
+	public static final int MESH_Contact_Line = 4;
+	public static final int MESH_Contact_Triangle = 5;
+	public static final int MESH_Dummy_4 = 6;
+	public static final int MESH_Shell_C0_3 = 7;
+	public static final int MESH_Shell_BT_4 = 8;
+	public static final int MESH_Solid_Iso_6 = 9;
+	public static final int MESH_Shell_Opt_3_or_4 = 10;
+	public static final int MESH_Solid_Iso_4 = 11;
 
-    public void view_sw();
+	// Codes for handling of geometry
+	public static final int NONE = 0;
+	public static final int CURVE = 1;
+	public static final int SURFACE = 2;
+	public static final int VOLUME = 3;
+	public static final double PICKDISTANCE = 50; // Picking sensing distance
+													// squared (d*d)
+	public static final double MINMESHANGLE = 2; // Minimum value of B for
+													// acceptable mesh
 
-    public void view_se();
+	public void view_top();
 
-    public void view_scale(float f);
+	public void view_sw();
 
-    public void view_right();
+	public void view_se();
 
-    public void view_reset();
+	public void view_scale(float f);
 
-    public void view_repaint();
+	public void view_right();
 
-    public void view_nw();
+	public void view_reset();
 
-    public void view_ne();
+	public void view_repaint();
 
-    public void view_left();
+	public void view_nw();
 
-    public void view_front();
+	public void view_ne();
 
-    public void view_bottom();
+	public void view_left();
 
-    public void view_back();
+	public void view_front();
 
-    public void view_all();
+	public void view_bottom();
 
-    public void tree_reset();
+	public void view_back();
 
-    public void transform3D(Matrix3D m);
+	public void view_all();
 
-    public boolean showhide();
+	public void tree_reset();
 
-    public void setSize(Dimension dimension);
+	public void transform3D(Matrix3D m);
 
-    public void setCenterOfRotation();
+	public boolean showhide();
 
-    public void setBackground(Color white);
+	public void setSize(Dimension dimension);
 
-    public void save_Image(String st);
+	public void setCenterOfRotation();
 
-    public void repaint();
+	public void setBackground(Color white);
 
-    public void removeSelectedObjects3D();
+	public void save_Image(String st);
 
-    public void clearSelectOnAllObjects3D();
+	public void repaint();
 
-    public void remove_all();
+	public void removeSelectedObjects3D();
 
-    public void rebuild();
+	public void clearSelectOnAllObjects3D();
 
-    public void projectObjects();
+	public void remove_all();
 
-    public void intersectObjects();
+	public void rebuild();
 
-    public void breakObjects();
+	public void projectObjects();
 
-    public _Object[] getSelectedObjects3D();
+	public void intersectObjects();
 
-    public _Object getSelectedObject3D();
+	public void breakObjects();
 
-    public _Object[] getAllObjects3D();
+	public _Object[] getSelectedObjects3D();
 
-    public _Node[] getAllNodes3D();
+	public _Object getSelectedObject3D();
 
-    public _Object[] getAllElements3D();
+	public _Object[] getAllObjects3D();
 
-    public _Geometry[] getAllGeometry3D();
-    
-    public _Group[] getAllGroups3D();
+	public _Node[] getAllNodes3D();
 
-    public void duplicate();
+	public _Object[] getAllElements3D();
 
-    public void addBorderObjects();
+	public _Geometry[] getAllGeometry3D();
 
-    public int add3D(Object obj);
-    
-    public boolean getSHOW_ID_NODE();
-    
-    public void setSHOW_ID_NODE(boolean show_id_node);
+	public _Group[] getAllGroups3D();
 
-    public Color getBGCOLOR();
+	public void duplicate();
 
-    public void setBGCOLOR(Color bgcolor);
+	public void addBorderObjects();
 
-    public boolean getDRAFTMODE();
+	public int add3D(Object obj);
 
-    public void setDRAFTMODE(boolean draftmode);
-    
-    public byte getGRAPHICSMODE();
+	public boolean getSHOW_ID_NODE();
 
-    public void setGRAPHICSMODE(byte graphicsmode);
+	public void setSHOW_ID_NODE(boolean show_id_node);
 
-    public Color getGRIDCOLOR();
+	public Color getBGCOLOR();
 
-    public void setGRIDCOLOR(Color gridcolor);
+	public void setBGCOLOR(Color bgcolor);
 
-    public float getGRIDLEVEL();
+	public boolean getDRAFTMODE();
 
-    public void setGRIDLEVEL(float gridlevel);
+	public void setDRAFTMODE(boolean draftmode);
 
-    public boolean getGRIDMODE();
+	public byte getGRAPHICSMODE();
 
-    public void setGRIDMODE(boolean gridmode);
+	public void setGRAPHICSMODE(byte graphicsmode);
 
-    public byte getGRIDPLANE();
+	public Color getGRIDCOLOR();
 
-    public void setGRIDPLANE(byte gridplane);
+	public void setGRIDCOLOR(Color gridcolor);
 
-    public float getGRIDSIZE();
+	public float getGRIDLEVEL();
 
-    public void setGRIDSIZE(float gridsize);
+	public void setGRIDLEVEL(float gridlevel);
 
-    public float[] getLIMITS();
+	public boolean getGRIDMODE();
 
-    public void setLIMITS(float[] limits);
+	public void setGRIDMODE(boolean gridmode);
 
-    public float getNODE_MERGE_TOLERANCE();
+	public byte getGRIDPLANE();
 
-    public void setNODE_MERGE_TOLERANCE(float node_merge_tolerance);
+	public void setGRIDPLANE(byte gridplane);
 
-    public int getNODESIZE();
+	public float getGRIDSIZE();
 
-    public void setNODESIZE(int nodesize);
+	public void setGRIDSIZE(float gridsize);
 
-    public int getPOINTSIZE();
+	public float[] getLIMITS();
 
-    public void setPOINTSIZE(int pointsize);
+	public void setLIMITS(float[] limits);
 
-    public byte getRENDERMODE();
+	public float getNODE_MERGE_TOLERANCE();
 
-    public void setRENDERMODE(byte rendermode);
+	public void setNODE_MERGE_TOLERANCE(float node_merge_tolerance);
 
-    public boolean getSHOW_ID_CONSTRAINTS();
+	public int getNODESIZE();
 
-    public void setSHOW_ID_CONSTRAINTS(boolean show_id_constraints);
+	public void setNODESIZE(int nodesize);
 
-    public boolean getSHOW_ID_ELEMENT();
+	public int getPOINTSIZE();
 
-    public void setSHOW_ID_ELEMENT(boolean show_id_element);
+	public void setPOINTSIZE(int pointsize);
 
-    public boolean getSHOW_ID_LOADS();
+	public byte getRENDERMODE();
 
-    public void setSHOW_ID_LOADS(boolean show_id_loads);
+	public void setRENDERMODE(byte rendermode);
 
-    public boolean getSHOW_ID_MATERIALS();
+	public boolean getSHOW_ID_CONSTRAINTS();
 
-    public void setSHOW_ID_MATERIALS(boolean show_id_materials);
+	public void setSHOW_ID_CONSTRAINTS(boolean show_id_constraints);
 
-    public boolean getSHOW_ID_TRACKERS();
+	public boolean getSHOW_ID_ELEMENT();
 
-    public void setSHOW_ID_TRACKERS(boolean show_id_trackers);
+	public void setSHOW_ID_ELEMENT(boolean show_id_element);
 
-    public Color getSTLCOLOR();
+	public boolean getSHOW_ID_LOADS();
 
-    public void setSTLCOLOR(Color stlcolor);
+	public void setSHOW_ID_LOADS(boolean show_id_loads);
 
-    public Matrix3D getVMatrix3D();
+	public boolean getSHOW_ID_MATERIALS();
 
-    public void setVMatrix3D(Matrix3D matrix3D);
-    
-    public DefaultTreeModel getTree3d();
+	public void setSHOW_ID_MATERIALS(boolean show_id_materials);
 
-    public float getGeometricTolerance();
+	public boolean getSHOW_ID_TRACKERS();
 
-    public void setGeometricTolerance(float geometricTolerance);  
-    
-    public void setVisible(boolean v);
-    
-    public void replaceAllInstancesOf(_Object o, _Object replacement);
-    
+	public void setSHOW_ID_TRACKERS(boolean show_id_trackers);
+
+	public Color getSTLCOLOR();
+
+	public void setSTLCOLOR(Color stlcolor);
+
+	public Matrix3D getVMatrix3D();
+
+	public void setVMatrix3D(Matrix3D matrix3D);
+
+	public DefaultTreeModel getTree3d();
+
+	public float getGeometricTolerance();
+
+	public void setGeometricTolerance(float geometricTolerance);
+
+	public void setVisible(boolean v);
+
+	public void replaceAllInstancesOf(_Object o, _Object replacement);
+
 }

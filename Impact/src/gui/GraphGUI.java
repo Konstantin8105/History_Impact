@@ -20,32 +20,36 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
 public class GraphGUI extends JFrame {
-  Graph graph = new Graph();
+	Graph graph = new Graph();
 
-  public GraphGUI() {
-    try {
-      setTitle(graph.ver);
-      getContentPane().setLayout(new BorderLayout());
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      setBounds(50,50,screenSize.width-100, screenSize.height-100);
-      addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {
-          System.exit(0);
-        }
-      });
-      getContentPane().add(graph, BorderLayout.CENTER);
-      show();
-    }catch(Exception e) { e.printStackTrace();}
-  }
-  public static void main(String[] args) {
-    new GraphGUI();
-  }
+	public GraphGUI() {
+		try {
+			setTitle(graph.ver);
+			getContentPane().setLayout(new BorderLayout());
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			setBounds(50, 50, screenSize.width - 100, screenSize.height - 100);
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					System.exit(0);
+				}
+			});
+			getContentPane().add(graph, BorderLayout.CENTER);
+			show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new GraphGUI();
+	}
 
 }

@@ -14,14 +14,14 @@ package uka.patch;
 import java.io.IOException;
 
 /**
- * Consumes all references produced by a {@link
- * ReferenceProducer}. This interface is used by a {@link
- * PatchAdapter} to traverse {@link Patchable} object graphs.
+ * Consumes all references produced by a {@link ReferenceProducer}. This
+ * interface is used by a {@link PatchAdapter} to traverse {@link Patchable}
+ * object graphs.
  */
 public interface ReferenceConsumer {
-    /** 
-     * Consumes all references announced by the {@link
-     * ReferenceProducer#descendReferences(ReferenceConsumer)} method.
-     */
-    public void descend(Object ref) throws IOException;
+	/**
+	 * Consumes all references announced by the
+	 * {@link ReferenceProducer#descendReferences(ReferenceConsumer)} method.
+	 */
+	public void descend(Object ref) throws IOException;
 }

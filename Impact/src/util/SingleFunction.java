@@ -25,24 +25,24 @@
 //
 //******************************************************************************
 package util;
+
 /**
  * Interface VectorFunction specifies the interface for a function of a vector
  * of values.
- *
- * @author  Jonas Forssell
+ * 
+ * @author Jonas Forssell
  * @version 11-Feb-2006
  */
-public interface SingleFunction
-	{
+public interface SingleFunction {
 
 	/**
 	 * Compute the function of the given variable.
-	 *
-	 * @param  x  Variable.
-	 *
-	 * @return  Function value, f(x).
+	 * 
+	 * @param x
+	 *            Variable.
+	 * 
+	 * @return Function value, f(x).
 	 */
-	public double f
-		(double x);
+	public double f(double x);
 
-	}
+}

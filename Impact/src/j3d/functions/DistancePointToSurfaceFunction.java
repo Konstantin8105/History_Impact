@@ -24,36 +24,40 @@ import util.VectorFunction;
 /**
  * @author Jonas Forssell
  * 
- *
+ * 
  */
 public class DistancePointToSurfaceFunction implements VectorFunction {
 
-    _NurbSurface s1;
-    _Point pp,p1;
-    double dist;
-    
-    public DistancePointToSurfaceFunction (_Point pp, _NurbSurface s1) {
-        this.pp = pp;
-        this.s1 = s1;
-    }
-    
-    /**
-     * Compute the distance between two nurb curves at given parameter value. If the
-     * value is out of bounds, a large value is returned to create a border.
-     *
-     * @param  x  parameter input vector. Always size 2 (two curves).
-     *
-     * @return  Distance squared between the curves at given points.
-     */
-    public float f (float[] x) {
+	_NurbSurface s1;
+	_Point pp, p1;
+	double dist;
 
-        if (x[0] < 0 || x[0] > 1) return 1E9f;
-        if (x[1] < 0 || x[1] > 1) return 1E9f;
-        
-        p1 = s1.getPointAt(x[0],x[1]);
+	public DistancePointToSurfaceFunction(_Point pp, _NurbSurface s1) {
+		this.pp = pp;
+		this.s1 = s1;
+	}
 
-        return (p1.x-pp.x)*(p1.x-pp.x) + (p1.y-pp.y)*(p1.y-pp.y) + (p1.z-pp.z)*(p1.z-pp.z);
-        
-    }
+	/**
+	 * Compute the distance between two nurb curves at given parameter value. If
+	 * the value is out of bounds, a large value is returned to create a border.
+	 * 
+	 * @param x
+	 *            parameter input vector. Always size 2 (two curves).
+	 * 
+	 * @return Distance squared between the curves at given points.
+	 */
+	public float f(float[] x) {
+
+		if (x[0] < 0 || x[0] > 1)
+			return 1E9f;
+		if (x[1] < 0 || x[1] > 1)
+			return 1E9f;
+
+		p1 = s1.getPointAt(x[0], x[1]);
+
+		return (p1.x - pp.x) * (p1.x - pp.x) + (p1.y - pp.y) * (p1.y - pp.y)
+				+ (p1.z - pp.z) * (p1.z - pp.z);
+
+	}
 
 }

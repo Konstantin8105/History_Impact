@@ -27,16 +27,17 @@ import gui.*;
 import javax.swing.*;
 
 import java.awt.event.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
 public class _GroupUserDefined extends _Group {
 
-  public _GroupUserDefined(boolean add, boolean topgroup) {
-      super(add,topgroup);
-  }
+	public _GroupUserDefined(boolean add, boolean topgroup) {
+		super(add, topgroup);
+	}
 
 }

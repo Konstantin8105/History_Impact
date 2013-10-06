@@ -15,13 +15,13 @@
 
 package uka.karmi.rmi.server;
 
-
 public abstract class RemoteStub implements uka.transport.Transportable {
 
-    /** 
-     * Default contructor, transportable classes have no implicit
-     * default constructor. 
-     */
-    public RemoteStub() {}
+	/**
+	 * Default contructor, transportable classes have no implicit default
+	 * constructor.
+	 */
+	public RemoteStub() {
+	}
 
 }

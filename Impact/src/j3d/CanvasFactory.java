@@ -20,15 +20,14 @@ package j3d;
 import gui.PreProcessor;
 
 public class CanvasFactory {
-    
-    public static Canvas3D getCanvas(PreProcessor pre, boolean glAccel) {
-        
-        if (glAccel == true)
-            return new Canvas3DGL(pre);
 
-        return new Canvas3DSW(pre);
-        
-    }
-    
+	public static Canvas3D getCanvas(PreProcessor pre, boolean glAccel) {
+
+		if (glAccel == true)
+			return new Canvas3DGL(pre);
+
+		return new Canvas3DSW(pre);
+
+	}
 
 }

@@ -17,47 +17,41 @@
 
 package run;
 
-
 /**
- * This is the internal node class.
- * It extends the standard node class to give a near identical node behaviour,
- * but with some methods removed to save computation time.
- * The internal node is used in contact handling for shell_bt_4 element when
- * the advanced_edge option is selected.
- *
+ * This is the internal node class. It extends the standard node class to give a
+ * near identical node behaviour, but with some methods removed to save
+ * computation time. The internal node is used in contact handling for
+ * shell_bt_4 element when the advanced_edge option is selected.
+ * 
  * @author Jonas Forssell
- *
+ * 
  * @see OtherClasses
  */
-public class InternalNode extends Node{
+public class InternalNode extends Node {
 	Element master;
-	
-    public InternalNode() {
-    	super();
-    	type = INTERNAL_NODE;
-    }
 
- 
-    /**
-     * This method updates the node position. Note that since the internal node
-     * get its location set by the element that uses it, it is just a waste of 
-     * resource to have code here and since the internal nodes are also part
-     * of the main loop, this method will be called. Clearing this out solves
-     * this issue.
-     *  Creation date: (2004-11-17 01.37.59)
-     */
-    public void calculateNewPosition(double timestep, double currtime) {
-    	master.setInternalNodePosition();
-     }
+	public InternalNode() {
+		super();
+		type = INTERNAL_NODE;
+	}
 
-    
-    public void registerMasterElement(Element el) {
-    	master = el;
-     }
+	/**
+	 * This method updates the node position. Note that since the internal node
+	 * get its location set by the element that uses it, it is just a waste of
+	 * resource to have code here and since the internal nodes are also part of
+	 * the main loop, this method will be called. Clearing this out solves this
+	 * issue. Creation date: (2004-11-17 01.37.59)
+	 */
+	public void calculateNewPosition(double timestep, double currtime) {
+		master.setInternalNodePosition();
+	}
 
-    
-    public void setInitialConditions() {
-    	super.setInitialConditions();
-    	master.setInternalNodePosition();  	
-     }    
+	public void registerMasterElement(Element el) {
+		master = el;
+	}
+
+	public void setInitialConditions() {
+		super.setInitialConditions();
+		master.setInternalNodePosition();
+	}
 }

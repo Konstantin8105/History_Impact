@@ -15,30 +15,32 @@
  * USA
  */
 package gui;
+
 import java.awt.*;
 import java.io.*;
 
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
-public class Loads  implements Serializable{
-  public Color color;
-  public String name;
-  public String description;
-  public String toString(){
-    return name+" "+description;
-  }
+public class Loads implements Serializable {
+	public Color color;
+	public String name;
+	public String description;
 
-  public Loads(String name, Color color) {
-      this.name = name;
-      this.color = color;
-  }
-  
-  public Loads() {
-      
-  }
-  
+	public String toString() {
+		return name + " " + description;
+	}
+
+	public Loads(String name, Color color) {
+		this.name = name;
+		this.color = color;
+	}
+
+	public Loads() {
+
+	}
+
 }

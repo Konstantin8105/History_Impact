@@ -25,261 +25,260 @@ import uka.karmi.rmi.RemoteException;
 
 import jp.lang.RemoteObject;
 
-
 /**
  * Insert the type's description here. Creation date: (2001-10-30 23.58.22)
- *
+ * 
  * @author:
  */
 public abstract class Reader {
-    /**
-     * Reader constructor comment.
-     */
-    public Reader() {
-        super();
-    }
+	/**
+	 * Reader constructor comment.
+	 */
+	public Reader() {
+		super();
+	}
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.08.26)
-     */
-    public abstract void close();
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.08.26)
+	 */
+	public abstract void close();
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.08.57)
-     */
-    public abstract void getControlSet(Controlset controlset)
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.08.57)
+	 */
+	public abstract void getControlSet(Controlset controlset)
+			throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.14.11)
-     *
-     * @return krockpackage.Constraint
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Constraint getNextConstraint(RplVector nodelist)
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.14.11)
+	 * 
+	 * @return krockpackage.Constraint
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Constraint getNextConstraint(RplVector nodelist)
+			throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.22.08)
-     *
-     * @param param java.util.Vector
-     * @param param2 java.util.Vector
-     *
-     * @return krockpackage.Element
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Element getNextElement(
-        RplVector materiallist, RplVector nodelist,
-        RplVector loadlist, Hashtable nodetable
-    )
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.22.08)
+	 * 
+	 * @param param
+	 *            java.util.Vector
+	 * @param param2
+	 *            java.util.Vector
+	 * 
+	 * @return krockpackage.Element
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Element getNextElement(RplVector materiallist,
+			RplVector nodelist, RplVector loadlist, Hashtable nodetable)
+			throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.22.08)
-     *
-     * @param param java.util.Vector
-     * @param param2 java.util.Vector
-     *
-     * @return krockpackage.Element
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Tracker getNextTracker(
-        RplVector nodelist, RplVector elementlist
-    )
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.22.08)
+	 * 
+	 * @param param
+	 *            java.util.Vector
+	 * @param param2
+	 *            java.util.Vector
+	 * 
+	 * @return krockpackage.Element
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Tracker getNextTracker(RplVector nodelist,
+			RplVector elementlist) throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.25.08)
-     *
-     * @return krockpackage.Load
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Load getNextLoad(RplVector nodelist)
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.25.08)
+	 * 
+	 * @return krockpackage.Load
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Load getNextLoad(RplVector nodelist)
+			throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.34.45)
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Material getNextMaterial()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.34.45)
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Material getNextMaterial() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.36.05)
-     *
-     * @param constraintlist java.util.Vector
-     * @param nodelist java.util.Vector
-     *
-     * @return krockpackage.Node
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract Node getNextNode(
-        RplVector constraintlist, RplVector loadlist
-    )
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.36.05)
+	 * 
+	 * @param constraintlist
+	 *            java.util.Vector
+	 * @param nodelist
+	 *            java.util.Vector
+	 * 
+	 * @return krockpackage.Node
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract Node getNextNode(RplVector constraintlist,
+			RplVector loadlist) throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfConstraints()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfConstraints() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfControls()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfControls() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfElements()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfElements() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfTrackers()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfTrackers() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfGroups()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfGroups() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfLoads()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfLoads() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfMaterials()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfMaterials() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract int numberOfNodes()
-        throws java.text.ParseException;
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract int numberOfNodes() throws java.text.ParseException;
 
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.08.26)
-     */
-    public abstract void open();
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.08.26)
+	 */
+	public abstract void open();
 
-    /**
-     * Neat little routine that chops up a string into an array of Tokens
-     */
-    public Token[] tokenize(java.io.StreamTokenizer str)
-        throws IOException
-    {
-        int i;
-        Vector v = new Vector();
-        Token[] arr;
+	/**
+	 * Neat little routine that chops up a string into an array of Tokens
+	 */
+	public Token[] tokenize(java.io.StreamTokenizer str) throws IOException {
+		int i;
+		Vector v = new Vector();
+		Token[] arr;
 
-        while (
-            (str.nextToken() != java.io.StreamTokenizer.TT_EOL) &&
-            (str.ttype != java.io.StreamTokenizer.TT_EOF)
-        ) {
-            if (str.ttype == java.io.StreamTokenizer.TT_WORD) {
-                v.add(new Token(str.sval));
-            } else {
-                v.add(new Token(str.nval));
-            }
-        }
+		while ((str.nextToken() != java.io.StreamTokenizer.TT_EOL)
+				&& (str.ttype != java.io.StreamTokenizer.TT_EOF)) {
+			if (str.ttype == java.io.StreamTokenizer.TT_WORD) {
+				v.add(new Token(str.sval));
+			} else {
+				v.add(new Token(str.nval));
+			}
+		}
 
-        arr = new Token[v.size()];
+		arr = new Token[v.size()];
 
-        for (i = 0; i < v.size(); i++) {
-            arr[i] = (Token) v.elementAt(i);
-        }
+		for (i = 0; i < v.size(); i++) {
+			arr[i] = (Token) v.elementAt(i);
+		}
 
-        return arr;
-    }
+		return arr;
+	}
 
-    /**
-     * This method returns the writer to be used for the results
-     */
-    public abstract Writer getWriter(
-        RplVector nodelist, RplVector elementlist, Controlset control, RemoteObject[] cluster_nodes
-    ) throws RemoteException;
+	/**
+	 * This method returns the writer to be used for the results
+	 */
+	public abstract Writer getWriter(RplVector nodelist, RplVector elementlist,
+			Controlset control, RemoteObject[] cluster_nodes)
+			throws RemoteException;
 
-    /**
-     * This method returns the Trackwriter to be used for the trackers
-     */
-    public abstract TrackWriter getTrackWriter(
-         RplVector trackerlist, Controlset control, RemoteObject[] cluster_nodes
-    ) throws RemoteException;
-    
-    /**
-     * Insert the method's description here. Creation date: (2001-10-31
-     * 00.46.27)
-     *
-     * @return int
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public abstract void preProcess()
-        throws java.text.ParseException;
-    
+	/**
+	 * This method returns the Trackwriter to be used for the trackers
+	 */
+	public abstract TrackWriter getTrackWriter(RplVector trackerlist,
+			Controlset control, RemoteObject[] cluster_nodes)
+			throws RemoteException;
+
+	/**
+	 * Insert the method's description here. Creation date: (2001-10-31
+	 * 00.46.27)
+	 * 
+	 * @return int
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public abstract void preProcess() throws java.text.ParseException;
+
 }
-

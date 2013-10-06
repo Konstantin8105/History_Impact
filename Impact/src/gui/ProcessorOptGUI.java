@@ -20,37 +20,40 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy modified by Jonas Forssell
  */
 
 public class ProcessorOptGUI extends JFrame {
-  ProcessorOpt processor;
+	ProcessorOpt processor;
 
-  public ProcessorOptGUI(boolean openGL) {
-    processor = new ProcessorOpt(openGL);  
-    try {
-      setTitle(ProcessorOpt.ver);
-      getContentPane().setLayout(new BorderLayout());
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      setBounds(50,50,screenSize.width-100, screenSize.height-100);
-      addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {
-          System.exit(0);
-        }
-      });
-      getContentPane().add(processor, BorderLayout.CENTER);
-      show();
-    }catch(Exception e) { e.printStackTrace();}
-  }
-  
-  public static void main(String[] args) {
-    if (args.length > 0) 
-        new ProcessorOptGUI(args[0].toUpperCase().equals("-OPENGL"));
-    else
-        new ProcessorOptGUI(false);
-  }
+	public ProcessorOptGUI(boolean openGL) {
+		processor = new ProcessorOpt(openGL);
+		try {
+			setTitle(ProcessorOpt.ver);
+			getContentPane().setLayout(new BorderLayout());
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			setBounds(50, 50, screenSize.width - 100, screenSize.height - 100);
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					System.exit(0);
+				}
+			});
+			getContentPane().add(processor, BorderLayout.CENTER);
+			show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		if (args.length > 0)
+			new ProcessorOptGUI(args[0].toUpperCase().equals("-OPENGL"));
+		else
+			new ProcessorOptGUI(false);
+	}
 
 }

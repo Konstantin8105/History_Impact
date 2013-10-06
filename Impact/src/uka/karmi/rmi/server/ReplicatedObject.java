@@ -18,9 +18,9 @@ package uka.karmi.rmi.server;
 
 /**
  * @author pc58410
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class ReplicatedObject {
 
@@ -36,13 +36,15 @@ public class ReplicatedObject {
 	 */
 	public ReplicatedObject(RemoteStub[] stubs) {
 	}
-	
-	public void collectiveUpdate() throws java.io.IOException, ClassNotFoundException {
-		
+
+	public void collectiveUpdate() throws java.io.IOException,
+			ClassNotFoundException {
+
 	}
-	
-	public void exclusiveUpdate() throws java.io.IOException, ClassNotFoundException {
-		
+
+	public void exclusiveUpdate() throws java.io.IOException,
+			ClassNotFoundException {
+
 	}
 
 }

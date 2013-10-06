@@ -18,50 +18,56 @@ package gui;
 
 import java.awt.*;
 import javax.swing.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 public class Graph_add extends JPanel {
-  String[] st_result = { "DISPLACEMENTS (I)","DISPLACEMENTS (X)","DISPLACEMENTS (Y)","DISPLACEMENTS (Z)","STRAINS (I)","STRAINS (X)","STRAINS (Y)","STRAINS (Z)","STRAINS (XY)","STRAINS (YZ)","STRAINS (XZ)","STRESSES (I)","STRESSES (X)","STRESSES (Y)","STRESSES (Z)","STRESSES (XY)","STRESSES (YZ)","STRESSES (XZ)" };
-  BorderLayout borderLayout1 = new BorderLayout();
-  JPanel jPanel1 = new JPanel();
-  JPanel jPanel2 = new JPanel();
-  GridLayout gridLayout1 = new GridLayout();
-  GridLayout gridLayout2 = new GridLayout();
-  JLabel jLabel1 = new JLabel();
-  JLabel jLabel2 = new JLabel();
-  JLabel jLabel3 = new JLabel();
-  JLabel Time = new JLabel();
-  JComboBox AxisY = new JComboBox(st_result);
-  JTextField FromTo = new JTextField();
+	String[] st_result = { "DISPLACEMENTS (I)", "DISPLACEMENTS (X)",
+			"DISPLACEMENTS (Y)", "DISPLACEMENTS (Z)", "STRAINS (I)",
+			"STRAINS (X)", "STRAINS (Y)", "STRAINS (Z)", "STRAINS (XY)",
+			"STRAINS (YZ)", "STRAINS (XZ)", "STRESSES (I)", "STRESSES (X)",
+			"STRESSES (Y)", "STRESSES (Z)", "STRESSES (XY)", "STRESSES (YZ)",
+			"STRESSES (XZ)" };
+	BorderLayout borderLayout1 = new BorderLayout();
+	JPanel jPanel1 = new JPanel();
+	JPanel jPanel2 = new JPanel();
+	GridLayout gridLayout1 = new GridLayout();
+	GridLayout gridLayout2 = new GridLayout();
+	JLabel jLabel1 = new JLabel();
+	JLabel jLabel2 = new JLabel();
+	JLabel jLabel3 = new JLabel();
+	JLabel Time = new JLabel();
+	JComboBox AxisY = new JComboBox(st_result);
+	JTextField FromTo = new JTextField();
 
-  public Graph_add() {
-    try {
-      jbInit();
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-    }
-  }
-  private void jbInit() throws Exception {
-    this.setLayout(borderLayout1);
-    jPanel1.setLayout(gridLayout1);
-    jPanel2.setLayout(gridLayout2);
-    gridLayout1.setRows(3);
-    gridLayout2.setRows(3);
-    jLabel1.setText("Axis X");
-    jLabel2.setText("Axis Y");
-    jLabel3.setText("Nodes / Elements");
-    Time.setText("Time");
-    this.add(jPanel1, BorderLayout.WEST);
-    jPanel1.add(jLabel1, null);
-    jPanel1.add(jLabel2, null);
-    jPanel1.add(jLabel3, null);
-    this.add(jPanel2, BorderLayout.CENTER);
-    jPanel2.add(Time, null);
-    jPanel2.add(AxisY, null);
-    jPanel2.add(FromTo, null);
-  }
+	public Graph_add() {
+		try {
+			jbInit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void jbInit() throws Exception {
+		this.setLayout(borderLayout1);
+		jPanel1.setLayout(gridLayout1);
+		jPanel2.setLayout(gridLayout2);
+		gridLayout1.setRows(3);
+		gridLayout2.setRows(3);
+		jLabel1.setText("Axis X");
+		jLabel2.setText("Axis Y");
+		jLabel3.setText("Nodes / Elements");
+		Time.setText("Time");
+		this.add(jPanel1, BorderLayout.WEST);
+		jPanel1.add(jLabel1, null);
+		jPanel1.add(jLabel2, null);
+		jPanel1.add(jLabel3, null);
+		this.add(jPanel2, BorderLayout.CENTER);
+		jPanel2.add(Time, null);
+		jPanel2.add(AxisY, null);
+		jPanel2.add(FromTo, null);
+	}
 }

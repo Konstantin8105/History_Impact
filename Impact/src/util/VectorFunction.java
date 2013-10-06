@@ -25,24 +25,24 @@
 //
 //******************************************************************************
 package util;
+
 /**
  * Interface VectorFunction specifies the interface for a function of a vector
  * of values.
- *
- * @author  Alan Kaminsky
+ * 
+ * @author Alan Kaminsky
  * @version 28-Mar-2005
  */
-public interface VectorFunction
-	{
+public interface VectorFunction {
 
 	/**
 	 * Compute the function of the given vector.
-	 *
-	 * @param  x  Vector.
-	 *
-	 * @return  Function value, f(x).
+	 * 
+	 * @param x
+	 *            Vector.
+	 * 
+	 * @return Function value, f(x).
 	 */
-	public float f
-		(float[] x);
+	public float f(float[] x);
 
-	}
+}

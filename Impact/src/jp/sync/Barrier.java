@@ -8,15 +8,15 @@ package jp.sync;
 
 /**
  * @author pc58410
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class Barrier {
 
-	int state, count;	
-	
-		/**
+	int state, count;
+
+	/**
 	 * @param state
 	 */
 	public Barrier(int count) {
@@ -24,20 +24,19 @@ public class Barrier {
 		this.count = count;
 		this.state = count;
 	}
-/**
+
+	/**
 	 * 
 	 */
 	public synchronized void sync() throws InterruptedException {
 
-    	state--;
+		state--;
 
-    	if (state == 0)
-    	{
-    		notifyAll();
-    		state = count;
-    	}
-    		else
+		if (state == 0) {
+			notifyAll();
+			state = count;
+		} else
 			wait();
-    }
-		
+	}
+
 }

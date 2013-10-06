@@ -14,36 +14,37 @@
  * Foundation, inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
  * USA
  */
- 
+
 package run.elements;
+
 import run.Node;
 
 /**
  * @author: Jonas Forssell, Yuriy Mikhaylovskiy.
  */
 public class Fdata implements java.io.Serializable {
-    public Node cnode;
-    public double posX;
-    public double posY;
-    public double vecX;
-    public double vecY;
-    public double q;
-    public boolean vec_is_set;
-    public boolean checked;
+	public Node cnode;
+	public double posX;
+	public double posY;
+	public double vecX;
+	public double vecY;
+	public double q;
+	public boolean vec_is_set;
+	public boolean checked;
 
-    public Fdata(Node node, double px, double py) {
-    	super();
-    	cnode = node;
-        posX = px;
-        posY = py;
-        checked = true;
-    }
-    
-    public Fdata(Node node, double q) {
-    	super();
-        cnode = node;
-        this.q = q;
-        checked = true;
-    }
-    
+	public Fdata(Node node, double px, double py) {
+		super();
+		cnode = node;
+		posX = px;
+		posY = py;
+		checked = true;
+	}
+
+	public Fdata(Node node, double q) {
+		super();
+		cnode = node;
+		this.q = q;
+		checked = true;
+	}
+
 }

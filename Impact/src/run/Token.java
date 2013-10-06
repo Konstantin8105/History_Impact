@@ -18,45 +18,44 @@
 package run;
 
 public class Token {
-    String s;
-    double d;
-    boolean is_a_word;
+	String s;
+	double d;
+	boolean is_a_word;
 
-    public Token(String w) {
-        // Check if a number in disguise
-        try {
-            d = Double.parseDouble(w);
-        } catch (NumberFormatException e) {
-            // It is a word.
-            s = new String(w);
-            is_a_word = true;
+	public Token(String w) {
+		// Check if a number in disguise
+		try {
+			d = Double.parseDouble(w);
+		} catch (NumberFormatException e) {
+			// It is a word.
+			s = new String(w);
+			is_a_word = true;
 
-            return;
-        }
+			return;
+		}
 
-        // It is a number!
-        is_a_word = false;
-    }
+		// It is a number!
+		is_a_word = false;
+	}
 
-    public Token(double n) {
-        d = n;
-        is_a_word = false;
-    }
+	public Token(double n) {
+		d = n;
+		is_a_word = false;
+	}
 
-    public String getw() {
-        return s;
-    }
+	public String getw() {
+		return s;
+	}
 
-    public double getn() {
-        return d;
-    }
+	public double getn() {
+		return d;
+	}
 
-    public boolean is_a_word() {
-        return is_a_word;
-    }
+	public boolean is_a_word() {
+		return is_a_word;
+	}
 
-    public boolean is_a_number() {
-        return ! is_a_word;
-    }
+	public boolean is_a_number() {
+		return !is_a_word;
+	}
 }
-

@@ -21,10 +21,9 @@ import java.util.Vector;
 
 /**
  * @author Jonas Forssell, Yuriy Mikhaylovskiy
- *
+ * 
  */
 public class RplVector extends Vector implements java.io.Serializable {
-
 
 	/**
 	 * 
@@ -32,12 +31,14 @@ public class RplVector extends Vector implements java.io.Serializable {
 	public RplVector() {
 		super();
 	}
+
 	/**
 	 * @param arg0
 	 */
 	public RplVector(int arg0) {
 		super(arg0);
 	}
+
 	/**
 	 * @param arg0
 	 * @param arg1
@@ -45,6 +46,7 @@ public class RplVector extends Vector implements java.io.Serializable {
 	public RplVector(int arg0, int arg1) {
 		super(arg0, arg1);
 	}
+
 	/**
 	 * @param arg0
 	 */

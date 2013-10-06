@@ -23,531 +23,489 @@ import java.io.*;
 
 import java.util.*;
 
-
 /**
- * This is the section moment tracker     The tracker calculates the moment
- * through a section defined by a range of nodes The procedure is as follows:
- * 1. Calculate a plane using the node coordinates 2. Determine the normal
- * vector to that plane 3. Calculate the nodal moment component in that
- * direction 4. Summarize all nodal moments 5. Print the foce as a function of
- * time
- *
+ * This is the section moment tracker The tracker calculates the moment through
+ * a section defined by a range of nodes The procedure is as follows: 1.
+ * Calculate a plane using the node coordinates 2. Determine the normal vector
+ * to that plane 3. Calculate the nodal moment component in that direction 4.
+ * Summarize all nodal moments 5. Print the foce as a function of time
+ * 
  * @author Jonas Forssell, Yuriy Mikhaylovskiy
- *
+ * 
  * @see Tracker, TrackWriter, GidTrackWriter
  */
 public class NodeMomentTracker extends Tracker {
-    private static int TYPE = 11;
-    private Vector nodelist;
-    private double[] resultlist;
-    private boolean print_x;
-    private boolean print_y;
-    private boolean print_z;
-    private boolean positive;
-    private boolean negative;
-    private boolean Nodes_are_set;
-    private boolean File_is_set;
-    private boolean Target_is_set;
-
-    /**
-     * Constructor
-     */
-    public NodeMomentTracker() {
-        nodelist = new Vector();
-        resultlist = new double[1];
-    }
-
-    /**
-     * Collects the data from the nodes
-     */
-    public void collectData()
-        throws IllegalArgumentException
-    {
-        // No data needs to be continuously collected so this is empty.
-        // Data is only collected just before printing.
-    }
-
-    private void collectOwnData()
-        throws IllegalArgumentException
-    {
-        int i;
-        Node tempnode;
-
-        // Loop through the list of nodes and collect new data from them
-        for (i = 0; i < nodelist.size(); i++) {
-            tempnode = (Node) nodelist.elementAt(i);
-
-            // Collect new data from the node
-            if (print_x && ! positive && ! negative) {
-                resultlist[i] = tempnode.getX_moment();
-            } else if (print_x && positive) {
-                resultlist[i] = tempnode.getX_moment_component(true);
-            } else if (print_x && negative) {
-                resultlist[i] = tempnode.getX_moment_component(false);
-            } else if (print_y && ! positive && ! negative) {
-                resultlist[i] = tempnode.getY_moment();
-            } else if (print_y && positive) {
-                resultlist[i] = tempnode.getY_moment_component(true);
-            } else if (print_y && negative) {
-                resultlist[i] = tempnode.getY_moment_component(false);
-            } else if (print_z && ! positive && ! negative) {
-                resultlist[i] = tempnode.getZ_moment();
-            } else if (print_z && positive) {
-                resultlist[i] = tempnode.getZ_moment_component(true);
-            } else if (print_z && negative) {
-                resultlist[i] = tempnode.getZ_moment_component(false);
-            }
-        }
-    }
-
-    /**
-     * Calculate
-     */
-    public void calculate() {
-        // No calculation needed 
-    }
-
-    private void calculateOwn() {
-        int i;
-
-        // 3. Summarize the nodal moments
-        result = 0;
-
-        for (i = 0; i < resultlist.length; i++) {
-            result += resultlist[i];
-        }
-    }
-
-    /**
-     * This method checks the data in the indatafile and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param2 java.lang.String
-     * @param param3 java.lang.String
-     * @param param1 java.lang.String
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Fembic(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-        int number_of_nodes;
-        int j;
-        Jama.Matrix dummy = new Jama.Matrix(3, 1);
-        int i = 0;
-
-        while (i < param.length) {
-            // The nodes of the element are defined
-            if (
-                param[i].getw().toUpperCase().equals("NODES") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the nodes are delivered in param3, with the format
-                // [nodenr,nodenr,nodenr,nodenr,nodenr,nodenr,nodenr,nodenr]
-                if (
-                    ! param[i + 2].getw().toUpperCase().startsWith("[") ||
-                    ! param[i + 2].getw().toUpperCase().endsWith("]")
-                ) {
-                    throw new java.text.ParseException(
-                        "Error, node number definition should be [nodenr1,nodenr2,.....,nodenrN]",
-                        lineno
-                    );
-                }
-
-                // Ok, now find the numbers
-                try {
-                    number_of_nodes = super.getNumberOfNodes(
-                            param[i + 2].getw().toUpperCase()
-                        );
-
-                    if (number_of_nodes < 1) {
-                        throw new java.text.ParseException(
-                            "Too few nodes defined for this tracker. Minimum three required",
-                            lineno
-                        );
-                    }
-
-                    // Allocate space for the nodes
-                    resultlist = new double[number_of_nodes];
-
-                    // Now, add all the nodes to the local nodelist.
-                    for (j = 0; j < number_of_nodes; j++) {
-                        nodelist.add(
-                            super.findNode(
-                                super.getNodeNumber(
-                                    j + 1, param[i + 2].getw().toUpperCase()
-                                ), globalnodelist
-                            )
-                        );
-                        resultlist[i] = 0;
-                    }
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e + "In line " + lineno);
-                }
-
-                i += 3;
-                Nodes_are_set = true;
-            } else
-            // The chosen direction to track is defined.
-            if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("X")
-            ) {
-                print_x = true;
-                i += 3;
-            } else
-            // The chosen direction to track is defined.
-            if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("X+")
-            ) {
-                print_x = true;
-                positive = true;
-                i += 3;
-            } else
-            // The chosen direction to track is defined.
-            if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("X-")
-            ) {
-                print_x = true;
-                negative = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Y")
-            ) {
-                print_y = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Y+")
-            ) {
-                print_y = true;
-                positive = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Y-")
-            ) {
-                print_y = true;
-                negative = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Z")
-            ) {
-                print_z = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Z+")
-            ) {
-                print_z = true;
-                positive = true;
-                i += 3;
-            } else if (
-                param[i].getw().toUpperCase().equals("DIRECTION") &&
-                param[i + 1].getw().toUpperCase().equals("=") &&
-                param[i + 2].getw().toUpperCase().toUpperCase().equals("Z-")
-            ) {
-                print_z = true;
-                negative = true;
-                i += 3;
-            } else
-            // A target for the tracker is set
-            if (
-                param[i].getw().toUpperCase().equals("TARGET") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the node is delivered in param3, with the simple nodenumber
-                if (param[i + 2].is_a_number()) {
-                    throw new java.text.ParseException(
-                        "Illegal argument, Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
-                        lineno
-                    );
-                }
-
-                try {
-                    targettime = super.getNumber(
-                            1, param[i + 2].getw().toUpperCase()
-                        );
-                    timetolerance = super.getNumber(
-                            2, param[i + 2].getw().toUpperCase()
-                        );
-                    target = super.getNumber(
-                            3, param[i + 2].getw().toUpperCase()
-                        );
-                    tolerance = super.getNumber(
-                            4, param[i + 2].getw().toUpperCase()
-                        );
-                } catch (IllegalArgumentException e) {
-                    throw new java.text.ParseException(
-                        "Illegal argument or value missing; Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
-                        lineno
-                    );
-                }
-
-                i += 3;
-                Target_is_set = true;
-            } else
-            // The filename of the tracker is defined
-            if (
-                param[i].getw().toUpperCase().equals("FILENAME") &&
-                param[i + 1].getw().toUpperCase().equals("=")
-            ) {
-                // Assume now that the material name is delivered in param3
-                filename = new String(param[i + 2].getw().trim());
-                i += 3;
-                File_is_set = true;
-            } else {
-                // Neither nodes nor filename is defined. Then the parameter is wrong.
-                throw new java.text.ParseException(
-                    "Unknown Tracker parameter ", lineno
-                );
-            }
-        }
-    }
+	private static int TYPE = 11;
+	private Vector nodelist;
+	private double[] resultlist;
+	private boolean print_x;
+	private boolean print_y;
+	private boolean print_z;
+	private boolean positive;
+	private boolean negative;
+	private boolean Nodes_are_set;
+	private boolean File_is_set;
+	private boolean Target_is_set;
 
 	/**
-     * This method checks the data in the indatafile in Nastran format and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param run.Token[] - An array containing the text to be parsed but
-     *        split into tokens.
-     * @param lineno int - The line number of the indata file being parsed
-     * @param globalnodelist java.util.Vector - A vector containing all the
-     *        nodes in the solution. This resides in the ModelSmp object.
-     * @param globalelementlist java.util.Vector - A vector containing all the
-     *        elements in the solution. This resides in the ModelSmp object.
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Nastran(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-    }
+	 * Constructor
+	 */
+	public NodeMomentTracker() {
+		nodelist = new Vector();
+		resultlist = new double[1];
+	}
 
 	/**
-     * This method checks the data in the indatafile in Gmsh format and sets the corresponding
-     * parameters for the Tracker. It is defined in the element due to the
-     * fact of isolating the Tracker from the main program, thus making adding
-     * a new Tracker a simpler issue. Creation date: (08/09/01 %T)
-     *
-     * @param param run.Token[] - An array containing the text to be parsed but
-     *        split into tokens.
-     * @param lineno int - The line number of the indata file being parsed
-     * @param globalnodelist java.util.Vector - A vector containing all the
-     *        nodes in the solution. This resides in the ModelSmp object.
-     * @param globalelementlist java.util.Vector - A vector containing all the
-     *        elements in the solution. This resides in the ModelSmp object.
-     *
-     * @exception java.text.ParseException The exception description.
-     */
-    public void parse_Gmsh(
-        Token[] param, int lineno, RplVector globalnodelist,
-        RplVector globalelementlist
-    )
-        throws java.text.ParseException
-    {
-    }
+	 * Collects the data from the nodes
+	 */
+	public void collectData() throws IllegalArgumentException {
+		// No data needs to be continuously collected so this is empty.
+		// Data is only collected just before printing.
+	}
 
+	private void collectOwnData() throws IllegalArgumentException {
+		int i;
+		Node tempnode;
 
+		// Loop through the list of nodes and collect new data from them
+		for (i = 0; i < nodelist.size(); i++) {
+			tempnode = (Node) nodelist.elementAt(i);
 
+			// Collect new data from the node
+			if (print_x && !positive && !negative) {
+				resultlist[i] = tempnode.getX_moment();
+			} else if (print_x && positive) {
+				resultlist[i] = tempnode.getX_moment_component(true);
+			} else if (print_x && negative) {
+				resultlist[i] = tempnode.getX_moment_component(false);
+			} else if (print_y && !positive && !negative) {
+				resultlist[i] = tempnode.getY_moment();
+			} else if (print_y && positive) {
+				resultlist[i] = tempnode.getY_moment_component(true);
+			} else if (print_y && negative) {
+				resultlist[i] = tempnode.getY_moment_component(false);
+			} else if (print_z && !positive && !negative) {
+				resultlist[i] = tempnode.getZ_moment();
+			} else if (print_z && positive) {
+				resultlist[i] = tempnode.getZ_moment_component(true);
+			} else if (print_z && negative) {
+				resultlist[i] = tempnode.getZ_moment_component(false);
+			}
+		}
+	}
 
+	/**
+	 * Calculate
+	 */
+	public void calculate() {
+		// No calculation needed
+	}
 
+	private void calculateOwn() {
+		int i;
 
+		// 3. Summarize the nodal moments
+		result = 0;
 
+		for (i = 0; i < resultlist.length; i++) {
+			result += resultlist[i];
+		}
+	}
 
+	/**
+	 * This method checks the data in the indatafile and sets the corresponding
+	 * parameters for the Tracker. It is defined in the element due to the fact
+	 * of isolating the Tracker from the main program, thus making adding a new
+	 * Tracker a simpler issue. Creation date: (08/09/01 %T)
+	 * 
+	 * @param param2
+	 *            java.lang.String
+	 * @param param3
+	 *            java.lang.String
+	 * @param param1
+	 *            java.lang.String
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Fembic(Token[] param, int lineno,
+			RplVector globalnodelist, RplVector globalelementlist)
+			throws java.text.ParseException {
+		int number_of_nodes;
+		int j;
+		Jama.Matrix dummy = new Jama.Matrix(3, 1);
+		int i = 0;
 
+		while (i < param.length) {
+			// The nodes of the element are defined
+			if (param[i].getw().toUpperCase().equals("NODES")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the nodes are delivered in param3, with the
+				// format
+				// [nodenr,nodenr,nodenr,nodenr,nodenr,nodenr,nodenr,nodenr]
+				if (!param[i + 2].getw().toUpperCase().startsWith("[")
+						|| !param[i + 2].getw().toUpperCase().endsWith("]")) {
+					throw new java.text.ParseException(
+							"Error, node number definition should be [nodenr1,nodenr2,.....,nodenrN]",
+							lineno);
+				}
 
+				// Ok, now find the numbers
+				try {
+					number_of_nodes = super.getNumberOfNodes(param[i + 2]
+							.getw().toUpperCase());
 
+					if (number_of_nodes < 1) {
+						throw new java.text.ParseException(
+								"Too few nodes defined for this tracker. Minimum three required",
+								lineno);
+					}
 
-    /**
-     * This method checks that all mandatory parameters have been set
-     */
-    public void checkIndata()
-        throws IllegalArgumentException
-    {
-        if (! Nodes_are_set) {
-            throw new IllegalArgumentException(
-                "No nodes defined for this node moment tracker: " + number
-            );
-        }
+					// Allocate space for the nodes
+					resultlist = new double[number_of_nodes];
 
-        if (! print_x && ! print_y && ! print_z) {
-            throw new IllegalArgumentException(
-                "No directions defined for this node moment tracker: " + number
-            );
-        }
+					// Now, add all the nodes to the local nodelist.
+					for (j = 0; j < number_of_nodes; j++) {
+						nodelist.add(super.findNode(super.getNodeNumber(j + 1,
+								param[i + 2].getw().toUpperCase()),
+								globalnodelist));
+						resultlist[i] = 0;
+					}
+				} catch (IllegalArgumentException e) {
+					System.out.println(e + "In line " + lineno);
+				}
 
-        if (! File_is_set) {
-            throw new IllegalArgumentException(
-                "No Filename defined for this node moment tracker: " + number
-            );
-        }
-    }
+				i += 3;
+				Nodes_are_set = true;
+			} else
+			// The chosen direction to track is defined.
+			if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("X")) {
+				print_x = true;
+				i += 3;
+			} else
+			// The chosen direction to track is defined.
+			if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("X+")) {
+				print_x = true;
+				positive = true;
+				i += 3;
+			} else
+			// The chosen direction to track is defined.
+			if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("X-")) {
+				print_x = true;
+				negative = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Y")) {
+				print_y = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Y+")) {
+				print_y = true;
+				positive = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Y-")) {
+				print_y = true;
+				negative = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Z")) {
+				print_z = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Z+")) {
+				print_z = true;
+				positive = true;
+				i += 3;
+			} else if (param[i].getw().toUpperCase().equals("DIRECTION")
+					&& param[i + 1].getw().toUpperCase().equals("=")
+					&& param[i + 2].getw().toUpperCase().toUpperCase()
+							.equals("Z-")) {
+				print_z = true;
+				negative = true;
+				i += 3;
+			} else
+			// A target for the tracker is set
+			if (param[i].getw().toUpperCase().equals("TARGET")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the node is delivered in param3, with the
+				// simple nodenumber
+				if (param[i + 2].is_a_number()) {
+					throw new java.text.ParseException(
+							"Illegal argument, Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
+							lineno);
+				}
 
-    /**
-     * This method is used to create the lines needed in the result file. The
-     * method creates a string which is printed directly. However, due to the
-     * fact that the line may be different depending on what is requested to
-     * be printed and that the number of methods should be kept down, the
-     * first parameter here is a control parameter. This parameter describes
-     * what should be printed. The second parameter is the current time.
-     * Creation date: (09/12/01 %T)
-     *
-     * @param ctrl int
-     * @param currtime int
-     */
-    public void print_Gid(int ctrl, double currtime)
-        throws IOException, IllegalArgumentException
-    {
-    	BufferedWriter bw;
-    	// Start by collecting data (needed here since it is not done continuously
-        collectOwnData();
+				try {
+					targettime = super.getNumber(1, param[i + 2].getw()
+							.toUpperCase());
+					timetolerance = super.getNumber(2, param[i + 2].getw()
+							.toUpperCase());
+					target = super.getNumber(3, param[i + 2].getw()
+							.toUpperCase());
+					tolerance = super.getNumber(4, param[i + 2].getw()
+							.toUpperCase());
+				} catch (IllegalArgumentException e) {
+					throw new java.text.ParseException(
+							"Illegal argument or value missing; Target should be defined as [time,timetolerance,targetvalue,targetvaluetolerance]",
+							lineno);
+				}
 
-        // Calculate
-        calculateOwn();
+				i += 3;
+				Target_is_set = true;
+			} else
+			// The filename of the tracker is defined
+			if (param[i].getw().toUpperCase().equals("FILENAME")
+					&& param[i + 1].getw().toUpperCase().equals("=")) {
+				// Assume now that the material name is delivered in param3
+				filename = new String(param[i + 2].getw().trim());
+				i += 3;
+				File_is_set = true;
+			} else {
+				// Neither nodes nor filename is defined. Then the parameter is
+				// wrong.
+				throw new java.text.ParseException(
+						"Unknown Tracker parameter ", lineno);
+			}
+		}
+	}
 
-        // Check for target and if reached, write this into target file
-        if (Target_is_set) {
-            if (super.checkTarget(currtime)) {
-                try {
-                    bw = new BufferedWriter(
-                            new FileWriter(filename + ".target", true)
-                        );
+	/**
+	 * This method checks the data in the indatafile in Nastran format and sets
+	 * the corresponding parameters for the Tracker. It is defined in the
+	 * element due to the fact of isolating the Tracker from the main program,
+	 * thus making adding a new Tracker a simpler issue. Creation date:
+	 * (08/09/01 %T)
+	 * 
+	 * @param param
+	 *            run.Token[] - An array containing the text to be parsed but
+	 *            split into tokens.
+	 * @param lineno
+	 *            int - The line number of the indata file being parsed
+	 * @param globalnodelist
+	 *            java.util.Vector - A vector containing all the nodes in the
+	 *            solution. This resides in the ModelSmp object.
+	 * @param globalelementlist
+	 *            java.util.Vector - A vector containing all the elements in the
+	 *            solution. This resides in the ModelSmp object.
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Nastran(Token[] param, int lineno,
+			RplVector globalnodelist, RplVector globalelementlist)
+			throws java.text.ParseException {
+	}
 
-                    // OK, file was openend allright. Now, proceed to write the results.
-                    bw.write(
-                        "Target was reached at time: " + currtime +
-                        " with result: " + result + "\n"
-                    );
-                    bw.flush();
-                    bw.close();
-                } catch (IOException ioe) {
-                    System.out.println(
-                        "Error in writing target result file: " + filename +
-                        ".target"
-                    );
-                    throw ioe;
-                }
-            }
-        }
+	/**
+	 * This method checks the data in the indatafile in Gmsh format and sets the
+	 * corresponding parameters for the Tracker. It is defined in the element
+	 * due to the fact of isolating the Tracker from the main program, thus
+	 * making adding a new Tracker a simpler issue. Creation date: (08/09/01 %T)
+	 * 
+	 * @param param
+	 *            run.Token[] - An array containing the text to be parsed but
+	 *            split into tokens.
+	 * @param lineno
+	 *            int - The line number of the indata file being parsed
+	 * @param globalnodelist
+	 *            java.util.Vector - A vector containing all the nodes in the
+	 *            solution. This resides in the ModelSmp object.
+	 * @param globalelementlist
+	 *            java.util.Vector - A vector containing all the elements in the
+	 *            solution. This resides in the ModelSmp object.
+	 * 
+	 * @exception java.text.ParseException
+	 *                The exception description.
+	 */
+	public void parse_Gmsh(Token[] param, int lineno, RplVector globalnodelist,
+			RplVector globalelementlist) throws java.text.ParseException {
+	}
 
-        // Now proceed
-        String out;
-        int i;
+	/**
+	 * This method checks that all mandatory parameters have been set
+	 */
+	public void checkIndata() throws IllegalArgumentException {
+		if (!Nodes_are_set) {
+			throw new IllegalArgumentException(
+					"No nodes defined for this node moment tracker: " + number);
+		}
 
-        switch (ctrl) {
-        case RESULT_HEADER:
+		if (!print_x && !print_y && !print_z) {
+			throw new IllegalArgumentException(
+					"No directions defined for this node moment tracker: "
+							+ number);
+		}
 
-            /* This is the first time the tracker is asked to write something. Therefore, a
-             * header is suitable to start with and the file should be created */
-            try {
-                bw = new BufferedWriter(new FileWriter(filename));
+		if (!File_is_set) {
+			throw new IllegalArgumentException(
+					"No Filename defined for this node moment tracker: "
+							+ number);
+		}
+	}
 
-                // OK, file was openend allright. Now, proceed to write the header.
-                out = new String(
-                        "# Impact node moment tracker results from tracker number: " +
-                        number + "\n"
-                    );
-                out += "# The following nodes are included in the section:\n";
-                out += "# \n# ";
+	/**
+	 * This method is used to create the lines needed in the result file. The
+	 * method creates a string which is printed directly. However, due to the
+	 * fact that the line may be different depending on what is requested to be
+	 * printed and that the number of methods should be kept down, the first
+	 * parameter here is a control parameter. This parameter describes what
+	 * should be printed. The second parameter is the current time. Creation
+	 * date: (09/12/01 %T)
+	 * 
+	 * @param ctrl
+	 *            int
+	 * @param currtime
+	 *            int
+	 */
+	public void print_Gid(int ctrl, double currtime) throws IOException,
+			IllegalArgumentException {
+		BufferedWriter bw;
+		// Start by collecting data (needed here since it is not done
+		// continuously
+		collectOwnData();
 
-                for (i = 0; i < nodelist.size(); i++) {
-                    out += (((Node) nodelist.elementAt(i)).getNumber() + ": ");
-                }
+		// Calculate
+		calculateOwn();
 
-                out += "\n# \n";
-                out += "# X: time \t Y: moment in direction: ";
+		// Check for target and if reached, write this into target file
+		if (Target_is_set) {
+			if (super.checkTarget(currtime)) {
+				try {
+					bw = new BufferedWriter(new FileWriter(
+							filename + ".target", true));
 
-                if (print_x) {
-                    out += "X";
-                }
+					// OK, file was openend allright. Now, proceed to write the
+					// results.
+					bw.write("Target was reached at time: " + currtime
+							+ " with result: " + result + "\n");
+					bw.flush();
+					bw.close();
+				} catch (IOException ioe) {
+					System.out.println("Error in writing target result file: "
+							+ filename + ".target");
+					throw ioe;
+				}
+			}
+		}
 
-                if (print_y) {
-                    out += "Y";
-                }
+		// Now proceed
+		String out;
+		int i;
 
-                if (print_z) {
-                    out += "Z";
-                }
+		switch (ctrl) {
+		case RESULT_HEADER:
 
-                out += "\n#\n";
-                bw.write(out);
-                bw.flush();
-                bw.close();
-            } catch (IOException ioe) {
-                System.out.println(
-                    "Error in creating the NodeMomentTracker file: " + filename
-                );
-                throw ioe;
-            }
+			/*
+			 * This is the first time the tracker is asked to write something.
+			 * Therefore, a header is suitable to start with and the file should
+			 * be created
+			 */
+			try {
+				bw = new BufferedWriter(new FileWriter(filename));
 
-            // If all goes well, we should just return.
-            return;
+				// OK, file was openend allright. Now, proceed to write the
+				// header.
+				out = new String(
+						"# Impact node moment tracker results from tracker number: "
+								+ number + "\n");
+				out += "# The following nodes are included in the section:\n";
+				out += "# \n# ";
 
-        case RESULT:
+				for (i = 0; i < nodelist.size(); i++) {
+					out += (((Node) nodelist.elementAt(i)).getNumber() + ": ");
+				}
 
-            /* This is not the first time the tracker is asked to write something. Therefore, the
-             * file must be opened for append. */
-            try {
-                bw = new BufferedWriter(new FileWriter(filename, true));
+				out += "\n# \n";
+				out += "# X: time \t Y: moment in direction: ";
 
-                // OK, file was openend allright. Now, proceed to write the results.
-                bw.write(currtime + "\t" + result + "\n");
-                bw.flush();
-                bw.close();
-            } catch (IOException ioe) {
-                System.out.println(
-                    "Error in writing results to the NodeMomentTracker file: " +
-                    filename
-                );
-                throw ioe;
-            }
+				if (print_x) {
+					out += "X";
+				}
 
-            // If everything went well, we will just return.
-            return;
+				if (print_y) {
+					out += "Y";
+				}
 
-        default:
-            throw new IllegalArgumentException(
-                "Unknown parameter for print_Gid in NodeMomentTracker number: " +
-                number
-            );
-        }
-    }
+				if (print_z) {
+					out += "Z";
+				}
 
-    /**
-     * Sets up any initial conditions needed. Creation date: (27/09/01 %T)
-     */
-    public void setInitialConditions() {
-    }
+				out += "\n#\n";
+				bw.write(out);
+				bw.flush();
+				bw.close();
+			} catch (IOException ioe) {
+				System.out
+						.println("Error in creating the NodeMomentTracker file: "
+								+ filename);
+				throw ioe;
+			}
 
-    /**
-     * Returns the tracker type number The type variable is defined in the
-     * superclass Tracker
-     */
-    public int getType() {
-        return TYPE;
-    }
+			// If all goes well, we should just return.
+			return;
+
+		case RESULT:
+
+			/*
+			 * This is not the first time the tracker is asked to write
+			 * something. Therefore, the file must be opened for append.
+			 */
+			try {
+				bw = new BufferedWriter(new FileWriter(filename, true));
+
+				// OK, file was openend allright. Now, proceed to write the
+				// results.
+				bw.write(currtime + "\t" + result + "\n");
+				bw.flush();
+				bw.close();
+			} catch (IOException ioe) {
+				System.out
+						.println("Error in writing results to the NodeMomentTracker file: "
+								+ filename);
+				throw ioe;
+			}
+
+			// If everything went well, we will just return.
+			return;
+
+		default:
+			throw new IllegalArgumentException(
+					"Unknown parameter for print_Gid in NodeMomentTracker number: "
+							+ number);
+		}
+	}
+
+	/**
+	 * Sets up any initial conditions needed. Creation date: (27/09/01 %T)
+	 */
+	public void setInitialConditions() {
+	}
+
+	/**
+	 * Returns the tracker type number The type variable is defined in the
+	 * superclass Tracker
+	 */
+	public int getType() {
+		return TYPE;
+	}
 }
-

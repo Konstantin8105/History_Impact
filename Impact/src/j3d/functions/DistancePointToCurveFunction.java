@@ -24,35 +24,38 @@ import util.SingleFunction;
 /**
  * @author Jonas Forssell
  * 
- *
+ * 
  */
 public class DistancePointToCurveFunction implements SingleFunction {
 
-    _NurbCurve c1;
-    _Point pp,p1;
-    double dist;
-    
-    public DistancePointToCurveFunction (_Point pp, _NurbCurve c1) {
-        this.pp = pp;
-        this.c1 = c1;
-    }
-    
-    /**
-     * Compute the distance between two nurb curves at given parameter value. If the
-     * value is out of bounds, a large value is returned to create a border.
-     *
-     * @param  x  parameter input vector. Always size 2 (two curves).
-     *
-     * @return  Distance squared between the curves at given points.
-     */
-    public double f (double x) {
+	_NurbCurve c1;
+	_Point pp, p1;
+	double dist;
 
-        if (x < 0 || x > 1) return 1E9f;
-        
-        p1 = c1.getPointAt((float)x,false);
+	public DistancePointToCurveFunction(_Point pp, _NurbCurve c1) {
+		this.pp = pp;
+		this.c1 = c1;
+	}
 
-        return (p1.x-pp.x)*(p1.x-pp.x) + (p1.y-pp.y)*(p1.y-pp.y) + (p1.z-pp.z)*(p1.z-pp.z);
-        
-    }
+	/**
+	 * Compute the distance between two nurb curves at given parameter value. If
+	 * the value is out of bounds, a large value is returned to create a border.
+	 * 
+	 * @param x
+	 *            parameter input vector. Always size 2 (two curves).
+	 * 
+	 * @return Distance squared between the curves at given points.
+	 */
+	public double f(double x) {
+
+		if (x < 0 || x > 1)
+			return 1E9f;
+
+		p1 = c1.getPointAt((float) x, false);
+
+		return (p1.x - pp.x) * (p1.x - pp.x) + (p1.y - pp.y) * (p1.y - pp.y)
+				+ (p1.z - pp.z) * (p1.z - pp.z);
+
+	}
 
 }

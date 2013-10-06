@@ -12,5 +12,5 @@
 package uka.patch;
 
 public interface ReferenceFilter {
-    public Object filter(Object ref);
+	public Object filter(Object ref);
 }

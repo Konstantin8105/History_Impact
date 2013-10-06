@@ -20,37 +20,40 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 /**
  * Insert the type's description here.
- *
+ * 
  * @author: Yuriy Mikhaylovskiy
  */
 
 public class ProcessorGUI extends JFrame {
-  Processor processor;
+	Processor processor;
 
-  public ProcessorGUI(boolean openGL) {
-    processor = new Processor(openGL);  
-    try {
-      setTitle(Processor.ver);
-      getContentPane().setLayout(new BorderLayout());
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      setBounds(50,50,screenSize.width-100, screenSize.height-100);
-      addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {
-          System.exit(0);
-        }
-      });
-      getContentPane().add(processor, BorderLayout.CENTER);
-      show();
-    }catch(Exception e) { e.printStackTrace();}
-  }
-  
-  public static void main(String[] args) {
-    if (args.length > 0) 
-        new ProcessorGUI(args[0].toUpperCase().equals("-OPENGL"));
-    else
-        new ProcessorGUI(false);
-  }
+	public ProcessorGUI(boolean openGL) {
+		processor = new Processor(openGL);
+		try {
+			setTitle(Processor.ver);
+			getContentPane().setLayout(new BorderLayout());
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			setBounds(50, 50, screenSize.width - 100, screenSize.height - 100);
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					System.exit(0);
+				}
+			});
+			getContentPane().add(processor, BorderLayout.CENTER);
+			show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		if (args.length > 0)
+			new ProcessorGUI(args[0].toUpperCase().equals("-OPENGL"));
+		else
+			new ProcessorGUI(false);
+	}
 
 }

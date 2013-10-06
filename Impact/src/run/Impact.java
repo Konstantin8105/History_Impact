@@ -42,15 +42,16 @@ public class Impact {
 	 * the core is created and told to go through the different steps required
 	 * to complete an analysis. Creation date: (2001-08-20 21:48:22)
 	 * 
-	 * @param args    java.lang.String[]
+	 * @param args
+	 *            java.lang.String[]
 	 */
-public static void main(java.lang.String[] args) {
+	public static void main(java.lang.String[] args) {
 
 		System.out.println("\n=========== Welcome to Impact ==========");
-		//System.out.println("= Impact is Alpha code. This means the =");
-		//System.out.println("= results are not validated and should =");
-		//System.out.println("= not be trusted for use.              =");
-		//System.out.println("=                                      =");
+		// System.out.println("= Impact is Alpha code. This means the =");
+		// System.out.println("= results are not validated and should =");
+		// System.out.println("= not be trusted for use.              =");
+		// System.out.println("=                                      =");
 		System.out.println("= Impact is free software and licensed =");
 		System.out.println("= under GPL. Please note that it comes =");
 		System.out.println("= with no warranties whatsoever.       =");
@@ -60,25 +61,24 @@ public static void main(java.lang.String[] args) {
 		System.out.println("=============== ENJOY!!!! ==============\n\n");
 
 		int nr_CPU = DistributedRuntime.getMachineCnt();
-		
-		
+
 		// Check if something is written after the command
 		if (args.length == 1) {
 
 			if (nr_CPU > 0)
-				try { 
+				try {
 					Impact.run_cluster(args[0], nr_CPU);
 				} catch (Error e) {
-				    e.printStackTrace();
-				    return;
+					e.printStackTrace();
+					return;
 				} catch (Exception e) {
-				    e.printStackTrace();
-				    return;
+					e.printStackTrace();
+					return;
 				}
-				else {
-					// A standard smp version is run -> make nr_CPU positive
-					// nr_CPU = 1; (old)
-					nr_CPU = Runtime.getRuntime().availableProcessors();
+			else {
+				// A standard smp version is run -> make nr_CPU positive
+				// nr_CPU = 1; (old)
+				nr_CPU = Runtime.getRuntime().availableProcessors();
 				try {
 					Impact.run_smp(args[0], nr_CPU);
 				} catch (Exception e) {
@@ -86,17 +86,17 @@ public static void main(java.lang.String[] args) {
 					return;
 				}
 			}
-		}
-		else {
+		} else {
 			System.out.println("Impact - A simple explicit dynamic program\n");
-			System.out.println("Syntax: java run.Impact sourcefile.in  to start solver");
+			System.out
+					.println("Syntax: java run.Impact sourcefile.in  to start solver");
 		}
 		System.exit(0);
 	}
 
+	public static void run_smp(String fname, int nr_CPU)
+			throws RemoteException, Exception {
 
-	public static void run_smp(String fname, int nr_CPU) throws RemoteException, Exception {
-		
 		System.out.println("*******************************");
 		System.out.println("*** Solver has been invoked ***");
 		System.out.println("*******************************\n\n");
@@ -104,69 +104,71 @@ public static void main(java.lang.String[] args) {
 
 		// Create an instance of the solver
 		ModelSmp node = new ModelSmp(nr_CPU, fname);
-		
-		// Since this is only a single instance, just run and wait for completion
+
+		// Since this is only a single instance, just run and wait for
+		// completion
 		node.run();
-		
+
 		// Solution completed successfully
 		System.out.println("*** Solution completed ***");
-    
-    }
 
-	public static void run_cluster(final String fname, int nr_CPU) throws Exception {
-	    final ModelCluster[] nodes;
-        final Barrier barrier; 
+	}
+
+	public static void run_cluster(final String fname, int nr_CPU)
+			throws Exception {
+		final ModelCluster[] nodes;
+		final Barrier barrier;
 
 		System.out.println("********************************");
 		System.out.println("*** Cluster has been invoked ***");
 		System.out.println("********************************\n\n");
 		System.out.println("Running on " + nr_CPU + " clients\n\n");
 
-        nodes = new ModelCluster[nr_CPU];
-        barrier = BarrierFactory.createBarrier(nr_CPU);
+		nodes = new ModelCluster[nr_CPU];
+		barrier = BarrierFactory.createBarrier(nr_CPU);
 
-        System.out.println("*** Creating cluster processes ***");
+		System.out.println("*** Creating cluster processes ***");
 
-        for (int n = 0; n < nr_CPU; n++) {
-            /**
-             * @at n
-             */
-            nodes[n] = new ModelCluster(nr_CPU,n,fname,barrier);
-        }
-        
-        for (int n = 0; n < nr_CPU; n++) 
-            nodes[n].setCluster_nodes(nodes);
-        
-        // Create threads
-        Thread[] tsolve = new Thread[nr_CPU];
+		for (int n = 0; n < nr_CPU; n++) {
+			/**
+			 * @at n
+			 */
+			nodes[n] = new ModelCluster(nr_CPU, n, fname, barrier);
+		}
 
-        for (int n = 0; n < tsolve.length; n++) {
-            tsolve[n] = new Thread(nodes[n]);
-            tsolve[n].setPriority(Thread.MIN_PRIORITY);
-        }
+		for (int n = 0; n < nr_CPU; n++)
+			nodes[n].setCluster_nodes(nodes);
 
-        // Start threads
-        System.out.println("*** Starting the solution ***");
+		// Create threads
+		Thread[] tsolve = new Thread[nr_CPU];
 
-        for (int n = 0; n < tsolve.length; n++) {
-            tsolve[n].start();
-        }
+		for (int n = 0; n < tsolve.length; n++) {
+			tsolve[n] = new Thread(nodes[n]);
+			tsolve[n].setPriority(Thread.MIN_PRIORITY);
+		}
+
+		// Start threads
+		System.out.println("*** Starting the solution ***");
+
+		for (int n = 0; n < tsolve.length; n++) {
+			tsolve[n].start();
+		}
 
 		long stime = System.currentTimeMillis();
 
 		// wait for worker threads to terminate
-        for (int n = 0; n < tsolve.length; n++) {
-            try {
+		for (int n = 0; n < tsolve.length; n++) {
+			try {
 				tsolve[n].join();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				return;
 			}
-        }
-        
-        // Solution completed successfully
-		System.out.println("Solving took " + (System.currentTimeMillis() - stime) + " ms");
+		}
+
+		// Solution completed successfully
+		System.out.println("Solving took "
+				+ (System.currentTimeMillis() - stime) + " ms");
 	}
 
 }
-
