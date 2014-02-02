@@ -41,7 +41,7 @@ import jp.lang.RemoteObject;
 /**
  * Insert the type's description here. Creation date: (2001-08-20 22:51:18)
  * 
- * @author: Jonas Forssell
+ * @author: Yuriy Mikhaylovskiy, Jonas Forssell
  */
 public class FembicReader extends Reader {
 	private java.io.BufferedReader br;
@@ -78,8 +78,7 @@ public class FembicReader extends Reader {
 		try {
 			br.close();
 		} catch (IOException ioe) {
-			System.out
-					.println("An IOException has occurred when closing the indata file");
+			System.out.println("An IOException has occurred when closing the indata file");
 
 			return;
 		}
@@ -253,8 +252,7 @@ public class FembicReader extends Reader {
 			}
 
 			// Parse the element number and put into the node object
-			temporary_element = Element
-					.getElementOfType_Fembic(current_element_type);
+			temporary_element = Element.getElementOfType_Fembic(current_element_type);
 			temporary_element.setNumber((int) str.nval);
 			// Continue and read the element parameters, assuming the format
 			// 'param = val'
@@ -372,13 +370,11 @@ public class FembicReader extends Reader {
 			}
 
 			// Parse the tracker number and put into the tracker object
-			temporary_tracker = Tracker
-					.getTrackerOfType_Fembic(current_tracker_type);
+			temporary_tracker = Tracker.getTrackerOfType_Fembic(current_tracker_type);
 			temporary_tracker.setNumber((int) str.nval);
 			// Continue and read the tracker parameters, assuming the format
 			// 'param = val'
-			temporary_tracker.parse_Fembic(tokenize(str), str.lineno(),
-					nodelist, elementlist);
+			temporary_tracker.parse_Fembic(tokenize(str), str.lineno(),	nodelist, elementlist);
 
 			// Check all required data has been filled in
 			temporary_tracker.checkIndata();
@@ -489,8 +485,7 @@ public class FembicReader extends Reader {
 			temporary_constraint.setName(str.sval.toUpperCase().trim());
 			// Continue and read the tracker parameters, assuming the format
 			// 'param = val'
-			temporary_constraint.parse_Fembic(tokenize(str), str.lineno(),
-					nodelist);
+			temporary_constraint.parse_Fembic(tokenize(str), str.lineno(), nodelist);
 
 			// Check all required data has been filled in
 			temporary_constraint.checkIndata();
@@ -664,8 +659,7 @@ public class FembicReader extends Reader {
 			}
 
 			// Parse the material type and create the suitable material object
-			temporary_material = Material
-					.getMaterialOfType_Fembic(current_element_type);
+			temporary_material = Material.getMaterialOfType_Fembic(current_element_type);
 			temporary_material.setName(str.sval.toUpperCase());
 			// Now, feed the parameters to the object
 			temporary_material.parse_Fembic(tokenize(str), str.lineno());
@@ -745,8 +739,7 @@ public class FembicReader extends Reader {
 			temporary_node.setNumber((int) str.nval);
 
 			// Continue and read the X coordinates for the node
-			temporary_node.parse_Fembic(tokenize(str), str.lineno(),
-					constraintlist, loadlist);
+			temporary_node.parse_Fembic(tokenize(str), str.lineno(), constraintlist, loadlist);
 
 			// Check all required data has been filled in
 			temporary_node.checkIndata();
@@ -841,8 +834,7 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + noc + " constraints");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a constraintline from indata file");
+			System.out.println("IOException when reading a constraintline from indata file");
 			this.close();
 
 			return -1;
@@ -891,7 +883,6 @@ public class FembicReader extends Reader {
 									}
 								} else {
 									str.pushBack();
-
 									break;
 								}
 							}
@@ -902,10 +893,8 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + noc + " controls");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
@@ -915,7 +904,6 @@ public class FembicReader extends Reader {
 		}
 
 		this.close();
-
 		return noc;
 	}
 
@@ -979,10 +967,8 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + noe + " elements");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
@@ -992,7 +978,6 @@ public class FembicReader extends Reader {
 		}
 
 		this.close();
-
 		return noe;
 	}
 
@@ -1057,10 +1042,8 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + not + " trackers");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a trackerline from indata file");
+			System.out.println("IOException when reading a trackerline from indata file");
 			this.close();
-
 			return -1;
 		}
 
@@ -1107,7 +1090,6 @@ public class FembicReader extends Reader {
 									}
 								} else {
 									str.pushBack();
-
 									break;
 								}
 							}
@@ -1118,15 +1100,12 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + noc + " groups");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
 		this.close();
-
 		return noc;
 	}
 
@@ -1168,7 +1147,6 @@ public class FembicReader extends Reader {
 									}
 								} else {
 									str.pushBack();
-
 									break;
 								}
 							}
@@ -1179,15 +1157,12 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + noc + " loads");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
 		this.close();
-
 		return noc;
 	}
 
@@ -1242,10 +1217,8 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + nom + " materials");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
@@ -1255,7 +1228,6 @@ public class FembicReader extends Reader {
 		}
 
 		this.close();
-
 		return nom;
 	}
 
@@ -1307,10 +1279,8 @@ public class FembicReader extends Reader {
 
 			System.out.println("Found " + non + " nodes");
 		} catch (IOException ioe) {
-			System.out
-					.println("IOException when reading a line from indata file");
+			System.out.println("IOException when reading a line from indata file");
 			this.close();
-
 			return -1;
 		}
 
@@ -1320,7 +1290,6 @@ public class FembicReader extends Reader {
 		}
 
 		this.close();
-
 		return non;
 	}
 
@@ -1348,9 +1317,7 @@ public class FembicReader extends Reader {
 		try {
 			br = new BufferedReader(fr);
 		} catch (IllegalArgumentException ioe) {
-			System.out
-					.println("An IllegalArgumentException has occurred when opening the indata file");
-
+			System.out.println("An IllegalArgumentException has occurred when opening the indata file");
 			return;
 		}
 
@@ -1447,9 +1414,7 @@ public class FembicReader extends Reader {
 					v.remove(i);
 
 					if (temp.indexOf("=") != 0) {
-						v.insertElementAt(
-								new Token(temp.substring(0, temp.indexOf("="))),
-								i);
+						v.insertElementAt(new Token(temp.substring(0, temp.indexOf("="))), i);
 					} else {
 						i--;
 					}
@@ -1457,9 +1422,7 @@ public class FembicReader extends Reader {
 					v.insertElementAt(new Token(new String("=")), i + 1);
 
 					if (temp.indexOf("=") != (temp.length() - 1)) {
-						v.insertElementAt(
-								new Token(temp.substring(temp.indexOf("=") + 1,
-										temp.length())), i + 2);
+						v.insertElementAt(new Token(temp.substring(temp.indexOf("=") + 1, temp.length())), i + 2);
 					}
 
 					i--;

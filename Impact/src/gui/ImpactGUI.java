@@ -34,7 +34,7 @@ import log.*;
 
 public class ImpactGUI extends JFrame {
 	private boolean openGL;
-	static final String ver = "Impact Version 0.7.06.040";
+	static final String ver = "Impact Version 0.7.06.041";
 
 	PreProcessor pre;
 	Processor processor;

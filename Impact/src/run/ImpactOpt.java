@@ -740,12 +740,15 @@ public class ImpactOpt implements Runnable, ExceptionListener {
 			out.writeBytes("# " + new Date() + "\n\n");
 			out.writeBytes(infile.ContpolsDB + "\n");
 			out.writeBytes(infile.TrackersDB + "\n");
-			for (Enumeration en = infile.LoadDB.keys(); en.hasMoreElements();) {
-				String key = en.nextElement() + "";
-				Loads ld = (Loads) infile.LoadDB.get(key);
-				out.writeBytes("\nLOADS\n" + ld.toString() + "\n");
+			if (infile.LoadDB.keys().hasMoreElements()) {
+				out.writeBytes("\nLOADS\n");
+				for (Enumeration en = infile.LoadDB.keys(); en.hasMoreElements();) {
+					String key = en.nextElement() + "";
+					Loads ld = (Loads) infile.LoadDB.get(key);
+					out.writeBytes(ld.toString() + "\n");
+				}
 			}
-			out.writeBytes("\n");
+			out.writeBytes("\n\n");
 			for (Enumeration en = infile.ConstDB.keys(); en.hasMoreElements();) {
 				String key = en.nextElement() + "";
 				Constraints con = (Constraints) infile.ConstDB.get(key);
