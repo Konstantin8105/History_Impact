@@ -23,7 +23,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URI;
 import java.util.*;
-import log.*;
+//import log.*;
 
 /**
  * Impact GUI - Pre Processor, Processor, Processor 0ptimization, Post
@@ -34,7 +34,7 @@ import log.*;
 
 public class ImpactGUI extends JFrame {
 	private boolean openGL;
-	static final String ver = "Impact Version 0.7.06.041";
+	static final String ver = "Impact Version 0.7.06.042";
 
 	PreProcessor pre;
 	Processor processor;
@@ -101,7 +101,7 @@ public class ImpactGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new log().put(ver);
+		//new log().put(ver);
 		/*
 		 * try{ UIManager.put("swing.boldMetal", Boolean.FALSE);
 		 * JDialog.setDefaultLookAndFeelDecorated(true);

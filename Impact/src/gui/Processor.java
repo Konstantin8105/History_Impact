@@ -61,8 +61,7 @@ public class Processor extends JPanel implements ExceptionListener {
 	ImageIcon img_open = new ImageIcon(Processor.class.getResource("open.gif"));
 	ImageIcon img_save = new ImageIcon(Processor.class.getResource("save.gif"));
 	ImageIcon img_run = new ImageIcon(Processor.class.getResource("run.gif"));
-	ImageIcon img_stats = new ImageIcon(
-			Processor.class.getResource("stats.gif"));
+	//ImageIcon img_stats = new ImageIcon(Processor.class.getResource("stats.gif"));
 	ImageIcon img_stop = new ImageIcon(Processor.class.getResource("stop.gif"));
 	ImageIcon img_find = new ImageIcon(Processor.class.getResource("find.gif"));
 	ImageIcon img_solid = new ImageIcon(
@@ -162,7 +161,7 @@ public class Processor extends JPanel implements ExceptionListener {
 	JButton b_open = new JButton();
 	JButton b_model = new JButton();
 	JButton b_start = new JButton();
-	JButton b_stats = new JButton();
+	//JButton b_stats = new JButton();
 	JButton b_config = new JButton();
 	JButton b_save = new JButton();
 	JButton b_find = new JButton();
@@ -316,6 +315,7 @@ public class Processor extends JPanel implements ExceptionListener {
 				b_start_actionPerformed();
 			}
 		});
+		/*
 		b_stats.setToolTipText("Java Micro Benchmark  http://opt.sf.net/");
 		b_stats.setIcon(img_stats);
 		b_stats.addActionListener(new java.awt.event.ActionListener() {
@@ -323,6 +323,7 @@ public class Processor extends JPanel implements ExceptionListener {
 				b_stats_actionPerformed();
 			}
 		});
+		*/
 		b_model.setToolTipText("Reload view");
 		b_model.setIcon(img_solid);
 		b_model.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +382,7 @@ public class Processor extends JPanel implements ExceptionListener {
 		jToolBar2.add(b_save, null);
 		jToolBar2.addSeparator();
 		jToolBar2.add(b_start, null);
-		jToolBar2.add(b_stats, null);
+		//jToolBar2.add(b_stats, null);
 		jToolBar2.addSeparator();
 		jToolBar2.add(b_find, null);
 		jToolBar2.add(b_model, null);
@@ -635,7 +636,7 @@ public class Processor extends JPanel implements ExceptionListener {
 	 * different Java implementations.
 	 * 
 	 */
-
+	/*
 	void b_stats_actionPerformed() {
 		try {
 			Desktop.getDesktop().open(
@@ -649,6 +650,7 @@ public class Processor extends JPanel implements ExceptionListener {
 			}
 		}
 	}
+	*/
 
 	public void show_model() {
 		J3D.remove_all();
